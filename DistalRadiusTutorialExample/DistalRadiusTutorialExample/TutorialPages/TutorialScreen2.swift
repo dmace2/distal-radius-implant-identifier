@@ -1,13 +1,13 @@
 //
-//  WelcomePage2.swift
+//  OnboardingScreen2.swift
 //  DistalRadiusTutorialExample
 //
-//  Created by Dylan Mace on 10/25/21.
+//  Created by Dylan Mace on 11/3/21.
 //
 
 import SwiftUI
 
-struct WelcomePage2: View {
+struct TutorialScreen2: View {
     @Binding var tabSelection: Int
     
     var body: some View {
@@ -17,16 +17,8 @@ struct WelcomePage2: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 250)
             
-            Text("Take a Photo\nGet a Result")
-                .multilineTextAlignment(.center)
-                .font(.largeTitle.weight(.bold))
-                .foregroundColor(Color("TechBlue"))
-            Text("Simply click the button below to classify a sample x-ray")
-                .multilineTextAlignment(.center)
-                .foregroundColor(Color("SecondaryGray"))
-                .font(.body)
-                .padding(.leading, 20)
-                .padding(.trailing, 20)
+            TutorialTitleAndSubheader(titleText: "Take a Photo\nGet a Result", subtitleText: "Simply click the button below to classify a sample x-ray")
+            
             Spacer()
             
             ArrowButton(buttonFunc: {

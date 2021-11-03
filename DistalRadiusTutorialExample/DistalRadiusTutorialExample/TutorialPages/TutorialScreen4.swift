@@ -1,13 +1,13 @@
 //
-//  WelcomeScreen4.swift
+//  OnboardingScreen4.swift
 //  DistalRadiusTutorialExample
 //
-//  Created by Dylan Mace on 10/25/21.
+//  Created by Dylan Mace on 11/3/21.
 //
 
 import SwiftUI
 
-struct WelcomePage4: View {
+struct TutorialScreen4: View {
     @Binding var tabSelection: Int
     
     var body: some View {
@@ -24,13 +24,12 @@ struct WelcomePage4: View {
             
             Text("Synthes")
                 .multilineTextAlignment(.center)
-                .foregroundColor(Color("SecondaryGray"))
+                .foregroundColor(Color(UIColor.secondaryLabel))
                 .font(.system(size: 40))
                 .padding(.leading, 20)
                 .padding(.trailing, 20)
             
             List(1..<15){ row in
-                
                 HStack {
                     if row == 1 {
                         Text("Synthes")
@@ -47,17 +46,16 @@ struct WelcomePage4: View {
                     }
                 }
             }
-            .listStyle(.inset)
+            .listStyle(.plain)
             
             Spacer()
-        
-        
              
             ArrowButton(buttonFunc: {
                 withAnimation {
                     tabSelection = 5
                 }
             }, labelText: "Continue")
+            
 
             Spacer().frame(height: 40)
             

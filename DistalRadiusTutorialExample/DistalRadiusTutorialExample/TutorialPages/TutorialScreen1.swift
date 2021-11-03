@@ -1,13 +1,13 @@
 //
-//  WelcomePage1.swift
+//  OnboardingScreen1.swift
 //  DistalRadiusTutorialExample
 //
-//  Created by Dylan Mace on 10/25/21.
+//  Created by Dylan Mace on 11/3/21.
 //
 
 import SwiftUI
 
-struct WelcomePage1: View {
+struct TutorialScreen1: View {
     @Binding var tabSelection: Int
     
     var body: some View {
@@ -17,16 +17,8 @@ struct WelcomePage1: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 250)
             
-            Text("Welcome to the GT/Emory Distal Radius Implant Identifier")
-                .multilineTextAlignment(.center)
-                .font(.largeTitle.weight(.bold))
-                .foregroundColor(Color("TechBlue"))
-            Text("It’s the simplest way to identify distal radius implants, simply from an x-ray")
-                .multilineTextAlignment(.center)
-                .foregroundColor(Color("SecondaryGray"))
-                .font(.body)
-                .padding(.leading, 20)
-                .padding(.trailing, 20)
+            TutorialTitleAndSubheader(titleText: "Welcome to the GT/Emory Distal Radius Implant Identifier",
+                                      subtitleText: "It’s the simplest way to identify distal radius implants, simply from an x-ray")
             
             Spacer()
             

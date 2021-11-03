@@ -17,11 +17,11 @@ struct DistalRadiusTutorialExampleApp: App {
     var body: some Scene {
         WindowGroup {
             TabView(selection: $tabSelection) {
-                WelcomePage1(tabSelection: $tabSelection).tag(1)
-                WelcomePage2(tabSelection: $tabSelection).tag(2)
-                WelcomePage3(tabSelection: $tabSelection).tag(3)
-                WelcomePage4(tabSelection: $tabSelection).tag(4)
-                WelcomePage5(tabSelection: $tabSelection).tag(5)
+                TutorialScreen1(tabSelection: $tabSelection).tag(1)
+                TutorialScreen2(tabSelection: $tabSelection).tag(2)
+                TutorialScreen3(tabSelection: $tabSelection).tag(3)
+                TutorialScreen4(tabSelection: $tabSelection).tag(4)
+                TutorialScreen5(tabSelection: $tabSelection).tag(5)
             }
             .tabViewStyle(PageTabViewStyle())
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))

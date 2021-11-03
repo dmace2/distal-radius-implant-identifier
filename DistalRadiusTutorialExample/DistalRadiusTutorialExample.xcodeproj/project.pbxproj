@@ -10,12 +10,13 @@
 		F01E92C927333E720074D5DF /* DistalRadiusTutorialExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E92C827333E720074D5DF /* DistalRadiusTutorialExampleApp.swift */; };
 		F01E92CD27333E720074D5DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F01E92CC27333E720074D5DF /* Assets.xcassets */; };
 		F01E92D027333E720074D5DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F01E92CF27333E720074D5DF /* Preview Assets.xcassets */; };
-		F01E92E527333F810074D5DF /* WelcomePage1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E92E427333F810074D5DF /* WelcomePage1.swift */; };
-		F01E92E727333F870074D5DF /* WelcomePage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E92E627333F870074D5DF /* WelcomePage2.swift */; };
-		F01E92E927333F910074D5DF /* WelcomePage3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E92E827333F910074D5DF /* WelcomePage3.swift */; };
-		F01E92EB27333F960074D5DF /* WelcomePage4.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E92EA27333F960074D5DF /* WelcomePage4.swift */; };
-		F01E92ED27333F9D0074D5DF /* WelcomePage5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E92EC27333F9D0074D5DF /* WelcomePage5.swift */; };
 		F01E92F027333FF90074D5DF /* ArrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E92EF27333FF90074D5DF /* ArrowButton.swift */; };
+		F0508B072733545300EEEFE4 /* TutorialScreen5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0508B062733545300EEEFE4 /* TutorialScreen5.swift */; };
+		F05E74E62733532F00727492 /* TutorialScreen3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05E74E52733532F00727492 /* TutorialScreen3.swift */; };
+		F05E74E82733536A00727492 /* TutorialScreen4.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05E74E72733536A00727492 /* TutorialScreen4.swift */; };
+		F07349FA2733522D00C090EA /* TutorialScreen1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07349F92733522D00C090EA /* TutorialScreen1.swift */; };
+		F0734A00273352B300C090EA /* TutorialScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07349FF273352B300C090EA /* TutorialScreen2.swift */; };
+		F0E5BD0C2733500B009DFD26 /* TutorialTitleAndSubheader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,12 +26,13 @@
 		F01E92C827333E720074D5DF /* DistalRadiusTutorialExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistalRadiusTutorialExampleApp.swift; sourceTree = "<group>"; };
 		F01E92CC27333E720074D5DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F01E92CF27333E720074D5DF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F01E92E427333F810074D5DF /* WelcomePage1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePage1.swift; sourceTree = "<group>"; };
-		F01E92E627333F870074D5DF /* WelcomePage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePage2.swift; sourceTree = "<group>"; };
-		F01E92E827333F910074D5DF /* WelcomePage3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePage3.swift; sourceTree = "<group>"; };
-		F01E92EA27333F960074D5DF /* WelcomePage4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePage4.swift; sourceTree = "<group>"; };
-		F01E92EC27333F9D0074D5DF /* WelcomePage5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePage5.swift; sourceTree = "<group>"; };
 		F01E92EF27333FF90074D5DF /* ArrowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowButton.swift; sourceTree = "<group>"; };
+		F0508B062733545300EEEFE4 /* TutorialScreen5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScreen5.swift; sourceTree = "<group>"; };
+		F05E74E52733532F00727492 /* TutorialScreen3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen3.swift; sourceTree = "<group>"; };
+		F05E74E72733536A00727492 /* TutorialScreen4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen4.swift; sourceTree = "<group>"; };
+		F07349F92733522D00C090EA /* TutorialScreen1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen1.swift; sourceTree = "<group>"; };
+		F07349FF273352B300C090EA /* TutorialScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen2.swift; sourceTree = "<group>"; };
+		F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTitleAndSubheader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +68,7 @@
 				F00417CB2733422400C5630A /* Info.plist */,
 				F00417CA2733420C00C5630A /* DistalRadiusTutorialExample.entitlements */,
 				F01E92EE27333FEE0074D5DF /* CustomUIComponents */,
-				F01E92E127333F610074D5DF /* WelcomePages */,
+				F01E92E127333F610074D5DF /* TutorialPages */,
 				F01E92C827333E720074D5DF /* DistalRadiusTutorialExampleApp.swift */,
 				F01E92CC27333E720074D5DF /* Assets.xcassets */,
 				F01E92CE27333E720074D5DF /* Preview Content */,
@@ -82,22 +84,23 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		F01E92E127333F610074D5DF /* WelcomePages */ = {
+		F01E92E127333F610074D5DF /* TutorialPages */ = {
 			isa = PBXGroup;
 			children = (
-				F01E92E427333F810074D5DF /* WelcomePage1.swift */,
-				F01E92E627333F870074D5DF /* WelcomePage2.swift */,
-				F01E92E827333F910074D5DF /* WelcomePage3.swift */,
-				F01E92EA27333F960074D5DF /* WelcomePage4.swift */,
-				F01E92EC27333F9D0074D5DF /* WelcomePage5.swift */,
+				F07349F92733522D00C090EA /* TutorialScreen1.swift */,
+				F07349FF273352B300C090EA /* TutorialScreen2.swift */,
+				F05E74E52733532F00727492 /* TutorialScreen3.swift */,
+				F05E74E72733536A00727492 /* TutorialScreen4.swift */,
+				F0508B062733545300EEEFE4 /* TutorialScreen5.swift */,
 			);
-			path = WelcomePages;
+			path = TutorialPages;
 			sourceTree = "<group>";
 		};
 		F01E92EE27333FEE0074D5DF /* CustomUIComponents */ = {
 			isa = PBXGroup;
 			children = (
 				F01E92EF27333FF90074D5DF /* ArrowButton.swift */,
+				F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */,
 			);
 			path = CustomUIComponents;
 			sourceTree = "<group>";
@@ -173,12 +176,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F01E92C927333E720074D5DF /* DistalRadiusTutorialExampleApp.swift in Sources */,
-				F01E92E927333F910074D5DF /* WelcomePage3.swift in Sources */,
+				F0508B072733545300EEEFE4 /* TutorialScreen5.swift in Sources */,
 				F01E92F027333FF90074D5DF /* ArrowButton.swift in Sources */,
-				F01E92E527333F810074D5DF /* WelcomePage1.swift in Sources */,
-				F01E92E727333F870074D5DF /* WelcomePage2.swift in Sources */,
-				F01E92EB27333F960074D5DF /* WelcomePage4.swift in Sources */,
-				F01E92ED27333F9D0074D5DF /* WelcomePage5.swift in Sources */,
+				F07349FA2733522D00C090EA /* TutorialScreen1.swift in Sources */,
+				F0E5BD0C2733500B009DFD26 /* TutorialTitleAndSubheader.swift in Sources */,
+				F0734A00273352B300C090EA /* TutorialScreen2.swift in Sources */,
+				F05E74E62733532F00727492 /* TutorialScreen3.swift in Sources */,
+				F05E74E82733536A00727492 /* TutorialScreen4.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

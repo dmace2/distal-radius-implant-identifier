@@ -1,13 +1,13 @@
 //
-//  WelcomeScreen5.swift
+//  TutorialScreen5.swift
 //  DistalRadiusTutorialExample
 //
-//  Created by Dylan Mace on 10/25/21.
+//  Created by Dylan Mace on 11/3/21.
 //
 
 import SwiftUI
 
-struct WelcomePage5: View {
+struct TutorialScreen5: View {
     @Binding var tabSelection: Int
     
     var body: some View {
@@ -17,10 +17,8 @@ struct WelcomePage5: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 250)
             
-            Text("Ready to \nGet Started?")
-                .multilineTextAlignment(.center)
-                .font(.largeTitle.weight(.bold))
-                .foregroundColor(Color("TechBlue"))
+            TutorialTitleAndSubheader(titleText: "Ready to \nGet Started?")
+            
             
             Spacer()
             

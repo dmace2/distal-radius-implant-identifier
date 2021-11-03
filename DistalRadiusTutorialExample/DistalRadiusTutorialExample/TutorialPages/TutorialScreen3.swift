@@ -1,13 +1,13 @@
 //
-//  WelcomePage3.swift
+//  OnboardingScreen3.swift
 //  DistalRadiusTutorialExample
 //
-//  Created by Dylan Mace on 10/25/21.
+//  Created by Dylan Mace on 11/3/21.
 //
 
 import SwiftUI
 
-struct WelcomePage3: View {
+struct TutorialScreen3: View {
     @Binding var tabSelection: Int
     
     var body: some View {
@@ -17,16 +17,8 @@ struct WelcomePage3: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 250)
             
-            Text("Ready to Submit?")
-                .multilineTextAlignment(.center)
-                .font(.largeTitle.weight(.bold))
-                .foregroundColor(Color("TechBlue"))
-            Text("Once you’ve taken a photo, click the classification button to proceed")
-                .multilineTextAlignment(.center)
-                .foregroundColor(Color("SecondaryGray"))
-                .font(.body)
-                .padding(.leading, 20)
-                .padding(.trailing, 20)
+            TutorialTitleAndSubheader(titleText: "Ready to Submit?", subtitleText: "Once you’ve taken a photo, click the classification button to proceed")
+            
             
             Spacer()
             
