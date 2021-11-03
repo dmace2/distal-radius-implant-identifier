@@ -15,8 +15,7 @@ struct ArrowButton: View {
     
     var body: some View {
         if ProcessInfo.processInfo.isMacCatalystApp {
-            Button(labelText, action: buttonFunc)
-                .padding()
+            Button(labelText, action: buttonFunc).padding()
         } else {
             Button(action: buttonFunc, label: {
                 ZStack {
