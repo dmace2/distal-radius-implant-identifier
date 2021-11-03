@@ -11,9 +11,7 @@ import SwiftUI
 struct DistalRadiusTutorialExampleApp: App {
     init() {
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color("TechBlue"))
-//        UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color("SecondaryGray"))
     }
-//
     @State private var tabSelection = 1
     
     var body: some Scene {
