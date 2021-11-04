@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct DistalRadiusTutorialExampleApp: App {
+    
     init() {
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color("TechBlue"))
     }

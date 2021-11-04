@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F01E92C927333E720074D5DF /* DistalRadiusTutorialExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E92C827333E720074D5DF /* DistalRadiusTutorialExampleApp.swift */; };
+		F01E92C927333E720074D5DF /* DistalRadiusIdentifierApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E92C827333E720074D5DF /* DistalRadiusIdentifierApp.swift */; };
 		F01E92CD27333E720074D5DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F01E92CC27333E720074D5DF /* Assets.xcassets */; };
 		F01E92D027333E720074D5DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F01E92CF27333E720074D5DF /* Preview Assets.xcassets */; };
 		F01E92F027333FF90074D5DF /* ArrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E92EF27333FF90074D5DF /* ArrowButton.swift */; };
+		F0427C1927335A07008268F4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0427C1827335A07008268F4 /* HomeView.swift */; };
+		F0427C1E27335A58008268F4 /* TutorialPageContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0427C1D27335A58008268F4 /* TutorialPageContainerView.swift */; };
+		F0427C2027335AAD008268F4 /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0427C1F27335AAD008268F4 /* MotherView.swift */; };
+		F0427C2227335B57008268F4 /* ViewRouterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0427C2127335B57008268F4 /* ViewRouterClass.swift */; };
 		F0508B072733545300EEEFE4 /* TutorialScreen5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0508B062733545300EEEFE4 /* TutorialScreen5.swift */; };
 		F05E74E62733532F00727492 /* TutorialScreen3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05E74E52733532F00727492 /* TutorialScreen3.swift */; };
 		F05E74E82733536A00727492 /* TutorialScreen4.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05E74E72733536A00727492 /* TutorialScreen4.swift */; };
@@ -20,13 +24,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F00417CA2733420C00C5630A /* DistalRadiusTutorialExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DistalRadiusTutorialExample.entitlements; sourceTree = "<group>"; };
+		F00417CA2733420C00C5630A /* DistalRadiusIdentifier.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DistalRadiusIdentifier.entitlements; sourceTree = "<group>"; };
 		F00417CB2733422400C5630A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		F01E92C527333E720074D5DF /* DistalRadiusTutorialExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DistalRadiusTutorialExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F01E92C827333E720074D5DF /* DistalRadiusTutorialExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistalRadiusTutorialExampleApp.swift; sourceTree = "<group>"; };
+		F01E92C527333E720074D5DF /* DistalRadiusIdentifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DistalRadiusIdentifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F01E92C827333E720074D5DF /* DistalRadiusIdentifierApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistalRadiusIdentifierApp.swift; sourceTree = "<group>"; };
 		F01E92CC27333E720074D5DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F01E92CF27333E720074D5DF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F01E92EF27333FF90074D5DF /* ArrowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowButton.swift; sourceTree = "<group>"; };
+		F0427C1827335A07008268F4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F0427C1D27335A58008268F4 /* TutorialPageContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageContainerView.swift; sourceTree = "<group>"; };
+		F0427C1F27335AAD008268F4 /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
+		F0427C2127335B57008268F4 /* ViewRouterClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouterClass.swift; sourceTree = "<group>"; };
 		F0508B062733545300EEEFE4 /* TutorialScreen5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScreen5.swift; sourceTree = "<group>"; };
 		F05E74E52733532F00727492 /* TutorialScreen3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen3.swift; sourceTree = "<group>"; };
 		F05E74E72733536A00727492 /* TutorialScreen4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen4.swift; sourceTree = "<group>"; };
@@ -49,7 +57,7 @@
 		F01E92BC27333E720074D5DF = {
 			isa = PBXGroup;
 			children = (
-				F01E92C727333E720074D5DF /* DistalRadiusTutorialExample */,
+				F01E92C727333E720074D5DF /* DistalRadiusIdentifier */,
 				F01E92C627333E720074D5DF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,23 +65,26 @@
 		F01E92C627333E720074D5DF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F01E92C527333E720074D5DF /* DistalRadiusTutorialExample.app */,
+				F01E92C527333E720074D5DF /* DistalRadiusIdentifier.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F01E92C727333E720074D5DF /* DistalRadiusTutorialExample */ = {
+		F01E92C727333E720074D5DF /* DistalRadiusIdentifier */ = {
 			isa = PBXGroup;
 			children = (
+				F0427C1A27335A12008268F4 /* OnboardingViewRouter */,
+				F0427C17273359FF008268F4 /* HomeView */,
 				F00417CB2733422400C5630A /* Info.plist */,
-				F00417CA2733420C00C5630A /* DistalRadiusTutorialExample.entitlements */,
+				F00417CA2733420C00C5630A /* DistalRadiusIdentifier.entitlements */,
 				F01E92EE27333FEE0074D5DF /* CustomUIComponents */,
 				F01E92E127333F610074D5DF /* TutorialPages */,
-				F01E92C827333E720074D5DF /* DistalRadiusTutorialExampleApp.swift */,
+				F01E92C827333E720074D5DF /* DistalRadiusIdentifierApp.swift */,
 				F01E92CC27333E720074D5DF /* Assets.xcassets */,
 				F01E92CE27333E720074D5DF /* Preview Content */,
+				F0427C1F27335AAD008268F4 /* MotherView.swift */,
 			);
-			path = DistalRadiusTutorialExample;
+			path = DistalRadiusIdentifier;
 			sourceTree = "<group>";
 		};
 		F01E92CE27333E720074D5DF /* Preview Content */ = {
@@ -92,6 +103,7 @@
 				F05E74E52733532F00727492 /* TutorialScreen3.swift */,
 				F05E74E72733536A00727492 /* TutorialScreen4.swift */,
 				F0508B062733545300EEEFE4 /* TutorialScreen5.swift */,
+				F0427C1D27335A58008268F4 /* TutorialPageContainerView.swift */,
 			);
 			path = TutorialPages;
 			sourceTree = "<group>";
@@ -105,12 +117,28 @@
 			path = CustomUIComponents;
 			sourceTree = "<group>";
 		};
+		F0427C17273359FF008268F4 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				F0427C1827335A07008268F4 /* HomeView.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		F0427C1A27335A12008268F4 /* OnboardingViewRouter */ = {
+			isa = PBXGroup;
+			children = (
+				F0427C2127335B57008268F4 /* ViewRouterClass.swift */,
+			);
+			path = OnboardingViewRouter;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F01E92C427333E720074D5DF /* DistalRadiusTutorialExample */ = {
+		F01E92C427333E720074D5DF /* DistalRadiusIdentifier */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F01E92D327333E720074D5DF /* Build configuration list for PBXNativeTarget "DistalRadiusTutorialExample" */;
+			buildConfigurationList = F01E92D327333E720074D5DF /* Build configuration list for PBXNativeTarget "DistalRadiusIdentifier" */;
 			buildPhases = (
 				F01E92C127333E720074D5DF /* Sources */,
 				F01E92C227333E720074D5DF /* Frameworks */,
@@ -120,9 +148,9 @@
 			);
 			dependencies = (
 			);
-			name = DistalRadiusTutorialExample;
-			productName = DistalRadiusTutorialExample;
-			productReference = F01E92C527333E720074D5DF /* DistalRadiusTutorialExample.app */;
+			name = DistalRadiusIdentifier;
+			productName = DistalRadiusIdentifier;
+			productReference = F01E92C527333E720074D5DF /* DistalRadiusIdentifier.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -140,7 +168,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F01E92C027333E720074D5DF /* Build configuration list for PBXProject "DistalRadiusTutorialExample" */;
+			buildConfigurationList = F01E92C027333E720074D5DF /* Build configuration list for PBXProject "DistalRadiusIdentifier" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -153,7 +181,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F01E92C427333E720074D5DF /* DistalRadiusTutorialExample */,
+				F01E92C427333E720074D5DF /* DistalRadiusIdentifier */,
 			);
 		};
 /* End PBXProject section */
@@ -175,11 +203,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F01E92C927333E720074D5DF /* DistalRadiusTutorialExampleApp.swift in Sources */,
+				F0427C1927335A07008268F4 /* HomeView.swift in Sources */,
+				F0427C2027335AAD008268F4 /* MotherView.swift in Sources */,
+				F01E92C927333E720074D5DF /* DistalRadiusIdentifierApp.swift in Sources */,
 				F0508B072733545300EEEFE4 /* TutorialScreen5.swift in Sources */,
 				F01E92F027333FF90074D5DF /* ArrowButton.swift in Sources */,
 				F07349FA2733522D00C090EA /* TutorialScreen1.swift in Sources */,
+				F0427C1E27335A58008268F4 /* TutorialPageContainerView.swift in Sources */,
 				F0E5BD0C2733500B009DFD26 /* TutorialTitleAndSubheader.swift in Sources */,
+				F0427C2227335B57008268F4 /* ViewRouterClass.swift in Sources */,
 				F0734A00273352B300C090EA /* TutorialScreen2.swift in Sources */,
 				F05E74E62733532F00727492 /* TutorialScreen3.swift in Sources */,
 				F05E74E82733536A00727492 /* TutorialScreen4.swift in Sources */,
@@ -310,14 +342,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = DistalRadiusTutorialExample/DistalRadiusTutorialExample.entitlements;
+				CODE_SIGN_ENTITLEMENTS = DistalRadiusIdentifier/DistalRadiusIdentifier.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DistalRadiusTutorialExample/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"DistalRadiusIdentifier/Preview Content\"";
 				DEVELOPMENT_TEAM = G466A7N8C9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DistalRadiusTutorialExample/Info.plist;
+				INFOPLIST_FILE = DistalRadiusIdentifier/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Distal Radius Implant Identifier";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -329,7 +362,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.GTEmory.DistalRadiusTutorialExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GTEmory.DistalRadiusIdentifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -344,14 +377,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = DistalRadiusTutorialExample/DistalRadiusTutorialExample.entitlements;
+				CODE_SIGN_ENTITLEMENTS = DistalRadiusIdentifier/DistalRadiusIdentifier.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DistalRadiusTutorialExample/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"DistalRadiusIdentifier/Preview Content\"";
 				DEVELOPMENT_TEAM = G466A7N8C9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DistalRadiusTutorialExample/Info.plist;
+				INFOPLIST_FILE = DistalRadiusIdentifier/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Distal Radius Implant Identifier";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -363,7 +397,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.GTEmory.DistalRadiusTutorialExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GTEmory.DistalRadiusIdentifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -376,7 +410,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F01E92C027333E720074D5DF /* Build configuration list for PBXProject "DistalRadiusTutorialExample" */ = {
+		F01E92C027333E720074D5DF /* Build configuration list for PBXProject "DistalRadiusIdentifier" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F01E92D127333E720074D5DF /* Debug */,
@@ -385,7 +419,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F01E92D327333E720074D5DF /* Build configuration list for PBXNativeTarget "DistalRadiusTutorialExample" */ = {
+		F01E92D327333E720074D5DF /* Build configuration list for PBXNativeTarget "DistalRadiusIdentifier" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F01E92D427333E720074D5DF /* Debug */,
