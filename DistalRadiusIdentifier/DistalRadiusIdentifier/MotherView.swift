@@ -8,22 +8,25 @@
 import SwiftUI
 
 struct MotherView : View {
-    
-    @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var viewlaunch: ViewLaunch
     
     var body: some View {
+        
         VStack {
-            if viewRouter.currentPage == "onboardingView" {
+            if viewlaunch.currentPage == "onBoardingView" {
                 TutorialPageContainerView()
-            } else if viewRouter.currentPage == "homeView" {
-                HomeView()
+            } else if viewlaunch.currentPage == "HomeView" {
+                GeometryReader { geo in
+                    NavigationView {
+                        HomeView()
+                            .navigationTitle("Home")
+                        Text("View the Sidebar for Implant Classification History and New Classifications.")
+                            .navigationTitle("Results")
+                    }
+                    .padding(.leading, geo.size.height > geo.size.width ? 1 : 0)
+                }
             }
         }
-    }
-}
-
-struct MotherView_Previews: PreviewProvider {
-    static var previews: some View {
-        MotherView().environmentObject(ViewRouter())
+        
     }
 }

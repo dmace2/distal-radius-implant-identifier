@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct TutorialScreen5: View {
+    @EnvironmentObject var viewlaunch: ViewLaunch
+    
     @Binding var tabSelection: Int
+    @State var tag : Int? = nil
     
     var body: some View {
         VStack {
@@ -22,7 +25,18 @@ struct TutorialScreen5: View {
             
             Spacer()
             
-            ArrowButton(buttonFunc: {}, labelText: "Finish Tutorial", arrow: false)
+            
+            
+//            NavigationLink(destination: MotherView()) {
+                ArrowButton(buttonFunc: {
+                    UserDefaults.standard.set(true, forKey: "LaunchBefore")
+                                    withAnimation(){
+                                        self.viewlaunch.currentPage = "HomeView"
+                                    }
+//                    ViewRouter().setFinishedTutorial()
+                }, labelText: "Finish Tutorial", arrow: false)
+//            }
+            
             
             Spacer().frame(height: 40)
             

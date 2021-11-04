@@ -7,16 +7,14 @@
 
 import Foundation
 
-class ViewRouter: ObservableObject {
+class ViewLaunch: ObservableObject {
+
     init() {
-        if !UserDefaults.standard.bool(forKey: "didLaunchBefore") {
-            UserDefaults.standard.set(true, forKey: "didLaunchBefore")
-            currentPage = "onboardingView"
+        if !UserDefaults.standard.bool(forKey: "LaunchBefore") {
+                currentPage = "onBoardingView"
         } else {
-            currentPage = "homeView"
+            currentPage = "HomeView"
         }
     }
-    
     @Published var currentPage: String
-    
 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TutorialPageContainerView: View {
+    @EnvironmentObject var viewlaunch: ViewLaunch
+
     @State private var tabSelection = 1
     
     var body: some View {
