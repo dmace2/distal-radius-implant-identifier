@@ -10,10 +10,6 @@ import SwiftUI
 @main
 struct DistalRadiusIdentifierApp: App {
     
-    init() {
-        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color("TechBlue"))
-    }
-    
     var body: some Scene {
         WindowGroup {
             MotherView()

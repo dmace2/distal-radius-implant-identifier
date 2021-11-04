@@ -12,6 +12,10 @@ struct TutorialPageContainerView: View {
 
     @State private var tabSelection = 1
     
+    init() {
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color("TechBlue"))
+    }
+    
     var body: some View {
         TabView(selection: $tabSelection) {
             TutorialScreen1(tabSelection: $tabSelection).tag(1)
@@ -22,6 +26,7 @@ struct TutorialPageContainerView: View {
         }
         .tabViewStyle(PageTabViewStyle())
         .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+        
     }
 }
 
