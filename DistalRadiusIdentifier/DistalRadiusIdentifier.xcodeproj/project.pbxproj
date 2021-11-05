@@ -82,9 +82,9 @@
 				F01E92EE27333FEE0074D5DF /* CustomUIComponents */,
 				F01E92E127333F610074D5DF /* TutorialPages */,
 				F01E92C827333E720074D5DF /* DistalRadiusIdentifierApp.swift */,
+				F0427C1F27335AAD008268F4 /* MotherView.swift */,
 				F01E92CC27333E720074D5DF /* Assets.xcassets */,
 				F01E92CE27333E720074D5DF /* Preview Content */,
-				F0427C1F27335AAD008268F4 /* MotherView.swift */,
 				F0BE89B927344B0100E553F7 /* Launch Screen.storyboard */,
 			);
 			path = DistalRadiusIdentifier;
