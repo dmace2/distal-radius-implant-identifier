@@ -11,53 +11,57 @@ struct TutorialScreen4: View {
     @Binding var tabSelection: Int
     
     var body: some View {
-        VStack {
-            Image("Logo")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 250)
-            
-            Text("90.01%")
-                .multilineTextAlignment(.center)
-                .font(.system(size: 70).weight(.bold))
-                .foregroundColor(Color("TechBlue"))
-            
-            Text("Synthes")
-                .multilineTextAlignment(.center)
-                .foregroundColor(Color(UIColor.secondaryLabel))
-                .font(.system(size: 40))
-                .padding(.leading, 20)
-                .padding(.trailing, 20)
-            
-            List(1..<15){ row in
-                HStack {
-                    if row == 1 {
-                        Text("Synthes")
-                        Spacer()
-                        Text("90.41%").fontWeight(.bold)
-                    } else if row == 2 {
-                        Text("Acumed")
-                        Spacer()
-                        Text("8.59%").fontWeight(.bold)
-                    } else {
-                        Text("Company")
-                        Spacer()
-                        Text("< 1.00%").fontWeight(.bold)
+        GeometryReader { geo in
+            VStack { // vertical stack
+                Image("Logo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: geo.size.width / 3)
+                
+                
+                Text("90.01%")
+                    .multilineTextAlignment(.center)
+                    .font(.system(size: 70).weight(.bold))
+                    .foregroundColor(Color("TechBlue"))
+                
+                Text("Synthes")
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(Color(UIColor.secondaryLabel))
+                    .font(.system(size: 40))
+                    .padding(.leading, 20)
+                    .padding(.trailing, 20)
+                
+                List(1..<15){ row in
+                    HStack {
+                        if row == 1 {
+                            Text("Synthes")
+                            Spacer()
+                            Text("90.41%").fontWeight(.bold)
+                        } else if row == 2 {
+                            Text("Acumed")
+                            Spacer()
+                            Text("8.59%").fontWeight(.bold)
+                        } else {
+                            Text("Company")
+                            Spacer()
+                            Text("< 1.00%").fontWeight(.bold)
+                        }
                     }
                 }
+                .listStyle(.plain)
+                
+                Spacer()
+                
+                ArrowButton(buttonFunc: {
+                    withAnimation {
+                        tabSelection = 5
+                    }
+                }, labelText: "Continue")
+                
+                
+                Spacer().frame(height: 40)
             }
-            .listStyle(.plain)
-            
-            Spacer()
-             
-            ArrowButton(buttonFunc: {
-                withAnimation {
-                    tabSelection = 5
-                }
-            }, labelText: "Continue")
-            
-
-            Spacer().frame(height: 40)
+            .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
             
         }
         .padding()
