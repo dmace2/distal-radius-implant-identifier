@@ -24,7 +24,7 @@ struct TutorialTitleAndSubheader: View {
         if let subtitleText = subtitleText { // if subtitle text is not nil (aka passed in
             Text(subtitleText)
                 .multilineTextAlignment(.center)
-                .foregroundColor(Color(UIColor.secondaryLabel))
+                .foregroundColor(Color(UIColor.gray))
                 .font(.body)
                 .padding(.leading, 20)
                 .padding(.trailing, 20)
