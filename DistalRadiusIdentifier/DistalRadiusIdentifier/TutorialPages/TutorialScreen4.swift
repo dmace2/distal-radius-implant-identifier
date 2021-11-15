@@ -48,7 +48,7 @@ struct TutorialScreen4: View {
                         }
                     }
                 }
-                .listStyle(.plain)
+//                .listStyle(.plain)
                 
                 Spacer()
                 
