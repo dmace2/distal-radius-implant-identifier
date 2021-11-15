@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		256134F12742D6BC00C4C9B8 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134F02742D6BC00C4C9B8 /* FrameView.swift */; };
+		256134F32742D7E900C4C9B8 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134F22742D7E900C4C9B8 /* CameraManager.swift */; };
+		256134F52742D8E400C4C9B8 /* CameraError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134F42742D8E400C4C9B8 /* CameraError.swift */; };
+		256134F72742D8ED00C4C9B8 /* CGImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134F62742D8ED00C4C9B8 /* CGImageExtension.swift */; };
+		256134F92742D96200C4C9B8 /* FrameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134F82742D96200C4C9B8 /* FrameManager.swift */; };
+		256134FB2742D9A200C4C9B8 /* CameraFrameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134FA2742D9A200C4C9B8 /* CameraFrameViewModel.swift */; };
+		256134FD2742DA7B00C4C9B8 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134FC2742DA7B00C4C9B8 /* ErrorView.swift */; };
 		F01E92C927333E720074D5DF /* DistalRadiusIdentifierApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E92C827333E720074D5DF /* DistalRadiusIdentifierApp.swift */; };
 		F01E92CD27333E720074D5DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F01E92CC27333E720074D5DF /* Assets.xcassets */; };
 		F01E92D027333E720074D5DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F01E92CF27333E720074D5DF /* Preview Assets.xcassets */; };
@@ -25,6 +32,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		256134F02742D6BC00C4C9B8 /* FrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
+		256134F22742D7E900C4C9B8 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		256134F42742D8E400C4C9B8 /* CameraError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraError.swift; sourceTree = "<group>"; };
+		256134F62742D8ED00C4C9B8 /* CGImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGImageExtension.swift; sourceTree = "<group>"; };
+		256134F82742D96200C4C9B8 /* FrameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameManager.swift; sourceTree = "<group>"; };
+		256134FA2742D9A200C4C9B8 /* CameraFrameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFrameViewModel.swift; sourceTree = "<group>"; };
+		256134FC2742DA7B00C4C9B8 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorView.swift; path = DistalRadiusIdentifier/FrameViewFlow/ErrorView.swift; sourceTree = SOURCE_ROOT; };
 		F00417CA2733420C00C5630A /* DistalRadiusIdentifier.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DistalRadiusIdentifier.entitlements; sourceTree = "<group>"; };
 		F00417CB2733422400C5630A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F01E92C527333E720074D5DF /* DistalRadiusIdentifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DistalRadiusIdentifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +70,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		256134EF2742D6A500C4C9B8 /* FrameViewFlow */ = {
+			isa = PBXGroup;
+			children = (
+				256134FA2742D9A200C4C9B8 /* CameraFrameViewModel.swift */,
+				256134F42742D8E400C4C9B8 /* CameraError.swift */,
+				256134F02742D6BC00C4C9B8 /* FrameView.swift */,
+				256134F22742D7E900C4C9B8 /* CameraManager.swift */,
+				256134F82742D96200C4C9B8 /* FrameManager.swift */,
+			);
+			path = FrameViewFlow;
+			sourceTree = "<group>";
+		};
 		F01E92BC27333E720074D5DF = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +101,7 @@
 		F01E92C727333E720074D5DF /* DistalRadiusIdentifier */ = {
 			isa = PBXGroup;
 			children = (
+				256134EF2742D6A500C4C9B8 /* FrameViewFlow */,
 				F0427C1A27335A12008268F4 /* OnboardingViewRouter */,
 				F0427C17273359FF008268F4 /* HomeView */,
 				F00417CB2733422400C5630A /* Info.plist */,
@@ -114,6 +141,7 @@
 		F01E92EE27333FEE0074D5DF /* CustomUIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				256134F62742D8ED00C4C9B8 /* CGImageExtension.swift */,
 				F01E92EF27333FF90074D5DF /* ArrowButton.swift */,
 				F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */,
 			);
@@ -124,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				F0427C1827335A07008268F4 /* HomeView.swift */,
+				256134FC2742DA7B00C4C9B8 /* ErrorView.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -209,13 +238,20 @@
 			files = (
 				F0427C1927335A07008268F4 /* HomeView.swift in Sources */,
 				F0427C2027335AAD008268F4 /* MotherView.swift in Sources */,
+				256134FD2742DA7B00C4C9B8 /* ErrorView.swift in Sources */,
+				256134F12742D6BC00C4C9B8 /* FrameView.swift in Sources */,
 				F01E92C927333E720074D5DF /* DistalRadiusIdentifierApp.swift in Sources */,
 				F0508B072733545300EEEFE4 /* TutorialScreen5.swift in Sources */,
 				F01E92F027333FF90074D5DF /* ArrowButton.swift in Sources */,
 				F07349FA2733522D00C090EA /* TutorialScreen1.swift in Sources */,
 				F0427C1E27335A58008268F4 /* TutorialPageContainerView.swift in Sources */,
+				256134F32742D7E900C4C9B8 /* CameraManager.swift in Sources */,
 				F0E5BD0C2733500B009DFD26 /* TutorialTitleAndSubheader.swift in Sources */,
 				F0427C2227335B57008268F4 /* ViewRouterClass.swift in Sources */,
+				256134F92742D96200C4C9B8 /* FrameManager.swift in Sources */,
+				256134F72742D8ED00C4C9B8 /* CGImageExtension.swift in Sources */,
+				256134F52742D8E400C4C9B8 /* CameraError.swift in Sources */,
+				256134FB2742D9A200C4C9B8 /* CameraFrameViewModel.swift in Sources */,
 				F0734A00273352B300C090EA /* TutorialScreen2.swift in Sources */,
 				F05E74E62733532F00727492 /* TutorialScreen3.swift in Sources */,
 				F05E74E82733536A00727492 /* TutorialScreen4.swift in Sources */,
@@ -351,7 +387,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DistalRadiusIdentifier/Preview Content\"";
-				DEVELOPMENT_TEAM = QSP78KQ946;
+				DEVELOPMENT_TEAM = 3EW64B367C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DistalRadiusIdentifier/Info.plist;
@@ -370,7 +406,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.GTEmory.DistalRadiusIdentifier;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GTEmory.DistalRadiusIdentifierBlake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -390,7 +426,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DistalRadiusIdentifier/Preview Content\"";
-				DEVELOPMENT_TEAM = QSP78KQ946;
+				DEVELOPMENT_TEAM = 3EW64B367C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DistalRadiusIdentifier/Info.plist;
@@ -409,7 +445,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.GTEmory.DistalRadiusIdentifier;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GTEmory.DistalRadiusIdentifierBlake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
