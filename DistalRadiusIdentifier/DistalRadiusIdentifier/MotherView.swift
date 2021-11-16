@@ -23,7 +23,6 @@ struct MotherView : View {
                         Text("View the Sidebar for Implant Classification History and New Classifications.")
                             .navigationTitle("Results")
                     }
-                    .padding(.leading, geo.size.height > geo.size.width ? 1 : 0) // set padding depending on orientation
                 }
             }
         }

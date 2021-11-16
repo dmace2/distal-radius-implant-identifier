@@ -16,42 +16,35 @@ struct FrameView: View {
     
     private let label = Text("Video feed")
     @EnvironmentObject var model: CameraFrameViewModel
-    @State var switchViews = false
     
     var body: some View {
-        if let image = image {
+        ZStack {
+            Color("TechBlue_SameDark").edgesIgnoringSafeArea(.bottom)
             VStack {
-                GeometryReader { geometry in
-                    Image(image, scale: 1.0, orientation: .up, label: label)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(
-                            width: geometry.size.width,
-                            height: geometry.size.width,
-                            alignment: .center)
-                        .clipped()
+                GeometryReader { geo in
+                    if let image = image {
+                        ZStack {
+                            Image(image, scale: 1.0, orientation: .up, label: label)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(
+                                    width: geo.size.width,
+                                    height: geo.size.width,
+                                    alignment: .center)
+                                .clipped()
+                            Rectangle()
+                                .fill(Color(.displayP3, red: 1, green: 0, blue: 0, opacity: 0.35))
+                                .frame(width: geo.size.width / 50, height: geo.size.width, alignment: .top)
+                        }
+                    }
                 }
-                Spacer()
-                ArrowButton(buttonFunc: {
-                    model.cameraManager.session.stopRunning()
-                    self.capturedImage = model.frame
-                    switchViews.toggle()
-                }, labelText: "Take Photo", arrow: false)
-                    .padding()
-                
-                NavigationLink(destination:
-                                CapturedImageView(image: self.capturedImage)
-                                .navigationTitle("Captured Image")
-                               , isActive: $switchViews) {
-                    EmptyView()
-                }
-            }
-            .onAppear {
-                model.cameraManager.session.startRunning()
             }
             
-        } else {
-            EmptyView()
+        }
+        .onAppear {
+            withAnimation {
+                model.cameraManager.session.startRunning()
+            }
         }
     }
 }

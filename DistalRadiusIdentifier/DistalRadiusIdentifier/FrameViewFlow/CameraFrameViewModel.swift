@@ -41,6 +41,8 @@ class CameraFrameViewModel: ObservableObject {
     let cameraManager = CameraManager.shared
     let frameManager = FrameManager.shared
     
+    var capturedImage: CGImage?
+    
     init() {
         setupSubscriptions()
     }

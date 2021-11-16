@@ -25,12 +25,12 @@
 		F0508B072733545300EEEFE4 /* TutorialScreen5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0508B062733545300EEEFE4 /* TutorialScreen5.swift */; };
 		F05E74E62733532F00727492 /* TutorialScreen3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05E74E52733532F00727492 /* TutorialScreen3.swift */; };
 		F05E74E82733536A00727492 /* TutorialScreen4.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05E74E72733536A00727492 /* TutorialScreen4.swift */; };
-		F067B2BA2742F16F00601169 /* Camera-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F067B2B92742F16F00601169 /* Camera-SwiftUI */; };
-		F067B2CE2742F77700601169 /* CameraView in Frameworks */ = {isa = PBXBuildFile; productRef = F067B2CD2742F77700601169 /* CameraView */; };
 		F067B2D927430F6A00601169 /* CapturedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F067B2D827430F6A00601169 /* CapturedImageView.swift */; };
 		F067B2DB274313CE00601169 /* TakePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F067B2DA274313CE00601169 /* TakePhotoView.swift */; };
 		F07349FA2733522D00C090EA /* TutorialScreen1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07349F92733522D00C090EA /* TutorialScreen1.swift */; };
 		F0734A00273352B300C090EA /* TutorialScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07349FF273352B300C090EA /* TutorialScreen2.swift */; };
+		F07D0FBB27431EA600554B20 /* GoldButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D0FBA27431EA600554B20 /* GoldButton.swift */; };
+		F07D0FBD27431F5500554B20 /* AlignmentGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D0FBC27431F5500554B20 /* AlignmentGuideView.swift */; };
 		F0BE89BA27344B0100E553F7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BE89B927344B0100E553F7 /* Launch Screen.storyboard */; };
 		F0E5BD0C2733500B009DFD26 /* TutorialTitleAndSubheader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */; };
 /* End PBXBuildFile section */
@@ -61,6 +61,8 @@
 		F067B2DA274313CE00601169 /* TakePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoView.swift; sourceTree = "<group>"; };
 		F07349F92733522D00C090EA /* TutorialScreen1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen1.swift; sourceTree = "<group>"; };
 		F07349FF273352B300C090EA /* TutorialScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen2.swift; sourceTree = "<group>"; };
+		F07D0FBA27431EA600554B20 /* GoldButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldButton.swift; sourceTree = "<group>"; };
+		F07D0FBC27431F5500554B20 /* AlignmentGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentGuideView.swift; sourceTree = "<group>"; };
 		F0BE89B927344B0100E553F7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTitleAndSubheader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,8 +72,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F067B2CE2742F77700601169 /* CameraView in Frameworks */,
-				F067B2BA2742F16F00601169 /* Camera-SwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +154,8 @@
 				256134F62742D8ED00C4C9B8 /* CGImageExtension.swift */,
 				F01E92EF27333FF90074D5DF /* ArrowButton.swift */,
 				F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */,
+				F07D0FBA27431EA600554B20 /* GoldButton.swift */,
+				F07D0FBC27431F5500554B20 /* AlignmentGuideView.swift */,
 			);
 			path = CustomUIComponents;
 			sourceTree = "<group>";
@@ -192,8 +194,6 @@
 			);
 			name = DistalRadiusIdentifier;
 			packageProductDependencies = (
-				F067B2B92742F16F00601169 /* Camera-SwiftUI */,
-				F067B2CD2742F77700601169 /* CameraView */,
 			);
 			productName = DistalRadiusIdentifier;
 			productReference = F01E92C527333E720074D5DF /* DistalRadiusIdentifier.app */;
@@ -224,8 +224,6 @@
 			);
 			mainGroup = F01E92BC27333E720074D5DF;
 			packageReferences = (
-				F067B2B82742F16F00601169 /* XCRemoteSwiftPackageReference "Camera-SwiftUI" */,
-				F067B2CC2742F77700601169 /* XCRemoteSwiftPackageReference "CameraView" */,
 			);
 			productRefGroup = F01E92C627333E720074D5DF /* Products */;
 			projectDirPath = "";
@@ -255,6 +253,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0427C1927335A07008268F4 /* HomeView.swift in Sources */,
+				F07D0FBB27431EA600554B20 /* GoldButton.swift in Sources */,
+				F07D0FBD27431F5500554B20 /* AlignmentGuideView.swift in Sources */,
 				F0427C2027335AAD008268F4 /* MotherView.swift in Sources */,
 				256134FD2742DA7B00C4C9B8 /* ErrorView.swift in Sources */,
 				256134F12742D6BC00C4C9B8 /* FrameView.swift in Sources */,
@@ -402,6 +402,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = DistalRadiusIdentifier/DistalRadiusIdentifier.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -413,11 +414,14 @@
 				INFOPLIST_FILE = DistalRadiusIdentifier/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Distal Radius Implant Identifier";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs the camera to capture implant photos";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Used to store implants";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
-				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -426,13 +430,13 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.GTEmory.DistalRadiusIdentifierBlake;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GT.DistalRadius;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -441,6 +445,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = DistalRadiusIdentifier/DistalRadiusIdentifier.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -452,11 +457,14 @@
 				INFOPLIST_FILE = DistalRadiusIdentifier/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Distal Radius Implant Identifier";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs the camera to capture implant photos";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Used to store implants";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
-				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -465,13 +473,13 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.GTEmory.DistalRadiusIdentifierBlake;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GT.DistalRadius;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -497,38 +505,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		F067B2B82742F16F00601169 /* XCRemoteSwiftPackageReference "Camera-SwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/rorodriguez116/Camera-SwiftUI.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.5;
-			};
-		};
-		F067B2CC2742F77700601169 /* XCRemoteSwiftPackageReference "CameraView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/brettfazio/CameraView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		F067B2B92742F16F00601169 /* Camera-SwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F067B2B82742F16F00601169 /* XCRemoteSwiftPackageReference "Camera-SwiftUI" */;
-			productName = "Camera-SwiftUI";
-		};
-		F067B2CD2742F77700601169 /* CameraView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F067B2CC2742F77700601169 /* XCRemoteSwiftPackageReference "CameraView" */;
-			productName = CameraView;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F01E92BD27333E720074D5DF /* Project object */;
 }
