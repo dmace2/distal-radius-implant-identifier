@@ -6,20 +6,25 @@
 //
 
 import SwiftUI
+//import CameraView
 
 
 /**
  This is going to be the view for the home page
  */
 struct HomeView: View {
-    @StateObject private var model = CameraFrameViewModel()
+    @State private var cameraModel = CameraFrameViewModel()
+    @State var classify = false
     
     var body: some View {
-        ZStack {
-            FrameView(image: model.frame)
-                .edgesIgnoringSafeArea(.all)
-            
-            ErrorView(error: model.error)
+        VStack {
+            List {
+                
+            }
+            Spacer()
+            NavigationLink(destination: TakePhotoView().environmentObject(cameraModel).navigationTitle("Take Implant Photo"), isActive: $classify) {
+                ArrowButton(buttonFunc: {self.classify = true}, labelText: "Classify Implant", arrow: false)
+            }
         }
     }
 }
