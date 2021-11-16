@@ -8,6 +8,7 @@
 import SwiftUI
 
 import SwiftUI
+<<<<<<< HEAD
 import AVFoundation
 
 struct FrameView: View {
@@ -54,6 +55,30 @@ struct FrameView: View {
             EmptyView()
         }
     }
+=======
+
+struct FrameView: View {
+  var image: CGImage?
+
+  private let label = Text("Video feed")
+
+  var body: some View {
+    if let image = image {
+      GeometryReader { geometry in
+        Image(image, scale: 1.0, orientation: .upMirrored, label: label)
+          .resizable()
+          .scaledToFill()
+          .frame(
+            width: geometry.size.width,
+            height: geometry.size.height,
+            alignment: .center)
+          .clipped()
+      }
+    } else {
+      EmptyView()
+    }
+  }
+>>>>>>> main
 }
 
 //struct CameraView_Previews: PreviewProvider {

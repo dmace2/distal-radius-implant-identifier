@@ -86,8 +86,11 @@
 				256134F02742D6BC00C4C9B8 /* FrameView.swift */,
 				256134F22742D7E900C4C9B8 /* CameraManager.swift */,
 				256134F82742D96200C4C9B8 /* FrameManager.swift */,
+<<<<<<< HEAD
 				F067B2D827430F6A00601169 /* CapturedImageView.swift */,
 				F067B2DA274313CE00601169 /* TakePhotoView.swift */,
+=======
+>>>>>>> main
 			);
 			path = FrameViewFlow;
 			sourceTree = "<group>";
@@ -266,7 +269,10 @@
 				256134F32742D7E900C4C9B8 /* CameraManager.swift in Sources */,
 				F0E5BD0C2733500B009DFD26 /* TutorialTitleAndSubheader.swift in Sources */,
 				F0427C2227335B57008268F4 /* ViewRouterClass.swift in Sources */,
+<<<<<<< HEAD
 				F067B2D927430F6A00601169 /* CapturedImageView.swift in Sources */,
+=======
+>>>>>>> main
 				256134F92742D96200C4C9B8 /* FrameManager.swift in Sources */,
 				256134F72742D8ED00C4C9B8 /* CGImageExtension.swift in Sources */,
 				256134F52742D8E400C4C9B8 /* CameraError.swift in Sources */,
@@ -407,7 +413,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DistalRadiusIdentifier/Preview Content\"";
-				DEVELOPMENT_TEAM = G466A7N8C9;
+				DEVELOPMENT_TEAM = 3EW64B367C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DistalRadiusIdentifier/Info.plist;
@@ -446,7 +452,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DistalRadiusIdentifier/Preview Content\"";
-				DEVELOPMENT_TEAM = G466A7N8C9;
+				DEVELOPMENT_TEAM = 3EW64B367C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DistalRadiusIdentifier/Info.plist;
