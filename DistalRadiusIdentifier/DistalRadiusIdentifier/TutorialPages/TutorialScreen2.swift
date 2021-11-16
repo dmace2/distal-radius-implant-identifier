@@ -11,30 +11,34 @@ struct TutorialScreen2: View {
     @Binding var tabSelection: Int
     
     var body: some View {
-        VStack {
-            Image("Logo")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 250)
-            
-            TutorialTitleAndSubheader(titleText: "Take a Photo\nGet a Result", subtitleText: "Simply click the button below to classify a sample x-ray")
-            
-            Spacer()
-            
-            ArrowButton(buttonFunc: {
-                withAnimation {
-                    tabSelection = 3
-                }
-            }, labelText: "Continue")
-            
-            Spacer().frame(height: 40)
+        GeometryReader { geo in
+            VStack { // vertical stack
+                Image("Logo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: geo.size.width / 3)
+                
+                TutorialTitleAndSubheader(titleText: "Take a Photo\nGet a Result", subtitleText: "Simply click the button below to classify a sample x-ray")
+                
+                Spacer()
+                
+                ArrowButton(buttonFunc: {
+                    withAnimation {
+                        tabSelection = 3
+                    }
+                }, labelText: "Continue")
+                
+                Spacer().frame(height: 40)
+                
+            }
+            .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
             
             
         }
         .padding()
         
     }
-        
+    
 }
 //
 //struct WelcomePage2_Previews: PreviewProvider {

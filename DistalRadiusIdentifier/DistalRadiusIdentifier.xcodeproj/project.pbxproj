@@ -3,10 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		256134F12742D6BC00C4C9B8 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134F02742D6BC00C4C9B8 /* FrameView.swift */; };
+		256134F32742D7E900C4C9B8 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134F22742D7E900C4C9B8 /* CameraManager.swift */; };
+		256134F52742D8E400C4C9B8 /* CameraError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134F42742D8E400C4C9B8 /* CameraError.swift */; };
+		256134F72742D8ED00C4C9B8 /* CGImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134F62742D8ED00C4C9B8 /* CGImageExtension.swift */; };
+		256134F92742D96200C4C9B8 /* FrameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134F82742D96200C4C9B8 /* FrameManager.swift */; };
+		256134FB2742D9A200C4C9B8 /* CameraFrameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134FA2742D9A200C4C9B8 /* CameraFrameViewModel.swift */; };
+		256134FD2742DA7B00C4C9B8 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134FC2742DA7B00C4C9B8 /* ErrorView.swift */; };
 		F01E92C927333E720074D5DF /* DistalRadiusIdentifierApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E92C827333E720074D5DF /* DistalRadiusIdentifierApp.swift */; };
 		F01E92CD27333E720074D5DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F01E92CC27333E720074D5DF /* Assets.xcassets */; };
 		F01E92D027333E720074D5DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F01E92CF27333E720074D5DF /* Preview Assets.xcassets */; };
@@ -18,6 +25,10 @@
 		F0508B072733545300EEEFE4 /* TutorialScreen5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0508B062733545300EEEFE4 /* TutorialScreen5.swift */; };
 		F05E74E62733532F00727492 /* TutorialScreen3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05E74E52733532F00727492 /* TutorialScreen3.swift */; };
 		F05E74E82733536A00727492 /* TutorialScreen4.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05E74E72733536A00727492 /* TutorialScreen4.swift */; };
+		F067B2BA2742F16F00601169 /* Camera-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F067B2B92742F16F00601169 /* Camera-SwiftUI */; };
+		F067B2CE2742F77700601169 /* CameraView in Frameworks */ = {isa = PBXBuildFile; productRef = F067B2CD2742F77700601169 /* CameraView */; };
+		F067B2D927430F6A00601169 /* CapturedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F067B2D827430F6A00601169 /* CapturedImageView.swift */; };
+		F067B2DB274313CE00601169 /* TakePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F067B2DA274313CE00601169 /* TakePhotoView.swift */; };
 		F07349FA2733522D00C090EA /* TutorialScreen1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07349F92733522D00C090EA /* TutorialScreen1.swift */; };
 		F0734A00273352B300C090EA /* TutorialScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07349FF273352B300C090EA /* TutorialScreen2.swift */; };
 		F0BE89BA27344B0100E553F7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BE89B927344B0100E553F7 /* Launch Screen.storyboard */; };
@@ -25,6 +36,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		256134F02742D6BC00C4C9B8 /* FrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
+		256134F22742D7E900C4C9B8 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		256134F42742D8E400C4C9B8 /* CameraError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraError.swift; sourceTree = "<group>"; };
+		256134F62742D8ED00C4C9B8 /* CGImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGImageExtension.swift; sourceTree = "<group>"; };
+		256134F82742D96200C4C9B8 /* FrameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameManager.swift; sourceTree = "<group>"; };
+		256134FA2742D9A200C4C9B8 /* CameraFrameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFrameViewModel.swift; sourceTree = "<group>"; };
+		256134FC2742DA7B00C4C9B8 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorView.swift; path = DistalRadiusIdentifier/FrameViewFlow/ErrorView.swift; sourceTree = SOURCE_ROOT; };
 		F00417CA2733420C00C5630A /* DistalRadiusIdentifier.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DistalRadiusIdentifier.entitlements; sourceTree = "<group>"; };
 		F00417CB2733422400C5630A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F01E92C527333E720074D5DF /* DistalRadiusIdentifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DistalRadiusIdentifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,6 +57,8 @@
 		F0508B062733545300EEEFE4 /* TutorialScreen5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScreen5.swift; sourceTree = "<group>"; };
 		F05E74E52733532F00727492 /* TutorialScreen3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen3.swift; sourceTree = "<group>"; };
 		F05E74E72733536A00727492 /* TutorialScreen4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen4.swift; sourceTree = "<group>"; };
+		F067B2D827430F6A00601169 /* CapturedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturedImageView.swift; sourceTree = "<group>"; };
+		F067B2DA274313CE00601169 /* TakePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoView.swift; sourceTree = "<group>"; };
 		F07349F92733522D00C090EA /* TutorialScreen1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen1.swift; sourceTree = "<group>"; };
 		F07349FF273352B300C090EA /* TutorialScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen2.swift; sourceTree = "<group>"; };
 		F0BE89B927344B0100E553F7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -50,12 +70,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F067B2CE2742F77700601169 /* CameraView in Frameworks */,
+				F067B2BA2742F16F00601169 /* Camera-SwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		256134EF2742D6A500C4C9B8 /* FrameViewFlow */ = {
+			isa = PBXGroup;
+			children = (
+				256134FA2742D9A200C4C9B8 /* CameraFrameViewModel.swift */,
+				256134F42742D8E400C4C9B8 /* CameraError.swift */,
+				256134F02742D6BC00C4C9B8 /* FrameView.swift */,
+				256134F22742D7E900C4C9B8 /* CameraManager.swift */,
+				256134F82742D96200C4C9B8 /* FrameManager.swift */,
+				F067B2D827430F6A00601169 /* CapturedImageView.swift */,
+				F067B2DA274313CE00601169 /* TakePhotoView.swift */,
+			);
+			path = FrameViewFlow;
+			sourceTree = "<group>";
+		};
 		F01E92BC27333E720074D5DF = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +111,7 @@
 		F01E92C727333E720074D5DF /* DistalRadiusIdentifier */ = {
 			isa = PBXGroup;
 			children = (
+				256134EF2742D6A500C4C9B8 /* FrameViewFlow */,
 				F0427C1A27335A12008268F4 /* OnboardingViewRouter */,
 				F0427C17273359FF008268F4 /* HomeView */,
 				F00417CB2733422400C5630A /* Info.plist */,
@@ -82,9 +119,9 @@
 				F01E92EE27333FEE0074D5DF /* CustomUIComponents */,
 				F01E92E127333F610074D5DF /* TutorialPages */,
 				F01E92C827333E720074D5DF /* DistalRadiusIdentifierApp.swift */,
+				F0427C1F27335AAD008268F4 /* MotherView.swift */,
 				F01E92CC27333E720074D5DF /* Assets.xcassets */,
 				F01E92CE27333E720074D5DF /* Preview Content */,
-				F0427C1F27335AAD008268F4 /* MotherView.swift */,
 				F0BE89B927344B0100E553F7 /* Launch Screen.storyboard */,
 			);
 			path = DistalRadiusIdentifier;
@@ -114,6 +151,7 @@
 		F01E92EE27333FEE0074D5DF /* CustomUIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				256134F62742D8ED00C4C9B8 /* CGImageExtension.swift */,
 				F01E92EF27333FF90074D5DF /* ArrowButton.swift */,
 				F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */,
 			);
@@ -124,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				F0427C1827335A07008268F4 /* HomeView.swift */,
+				256134FC2742DA7B00C4C9B8 /* ErrorView.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -152,6 +191,10 @@
 			dependencies = (
 			);
 			name = DistalRadiusIdentifier;
+			packageProductDependencies = (
+				F067B2B92742F16F00601169 /* Camera-SwiftUI */,
+				F067B2CD2742F77700601169 /* CameraView */,
+			);
 			productName = DistalRadiusIdentifier;
 			productReference = F01E92C527333E720074D5DF /* DistalRadiusIdentifier.app */;
 			productType = "com.apple.product-type.application";
@@ -172,7 +215,7 @@
 				};
 			};
 			buildConfigurationList = F01E92C027333E720074D5DF /* Build configuration list for PBXProject "DistalRadiusIdentifier" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -180,6 +223,10 @@
 				Base,
 			);
 			mainGroup = F01E92BC27333E720074D5DF;
+			packageReferences = (
+				F067B2B82742F16F00601169 /* XCRemoteSwiftPackageReference "Camera-SwiftUI" */,
+				F067B2CC2742F77700601169 /* XCRemoteSwiftPackageReference "CameraView" */,
+			);
 			productRefGroup = F01E92C627333E720074D5DF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -209,15 +256,24 @@
 			files = (
 				F0427C1927335A07008268F4 /* HomeView.swift in Sources */,
 				F0427C2027335AAD008268F4 /* MotherView.swift in Sources */,
+				256134FD2742DA7B00C4C9B8 /* ErrorView.swift in Sources */,
+				256134F12742D6BC00C4C9B8 /* FrameView.swift in Sources */,
 				F01E92C927333E720074D5DF /* DistalRadiusIdentifierApp.swift in Sources */,
 				F0508B072733545300EEEFE4 /* TutorialScreen5.swift in Sources */,
 				F01E92F027333FF90074D5DF /* ArrowButton.swift in Sources */,
 				F07349FA2733522D00C090EA /* TutorialScreen1.swift in Sources */,
 				F0427C1E27335A58008268F4 /* TutorialPageContainerView.swift in Sources */,
+				256134F32742D7E900C4C9B8 /* CameraManager.swift in Sources */,
 				F0E5BD0C2733500B009DFD26 /* TutorialTitleAndSubheader.swift in Sources */,
 				F0427C2227335B57008268F4 /* ViewRouterClass.swift in Sources */,
+				F067B2D927430F6A00601169 /* CapturedImageView.swift in Sources */,
+				256134F92742D96200C4C9B8 /* FrameManager.swift in Sources */,
+				256134F72742D8ED00C4C9B8 /* CGImageExtension.swift in Sources */,
+				256134F52742D8E400C4C9B8 /* CameraError.swift in Sources */,
+				256134FB2742D9A200C4C9B8 /* CameraFrameViewModel.swift in Sources */,
 				F0734A00273352B300C090EA /* TutorialScreen2.swift in Sources */,
 				F05E74E62733532F00727492 /* TutorialScreen3.swift in Sources */,
+				F067B2DB274313CE00601169 /* TakePhotoView.swift in Sources */,
 				F05E74E82733536A00727492 /* TutorialScreen4.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +403,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DistalRadiusIdentifier/DistalRadiusIdentifier.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DistalRadiusIdentifier/Preview Content\"";
@@ -369,7 +426,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.GTEmory.DistalRadiusIdentifier;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GTEmory.DistalRadiusIdentifierBlake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -385,6 +442,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DistalRadiusIdentifier/DistalRadiusIdentifier.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DistalRadiusIdentifier/Preview Content\"";
@@ -407,7 +465,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.GTEmory.DistalRadiusIdentifier;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GTEmory.DistalRadiusIdentifierBlake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -439,6 +497,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F067B2B82742F16F00601169 /* XCRemoteSwiftPackageReference "Camera-SwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rorodriguez116/Camera-SwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.5;
+			};
+		};
+		F067B2CC2742F77700601169 /* XCRemoteSwiftPackageReference "CameraView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/brettfazio/CameraView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F067B2B92742F16F00601169 /* Camera-SwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F067B2B82742F16F00601169 /* XCRemoteSwiftPackageReference "Camera-SwiftUI" */;
+			productName = "Camera-SwiftUI";
+		};
+		F067B2CD2742F77700601169 /* CameraView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F067B2CC2742F77700601169 /* XCRemoteSwiftPackageReference "CameraView" */;
+			productName = CameraView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F01E92BD27333E720074D5DF /* Project object */;
 }

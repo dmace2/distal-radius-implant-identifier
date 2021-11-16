@@ -6,15 +6,31 @@
 //
 
 import SwiftUI
+//import CameraView
 
+
+/**
+ This is going to be the view for the home page
+ */
 struct HomeView: View {
+    @State private var cameraModel = CameraFrameViewModel()
+    @State var classify = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            List {
+                
+            }
+            Spacer()
+            NavigationLink(destination: TakePhotoView().environmentObject(cameraModel).navigationTitle("Take Implant Photo"), isActive: $classify) {
+                ArrowButton(buttonFunc: {self.classify = true}, labelText: "Classify Implant", arrow: false)
+            }
+        }
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
-}
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView()
+//    }
+//}

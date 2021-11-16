@@ -14,31 +14,34 @@ struct TutorialScreen5: View {
     @State var tag : Int? = nil
     
     var body: some View {
-        VStack {
-            Image("Logo")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 250)
-            
-            TutorialTitleAndSubheader(titleText: "Ready to \nGet Started?")
-            
-            
-            Spacer()
-            
-            
-            
-//            NavigationLink(destination: MotherView()) {
+        GeometryReader { geo in
+            VStack { // vertical stack
+                Image("Logo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: geo.size.width / 3)
+                
+                TutorialTitleAndSubheader(titleText: "Ready to \nGet Started?")
+                
+                
+                Spacer()
+                
+                
+                
+                //            NavigationLink(destination: MotherView()) {
                 ArrowButton(buttonFunc: {
                     UserDefaults.standard.set(true, forKey: "LaunchBefore")
-                                    withAnimation(){
-                                        self.viewlaunch.currentPage = "HomeView"
-                                    }
-//                    ViewRouter().setFinishedTutorial()
+                    withAnimation(){
+                        self.viewlaunch.currentPage = "HomeView"
+                    }
+                    //                    ViewRouter().setFinishedTutorial()
                 }, labelText: "Finish Tutorial", arrow: false)
-//            }
-            
-            
-            Spacer().frame(height: 40)
+                //            }
+                
+                
+                Spacer().frame(height: 40)
+            }
+            .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
             
         }
         .padding()

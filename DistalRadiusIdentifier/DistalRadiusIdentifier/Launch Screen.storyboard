@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -24,6 +24,8 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="MMI-gZ-kqj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="48" id="AXb-fU-Kv5"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="MMI-gZ-kqj" secondAttribute="trailing" constant="48" id="ZOA-Mi-vO5"/>
                             <constraint firstItem="MMI-gZ-kqj" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="dm2-UR-7lM"/>
                             <constraint firstItem="MMI-gZ-kqj" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="voB-rD-867"/>
                         </constraints>
