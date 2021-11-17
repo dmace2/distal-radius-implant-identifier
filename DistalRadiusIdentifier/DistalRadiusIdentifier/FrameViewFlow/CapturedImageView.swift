@@ -10,32 +10,42 @@ import SwiftUI
 struct CapturedImageView: View {
     @EnvironmentObject var cameraModel: CameraFrameViewModel
     @State var switchViews = false
+    var alignmentGuideWidth: CGFloat
+    
+    init() {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            // It's an iPhone
+            self.alignmentGuideWidth = UIScreen.main.bounds.width
+            break
+        case .pad:
+            // It's an iPad (or macOS Catalyst)
+            self.alignmentGuideWidth = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) * 0.6
+            break
+        @unknown default:
+            self.alignmentGuideWidth = UIScreen.main.bounds.width
+            break
+        }
+        
+    }
     
     var body: some View {
         GeometryReader { geo in
             if let capture = cameraModel.capturedImage{
                 VStack {
                     ZStack {
-                        Image(capture, scale: 1.0, orientation: .up, label: Text("Captured Image"))
-                            .resizable()
-                            .scaledToFill()
-                            .frame(
-                                width: geo.size.width,
-                                height: geo.size.width,
-                                alignment: .center)
-                            .clipped()
-                        
-                        Rectangle()
-                            .fill(Color(.displayP3, red: 1, green: 0, blue: 0, opacity: 0.35))
-                            .frame(width: geo.size.width / 50, height: geo.size.width, alignment: .top)
+                        FrameView(image: capture)
+                            .environmentObject(cameraModel)
+                            .navigationBarTitleDisplayMode(.inline)
                         
                     }
-                    .frame(height: geo.size.width)
+                    .frame(width: cameraModel.imageDimension, height: cameraModel.imageDimension)
                     
                     
                     Spacer()
                     
                     AlignmentGuideView(title1: "Does the image fit within the box?", title2: "Is the implant horizontally centered?")
+                        .frame(width: self.alignmentGuideWidth)
                     
                     GoldButton(buttonFunc: {
                         switchViews.toggle()
@@ -54,9 +64,9 @@ struct CapturedImageView: View {
         }
     }
 }
-
-//struct CapturedImageView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CapturedImageView(image: <#CGImage#>)
-//    }
-//}
+    
+    //struct CapturedImageView_Previews: PreviewProvider {
+    //    static var previews: some View {
+    //        CapturedImageView(image: <#CGImage#>)
+    //    }
+    //}

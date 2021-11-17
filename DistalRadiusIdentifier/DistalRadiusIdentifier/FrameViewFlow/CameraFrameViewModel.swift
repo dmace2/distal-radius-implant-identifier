@@ -31,6 +31,7 @@
 /// THE SOFTWARE.
 
 import CoreImage
+import SwiftUI
 
 class CameraFrameViewModel: ObservableObject {
     @Published var error: Error?
@@ -43,7 +44,23 @@ class CameraFrameViewModel: ObservableObject {
     
     var capturedImage: CGImage?
     
+    var imageDimension: CGFloat
+    
     init() {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            // It's an iPhone
+            self.imageDimension = UIScreen.main.bounds.width
+            break
+        case .pad:
+            // It's an iPad (or macOS Catalyst)
+            self.imageDimension = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) / 2
+            break
+        @unknown default:
+            self.imageDimension = UIScreen.main.bounds.width
+            break
+        }
+        
         setupSubscriptions()
     }
     
@@ -61,7 +78,30 @@ class CameraFrameViewModel: ObservableObject {
                     return nil
                 }
                 
-                var ciImage = CIImage(cgImage: image)
+                var orientationAngle: CGFloat
+                switch UIDevice.current.orientation {
+                case .portrait:
+                    orientationAngle = 0
+                    break
+                case .portraitUpsideDown:
+                    orientationAngle = Double.pi / 2
+                    break
+                case .landscapeLeft:
+                    orientationAngle = Double.pi / 2
+                    break
+                case .landscapeRight:
+                    orientationAngle = -1 * Double.pi / 2
+                    break
+                @unknown default:
+                    orientationAngle = 0
+                    break
+                }
+                
+                let transform = CGAffineTransform(rotationAngle: orientationAngle)
+                
+                
+                
+                let ciImage = CIImage(cgImage: image).transformed(by: transform)
                 return self.context.createCGImage(ciImage, from: ciImage.extent)
             }
             .assign(to: &$frame)
