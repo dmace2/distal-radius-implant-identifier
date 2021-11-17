@@ -81,6 +81,7 @@
 		256134EF2742D6A500C4C9B8 /* FrameViewFlow */ = {
 			isa = PBXGroup;
 			children = (
+				256134F62742D8ED00C4C9B8 /* CGImageExtension.swift */,
 				256134FA2742D9A200C4C9B8 /* CameraFrameViewModel.swift */,
 				256134F42742D8E400C4C9B8 /* CameraError.swift */,
 				256134F02742D6BC00C4C9B8 /* FrameView.swift */,
@@ -151,7 +152,6 @@
 		F01E92EE27333FEE0074D5DF /* CustomUIComponents */ = {
 			isa = PBXGroup;
 			children = (
-				256134F62742D8ED00C4C9B8 /* CGImageExtension.swift */,
 				F01E92EF27333FF90074D5DF /* ArrowButton.swift */,
 				F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */,
 				F07D0FBA27431EA600554B20 /* GoldButton.swift */,
@@ -414,16 +414,15 @@
 				INFOPLIST_FILE = DistalRadiusIdentifier/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Distal Radius Implant Identifier";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
-				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs the camera to capture implant photos";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Used to store implants";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs camera access to take photos of an x-ray for classification";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -457,16 +456,15 @@
 				INFOPLIST_FILE = DistalRadiusIdentifier/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Distal Radius Implant Identifier";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
-				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs the camera to capture implant photos";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Used to store implants";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs camera access to take photos of an x-ray for classification";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
