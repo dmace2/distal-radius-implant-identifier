@@ -1,15 +1,15 @@
 /// Copyright (c) 2021 Razeware LLC
-/// 
+///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
 /// in the Software without restriction, including without limitation the rights
 /// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 /// copies of the Software, and to permit persons to whom the Software is
 /// furnished to do so, subject to the following conditions:
-/// 
+///
 /// The above copyright notice and this permission notice shall be included in
 /// all copies or substantial portions of the Software.
-/// 
+///
 /// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
 /// distribute, sublicense, create a derivative work, and/or sell copies of the
 /// Software in any work that is designed, intended, or marketed for pedagogical or
@@ -17,7 +17,7 @@
 /// or information technology.  Permission for such use, copying, modification,
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
-/// 
+///
 /// This project and source code may use libraries or frameworks that are
 /// released under various Open-Source licenses. Use of those libraries and
 /// frameworks are governed by their own individual licenses.
@@ -36,18 +36,21 @@ import SwiftUI
 class CameraFrameViewModel: ObservableObject {
     @Published var error: Error?
     @Published var frame: CGImage?
+    @Published var capturedImage: CGImage?
     
     private let context = CIContext()
     
     let cameraManager = CameraManager.shared
     let frameManager = FrameManager.shared
-    
-    var capturedImage: CGImage?
-    
     var imageDimension: CGFloat
     
+    var userInterfaceIdiom: UIUserInterfaceIdiom
+    
     init() {
-        switch UIDevice.current.userInterfaceIdiom {
+        self.userInterfaceIdiom = UIDevice.current.userInterfaceIdiom
+        
+        
+        switch self.userInterfaceIdiom {
         case .phone:
             // It's an iPhone
             self.imageDimension = UIScreen.main.bounds.width
@@ -96,14 +99,17 @@ class CameraFrameViewModel: ObservableObject {
                     orientationAngle = 0
                     break
                 }
-                
+            
                 let transform = CGAffineTransform(rotationAngle: orientationAngle)
+        
+                var ciImage = CIImage(cgImage: image)
+                if self.userInterfaceIdiom == .pad {
+                    ciImage = ciImage.transformed(by: transform)
+                }
                 
-                
-                
-                let ciImage = CIImage(cgImage: image).transformed(by: transform)
                 return self.context.createCGImage(ciImage, from: ciImage.extent)
             }
             .assign(to: &$frame)
     }
 }
+
