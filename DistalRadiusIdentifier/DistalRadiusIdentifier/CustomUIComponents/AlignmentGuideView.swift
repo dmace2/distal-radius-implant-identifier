@@ -20,8 +20,10 @@ struct AlignmentGuideView: View {
         GeometryReader { geo in
             VStack {
                 HStack {
-                    Image("Logo").resizable()
-                        .frame(width: geo.size.width / 5, height: geo.size.width / 5, alignment: .leading)
+                    Image("ViewFinder")
+                        .resizable()
+                        .foregroundColor(.blue)
+                        .frame(width: geo.size.width / 10, height: geo.size.width / 10, alignment: .leading)
                     VStack(alignment: .leading) {
                         Text(title1).font(.headline)
                         if let subtitle1 = subtitle1 {
@@ -36,12 +38,12 @@ struct AlignmentGuideView: View {
                     VStack {
                         Rectangle()
                             .fill(Color(.displayP3, red: 1, green: 0, blue: 0, opacity: 0.7))
-                            .frame(width: geo.size.width / 50, height: geo.size.width / 5, alignment: .center)
+                            .frame(width: geo.size.width / 50, height: geo.size.width / 10, alignment: .center)
                     }
-                    .frame(width: geo.size.width / 5, height: geo.size.width / 5, alignment: .center)
+                    .frame(width: geo.size.width / 10, height: geo.size.width / 10, alignment: .center)
                     VStack(alignment: .leading) {
                         Text(title2).font(.headline)
-                        if let subtitle2 = subtitle1 {
+                        if let subtitle2 = subtitle2 {
                             Text(subtitle2)
                         }
                     }

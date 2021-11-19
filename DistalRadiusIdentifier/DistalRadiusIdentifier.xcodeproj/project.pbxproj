@@ -32,6 +32,7 @@
 		F07D0FBB27431EA600554B20 /* GoldButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D0FBA27431EA600554B20 /* GoldButton.swift */; };
 		F07D0FBD27431F5500554B20 /* AlignmentGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D0FBC27431F5500554B20 /* AlignmentGuideView.swift */; };
 		F0BE89BA27344B0100E553F7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BE89B927344B0100E553F7 /* Launch Screen.storyboard */; };
+		F0E1FA8C2745D6B00021EC06 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E1FA8B2745D6B00021EC06 /* CircleButton.swift */; };
 		F0E5BD0C2733500B009DFD26 /* TutorialTitleAndSubheader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		F07D0FBA27431EA600554B20 /* GoldButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldButton.swift; sourceTree = "<group>"; };
 		F07D0FBC27431F5500554B20 /* AlignmentGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentGuideView.swift; sourceTree = "<group>"; };
 		F0BE89B927344B0100E553F7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		F0E1FA8B2745D6B00021EC06 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTitleAndSubheader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +83,7 @@
 		256134EF2742D6A500C4C9B8 /* FrameViewFlow */ = {
 			isa = PBXGroup;
 			children = (
+				256134F62742D8ED00C4C9B8 /* CGImageExtension.swift */,
 				256134FA2742D9A200C4C9B8 /* CameraFrameViewModel.swift */,
 				256134F42742D8E400C4C9B8 /* CameraError.swift */,
 				256134F02742D6BC00C4C9B8 /* FrameView.swift */,
@@ -151,11 +154,11 @@
 		F01E92EE27333FEE0074D5DF /* CustomUIComponents */ = {
 			isa = PBXGroup;
 			children = (
-				256134F62742D8ED00C4C9B8 /* CGImageExtension.swift */,
 				F01E92EF27333FF90074D5DF /* ArrowButton.swift */,
 				F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */,
 				F07D0FBA27431EA600554B20 /* GoldButton.swift */,
 				F07D0FBC27431F5500554B20 /* AlignmentGuideView.swift */,
+				F0E1FA8B2745D6B00021EC06 /* CircleButton.swift */,
 			);
 			path = CustomUIComponents;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				F0427C1927335A07008268F4 /* HomeView.swift in Sources */,
 				F07D0FBB27431EA600554B20 /* GoldButton.swift in Sources */,
 				F07D0FBD27431F5500554B20 /* AlignmentGuideView.swift in Sources */,
+				F0E1FA8C2745D6B00021EC06 /* CircleButton.swift in Sources */,
 				F0427C2027335AAD008268F4 /* MotherView.swift in Sources */,
 				256134FD2742DA7B00C4C9B8 /* ErrorView.swift in Sources */,
 				256134F12742D6BC00C4C9B8 /* FrameView.swift in Sources */,
@@ -414,16 +418,15 @@
 				INFOPLIST_FILE = DistalRadiusIdentifier/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Distal Radius Implant Identifier";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
-				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs the camera to capture implant photos";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Used to store implants";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs camera access to take photos of an x-ray for classification";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -457,16 +460,15 @@
 				INFOPLIST_FILE = DistalRadiusIdentifier/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Distal Radius Implant Identifier";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
-				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs the camera to capture implant photos";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Used to store implants";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs camera access to take photos of an x-ray for classification";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

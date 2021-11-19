@@ -32,7 +32,7 @@
 
 import SwiftUI
 
-struct ErrorView: View {
+struct CameraErrorView: View {
   var error: Error?
 
   var body: some View {
@@ -51,9 +51,9 @@ struct ErrorView: View {
     }
   }
 }
-
-struct ErrorView_Previews: PreviewProvider {
-  static var previews: some View {
-    ErrorView(error: CameraError.cannotAddInput)
-  }
-}
+//
+//struct CameraErrorView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    CameraErrorView(error: CameraError.cannotAddInput)
+//  }
+//}

@@ -30,7 +30,7 @@ struct GoldButton: View {
                 .padding()
             })
                 .foregroundColor(Color(UIColor.systemBackground)) // set text as white/black based on background color
-                .background(Color("TechGold")) // button is blue
+                .background(Color("TechGold")) // button is gold
                 .cornerRadius(20) // round corners
             
         }

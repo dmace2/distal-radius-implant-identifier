@@ -16,15 +16,30 @@ struct HomeView: View {
     @State private var cameraModel = CameraFrameViewModel()
     @State var classify = false
     
+    
     var body: some View {
-        VStack {
-            List {
-                
-            }
-            Spacer()
-            NavigationLink(destination: TakePhotoView().environmentObject(cameraModel).navigationTitle("Take Implant Photo"), isActive: $classify) {
-                ArrowButton(buttonFunc: {self.classify = true}, labelText: "Classify Implant", arrow: false)
-                    .padding()
+        GeometryReader { geo in
+            VStack {
+//                List {}
+                Spacer()
+                Image(systemName: "plus.circle")
+                    .resizable()
+                    .aspectRatio(1, contentMode: .fit)
+                    .foregroundColor(Color("TechBlue"))
+                    .opacity(0.8)
+                    .frame(width: geo.size.width / 5)
+                    .onTapGesture {
+                        self.classify.toggle()
+                    }
+                Text("Classify Implants \nto See Results")
+                    .multilineTextAlignment(.center)
+                    .font(.headline)
+                    .foregroundColor(Color("TechBlue").opacity(0.8))
+                Spacer()
+                NavigationLink(destination: TakePhotoView().environmentObject(cameraModel).navigationTitle("Take Implant Photo"), isActive: $classify) {
+                    ArrowButton(buttonFunc: {self.classify = true}, labelText: "Classify Implant", arrow: false)
+                        .padding()
+                }
             }
         }
     }

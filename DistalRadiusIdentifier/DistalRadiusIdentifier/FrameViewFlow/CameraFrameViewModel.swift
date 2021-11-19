@@ -31,19 +31,39 @@
 /// THE SOFTWARE.
 
 import CoreImage
+import SwiftUI
 
 class CameraFrameViewModel: ObservableObject {
     @Published var error: Error?
     @Published var frame: CGImage?
+    @Published var capturedImage: CGImage?
     
     private let context = CIContext()
     
     let cameraManager = CameraManager.shared
     let frameManager = FrameManager.shared
+    var imageDimension: CGFloat
     
-    var capturedImage: CGImage?
+    var userInterfaceIdiom: UIUserInterfaceIdiom
     
     init() {
+        self.userInterfaceIdiom = UIDevice.current.userInterfaceIdiom
+        
+        
+        switch self.userInterfaceIdiom {
+        case .phone:
+            // It's an iPhone
+            self.imageDimension = UIScreen.main.bounds.width
+            break
+        case .pad:
+            // It's an iPad (or macOS Catalyst)
+            self.imageDimension = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) / 2
+            break
+        @unknown default:
+            self.imageDimension = UIScreen.main.bounds.width
+            break
+        }
+        
         setupSubscriptions()
     }
     
@@ -61,7 +81,32 @@ class CameraFrameViewModel: ObservableObject {
                     return nil
                 }
                 
+                var orientationAngle: CGFloat
+                switch UIDevice.current.orientation {
+                case .portrait:
+                    orientationAngle = 0
+                    break
+                case .portraitUpsideDown:
+                    orientationAngle = Double.pi / 2
+                    break
+                case .landscapeLeft:
+                    orientationAngle = Double.pi / 2
+                    break
+                case .landscapeRight:
+                    orientationAngle = -1 * Double.pi / 2
+                    break
+                @unknown default:
+                    orientationAngle = 0
+                    break
+                }
+            
+                let transform = CGAffineTransform(rotationAngle: orientationAngle)
+        
                 var ciImage = CIImage(cgImage: image)
+                if self.userInterfaceIdiom == .pad {
+                    ciImage = ciImage.transformed(by: transform)
+                }
+                
                 return self.context.createCGImage(ciImage, from: ciImage.extent)
             }
             .assign(to: &$frame)
