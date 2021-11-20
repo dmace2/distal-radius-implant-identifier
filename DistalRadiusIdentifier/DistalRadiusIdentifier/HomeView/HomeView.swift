@@ -16,6 +16,9 @@ struct HomeView: View {
     @State private var cameraModel = CameraFrameViewModel()
     @State var classify = false
     
+    @State var showTutorial = false
+    @State var showFAQ = false
+    
     var body: some View {
         VStack {
             List {
@@ -25,6 +28,11 @@ struct HomeView: View {
             NavigationLink(destination: TakePhotoView().environmentObject(cameraModel).navigationTitle("Take Implant Photo"), isActive: $classify) {
                 ArrowButton(buttonFunc: {self.classify = true}, labelText: "Classify Implant", arrow: false)
                     .padding()
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                MenuButtonView()
             }
         }
     }

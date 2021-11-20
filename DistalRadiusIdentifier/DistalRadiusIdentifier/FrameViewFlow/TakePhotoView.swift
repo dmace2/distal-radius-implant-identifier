@@ -81,6 +81,11 @@ struct TakePhotoView: View {
         .onAppear {
             self.showErrorAlert = cameraModel.error != nil
         }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                MenuButtonView()
+            }
+        }
     }
 }
 

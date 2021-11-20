@@ -52,6 +52,11 @@ struct CapturedImageView: View {
                     }, labelText: "Submit Photo for Classification")
                         .padding()
                 }
+                .toolbar {
+                    ToolbarItem(placement: .primaryAction) {
+                        MenuButtonView()
+                    }
+                }
                 
                 
                 NavigationLink(destination:

@@ -48,9 +48,9 @@ struct TutorialScreen4: View {
                         }
                     }
                 }
-//                .listStyle(.plain)
+                .listStyle(.plain)
                 
-                Spacer()
+                Spacer(minLength: 15)
                 
                 ArrowButton(buttonFunc: {
                     withAnimation {

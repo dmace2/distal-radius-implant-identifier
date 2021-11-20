@@ -26,4 +26,8 @@ class ViewLaunch: ObservableObject {
         }
     }
     
+    func setViewLaunch(_ viewLaunch: String) {
+        self.currentPage = "onBoardingView"
+    }
+    
 }
