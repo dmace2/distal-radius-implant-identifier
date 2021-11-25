@@ -23,7 +23,7 @@
 		F0427C2027335AAD008268F4 /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0427C1F27335AAD008268F4 /* MotherView.swift */; };
 		F0427C2227335B57008268F4 /* ViewRouterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0427C2127335B57008268F4 /* ViewRouterClass.swift */; };
 		F0508B072733545300EEEFE4 /* TutorialScreen5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0508B062733545300EEEFE4 /* TutorialScreen5.swift */; };
-		F0570A762749A10A00BB984D /* MenuButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0570A752749A10A00BB984D /* MenuButtonView.swift */; };
+		F0570A762749A10A00BB984D /* InfoButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0570A752749A10A00BB984D /* InfoButtonView.swift */; };
 		F05E74E62733532F00727492 /* TutorialScreen3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05E74E52733532F00727492 /* TutorialScreen3.swift */; };
 		F05E74E82733536A00727492 /* TutorialScreen4.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05E74E72733536A00727492 /* TutorialScreen4.swift */; };
 		F067B2D927430F6A00601169 /* CapturedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F067B2D827430F6A00601169 /* CapturedImageView.swift */; };
@@ -56,7 +56,7 @@
 		F0427C1F27335AAD008268F4 /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
 		F0427C2127335B57008268F4 /* ViewRouterClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouterClass.swift; sourceTree = "<group>"; };
 		F0508B062733545300EEEFE4 /* TutorialScreen5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScreen5.swift; sourceTree = "<group>"; };
-		F0570A752749A10A00BB984D /* MenuButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonView.swift; sourceTree = "<group>"; };
+		F0570A752749A10A00BB984D /* InfoButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButtonView.swift; sourceTree = "<group>"; };
 		F05E74E52733532F00727492 /* TutorialScreen3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen3.swift; sourceTree = "<group>"; };
 		F05E74E72733536A00727492 /* TutorialScreen4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen4.swift; sourceTree = "<group>"; };
 		F067B2D827430F6A00601169 /* CapturedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturedImageView.swift; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 				F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */,
 				F07D0FBA27431EA600554B20 /* GoldButton.swift */,
 				F07D0FBC27431F5500554B20 /* AlignmentGuideView.swift */,
-				F0570A752749A10A00BB984D /* MenuButtonView.swift */,
+				F0570A752749A10A00BB984D /* InfoButtonView.swift */,
 			);
 			path = CustomUIComponents;
 			sourceTree = "<group>";
@@ -258,7 +258,7 @@
 				F0427C1927335A07008268F4 /* HomeView.swift in Sources */,
 				F07D0FBB27431EA600554B20 /* GoldButton.swift in Sources */,
 				F07D0FBD27431F5500554B20 /* AlignmentGuideView.swift in Sources */,
-				F0570A762749A10A00BB984D /* MenuButtonView.swift in Sources */,
+				F0570A762749A10A00BB984D /* InfoButtonView.swift in Sources */,
 				F0427C2027335AAD008268F4 /* MotherView.swift in Sources */,
 				256134FD2742DA7B00C4C9B8 /* ErrorView.swift in Sources */,
 				256134F12742D6BC00C4C9B8 /* FrameView.swift in Sources */,

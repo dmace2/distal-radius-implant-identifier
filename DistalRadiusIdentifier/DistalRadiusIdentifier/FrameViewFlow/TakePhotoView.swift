@@ -83,7 +83,7 @@ struct TakePhotoView: View {
         }
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                MenuButtonView()
+                InfoButtonView()
             }
         }
     }

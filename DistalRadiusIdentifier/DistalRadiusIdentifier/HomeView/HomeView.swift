@@ -32,7 +32,7 @@ struct HomeView: View {
         }
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                MenuButtonView()
+                InfoButtonView()
             }
         }
     }

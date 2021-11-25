@@ -54,7 +54,7 @@ struct CapturedImageView: View {
                 }
                 .toolbar {
                     ToolbarItem(placement: .primaryAction) {
-                        MenuButtonView()
+                        InfoButtonView()
                     }
                 }
                 

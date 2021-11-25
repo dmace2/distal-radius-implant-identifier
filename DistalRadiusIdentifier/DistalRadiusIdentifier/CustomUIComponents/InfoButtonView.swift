@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MenuButtonView: View {
+struct InfoButtonView: View {
     @State var showTutorial = false
     @State var showFAQ = false
     
@@ -17,7 +17,6 @@ struct MenuButtonView: View {
         ZStack {
             NavigationLink(destination:
                             TutorialPageContainerView()
-//                            .navigationBarBackButtonHidden(true)
                             .navigationBarTitleDisplayMode(.inline)
                            ,
                            isActive: $showTutorial) {EmptyView()}
@@ -43,6 +42,6 @@ struct MenuButtonView: View {
 
 struct MenuButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuButtonView()
+        InfoButtonView()
     }
 }
