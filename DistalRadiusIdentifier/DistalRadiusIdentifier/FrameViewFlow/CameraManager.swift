@@ -22,6 +22,7 @@ class CameraManager: ObservableObject {
     @Published var error: CameraError?
     
     let session = AVCaptureSession()
+    var device: AVCaptureDevice?
     
     private let sessionQueue = DispatchQueue(label: "com.raywenderlich.SessionQ")
     private let videoOutput = AVCaptureVideoDataOutput()
@@ -74,14 +75,17 @@ class CameraManager: ObservableObject {
         }
         
         let device = AVCaptureDevice.default(
-            .builtInWideAngleCamera,
+            .builtInTripleCamera,
             for: .video,
             position: .back)
+        
+        
         guard let camera = device else {
             set(error: .cameraUnavailable)
             status = .failed
             return
         }
+        self.device = camera
         
         do {
             let cameraInput = try AVCaptureDeviceInput(device: camera)
