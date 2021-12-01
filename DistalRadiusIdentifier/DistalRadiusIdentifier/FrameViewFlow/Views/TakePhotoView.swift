@@ -10,12 +10,14 @@ import SwiftUI
 struct TakePhotoView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var cameraModel: CameraFrameViewModel
+    
     @State var switchViews = false
     @State var showErrorAlert: Bool = false
     
     var alignmentGuideWidth: CGFloat
     
     init() {
+        
         switch UIDevice.current.userInterfaceIdiom {
         case .phone:
             // It's an iPhone
@@ -29,7 +31,6 @@ struct TakePhotoView: View {
             self.alignmentGuideWidth = UIScreen.main.bounds.width
             break
         }
-        
     }
     
     
@@ -65,7 +66,7 @@ struct TakePhotoView: View {
                 
                 NavigationLink(destination:
                                 CapturedImageView().environmentObject(cameraModel)
-                                .navigationTitle("Captured Image")
+                                .navigationTitle("Verify Image")
                                , isActive: $switchViews) {
                     EmptyView()
                 }
@@ -88,11 +89,5 @@ struct TakePhotoView: View {
                 InfoButtonView()
             }
         }
-    }
-}
-
-struct TakePhotoView_Previews: PreviewProvider {
-    static var previews: some View {
-        TakePhotoView().environmentObject(CameraFrameViewModel())
     }
 }

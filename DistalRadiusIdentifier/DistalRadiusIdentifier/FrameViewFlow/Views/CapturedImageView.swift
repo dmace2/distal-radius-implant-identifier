@@ -13,6 +13,7 @@ struct CapturedImageView: View {
     var alignmentGuideWidth: CGFloat
     
     init() {
+        
         switch UIDevice.current.userInterfaceIdiom {
         case .phone:
             // It's an iPhone
@@ -60,8 +61,10 @@ struct CapturedImageView: View {
                 
                 
                 NavigationLink(destination:
-                                Text("Thank you Dr. Hibbard and Dr. HB!")
+                                ResultsView()
+                               
                                 .navigationTitle("Results")
+                                .navigationBarBackButtonHidden(true)
                                , isActive: $switchViews) {
                     EmptyView()
                 }

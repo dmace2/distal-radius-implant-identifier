@@ -13,8 +13,8 @@ import SwiftUI
  This is going to be the view for the home page
  */
 struct HomeView: View {
-    @State private var cameraModel = CameraFrameViewModel()
-    @State var classify = false
+    @EnvironmentObject private var cameraModel: CameraFrameViewModel
+    @State var isActive = false
     
     @State var showTutorial = false
     @State var showFAQ = false
@@ -25,8 +25,10 @@ struct HomeView: View {
                 
             }
             Spacer()
-            NavigationLink(destination: TakePhotoView().environmentObject(cameraModel).navigationTitle("Take Implant Photo"), isActive: $classify) {
-                RoundedButton(color: Color("TechBlue"), labelText: "Classify Implant", buttonFunc: {self.classify = true})
+            NavigationLink(destination: TakePhotoView()
+                            .environmentObject(cameraModel)
+                            .navigationTitle("Take Implant Photo"), isActive: $isActive) {
+                RoundedButton(color: Color("TechBlue"), labelText: "Classify Implant", buttonFunc: {self.isActive = true})
                     .padding()
             }
         }

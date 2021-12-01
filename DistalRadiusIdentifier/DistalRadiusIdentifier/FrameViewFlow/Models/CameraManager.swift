@@ -24,7 +24,7 @@ class CameraManager: ObservableObject {
     let session = AVCaptureSession()
     var device: AVCaptureDevice?
     
-    private let sessionQueue = DispatchQueue(label: "com.raywenderlich.SessionQ")
+    let sessionQueue = DispatchQueue(label: "com.raywenderlich.SessionQ")
     private let videoOutput = AVCaptureVideoDataOutput()
     private var status = Status.unconfigured
     

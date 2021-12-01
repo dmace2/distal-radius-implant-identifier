@@ -34,17 +34,11 @@ struct TutorialScreen4: View {
                 List(1..<15){ row in
                     HStack {
                         if row == 1 {
-                            Text("Synthes")
-                            Spacer()
-                            Text("90.41%").fontWeight(.bold)
+                            ResultsItemView(ResultsItem(companyName: "Synthes", percentage: 90.41))
                         } else if row == 2 {
-                            Text("Acumed")
-                            Spacer()
-                            Text("8.59%").fontWeight(.bold)
+                            ResultsItemView(ResultsItem(companyName: "Acumed", percentage: 8.59))
                         } else {
-                            Text("Company")
-                            Spacer()
-                            Text("< 1.00%").fontWeight(.bold)
+                            ResultsItemView(ResultsItem(companyName: "Company", percentage: 0.99))
                         }
                     }
                 }

@@ -14,6 +14,10 @@
 		256134F92742D96200C4C9B8 /* FrameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134F82742D96200C4C9B8 /* FrameManager.swift */; };
 		256134FB2742D9A200C4C9B8 /* CameraFrameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134FA2742D9A200C4C9B8 /* CameraFrameViewModel.swift */; };
 		256134FD2742DA7B00C4C9B8 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134FC2742DA7B00C4C9B8 /* ErrorView.swift */; };
+		F00502082757E196000B4F1C /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00502072757E196000B4F1C /* ResultsView.swift */; };
+		F005020A2757E20D000B4F1C /* ResultsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00502092757E20D000B4F1C /* ResultsItem.swift */; };
+		F005020C2757E25D000B4F1C /* ResultsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005020B2757E25D000B4F1C /* ResultsItemView.swift */; };
+		F005020E2757EAC6000B4F1C /* RootNavigationPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005020D2757EAC6000B4F1C /* RootNavigationPop.swift */; };
 		F01E92C927333E720074D5DF /* DistalRadiusIdentifierApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E92C827333E720074D5DF /* DistalRadiusIdentifierApp.swift */; };
 		F01E92CD27333E720074D5DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F01E92CC27333E720074D5DF /* Assets.xcassets */; };
 		F01E92D027333E720074D5DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F01E92CF27333E720074D5DF /* Preview Assets.xcassets */; };
@@ -46,6 +50,10 @@
 		256134FC2742DA7B00C4C9B8 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorView.swift; path = DistalRadiusIdentifier/FrameViewFlow/ErrorView.swift; sourceTree = SOURCE_ROOT; };
 		F00417CA2733420C00C5630A /* DistalRadiusIdentifier.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DistalRadiusIdentifier.entitlements; sourceTree = "<group>"; };
 		F00417CB2733422400C5630A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F00502072757E196000B4F1C /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		F00502092757E20D000B4F1C /* ResultsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsItem.swift; sourceTree = "<group>"; };
+		F005020B2757E25D000B4F1C /* ResultsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsItemView.swift; sourceTree = "<group>"; };
+		F005020D2757EAC6000B4F1C /* RootNavigationPop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationPop.swift; sourceTree = "<group>"; };
 		F01E92C527333E720074D5DF /* DistalRadiusIdentifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DistalRadiusIdentifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F01E92C827333E720074D5DF /* DistalRadiusIdentifierApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistalRadiusIdentifierApp.swift; sourceTree = "<group>"; };
 		F01E92CC27333E720074D5DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -119,6 +127,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		F00502062757E188000B4F1C /* ResultsFlow */ = {
+			isa = PBXGroup;
+			children = (
+				F00502072757E196000B4F1C /* ResultsView.swift */,
+				F00502092757E20D000B4F1C /* ResultsItem.swift */,
+				F005020B2757E25D000B4F1C /* ResultsItemView.swift */,
+			);
+			path = ResultsFlow;
+			sourceTree = "<group>";
+		};
 		F01E92BC27333E720074D5DF = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +156,7 @@
 		F01E92C727333E720074D5DF /* DistalRadiusIdentifier */ = {
 			isa = PBXGroup;
 			children = (
+				F00502062757E188000B4F1C /* ResultsFlow */,
 				256134EF2742D6A500C4C9B8 /* FrameViewFlow */,
 				F0427C1A27335A12008268F4 /* OnboardingViewRouter */,
 				F0427C17273359FF008268F4 /* HomeView */,
@@ -183,6 +202,7 @@
 				F07D0FBA27431EA600554B20 /* RoundedButton.swift */,
 				F07D0FBC27431F5500554B20 /* AlignmentGuideView.swift */,
 				F0570A752749A10A00BB984D /* InfoButtonView.swift */,
+				F005020D2757EAC6000B4F1C /* RootNavigationPop.swift */,
 			);
 			path = CustomUIComponents;
 			sourceTree = "<group>";
@@ -280,13 +300,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0427C1927335A07008268F4 /* HomeView.swift in Sources */,
+				F005020E2757EAC6000B4F1C /* RootNavigationPop.swift in Sources */,
 				F07D0FBB27431EA600554B20 /* RoundedButton.swift in Sources */,
 				F07D0FBD27431F5500554B20 /* AlignmentGuideView.swift in Sources */,
 				F0570A762749A10A00BB984D /* InfoButtonView.swift in Sources */,
 				F0427C2027335AAD008268F4 /* MotherView.swift in Sources */,
 				256134FD2742DA7B00C4C9B8 /* ErrorView.swift in Sources */,
 				256134F12742D6BC00C4C9B8 /* FrameView.swift in Sources */,
+				F005020C2757E25D000B4F1C /* ResultsItemView.swift in Sources */,
 				F01E92C927333E720074D5DF /* DistalRadiusIdentifierApp.swift in Sources */,
+				F00502082757E196000B4F1C /* ResultsView.swift in Sources */,
+				F005020A2757E20D000B4F1C /* ResultsItem.swift in Sources */,
 				F0508B072733545300EEEFE4 /* TutorialScreen5.swift in Sources */,
 				F01E92F027333FF90074D5DF /* ArrowButton.swift in Sources */,
 				F07349FA2733522D00C090EA /* TutorialScreen1.swift in Sources */,
