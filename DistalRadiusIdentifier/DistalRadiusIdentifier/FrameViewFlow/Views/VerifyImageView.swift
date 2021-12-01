@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct CapturedImageView: View {
+struct VerifyImageView: View {
     @EnvironmentObject var cameraModel: CameraFrameViewModel
-    @State var classificationModel = ClassificationModel()
+    @EnvironmentObject var classificationModel: ClassificationModel
     
     @State var switchViews = false
     var alignmentGuideWidth: CGFloat
@@ -38,7 +38,7 @@ struct CapturedImageView: View {
                 VStack {
                     ZStack {
                         FrameView(image: capture)
-                            .environmentObject(cameraModel)
+//                            .environmentObject(cameraModel)
                             .navigationBarTitleDisplayMode(.inline)
                         
                     }
@@ -51,8 +51,14 @@ struct CapturedImageView: View {
                         .frame(width: self.alignmentGuideWidth)
                     
                     RoundedButton(color: Color("TechGold"), labelText: "Submit Photo for Classification", buttonFunc: {
-                        classificationModel.userImage = cameraModel.capturedImage
-                        switchViews.toggle()
+//                        classificationModel.userImage = cameraModel.capturedImage
+                        classificationModel.classifyImplant(image: cameraModel.capturedImage!, completion: { error in
+                            if error == nil {
+                                switchViews.toggle()
+                            } else {
+                                print(error?.localizedDescription)
+                            }
+                        })
                     })
                         .padding()
                 }
@@ -65,9 +71,9 @@ struct CapturedImageView: View {
                 
                 NavigationLink(destination:
                                 ResultsView()
-                                .environmentObject(classificationModel)
-                                .navigationTitle("Results")
                                 .navigationBarBackButtonHidden(true)
+//                                .navigationTitle("Results")
+//                                .navigationBarBackButtonHidden(true)
                                , isActive: $switchViews) {
                     EmptyView()
                 }

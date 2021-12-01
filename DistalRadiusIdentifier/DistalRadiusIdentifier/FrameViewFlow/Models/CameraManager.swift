@@ -38,6 +38,21 @@ class CameraManager: ObservableObject {
         }
     }
     
+    private func getDevice() -> AVCaptureDevice? {
+        if let device = AVCaptureDevice.default(.builtInTripleCamera,
+                                                for: .video, position: .back) {
+            return device
+        } else if let device = AVCaptureDevice.default(.builtInDualCamera,
+                                                       for: .video, position: .back) {
+            return device
+        } else if let device = AVCaptureDevice.default(.builtInWideAngleCamera,
+                                                       for: .video, position: .back) {
+            return device
+        } else {
+            fatalError("Missing expected back camera device.")
+        }
+    }
+    
     private func checkPermissions() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .notDetermined:
@@ -74,17 +89,20 @@ class CameraManager: ObservableObject {
             session.commitConfiguration()
         }
         
-        let device = AVCaptureDevice.default(
-            .builtInTripleCamera,
-            for: .video,
-            position: .back)
+        
+        let device = getDevice()
         
         
         guard let camera = device else {
-            set(error: .cameraUnavailable)
+            set(error: .noCameras)
             status = .failed
             return
         }
+        
+        
+        
+        
+        
         self.device = camera
         
         do {

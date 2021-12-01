@@ -41,7 +41,7 @@ struct TakePhotoView: View {
             VStack {
                 ZStack {
                     FrameView(image: cameraModel.frame)
-                        .environmentObject(cameraModel)
+//                        .environmentObject(cameraModel)
                         .navigationBarTitleDisplayMode(.inline)
                     
                 }
@@ -65,7 +65,8 @@ struct TakePhotoView: View {
                 Spacer()
                 
                 NavigationLink(destination:
-                                CapturedImageView().environmentObject(cameraModel)
+                                VerifyImageView()
+                                //.environmentObject(cameraModel)
                                 .navigationTitle("Verify Image")
                                , isActive: $switchViews) {
                     EmptyView()

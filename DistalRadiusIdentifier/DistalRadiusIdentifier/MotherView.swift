@@ -9,7 +9,8 @@ import SwiftUI
 
 struct MotherView : View {
     @EnvironmentObject var viewlaunch: ViewRouter // get the view launch from the "environment"
-    @State private var cameraModel = CameraFrameViewModel()
+    @EnvironmentObject var cameraModel: CameraFrameViewModel
+    @EnvironmentObject var classificationModel: ClassificationModel
     
     var body: some View {
         
@@ -20,7 +21,6 @@ struct MotherView : View {
                 GeometryReader { geo in // this is a geometry reader. You use it to get the device size
                     NavigationView {
                         HomeView()
-                            .environmentObject(cameraModel)
                             .navigationTitle("Home") // set nav title of home view
                         Text("View the Sidebar for Implant Classification History and New Classifications.")
                             .navigationTitle("Results")

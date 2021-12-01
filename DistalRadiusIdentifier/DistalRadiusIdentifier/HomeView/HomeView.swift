@@ -13,23 +13,35 @@ import SwiftUI
  This is going to be the view for the home page
  */
 struct HomeView: View {
-    @EnvironmentObject private var cameraModel: CameraFrameViewModel
+    @EnvironmentObject var classificationModel: ClassificationModel
     @State var isActive = false
-    
-    @State var showTutorial = false
-    @State var showFAQ = false
     
     var body: some View {
         VStack {
-            List {
+            List(classificationModel.classifications) { row in
+                NavigationLink(destination: ResultsView(classification: row)) {
+                    Text(row.id)
+                }
+                .padding()
+                
                 
             }
             Spacer()
-            NavigationLink(destination: TakePhotoView()
-                            .environmentObject(cameraModel)
-                            .navigationTitle("Take Implant Photo"), isActive: $isActive) {
-                RoundedButton(color: Color("TechBlue"), labelText: "Classify Implant", buttonFunc: {self.isActive = true})
-                    .padding()
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                NavigationLink(destination: TakePhotoView().navigationTitle("Take Implant Photo"), isActive: $isActive) {
+                    RoundedButton(color: Color("TechBlue"), labelText: "Classify Implant", buttonFunc: {
+                        self.isActive.toggle()
+                    })
+                        .padding()
+                }
+                .isDetailLink(false)
+            } else {
+                NavigationLink(destination: TakePhotoView().navigationTitle("Take Implant Photo"), isActive: $isActive) {
+                    RoundedButton(color: Color("TechBlue"), labelText: "Classify Implant", buttonFunc: {
+                        self.isActive.toggle()
+                    })
+                        .padding()
+                }
             }
         }
         .toolbar {
