@@ -21,7 +21,7 @@
 		F0427C1927335A07008268F4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0427C1827335A07008268F4 /* HomeView.swift */; };
 		F0427C1E27335A58008268F4 /* TutorialPageContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0427C1D27335A58008268F4 /* TutorialPageContainerView.swift */; };
 		F0427C2027335AAD008268F4 /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0427C1F27335AAD008268F4 /* MotherView.swift */; };
-		F0427C2227335B57008268F4 /* ViewRouterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0427C2127335B57008268F4 /* ViewRouterClass.swift */; };
+		F0427C2227335B57008268F4 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0427C2127335B57008268F4 /* ViewRouter.swift */; };
 		F0508B072733545300EEEFE4 /* TutorialScreen5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0508B062733545300EEEFE4 /* TutorialScreen5.swift */; };
 		F0570A762749A10A00BB984D /* InfoButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0570A752749A10A00BB984D /* InfoButtonView.swift */; };
 		F05E74E62733532F00727492 /* TutorialScreen3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05E74E52733532F00727492 /* TutorialScreen3.swift */; };
@@ -30,7 +30,7 @@
 		F067B2DB274313CE00601169 /* TakePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F067B2DA274313CE00601169 /* TakePhotoView.swift */; };
 		F07349FA2733522D00C090EA /* TutorialScreen1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07349F92733522D00C090EA /* TutorialScreen1.swift */; };
 		F0734A00273352B300C090EA /* TutorialScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07349FF273352B300C090EA /* TutorialScreen2.swift */; };
-		F07D0FBB27431EA600554B20 /* GoldButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D0FBA27431EA600554B20 /* GoldButton.swift */; };
+		F07D0FBB27431EA600554B20 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D0FBA27431EA600554B20 /* RoundedButton.swift */; };
 		F07D0FBD27431F5500554B20 /* AlignmentGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D0FBC27431F5500554B20 /* AlignmentGuideView.swift */; };
 		F0BE89BA27344B0100E553F7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BE89B927344B0100E553F7 /* Launch Screen.storyboard */; };
 		F0E5BD0C2733500B009DFD26 /* TutorialTitleAndSubheader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */; };
@@ -54,7 +54,7 @@
 		F0427C1827335A07008268F4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F0427C1D27335A58008268F4 /* TutorialPageContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageContainerView.swift; sourceTree = "<group>"; };
 		F0427C1F27335AAD008268F4 /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
-		F0427C2127335B57008268F4 /* ViewRouterClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouterClass.swift; sourceTree = "<group>"; };
+		F0427C2127335B57008268F4 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		F0508B062733545300EEEFE4 /* TutorialScreen5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScreen5.swift; sourceTree = "<group>"; };
 		F0570A752749A10A00BB984D /* InfoButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButtonView.swift; sourceTree = "<group>"; };
 		F05E74E52733532F00727492 /* TutorialScreen3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen3.swift; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 		F067B2DA274313CE00601169 /* TakePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoView.swift; sourceTree = "<group>"; };
 		F07349F92733522D00C090EA /* TutorialScreen1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen1.swift; sourceTree = "<group>"; };
 		F07349FF273352B300C090EA /* TutorialScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen2.swift; sourceTree = "<group>"; };
-		F07D0FBA27431EA600554B20 /* GoldButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldButton.swift; sourceTree = "<group>"; };
+		F07D0FBA27431EA600554B20 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		F07D0FBC27431F5500554B20 /* AlignmentGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentGuideView.swift; sourceTree = "<group>"; };
 		F0BE89B927344B0100E553F7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTitleAndSubheader.swift; sourceTree = "<group>"; };
@@ -83,16 +83,40 @@
 		256134EF2742D6A500C4C9B8 /* FrameViewFlow */ = {
 			isa = PBXGroup;
 			children = (
+				F00502052757DA43000B4F1C /* Models */,
+				F00502042757DA35000B4F1C /* Views */,
+				F00502032757DA24000B4F1C /* CameraExtras */,
+			);
+			path = FrameViewFlow;
+			sourceTree = "<group>";
+		};
+		F00502032757DA24000B4F1C /* CameraExtras */ = {
+			isa = PBXGroup;
+			children = (
 				256134F62742D8ED00C4C9B8 /* CGImageExtension.swift */,
-				256134FA2742D9A200C4C9B8 /* CameraFrameViewModel.swift */,
 				256134F42742D8E400C4C9B8 /* CameraError.swift */,
+			);
+			path = CameraExtras;
+			sourceTree = "<group>";
+		};
+		F00502042757DA35000B4F1C /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				256134F02742D6BC00C4C9B8 /* FrameView.swift */,
-				256134F22742D7E900C4C9B8 /* CameraManager.swift */,
-				256134F82742D96200C4C9B8 /* FrameManager.swift */,
 				F067B2D827430F6A00601169 /* CapturedImageView.swift */,
 				F067B2DA274313CE00601169 /* TakePhotoView.swift */,
 			);
-			path = FrameViewFlow;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F00502052757DA43000B4F1C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				256134FA2742D9A200C4C9B8 /* CameraFrameViewModel.swift */,
+				256134F22742D7E900C4C9B8 /* CameraManager.swift */,
+				256134F82742D96200C4C9B8 /* FrameManager.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F01E92BC27333E720074D5DF = {
@@ -156,7 +180,7 @@
 			children = (
 				F01E92EF27333FF90074D5DF /* ArrowButton.swift */,
 				F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */,
-				F07D0FBA27431EA600554B20 /* GoldButton.swift */,
+				F07D0FBA27431EA600554B20 /* RoundedButton.swift */,
 				F07D0FBC27431F5500554B20 /* AlignmentGuideView.swift */,
 				F0570A752749A10A00BB984D /* InfoButtonView.swift */,
 			);
@@ -175,7 +199,7 @@
 		F0427C1A27335A12008268F4 /* OnboardingViewRouter */ = {
 			isa = PBXGroup;
 			children = (
-				F0427C2127335B57008268F4 /* ViewRouterClass.swift */,
+				F0427C2127335B57008268F4 /* ViewRouter.swift */,
 			);
 			path = OnboardingViewRouter;
 			sourceTree = "<group>";
@@ -256,7 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0427C1927335A07008268F4 /* HomeView.swift in Sources */,
-				F07D0FBB27431EA600554B20 /* GoldButton.swift in Sources */,
+				F07D0FBB27431EA600554B20 /* RoundedButton.swift in Sources */,
 				F07D0FBD27431F5500554B20 /* AlignmentGuideView.swift in Sources */,
 				F0570A762749A10A00BB984D /* InfoButtonView.swift in Sources */,
 				F0427C2027335AAD008268F4 /* MotherView.swift in Sources */,
@@ -269,7 +293,7 @@
 				F0427C1E27335A58008268F4 /* TutorialPageContainerView.swift in Sources */,
 				256134F32742D7E900C4C9B8 /* CameraManager.swift in Sources */,
 				F0E5BD0C2733500B009DFD26 /* TutorialTitleAndSubheader.swift in Sources */,
-				F0427C2227335B57008268F4 /* ViewRouterClass.swift in Sources */,
+				F0427C2227335B57008268F4 /* ViewRouter.swift in Sources */,
 				F067B2D927430F6A00601169 /* CapturedImageView.swift in Sources */,
 				256134F92742D96200C4C9B8 /* FrameManager.swift in Sources */,
 				256134F72742D8ED00C4C9B8 /* CGImageExtension.swift in Sources */,

@@ -26,7 +26,7 @@ struct HomeView: View {
             }
             Spacer()
             NavigationLink(destination: TakePhotoView().environmentObject(cameraModel).navigationTitle("Take Implant Photo"), isActive: $classify) {
-                ArrowButton(buttonFunc: {self.classify = true}, labelText: "Classify Implant", arrow: false)
+                RoundedButton(color: Color("TechBlue"), labelText: "Classify Implant", buttonFunc: {self.classify = true})
                     .padding()
             }
         }

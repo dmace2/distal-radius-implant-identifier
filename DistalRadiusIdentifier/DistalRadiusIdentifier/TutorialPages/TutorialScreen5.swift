@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TutorialScreen5: View {
-    @EnvironmentObject var viewlaunch: ViewLaunch
+    @EnvironmentObject var viewlaunch: ViewRouter
     @Environment(\.presentationMode) var presentationMode
     
     @Binding var tabSelection: Int
@@ -29,7 +29,7 @@ struct TutorialScreen5: View {
                 ArrowButton(buttonFunc: {
                     UserDefaults.standard.set(true, forKey: "LaunchBefore")
                     withAnimation(){
-                        self.viewlaunch.currentPage = "HomeView"
+                        self.viewlaunch.setViewLaunch(.home)
                         self.presentationMode.wrappedValue.dismiss()
                     }
                 }, labelText: "Finish Tutorial", arrow: false)

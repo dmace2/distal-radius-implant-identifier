@@ -47,9 +47,9 @@ struct CapturedImageView: View {
                     AlignmentGuideView(title1: "Does the image fit within the box?", title2: "Is the implant horizontally centered?")
                         .frame(width: self.alignmentGuideWidth)
                     
-                    GoldButton(buttonFunc: {
+                    RoundedButton(color: Color("TechGold"), labelText: "Submit Photo for Classification", buttonFunc: {
                         switchViews.toggle()
-                    }, labelText: "Submit Photo for Classification")
+                    })
                         .padding()
                 }
                 .toolbar {
