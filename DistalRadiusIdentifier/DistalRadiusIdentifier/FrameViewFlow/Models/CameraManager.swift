@@ -22,8 +22,9 @@ class CameraManager: ObservableObject {
     @Published var error: CameraError?
     
     let session = AVCaptureSession()
+    var device: AVCaptureDevice?
     
-    private let sessionQueue = DispatchQueue(label: "com.raywenderlich.SessionQ")
+    let sessionQueue = DispatchQueue(label: "com.raywenderlich.SessionQ")
     private let videoOutput = AVCaptureVideoDataOutput()
     private var status = Status.unconfigured
     
@@ -34,6 +35,21 @@ class CameraManager: ObservableObject {
     private func set(error: CameraError?) {
         DispatchQueue.main.async {
             self.error = error
+        }
+    }
+    
+    private func getDevice() -> AVCaptureDevice? {
+        if let device = AVCaptureDevice.default(.builtInTripleCamera,
+                                                for: .video, position: .back) {
+            return device
+        } else if let device = AVCaptureDevice.default(.builtInDualCamera,
+                                                       for: .video, position: .back) {
+            return device
+        } else if let device = AVCaptureDevice.default(.builtInWideAngleCamera,
+                                                       for: .video, position: .back) {
+            return device
+        } else {
+            fatalError("Missing expected back camera device.")
         }
     }
     
@@ -73,15 +89,21 @@ class CameraManager: ObservableObject {
             session.commitConfiguration()
         }
         
-        let device = AVCaptureDevice.default(
-            .builtInWideAngleCamera,
-            for: .video,
-            position: .back)
+        
+        let device = getDevice()
+        
+        
         guard let camera = device else {
-            set(error: .cameraUnavailable)
+            set(error: .noCameras)
             status = .failed
             return
         }
+        
+        
+        
+        
+        
+        self.device = camera
         
         do {
             let cameraInput = try AVCaptureDeviceInput(device: camera)

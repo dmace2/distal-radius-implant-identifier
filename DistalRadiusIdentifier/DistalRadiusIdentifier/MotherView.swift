@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct MotherView : View {
-    @EnvironmentObject var viewlaunch: ViewLaunch // get the view launch from the "environment"
+    @EnvironmentObject var viewlaunch: ViewRouter // get the view launch from the "environment"
+    @EnvironmentObject var cameraModel: CameraFrameViewModel
+    @EnvironmentObject var classificationModel: ClassificationModel
     
     var body: some View {
         
         VStack {
-            if viewlaunch.currentPage == "onBoardingView" { // pick which view to show based on what viewlaunch says
+            if viewlaunch.currentPage == .onboarding { // pick which view to show based on what viewlaunch says
                 TutorialPageContainerView()
-            } else if viewlaunch.currentPage == "HomeView" {
+            } else if viewlaunch.currentPage == .home {
                 GeometryReader { geo in // this is a geometry reader. You use it to get the device size
                     NavigationView {
                         HomeView()

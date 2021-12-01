@@ -14,7 +14,9 @@ struct DistalRadiusIdentifierApp: App {
     var body: some Scene {
         WindowGroup { // creates a group of windows (for multi window)
             MotherView() // on load, show the motherview
-                .environmentObject(ViewLaunch()) //pass it an environment object of a view launch
+                .environmentObject(ViewRouter()) //pass it an environment object of a view launch
+                .environmentObject(CameraFrameViewModel())
+                .environmentObject(ClassificationModel())
         }
     }
 }

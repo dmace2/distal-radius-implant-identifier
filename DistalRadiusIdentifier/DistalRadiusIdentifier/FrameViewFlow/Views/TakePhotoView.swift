@@ -10,12 +10,14 @@ import SwiftUI
 struct TakePhotoView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var cameraModel: CameraFrameViewModel
+    
     @State var switchViews = false
     @State var showErrorAlert: Bool = false
     
     var alignmentGuideWidth: CGFloat
     
     init() {
+        
         switch UIDevice.current.userInterfaceIdiom {
         case .phone:
             // It's an iPhone
@@ -29,7 +31,6 @@ struct TakePhotoView: View {
             self.alignmentGuideWidth = UIScreen.main.bounds.width
             break
         }
-        
     }
     
     
@@ -40,7 +41,7 @@ struct TakePhotoView: View {
             VStack {
                 ZStack {
                     FrameView(image: cameraModel.frame)
-                        .environmentObject(cameraModel)
+//                        .environmentObject(cameraModel)
                         .navigationBarTitleDisplayMode(.inline)
                     
                 }
@@ -64,28 +65,30 @@ struct TakePhotoView: View {
                 Spacer()
                 
                 NavigationLink(destination:
-                                CapturedImageView().environmentObject(cameraModel)
-                                .navigationTitle("Captured Image")
+                                VerifyImageView()
+                                //.environmentObject(cameraModel)
+                                .navigationTitle("Verify Image")
                                , isActive: $switchViews) {
                     EmptyView()
                 }
                 
-                GoldButton(buttonFunc: {
+                RoundedButton(color: Color("TechGold"), labelText: "Take Photo", buttonFunc: {
                     cameraModel.cameraManager.session.stopRunning()
                     cameraModel.capturedImage = cameraModel.frame?.cropping(to: CGRect(x: 0, y: cameraModel.frame!.height / 2 - cameraModel.frame!.width / 2, width: cameraModel.frame!.width, height: cameraModel.frame!.width))
                     switchViews.toggle()
-                }, labelText: "Take Photo")
+                })
                     .padding()
+                
+                
             }
         }
         .onAppear {
             self.showErrorAlert = cameraModel.error != nil
         }
-    }
-}
-
-struct TakePhotoView_Previews: PreviewProvider {
-    static var previews: some View {
-        TakePhotoView().environmentObject(CameraFrameViewModel())
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                InfoButtonView()
+            }
+        }
     }
 }
