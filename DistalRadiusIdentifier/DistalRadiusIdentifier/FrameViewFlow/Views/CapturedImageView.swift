@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CapturedImageView: View {
     @EnvironmentObject var cameraModel: CameraFrameViewModel
+    @State var classificationModel = ClassificationModel()
+    
     @State var switchViews = false
     var alignmentGuideWidth: CGFloat
     
@@ -49,6 +51,7 @@ struct CapturedImageView: View {
                         .frame(width: self.alignmentGuideWidth)
                     
                     RoundedButton(color: Color("TechGold"), labelText: "Submit Photo for Classification", buttonFunc: {
+                        classificationModel.userImage = cameraModel.capturedImage
                         switchViews.toggle()
                     })
                         .padding()
@@ -62,7 +65,7 @@ struct CapturedImageView: View {
                 
                 NavigationLink(destination:
                                 ResultsView()
-                               
+                                .environmentObject(classificationModel)
                                 .navigationTitle("Results")
                                 .navigationBarBackButtonHidden(true)
                                , isActive: $switchViews) {

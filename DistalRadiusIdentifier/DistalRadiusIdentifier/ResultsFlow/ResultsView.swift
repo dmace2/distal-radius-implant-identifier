@@ -9,55 +9,77 @@ import SwiftUI
 
 struct ResultsView: View {
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var classificationModel: ClassificationModel
     @State var doneBool = false
     
+    @State var userImage: Image = Image("SampleXRay")
+    @State var userImageTapped = false
+    @State var exampleImage: Image = Image("SampleXRay")
+    @State var exampleImageTapped = false
+        
     var body: some View {
-        NavigationLink(destination: HomeView(),  isActive: $doneBool) {
-            EmptyView()
-        }
-                       
-                       
-                       
-                       
-                       
         GeometryReader { geo in
-            VStack {
-                Spacer().frame(height: geo.size.height / 50)
-                
-                
-                Text("Synthes")
-                    .multilineTextAlignment(.center)
-                    .font(.system(size: 50).weight(.bold))
-                    .foregroundColor(Color("TechBlue"))
-                
-                Text("90.01%")
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(Color(UIColor.secondaryLabel))
-                    .font(.system(size: 40))
-                    .padding(.leading, 20)
-                    .padding(.trailing, 20)
-                
-                
-                
-                List {
-                    ResultsItemView(ResultsItem(companyName: "Synthes", percentage: 95.91))
-                    ResultsItemView(ResultsItem(companyName: "Synthes", percentage: 95.91))
-                    ResultsItemView(ResultsItem(companyName: "Synthes", percentage: 95.91))
-                    ResultsItemView(ResultsItem(companyName: "Synthes", percentage: 95.91))
-                    ResultsItemView(ResultsItem(companyName: "Synthes", percentage: 95.91))
+            ZStack {
+                VStack {
+                    NavigationLink(destination: HomeView(),  isActive: $doneBool) {
+                        EmptyView()
+                    }
+                    
+                    
+                    Spacer().frame(height: geo.size.height / 50)
+                    
+                    Text(classificationModel.results[0].company)
+                        .multilineTextAlignment(.center)
+                        .font(.system(size: 50).weight(.bold))
+                        .foregroundColor(Color("TechBlue"))
+                    
+                    Text(String(format: "%.2f", classificationModel.results[0].percentage) + "%")
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Color(UIColor.secondaryLabel))
+                        .font(.system(size: 40))
+                        .padding(.leading, 20)
+                        .padding(.trailing, 20)
+                    
+                    Spacer()
+                    
+                    HStack(alignment: .center) {
+                        ResultsImageView(image: userImage, caption: "Your Image").onTapGesture {
+                            self.userImageTapped.toggle()
+                        }
+                        .fullScreenCover(isPresented: $userImageTapped) {
+                            FullScreenImageView(image: userImage)
+                        }
+                        
+                        ResultsImageView(image: exampleImage, caption: "\(classificationModel.results[0].company) Image").onTapGesture {
+                            self.exampleImageTapped.toggle()
+                        }
+                        .fullScreenCover(isPresented: $exampleImageTapped) {
+                            FullScreenImageView(image: exampleImage)
+                        }
+                    }
+                    .padding(.horizontal)
+                    
+                    Spacer()
+                    
+                    List(classificationModel.results) { row in
+                        ResultsItemView(row)
+                    }
+                    .listStyle(.plain)
+                    
+                    RoundedButton(color: Color("TechBlue"), labelText: "Done", buttonFunc: {
+                        NavigationUtil.popToRootView()
+                    })
+                        .padding()
                 }
-                .listStyle(.plain)
             }
-        }
-        .toolbar {
-            Button {
-                NavigationUtil.popToRootView()
-//                self.presentationMode.wrappedValue.dismiss()
-//                self.presentationMode.wrappedValue.dismiss()
-//                self.rootPresentationMode.wrappedValue.dismiss()
-//                self.doneBool.toggle()
-            } label: {
-                Text("Done")
+            .onAppear {
+                self.userImage = Image(classificationModel.userImage!, scale: 1.0, label: Text("User Img"))
+                self.exampleImage = Image("Example\(classificationModel.results[0].company)Image")
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    InfoButtonView()
+                }
             }
         }
     }
