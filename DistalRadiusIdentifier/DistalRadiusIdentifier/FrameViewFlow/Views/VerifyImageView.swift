@@ -82,8 +82,8 @@ struct VerifyImageView: View {
     }
 }
     
-    //struct CapturedImageView_Previews: PreviewProvider {
-    //    static var previews: some View {
-    //        CapturedImageView(image: <#CGImage#>)
-    //    }
-    //}
+//    struct CapturedImageView_Previews: PreviewProvider {
+//        static var previews: some View {
+//            CapturedImageView(image: <#CGImage#>)
+//        }
+//    }

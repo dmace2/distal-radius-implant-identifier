@@ -11,16 +11,6 @@ import SwiftUI
 struct DistalRadiusIdentifierApp: App {
     // This is the automatic file that is run when the app is launched
     
-//    init() {
-//        if #available(iOS 15, *) {
-//            let appearance = UINavigationBarAppearance()
-//            appearance.configureWithOpaqueBackground()
-////            UINavigationBar.appearance().standardAppearance = appearance
-//            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-////            UINavigationBar.appearance().barStyle = .default
-//        }
-//    }
-    
     var body: some Scene {
         WindowGroup { // creates a group of windows (for multi window)
             MotherView() // on load, show the motherview
