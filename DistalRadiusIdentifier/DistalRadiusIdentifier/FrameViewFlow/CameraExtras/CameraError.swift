@@ -40,6 +40,7 @@ enum CameraError: Error {
     case deniedAuthorization
     case restrictedAuthorization
     case unknownAuthorization
+    case noCameras
 }
 
 extension CameraError: LocalizedError {
@@ -59,6 +60,8 @@ extension CameraError: LocalizedError {
             return "Attempting to Access a Restricted Capture Device"
         case .unknownAuthorization:
             return "Unknown authorization Status for Capture Device"
+        case .noCameras:
+            return "No Available Back Cameras"
         }
     }
 }

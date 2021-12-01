@@ -7,12 +7,15 @@
 
 import SwiftUI
 
-struct CapturedImageView: View {
+struct VerifyImageView: View {
     @EnvironmentObject var cameraModel: CameraFrameViewModel
+    @EnvironmentObject var classificationModel: ClassificationModel
+    
     @State var switchViews = false
     var alignmentGuideWidth: CGFloat
     
     init() {
+        
         switch UIDevice.current.userInterfaceIdiom {
         case .phone:
             // It's an iPhone
@@ -35,7 +38,7 @@ struct CapturedImageView: View {
                 VStack {
                     ZStack {
                         FrameView(image: capture)
-                            .environmentObject(cameraModel)
+//                            .environmentObject(cameraModel)
                             .navigationBarTitleDisplayMode(.inline)
                         
                     }
@@ -47,16 +50,30 @@ struct CapturedImageView: View {
                     AlignmentGuideView(title1: "Does the image fit within the box?", title2: "Is the implant horizontally centered?")
                         .frame(width: self.alignmentGuideWidth)
                     
-                    GoldButton(buttonFunc: {
-                        switchViews.toggle()
-                    }, labelText: "Submit Photo for Classification")
+                    RoundedButton(color: Color("TechGold"), labelText: "Submit Photo for Classification", buttonFunc: {
+//                        classificationModel.userImage = cameraModel.capturedImage
+                        classificationModel.classifyImplant(image: cameraModel.capturedImage!, completion: { error in
+                            if error == nil {
+                                switchViews.toggle()
+                            } else {
+                                print(error?.localizedDescription)
+                            }
+                        })
+                    })
                         .padding()
+                }
+                .toolbar {
+                    ToolbarItem(placement: .primaryAction) {
+                        InfoButtonView()
+                    }
                 }
                 
                 
                 NavigationLink(destination:
-                                Text("Thank you Dr. Hibbard and Dr. HB!")
-                                .navigationTitle("Results")
+                                ResultsView()
+                                .navigationBarBackButtonHidden(true)
+//                                .navigationTitle("Results")
+//                                .navigationBarBackButtonHidden(true)
                                , isActive: $switchViews) {
                     EmptyView()
                 }
@@ -65,8 +82,8 @@ struct CapturedImageView: View {
     }
 }
     
-    //struct CapturedImageView_Previews: PreviewProvider {
-    //    static var previews: some View {
-    //        CapturedImageView(image: <#CGImage#>)
-    //    }
-    //}
+//    struct CapturedImageView_Previews: PreviewProvider {
+//        static var previews: some View {
+//            CapturedImageView(image: <#CGImage#>)
+//        }
+//    }

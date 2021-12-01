@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TutorialPageContainerView: View {
-    @EnvironmentObject var viewlaunch: ViewLaunch
+//    @EnvironmentObject var viewlaunch: ViewLaunch
 
     @State private var tabSelection = 1 // State variable is variable whose state is monitored by others
     

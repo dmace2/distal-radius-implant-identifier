@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct TutorialScreen5: View {
-    @EnvironmentObject var viewlaunch: ViewLaunch
+    @EnvironmentObject var viewlaunch: ViewRouter
+    @Environment(\.presentationMode) var presentationMode
     
     @Binding var tabSelection: Int
     @State var tag : Int? = nil
@@ -23,20 +24,15 @@ struct TutorialScreen5: View {
                 
                 TutorialTitleAndSubheader(titleText: "Ready to \nGet Started?")
                 
-                
                 Spacer()
-                
-                
-                
-                //            NavigationLink(destination: MotherView()) {
+    
                 ArrowButton(buttonFunc: {
                     UserDefaults.standard.set(true, forKey: "LaunchBefore")
                     withAnimation(){
-                        self.viewlaunch.currentPage = "HomeView"
+                        self.viewlaunch.setViewLaunch(.home)
+                        self.presentationMode.wrappedValue.dismiss()
                     }
-                    //                    ViewRouter().setFinishedTutorial()
                 }, labelText: "Finish Tutorial", arrow: false)
-                //            }
                 
                 
                 Spacer().frame(height: 40)

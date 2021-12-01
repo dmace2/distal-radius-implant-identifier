@@ -34,23 +34,17 @@ struct TutorialScreen4: View {
                 List(1..<15){ row in
                     HStack {
                         if row == 1 {
-                            Text("Synthes")
-                            Spacer()
-                            Text("90.41%").fontWeight(.bold)
+                            ResultsItemView(ResultsItem(id: String.random(), company: "Synthes", percentage: 90.41))
                         } else if row == 2 {
-                            Text("Acumed")
-                            Spacer()
-                            Text("8.59%").fontWeight(.bold)
+                            ResultsItemView(ResultsItem(id: String.random(), company: "Acumed", percentage: 8.59))
                         } else {
-                            Text("Company")
-                            Spacer()
-                            Text("< 1.00%").fontWeight(.bold)
+                            ResultsItemView(ResultsItem(id: String.random(), company: "Company", percentage: 0.99))
                         }
                     }
                 }
-//                .listStyle(.plain)
+                .listStyle(.plain)
                 
-                Spacer()
+                Spacer(minLength: 15)
                 
                 ArrowButton(buttonFunc: {
                     withAnimation {
