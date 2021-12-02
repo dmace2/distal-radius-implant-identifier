@@ -38,7 +38,6 @@ struct VerifyImageView: View {
                 VStack {
                     ZStack {
                         FrameView(image: capture)
-//                            .environmentObject(cameraModel)
                             .navigationBarTitleDisplayMode(.inline)
                         
                     }
@@ -72,8 +71,6 @@ struct VerifyImageView: View {
                 NavigationLink(destination:
                                 ResultsView()
                                 .navigationBarBackButtonHidden(true)
-//                                .navigationTitle("Results")
-//                                .navigationBarBackButtonHidden(true)
                                , isActive: $switchViews) {
                     EmptyView()
                 }

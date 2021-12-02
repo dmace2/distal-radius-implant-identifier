@@ -39,6 +39,8 @@
 		F0734A00273352B300C090EA /* TutorialScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07349FF273352B300C090EA /* TutorialScreen2.swift */; };
 		F07D0FBB27431EA600554B20 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D0FBA27431EA600554B20 /* RoundedButton.swift */; };
 		F07D0FBD27431F5500554B20 /* AlignmentGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D0FBC27431F5500554B20 /* AlignmentGuideView.swift */; };
+		F0A889AD275863E2007464F1 /* CompanyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A889AC275863E2007464F1 /* CompanyDetailView.swift */; };
+		F0A889C1275874D1007464F1 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = F0A889C0275874D1007464F1 /* BetterSafariView */; };
 		F0BE89BA27344B0100E553F7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BE89B927344B0100E553F7 /* Launch Screen.storyboard */; };
 		F0E5BD0C2733500B009DFD26 /* TutorialTitleAndSubheader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */; };
 /* End PBXBuildFile section */
@@ -79,6 +81,7 @@
 		F07349FF273352B300C090EA /* TutorialScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen2.swift; sourceTree = "<group>"; };
 		F07D0FBA27431EA600554B20 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		F07D0FBC27431F5500554B20 /* AlignmentGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentGuideView.swift; sourceTree = "<group>"; };
+		F0A889AC275863E2007464F1 /* CompanyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailView.swift; sourceTree = "<group>"; };
 		F0BE89B927344B0100E553F7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTitleAndSubheader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0A889C1275874D1007464F1 /* BetterSafariView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +144,7 @@
 				F005020B2757E25D000B4F1C /* ResultsItemView.swift */,
 				F05A67F72757F489008C6E4B /* ResultsImageView.swift */,
 				F05A67F92758002A008C6E4B /* FullScreenImageView.swift */,
+				F0A889AC275863E2007464F1 /* CompanyDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 			);
 			name = DistalRadiusIdentifier;
 			packageProductDependencies = (
+				F0A889C0275874D1007464F1 /* BetterSafariView */,
 			);
 			productName = DistalRadiusIdentifier;
 			productReference = F01E92C527333E720074D5DF /* DistalRadiusIdentifier.app */;
@@ -304,6 +310,7 @@
 			);
 			mainGroup = F01E92BC27333E720074D5DF;
 			packageReferences = (
+				F0A889BF275874D1007464F1 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
 			);
 			productRefGroup = F01E92C627333E720074D5DF /* Products */;
 			projectDirPath = "";
@@ -355,6 +362,7 @@
 				F051C268275815C400859E77 /* ClassificationModel.swift in Sources */,
 				F067B2D927430F6A00601169 /* VerifyImageView.swift in Sources */,
 				256134F92742D96200C4C9B8 /* FrameManager.swift in Sources */,
+				F0A889AD275863E2007464F1 /* CompanyDetailView.swift in Sources */,
 				F05A67FA2758002A008C6E4B /* FullScreenImageView.swift in Sources */,
 				256134F72742D8ED00C4C9B8 /* CGImageExtension.swift in Sources */,
 				256134F52742D8E400C4C9B8 /* CameraError.swift in Sources */,
@@ -502,7 +510,7 @@
 				INFOPLIST_FILE = DistalRadiusIdentifier/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Distal Radius Implant Identifier";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
-				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs camera access to take photos of an x-ray for classification";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs camera access to capture implant photos for classification";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
@@ -544,7 +552,7 @@
 				INFOPLIST_FILE = DistalRadiusIdentifier/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Distal Radius Implant Identifier";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
-				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs camera access to take photos of an x-ray for classification";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs camera access to capture implant photos for classification";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
@@ -591,6 +599,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F0A889BF275874D1007464F1 /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stleamist/BetterSafariView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F0A889C0275874D1007464F1 /* BetterSafariView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F0A889BF275874D1007464F1 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
+			productName = BetterSafariView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F01E92BD27333E720074D5DF /* Project object */;
 }
