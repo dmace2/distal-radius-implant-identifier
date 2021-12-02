@@ -66,7 +66,6 @@ struct TakePhotoView: View {
                 
                 NavigationLink(destination:
                                 VerifyImageView()
-                                //.environmentObject(cameraModel)
                                 .navigationTitle("Verify Image")
                                , isActive: $switchViews) {
                     EmptyView()

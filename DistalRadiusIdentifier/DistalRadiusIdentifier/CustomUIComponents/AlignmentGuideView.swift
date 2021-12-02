@@ -13,9 +13,6 @@ struct AlignmentGuideView: View {
     var title2: String
     var subtitle2: String?
     
-    
-    
-    
     var body: some View {
         GeometryReader { geo in
             VStack {

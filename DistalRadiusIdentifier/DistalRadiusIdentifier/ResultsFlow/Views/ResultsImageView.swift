@@ -15,7 +15,7 @@ struct ResultsImageView: View {
     var body: some View {
         VStack(alignment:.center) {
             Text(caption).font(.footnote)
-            image.resizable()//.frame(maxWidth: geo.size.width, maxHeight: geo.size.width, alignment: .center)
+            image.resizable()
                 .aspectRatio(1, contentMode: .fit)
         }
     }

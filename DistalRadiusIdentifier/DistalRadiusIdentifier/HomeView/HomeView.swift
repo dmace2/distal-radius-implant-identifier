@@ -24,8 +24,8 @@ struct HomeView: View {
                 }
                 .padding()
                 
-                
             }
+            
             Spacer()
             if UIDevice.current.userInterfaceIdiom == .phone {
                 NavigationLink(destination: TakePhotoView().navigationTitle("Take Implant Photo"), isActive: $isActive) {
