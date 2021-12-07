@@ -33,48 +33,63 @@ struct VerifyImageView: View {
     }
     
     var body: some View {
-        GeometryReader { geo in
-            if let capture = cameraModel.capturedImage{
-                VStack {
-                    ZStack {
-                        FrameView(image: capture)
-                            .navigationBarTitleDisplayMode(.inline)
+        ZStack {
+            GeometryReader { geo in
+           
+                if let capture = cameraModel.capturedImage{
+                    VStack {
+                        ZStack {
+                            FrameView(image: capture)
+                                .navigationBarTitleDisplayMode(.inline)
+                            
+                        }
+                        .frame(width: cameraModel.imageDimension, height: cameraModel.imageDimension)
                         
-                    }
-                    .frame(width: cameraModel.imageDimension, height: cameraModel.imageDimension)
-                    
-                    
-                    Spacer()
-                    
-                    AlignmentGuideView(title1: "Does the image fit within the box?", title2: "Is the implant horizontally centered?")
-                        .frame(width: self.alignmentGuideWidth)
-                    
-                    RoundedButton(color: Color("TechGold"), labelText: "Submit Photo for Classification", buttonFunc: {
-//                        classificationModel.userImage = cameraModel.capturedImage
-                        classificationModel.classifyImplant(image: cameraModel.capturedImage!, completion: { error in
-                            if error == nil {
-                                switchViews.toggle()
-                            } else {
-                                print(error?.localizedDescription)
-                            }
+                        
+                        Spacer()
+                        
+                        AlignmentGuideView(title1: "Does the image fit within the box?", title2: "Is the implant horizontally centered?")
+                            .frame(width: self.alignmentGuideWidth)
+                        
+                        RoundedButton(color: Color("TechGold"), labelText: "Submit Photo for Classification", buttonFunc: {
+                            classificationModel.isLoading.toggle()
+                            switchViews.toggle()
                         })
-                    })
-                        .padding()
-                }
-                .toolbar {
-                    ToolbarItem(placement: .primaryAction) {
-                        InfoButtonView()
+                            .padding()
                     }
-                }
-                
-                
-                NavigationLink(destination:
-                                ResultsView()
-                                .navigationBarBackButtonHidden(true)
-                               , isActive: $switchViews) {
-                    EmptyView()
+                    .toolbar {
+                        ToolbarItem(placement: .primaryAction) {
+                            InfoButtonView()
+                        }
+                    }
+                    
+                    
+                    NavigationLink(destination:
+                                    ResultsView()
+                                    .navigationBarBackButtonHidden(true)
+                                   , isActive: $switchViews) {
+                        EmptyView()
+                    }
                 }
             }
+//            if classificationModel.isLoading {
+//                ZStack(alignment: .center) {
+//                    VStack {
+//                        Color.white.frame(width: 200, height: 200).cornerRadius(16)
+//                    }
+//                    VStack {
+//                        ProgressView("Loading...")
+//                            .tint(.accentColor)
+//                            .foregroundColor(.accentColor)
+//                    }
+//
+//                }
+//            }
+            
+            if let error = classificationModel.error {
+                ErrorView(error: error.localizedDescription)
+            }
+            
         }
     }
 }

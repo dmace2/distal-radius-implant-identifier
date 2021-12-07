@@ -21,6 +21,7 @@
 		F01E92CD27333E720074D5DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F01E92CC27333E720074D5DF /* Assets.xcassets */; };
 		F01E92D027333E720074D5DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F01E92CF27333E720074D5DF /* Preview Assets.xcassets */; };
 		F01E92F027333FF90074D5DF /* ArrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E92EF27333FF90074D5DF /* ArrowButton.swift */; };
+		F01F2273275FC28B009D8F81 /* AsyncImageBackport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01F2272275FC28B009D8F81 /* AsyncImageBackport.swift */; };
 		F0427C1927335A07008268F4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0427C1827335A07008268F4 /* HomeView.swift */; };
 		F0427C1E27335A58008268F4 /* TutorialPageContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0427C1D27335A58008268F4 /* TutorialPageContainerView.swift */; };
 		F0427C2027335AAD008268F4 /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0427C1F27335AAD008268F4 /* MotherView.swift */; };
@@ -39,9 +40,15 @@
 		F0734A00273352B300C090EA /* TutorialScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07349FF273352B300C090EA /* TutorialScreen2.swift */; };
 		F07D0FBB27431EA600554B20 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D0FBA27431EA600554B20 /* RoundedButton.swift */; };
 		F07D0FBD27431F5500554B20 /* AlignmentGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07D0FBC27431F5500554B20 /* AlignmentGuideView.swift */; };
+		F0A68231275FE05E00D9AF02 /* ClassificationResultsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A68230275FE05E00D9AF02 /* ClassificationResultsRowView.swift */; };
+		F0A68233275FE2A800D9AF02 /* DateFormatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A68232275FE2A800D9AF02 /* DateFormatExtension.swift */; };
 		F0A889AD275863E2007464F1 /* CompanyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A889AC275863E2007464F1 /* CompanyDetailView.swift */; };
 		F0A889C1275874D1007464F1 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = F0A889C0275874D1007464F1 /* BetterSafariView */; };
 		F0BE89BA27344B0100E553F7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BE89B927344B0100E553F7 /* Launch Screen.storyboard */; };
+		F0D3E702275AA52500CFC781 /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D3E701275AA52500CFC781 /* URLSessionExtension.swift */; };
+		F0D3E704275AA5DC00CFC781 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D3E703275AA5DC00CFC781 /* ErrorView.swift */; };
+		F0D3E706275AA6DE00CFC781 /* StringErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D3E705275AA6DE00CFC781 /* StringErrorExtension.swift */; };
+		F0D3E708275AAA4100CFC781 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D3E707275AAA4100CFC781 /* LoadingView.swift */; };
 		F0E5BD0C2733500B009DFD26 /* TutorialTitleAndSubheader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +70,7 @@
 		F01E92CC27333E720074D5DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F01E92CF27333E720074D5DF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F01E92EF27333FF90074D5DF /* ArrowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowButton.swift; sourceTree = "<group>"; };
+		F01F2272275FC28B009D8F81 /* AsyncImageBackport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageBackport.swift; sourceTree = "<group>"; };
 		F0427C1827335A07008268F4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F0427C1D27335A58008268F4 /* TutorialPageContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageContainerView.swift; sourceTree = "<group>"; };
 		F0427C1F27335AAD008268F4 /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
@@ -81,8 +89,14 @@
 		F07349FF273352B300C090EA /* TutorialScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreen2.swift; sourceTree = "<group>"; };
 		F07D0FBA27431EA600554B20 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		F07D0FBC27431F5500554B20 /* AlignmentGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentGuideView.swift; sourceTree = "<group>"; };
+		F0A68230275FE05E00D9AF02 /* ClassificationResultsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationResultsRowView.swift; sourceTree = "<group>"; };
+		F0A68232275FE2A800D9AF02 /* DateFormatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatExtension.swift; sourceTree = "<group>"; };
 		F0A889AC275863E2007464F1 /* CompanyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailView.swift; sourceTree = "<group>"; };
 		F0BE89B927344B0100E553F7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		F0D3E701275AA52500CFC781 /* URLSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
+		F0D3E703275AA5DC00CFC781 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		F0D3E705275AA6DE00CFC781 /* StringErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringErrorExtension.swift; sourceTree = "<group>"; };
+		F0D3E707275AAA4100CFC781 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTitleAndSubheader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,6 +187,9 @@
 				256134F62742D8ED00C4C9B8 /* CGImageExtension.swift */,
 				F005020D2757EAC6000B4F1C /* RootNavigationPop.swift */,
 				F05A67FB2758031B008C6E4B /* RandomString.swift */,
+				F0D3E701275AA52500CFC781 /* URLSessionExtension.swift */,
+				F0D3E705275AA6DE00CFC781 /* StringErrorExtension.swift */,
+				F0A68232275FE2A800D9AF02 /* DateFormatExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -241,6 +258,9 @@
 				F00768E52758465600CFB8B3 /* Buttons */,
 				F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */,
 				F07D0FBC27431F5500554B20 /* AlignmentGuideView.swift */,
+				F0D3E703275AA5DC00CFC781 /* ErrorView.swift */,
+				F0D3E707275AAA4100CFC781 /* LoadingView.swift */,
+				F01F2272275FC28B009D8F81 /* AsyncImageBackport.swift */,
 			);
 			path = CustomUIComponents;
 			sourceTree = "<group>";
@@ -250,6 +270,7 @@
 			children = (
 				F0427C1827335A07008268F4 /* HomeView.swift */,
 				F051C267275815C400859E77 /* ClassificationModel.swift */,
+				F0A68230275FE05E00D9AF02 /* ClassificationResultsRowView.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -340,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0427C1927335A07008268F4 /* HomeView.swift in Sources */,
+				F01F2273275FC28B009D8F81 /* AsyncImageBackport.swift in Sources */,
 				F005020E2757EAC6000B4F1C /* RootNavigationPop.swift in Sources */,
 				F07D0FBB27431EA600554B20 /* RoundedButton.swift in Sources */,
 				F07D0FBD27431F5500554B20 /* AlignmentGuideView.swift in Sources */,
@@ -350,19 +372,24 @@
 				F05A67F82757F489008C6E4B /* ResultsImageView.swift in Sources */,
 				F01E92C927333E720074D5DF /* DistalRadiusIdentifierApp.swift in Sources */,
 				F00502082757E196000B4F1C /* ResultsView.swift in Sources */,
+				F0D3E706275AA6DE00CFC781 /* StringErrorExtension.swift in Sources */,
 				F005020A2757E20D000B4F1C /* ResultsItem.swift in Sources */,
 				F0508B072733545300EEEFE4 /* TutorialScreen5.swift in Sources */,
 				F01E92F027333FF90074D5DF /* ArrowButton.swift in Sources */,
 				F07349FA2733522D00C090EA /* TutorialScreen1.swift in Sources */,
 				F0427C1E27335A58008268F4 /* TutorialPageContainerView.swift in Sources */,
+				F0D3E708275AAA4100CFC781 /* LoadingView.swift in Sources */,
 				F05A67FC2758031B008C6E4B /* RandomString.swift in Sources */,
+				F0A68233275FE2A800D9AF02 /* DateFormatExtension.swift in Sources */,
 				256134F32742D7E900C4C9B8 /* CameraManager.swift in Sources */,
 				F0E5BD0C2733500B009DFD26 /* TutorialTitleAndSubheader.swift in Sources */,
 				F0427C2227335B57008268F4 /* ViewRouter.swift in Sources */,
 				F051C268275815C400859E77 /* ClassificationModel.swift in Sources */,
+				F0D3E704275AA5DC00CFC781 /* ErrorView.swift in Sources */,
 				F067B2D927430F6A00601169 /* VerifyImageView.swift in Sources */,
 				256134F92742D96200C4C9B8 /* FrameManager.swift in Sources */,
 				F0A889AD275863E2007464F1 /* CompanyDetailView.swift in Sources */,
+				F0A68231275FE05E00D9AF02 /* ClassificationResultsRowView.swift in Sources */,
 				F05A67FA2758002A008C6E4B /* FullScreenImageView.swift in Sources */,
 				256134F72742D8ED00C4C9B8 /* CGImageExtension.swift in Sources */,
 				256134F52742D8E400C4C9B8 /* CameraError.swift in Sources */,
@@ -371,6 +398,7 @@
 				F05E74E62733532F00727492 /* TutorialScreen3.swift in Sources */,
 				F067B2DB274313CE00601169 /* TakePhotoView.swift in Sources */,
 				F05E74E82733536A00727492 /* TutorialScreen4.swift in Sources */,
+				F0D3E702275AA52500CFC781 /* URLSessionExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

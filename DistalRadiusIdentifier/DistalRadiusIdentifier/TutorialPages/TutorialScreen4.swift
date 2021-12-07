@@ -34,11 +34,11 @@ struct TutorialScreen4: View {
                 List(1..<15){ row in
                     HStack {
                         if row == 1 {
-                            ResultsItemView(ResultsItem(id: String.random(), company: "Synthes", percentage: 90.41))
+                            ResultsItemView(ResultsItem(company: "Synthes", percentage: 90.41))
                         } else if row == 2 {
-                            ResultsItemView(ResultsItem(id: String.random(), company: "Acumed", percentage: 8.59))
+                            ResultsItemView(ResultsItem(company: "Acumed", percentage: 8.59))
                         } else {
-                            ResultsItemView(ResultsItem(id: String.random(), company: "Company", percentage: 0.99))
+                            ResultsItemView(ResultsItem(company: "Company", percentage: 0.99))
                         }
                     }
                 }

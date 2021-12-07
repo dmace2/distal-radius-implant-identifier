@@ -23,25 +23,36 @@ struct ResultsItemView: View {
     }
     
     
-    
+    @ViewBuilder
     var body: some View {
         
         
-        
-        
-        if #available(iOS 15.0, *) {
-            Text(item.company).badge(Text(percentString))
-        } else {
-            // Fallback on earlier versions
+//
+//        if #available(iOS 15, *) {
+//            AnyView(HStack {
+//                Text(item.company).badge(Text(percentString))
+//                Image(systemName: "chevron.right").foregroundColor(.secondary)
+//            })
+//        } else {
+//            // Fallback on earlier versions
+//            HStack {
+//                Text(item.company)
+//                Spacer()
+//                Text(percentString).fontWeight(.bold)
+//                Image(systemName: "chevron.right").foregroundColor(.secondary)
+//            }
+//        }
+        HStack {
             Text(item.company)
             Spacer()
             Text(percentString).fontWeight(.bold)
+            Image(systemName: "chevron.right").foregroundColor(.secondary)
         }
     }
 }
 
 struct ResultsItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultsItemView(ResultsItem(id: String.random(), company: "Synthes", percentage: 95.91))
+        ResultsItemView(ResultsItem(company: "Synthes", percentage: 95.91))
     }
 }

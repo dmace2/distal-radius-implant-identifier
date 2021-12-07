@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct ResultsItem: Codable, Identifiable {
-    let id: String
+struct ResultsItem: Codable {
+//    let id: String
     let company: String
     let percentage: Float
 }

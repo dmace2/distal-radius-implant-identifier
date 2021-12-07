@@ -10,6 +10,8 @@ import BetterSafariView
 
 struct CompanyDetailView: View {
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var classificationModel: ClassificationModel
+    
     @State var presentingSafariView = false
     var companyName: String
     
@@ -20,10 +22,14 @@ struct CompanyDetailView: View {
                     HStack {
                         Spacer()
                         VStack {
-                            Image("Example\(companyName)Image")
-                                .resizable()
-                                .aspectRatio(1, contentMode: .fit)
-                                .frame(width: geo.size.width / 2)
+                            AsyncImage(url: classificationModel.getClassificationImageURL(company: companyName)) { image in
+                                image.resizable()
+                                    .aspectRatio(1, contentMode: .fit)
+                                    .frame(width: geo.size.width / 2)
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            
                             Text(companyName)
                                 .font(.largeTitle).foregroundColor(Color("TechBlue"))
                                 .bold()
@@ -43,13 +49,14 @@ struct CompanyDetailView: View {
                 .listStyle(.sidebar)
                 
                 Spacer()
-                RoundedButton(color: Color("TechBlue"), labelText: "View Company Manual", buttonFunc: {
+                
+                RoundedButton(color: Color("TechBlue"), labelText: "View Technique Guide", buttonFunc: {
                     self.presentingSafariView.toggle()
                 })
                     .padding()
                     .sheet(isPresented: $presentingSafariView) {
                         SafariView(
-                            url: URL(string: "https://google.com")!,
+                            url: classificationModel.getCompanyTechnigueGuideURL(company: companyName),
                             configuration: SafariView.Configuration(
                                 entersReaderIfAvailable: false,
                                 barCollapsingEnabled: true

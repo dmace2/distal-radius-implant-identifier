@@ -18,12 +18,13 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            List(classificationModel.classifications) { row in
-                NavigationLink(destination: ResultsView(classification: row)) {
-                    Text(row.id)
+            List {
+                ForEach(classificationModel.classifications){ row in
+                    NavigationLink(destination: ResultsView(classification: row)) {
+                        ClassificationResultsRowView(row)
+                    }
                 }
-                .padding()
-                
+                .onDelete(perform: removeRows)
             }
             
             Spacer()
@@ -50,6 +51,12 @@ struct HomeView: View {
             }
         }
     }
+    
+    func removeRows(at offsets: IndexSet) {
+        classificationModel.classifications.remove(atOffsets: offsets)
+    }
+    
+    
 }
 
 //struct HomeView_Previews: PreviewProvider {
