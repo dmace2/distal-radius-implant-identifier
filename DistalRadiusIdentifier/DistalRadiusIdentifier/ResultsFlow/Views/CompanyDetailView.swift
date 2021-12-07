@@ -31,7 +31,7 @@ struct CompanyDetailView: View {
                             }
                             
                             Text(companyName)
-                                .font(.largeTitle).foregroundColor(Color("TechBlue"))
+                                .font(.largeTitle).foregroundColor(.accentColor)
                                 .bold()
                         }
                         Spacer()
@@ -50,7 +50,7 @@ struct CompanyDetailView: View {
                 
                 Spacer()
                 
-                RoundedButton(color: Color("TechBlue"), labelText: "View Technique Guide", buttonFunc: {
+                RoundedButton(color: .accentColor, labelText: "View Technique Guide", buttonFunc: {
                     self.presentingSafariView.toggle()
                 })
                     .padding()

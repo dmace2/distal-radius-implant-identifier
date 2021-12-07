@@ -10,7 +10,9 @@ import SwiftUI
 struct ClassificationResultsRowView: View {
     var classification: Classification
     var dateString: String
+    @State var tapped = false
     
+    var image: Image
     
     init(_ row: Classification) {
         self.classification = row
@@ -22,6 +24,7 @@ struct ClassificationResultsRowView: View {
 
         // Convert Date to String
         dateString = dateFormatter.string(from: row.date) // September 9, 2020 at 12:24 PM
+        image = Image(classification.image, scale: 1.0, label: Text(""))
         
     }
     
@@ -32,10 +35,16 @@ struct ClassificationResultsRowView: View {
     var body: some View {
         HStack {
             VStack(alignment:.leading) {
-                Image(classification.image, scale: 1.0, label: Text(""))
+                image
                     .resizable()
                     .aspectRatio(1, contentMode: .fit)
                     .frame(width: 150, height: 150, alignment: .center)
+                    .onTapGesture {
+                        tapped.toggle()
+                    }
+                    .fullScreenCover(isPresented: $tapped) {
+                        FullScreenImageView(image: image)
+                    }
                 Text(dateString).font(.footnote).bold().foregroundColor(.accentColor)
             }
             Spacer()

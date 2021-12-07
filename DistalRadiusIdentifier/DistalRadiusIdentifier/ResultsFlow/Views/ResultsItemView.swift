@@ -10,6 +10,7 @@ import SwiftUI
 struct ResultsItemView: View {
     var item: ResultsItem
     var percentString: String
+    var color: Color = .accentColor
     
     
     init(_ item: ResultsItem) {
@@ -22,30 +23,21 @@ struct ResultsItemView: View {
         }
     }
     
+    init(_ item: ResultsItem, color: Color) {
+        self.init(item)
+        self.color = color
+    }
+    
+    
+    
     
     @ViewBuilder
     var body: some View {
         
-        
-//
-//        if #available(iOS 15, *) {
-//            AnyView(HStack {
-//                Text(item.company).badge(Text(percentString))
-//                Image(systemName: "chevron.right").foregroundColor(.secondary)
-//            })
-//        } else {
-//            // Fallback on earlier versions
-//            HStack {
-//                Text(item.company)
-//                Spacer()
-//                Text(percentString).fontWeight(.bold)
-//                Image(systemName: "chevron.right").foregroundColor(.secondary)
-//            }
-//        }
         HStack {
             Text(item.company)
             Spacer()
-            Text(percentString).fontWeight(.bold)
+            Text(percentString).fontWeight(.bold).foregroundColor(color)
             Image(systemName: "chevron.right").foregroundColor(.secondary)
         }
     }

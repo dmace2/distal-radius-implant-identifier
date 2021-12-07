@@ -39,7 +39,7 @@ struct ArrowButton: View {
                 .padding()
             })
             .foregroundColor(Color(UIColor.systemBackground)) // set text as white/black based on background color
-            .background(Color("TechBlue")) // button is blue
+            .background(Color("AccentLight")) // button is blue
             .cornerRadius(20) // round corners
             
         }

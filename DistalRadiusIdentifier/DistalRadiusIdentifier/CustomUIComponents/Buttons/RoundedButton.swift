@@ -12,7 +12,7 @@ import SwiftUI
  It uses rounded corner blue button on iOS/iPadOS devices, but the standard macOS buttons on Macs.
  */
 struct RoundedButton: View {
-    var color: Color
+    @State var color: Color = Color("AccentLight")
     var labelText: String // text for button
     var buttonFunc: () -> Void // take in a function as a parameter, which is defined when you create component instance
     

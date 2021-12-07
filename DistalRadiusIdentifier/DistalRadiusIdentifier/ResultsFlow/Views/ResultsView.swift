@@ -28,7 +28,7 @@ struct ResultsView: View {
                     Spacer()
                     Text(classification?.results[0].company ?? "Result")
                         .font(.system(size: 50).weight(.bold))
-                        .foregroundColor(Color("TechBlue"))
+                        .foregroundColor(Color("AccentLight"))
                     Spacer()
                 }
 
@@ -51,7 +51,7 @@ struct ResultsView: View {
                         ResultsImageView(image: userImage, caption: "Your Image")
                             .redacted(reason: classificationModel.isLoading ? .placeholder : [])
 
-                        ResultsImageView(url: classificationModel.getClassificationImageURL(company: classification?.results[0].company ?? ""),
+                        ResultsImageView(image: nil, url: classificationModel.getClassificationImageURL(company: classification?.results[0].company ?? ""),
                                          caption: (classification?.results[0].company ?? "Example") + " Image")
                             .redacted(reason: classificationModel.isLoading ? .placeholder : [])
                     }
@@ -59,7 +59,7 @@ struct ResultsView: View {
 
                 Section(header: Text("Full Breakdown")) {
                     ForEach(Array(classification?.results.enumerated() ?? classificationModel.simulateResults().enumerated()), id: \.1.company) { (idx, row) in
-                        ResultsItemView(row)
+                        ResultsItemView(row, color: Color("AccentLight"))
                             .padding(5)
                             .onTapGesture {
                                 self.rowTapped = idx
@@ -71,11 +71,11 @@ struct ResultsView: View {
             }
             .listStyle(.sidebar)
 //
-            if UIDevice.current.userInterfaceIdiom == .phone {
-                RoundedButton(color: Color("TechBlue"), labelText: "Done", buttonFunc: {
+            if UIDevice.current.userInterfaceIdiom == .phone  {
+                RoundedButton(color: .accentColor, labelText: "Done", buttonFunc: {
                     NavigationUtil.popToRootView()
                 })
-                    .unredacted()
+                    .disabled(classificationModel.isLoading)
                     .padding()
             }
         }

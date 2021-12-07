@@ -51,7 +51,7 @@ struct VerifyImageView: View {
                         AlignmentGuideView(title1: "Does the image fit within the box?", title2: "Is the implant horizontally centered?")
                             .frame(width: self.alignmentGuideWidth)
                         
-                        RoundedButton(color: Color("TechGold"), labelText: "Submit Photo for Classification", buttonFunc: {
+                        RoundedButton(color: .accentColor, labelText: "Submit Photo for Classification", buttonFunc: {
                             classificationModel.isLoading.toggle()
                             switchViews.toggle()
                         })

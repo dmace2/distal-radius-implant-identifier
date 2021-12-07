@@ -30,7 +30,7 @@ struct HomeView: View {
             Spacer()
             if UIDevice.current.userInterfaceIdiom == .phone {
                 NavigationLink(destination: TakePhotoView().navigationTitle("Take Implant Photo"), isActive: $isActive) {
-                    RoundedButton(color: Color("TechBlue"), labelText: "Classify Implant", buttonFunc: {
+                    RoundedButton(color: .accentColor, labelText: "Classify Implant", buttonFunc: {
                         self.isActive.toggle()
                     })
                         .padding()
@@ -38,7 +38,7 @@ struct HomeView: View {
                 .isDetailLink(false)
             } else {
                 NavigationLink(destination: TakePhotoView().navigationTitle("Take Implant Photo"), isActive: $isActive) {
-                    RoundedButton(color: Color("TechBlue"), labelText: "Classify Implant", buttonFunc: {
+                    RoundedButton(color: .accentColor, labelText: "Classify Implant", buttonFunc: {
                         self.isActive.toggle()
                     })
                         .padding()
