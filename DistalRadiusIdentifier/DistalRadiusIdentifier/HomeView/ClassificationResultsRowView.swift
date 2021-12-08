@@ -45,11 +45,11 @@ struct ClassificationResultsRowView: View {
                     .fullScreenCover(isPresented: $tapped) {
                         FullScreenImageView(image: image)
                     }
-                Text(dateString).font(.footnote).bold().foregroundColor(.accentColor)
+                Text(dateString).font(.footnote).bold().foregroundColor(Color("AccentLight"))
             }
             Spacer()
             VStack(alignment: .trailing) {
-                Text(classification.results[0].company).font(.title).bold().foregroundColor(.accentColor)
+                Text(classification.results[0].company).font(.title).bold().foregroundColor(Color("AccentLight"))
                 Text(String(format: "%.2f", classification.results[0].percentage) + "%").font(.title3).bold().foregroundColor(.secondary)
             }
         }

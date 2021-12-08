@@ -19,12 +19,12 @@ struct TutorialScreen4: View {
                     .frame(width: geo.size.width / 3)
                 
                 
-                Text("90.01%")
+                Text("Synthes")
                     .multilineTextAlignment(.center)
                     .font(.system(size: 70).weight(.bold))
-                    .foregroundColor(Color("AccentLight"))
+                    .foregroundColor(.accentColor)
                 
-                Text("Synthes")
+                Text("90.01%")
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color(UIColor.secondaryLabel))
                     .font(.system(size: 40))

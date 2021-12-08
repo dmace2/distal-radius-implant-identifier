@@ -19,7 +19,7 @@ struct AlignmentGuideView: View {
                 HStack {
                     Image("ViewFinder")
                         .resizable()
-                        .foregroundColor(.blue)
+                        .foregroundColor(.accentColor)
                         .frame(width: geo.size.width / 10, height: geo.size.width / 10, alignment: .leading)
                     VStack(alignment: .leading) {
                         Text(title1).font(.headline)

@@ -40,8 +40,11 @@ struct ResultsImageView: View {
                             FullScreenImageView(image: image)
                         }
                 } placeholder: {
-                    ProgressView()
-                            .aspectRatio(1, contentMode: .fit)
+                    ZStack {
+                        Color.clear.ignoresSafeArea()
+                        ProgressView()
+                                //.aspectRatio(1, contentMode: .fit)
+                    }
                 }
             }
             
