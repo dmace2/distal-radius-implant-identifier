@@ -15,45 +15,52 @@ struct AlignmentGuideView: View {
     
     var body: some View {
         GeometryReader { geo in
-            VStack {
-                HStack {
+            VStack(alignment: .leading) {
+                HStack(alignment: .center) {
                     Image("ViewFinder")
                         .resizable()
                         .foregroundColor(.accentColor)
                         .frame(width: geo.size.width / 10, height: geo.size.width / 10, alignment: .leading)
+                        .padding(.horizontal)
+                    
                     VStack(alignment: .leading) {
                         Text(title1).font(.headline)
-                        if let subtitle1 = subtitle1 {
-                            Text(subtitle1)
+                        if let subtitle2 = subtitle1 {
+                            Text(subtitle2)
                         }
-                        
                     }
-                    .frame(width: geo.size.width * 0.6)
                 }
-                .padding()
-                HStack {
+                .padding(.bottom, 10)
+                
+                HStack(alignment: .center) {
                     VStack {
                         Rectangle()
                             .fill(Color(.displayP3, red: 1, green: 0, blue: 0, opacity: 0.7))
                             .frame(width: geo.size.width / 50, height: geo.size.width / 10, alignment: .center)
                     }
-                    .frame(width: geo.size.width / 10, height: geo.size.width / 10, alignment: .center)
+                    .frame(width: geo.size.width / 10)
+                    .padding(.horizontal)
+                    
                     VStack(alignment: .leading) {
                         Text(title2).font(.headline)
                         if let subtitle2 = subtitle2 {
                             Text(subtitle2)
                         }
                     }
-                    .frame(width: geo.size.width * 0.6)
                 }
+                
             }
             .position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY)
         }
     }
 }
 
-//struct AlignmentGuide_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AlignmentGuideView()
-//    }
-//}
+struct AlignmentGuide_Previews: PreviewProvider {
+    static var previews: some View {
+        AlignmentGuideView(title1: "Get Close",
+                           subtitle1: "Fit plate closely within bounds",
+                           title2: "Line Up",
+                           subtitle2: "Center plate along red line"
+        )
+    }
+}

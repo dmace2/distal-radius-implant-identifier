@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ResultsImageView: View {
+struct ExpandingImageView: View {
     var image: Image?
     var url: URL?
     var caption: String
@@ -54,6 +54,6 @@ struct ResultsImageView: View {
 
 struct ResultsImageView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultsImageView(image: Image("SampleXRay"), caption: "Test")
+        ExpandingImageView(image: Image("SampleXRay"), caption: "Test")
     }
 }

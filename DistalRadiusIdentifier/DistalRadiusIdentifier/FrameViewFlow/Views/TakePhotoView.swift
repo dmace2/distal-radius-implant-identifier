@@ -72,8 +72,8 @@ struct TakePhotoView: View {
                 }
                 
                 RoundedButton(color: .accentColor, labelText: "Take Photo", buttonFunc: {
-                    cameraModel.cameraManager.session.stopRunning()
                     cameraModel.capturedImage = cameraModel.frame?.cropping(to: CGRect(x: 0, y: cameraModel.frame!.height / 2 - cameraModel.frame!.width / 2, width: cameraModel.frame!.width, height: cameraModel.frame!.width))
+                    cameraModel.cameraManager.session.stopRunning()
                     switchViews.toggle()
                 })
                     .padding()

@@ -18,25 +18,26 @@ struct CompanyDetailView: View {
     var body: some View {
         GeometryReader{ geo in
             VStack {
-                List {
-                    HStack {
-                        Spacer()
-                        VStack {
-                            AsyncImage(url: classificationModel.getClassificationImageURL(company: companyName)) { image in
-                                image.resizable()
-                                    .aspectRatio(1, contentMode: .fit)
-                                    .frame(width: geo.size.width / 2)
-                            } placeholder: {
-                                ProgressView()
-                            }
-                            
-                            Text(companyName)
-                                .font(.largeTitle).foregroundColor(Color("AccentLight"))
-                                .bold()
+                HStack {
+                    Spacer()
+                    VStack {
+                        Text(companyName)
+                            .font(.largeTitle).foregroundColor(Color("AccentLight"))
+                            .bold()
+                        
+                        AsyncImage(url: classificationModel.getClassificationImageURL(company: companyName)) { image in
+                            image.resizable()
+                                .aspectRatio(1, contentMode: .fit)
+                                .frame(width: geo.size.width / 2)
+                        } placeholder: {
+                            ProgressView()
                         }
-                        Spacer()
                     }
-                    
+                    Spacer()
+                }
+                .padding(.bottom)
+                
+                List {
                     Section {
                         Text("Tool 1")
                         Text("Tool 2")
@@ -58,7 +59,7 @@ struct CompanyDetailView: View {
                         SafariView(
                             url: classificationModel.getCompanyTechnigueGuideURL(company: companyName),
                             configuration: SafariView.Configuration(
-                                entersReaderIfAvailable: false,
+                                entersReaderIfAvailable: true,
                                 barCollapsingEnabled: true
                             )
                         )

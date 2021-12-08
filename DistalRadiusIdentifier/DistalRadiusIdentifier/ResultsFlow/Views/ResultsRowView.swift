@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ResultsItemView: View {
+struct ResultsRowView: View {
     var item: ResultsItem
     var percentString: String
     var color: Color = .accentColor
@@ -45,6 +45,6 @@ struct ResultsItemView: View {
 
 struct ResultsItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultsItemView(ResultsItem(company: "Synthes", percentage: 95.91))
+        ResultsRowView(ResultsItem(company: "Synthes", percentage: 95.91))
     }
 }

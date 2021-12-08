@@ -48,10 +48,10 @@ struct ResultsView: View {
             List {
                 Section(header: Text("Images")) {
                     HStack(alignment: .center) {
-                        ResultsImageView(image: userImage, caption: "Your Image")
+                        ExpandingImageView(image: userImage, caption: "Your Image")
                             .redacted(reason: classificationModel.isLoading ? .placeholder : [])
 
-                        ResultsImageView(image: nil, url: classificationModel.getClassificationImageURL(company: classification?.results[0].company ?? ""),
+                        ExpandingImageView(image: nil, url: classificationModel.getClassificationImageURL(company: classification?.results[0].company ?? ""),
                                          caption: (classification?.results[0].company ?? "Example") + " Image")
                             .redacted(reason: classificationModel.isLoading ? .placeholder : [])
                     }
@@ -59,11 +59,13 @@ struct ResultsView: View {
 
                 Section(header: Text("Full Breakdown")) {
                     ForEach(Array(classification?.results.enumerated() ?? classificationModel.simulateResults().enumerated()), id: \.1.company) { (idx, row) in
-                        ResultsItemView(row, color: Color("AccentLight"))
+                        ResultsRowView(row, color: Color("AccentLight"))
                             .padding(5)
                             .onTapGesture {
-                                self.rowTapped = idx
-                                self.isPresented.toggle()
+                                if !classificationModel.isLoading {
+                                    self.rowTapped = idx
+                                    self.isPresented.toggle()
+                                }
                             }
                     }
 

@@ -15,7 +15,7 @@
 		256134FB2742D9A200C4C9B8 /* CameraFrameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134FA2742D9A200C4C9B8 /* CameraFrameViewModel.swift */; };
 		F00502082757E196000B4F1C /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00502072757E196000B4F1C /* ResultsView.swift */; };
 		F005020A2757E20D000B4F1C /* ResultsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00502092757E20D000B4F1C /* ResultsItem.swift */; };
-		F005020C2757E25D000B4F1C /* ResultsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005020B2757E25D000B4F1C /* ResultsItemView.swift */; };
+		F005020C2757E25D000B4F1C /* ResultsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005020B2757E25D000B4F1C /* ResultsRowView.swift */; };
 		F005020E2757EAC6000B4F1C /* RootNavigationPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005020D2757EAC6000B4F1C /* RootNavigationPop.swift */; };
 		F01E92C927333E720074D5DF /* DistalRadiusIdentifierApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E92C827333E720074D5DF /* DistalRadiusIdentifierApp.swift */; };
 		F01E92CD27333E720074D5DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F01E92CC27333E720074D5DF /* Assets.xcassets */; };
@@ -64,7 +64,7 @@
 		F00417CB2733422400C5630A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F00502072757E196000B4F1C /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		F00502092757E20D000B4F1C /* ResultsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsItem.swift; sourceTree = "<group>"; };
-		F005020B2757E25D000B4F1C /* ResultsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsItemView.swift; sourceTree = "<group>"; };
+		F005020B2757E25D000B4F1C /* ResultsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsRowView.swift; sourceTree = "<group>"; };
 		F005020D2757EAC6000B4F1C /* RootNavigationPop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationPop.swift; sourceTree = "<group>"; };
 		F01E92C527333E720074D5DF /* DistalRadiusIdentifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DistalRadiusIdentifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F01E92C827333E720074D5DF /* DistalRadiusIdentifierApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistalRadiusIdentifierApp.swift; sourceTree = "<group>"; };
@@ -157,9 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				F00502072757E196000B4F1C /* ResultsView.swift */,
-				F005020B2757E25D000B4F1C /* ResultsItemView.swift */,
-				F05A67F72757F489008C6E4B /* ResultsImageView.swift */,
-				F05A67F92758002A008C6E4B /* FullScreenImageView.swift */,
+				F005020B2757E25D000B4F1C /* ResultsRowView.swift */,
 				F0A889AC275863E2007464F1 /* CompanyDetailView.swift */,
 			);
 			path = Views;
@@ -257,6 +255,7 @@
 		F01E92EE27333FEE0074D5DF /* CustomUIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				F071472927614A7E00E579F2 /* FullScreenImageView */,
 				F00768E52758465600CFB8B3 /* Buttons */,
 				F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */,
 				F07D0FBC27431F5500554B20 /* AlignmentGuideView.swift */,
@@ -284,6 +283,15 @@
 				F0427C2127335B57008268F4 /* ViewRouter.swift */,
 			);
 			path = OnboardingViewRouter;
+			sourceTree = "<group>";
+		};
+		F071472927614A7E00E579F2 /* FullScreenImageView */ = {
+			isa = PBXGroup;
+			children = (
+				F05A67F72757F489008C6E4B /* ResultsImageView.swift */,
+				F05A67F92758002A008C6E4B /* FullScreenImageView.swift */,
+			);
+			path = FullScreenImageView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,7 +379,7 @@
 				F0570A762749A10A00BB984D /* InfoButtonView.swift in Sources */,
 				F0427C2027335AAD008268F4 /* MotherView.swift in Sources */,
 				256134F12742D6BC00C4C9B8 /* FrameView.swift in Sources */,
-				F005020C2757E25D000B4F1C /* ResultsItemView.swift in Sources */,
+				F005020C2757E25D000B4F1C /* ResultsRowView.swift in Sources */,
 				F05A67F82757F489008C6E4B /* ResultsImageView.swift in Sources */,
 				F01E92C927333E720074D5DF /* DistalRadiusIdentifierApp.swift in Sources */,
 				F00502082757E196000B4F1C /* ResultsView.swift in Sources */,
