@@ -2,12 +2,17 @@ from fastapi import FastAPI, File, UploadFile, HTTPException
 from pydantic import BaseModel
 from fastapi.responses import JSONResponse
 from typing import Optional, List
+import datetime
 
-from fastapi.responses import RedirectResponse
+from fastapi.responses import RedirectResponse, FileResponse
 import uvicorn
 from PIL import Image
 import sys
 import io
+import os
+
+from models import Classification, ResultsItem
+import models
 
 app = FastAPI()
 
@@ -16,24 +21,9 @@ app = FastAPI()
 async def root():
     return RedirectResponse(url='/docs')
 
-
-
-
-class PredictionItem(BaseModel):
-    company: str
-    confidence: float
-
-class PredictionResults(BaseModel):
-    timestamp: str
-    filename: str
-    contenttype: str
-    predictions: List[PredictionItem]
-
     
-
-
-@app.post("/predict")
-async def predict(file: UploadFile = File(...), response_model=PredictionResults):
+@app.post("/predict", response_model=Classification)
+async def predict(file: UploadFile = File(...)):
     # taken from https://github.com/jabertuhin/image-classification-api
     if file.content_type.startswith('image/') is False:
         raise HTTPException(
@@ -43,7 +33,14 @@ async def predict(file: UploadFile = File(...), response_model=PredictionResults
         contents = await file.read()
         image = Image.open(io.BytesIO(contents)).convert('RGB')
         width, height = image.size
-        return f"Got {width}x{height} image, prediction to come..."
+        print(f"Got {width}x{height} image, prediction to come...")
+
+        predictions = models.simulateResults()
+        return predictions
+
+
+
+
         
         # predictions = image_classifier.predict(image)
         # sorted_predictions = predictions.sort(key=lambda x: x[1], reverse=True)
@@ -64,5 +61,17 @@ async def predict(file: UploadFile = File(...), response_model=PredictionResults
         e = sys.exc_info()[1]
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/companyExamples/{company}")
+async def getCompanyExampleImage(company: str):
+    company = company.lower()
+    return FileResponse("Logo.png")
+
+
+
+
+
+
+
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=1714)
+    uvicorn.run(app,host='0.0.0.0', port=os.getenv('port', default=33507))
+

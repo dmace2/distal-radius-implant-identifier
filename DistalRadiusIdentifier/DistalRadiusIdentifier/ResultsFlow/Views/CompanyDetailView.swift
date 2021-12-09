@@ -59,7 +59,7 @@ struct CompanyDetailView: View {
                         SafariView(
                             url: classificationModel.getCompanyTechnigueGuideURL(company: companyName),
                             configuration: SafariView.Configuration(
-                                entersReaderIfAvailable: true,
+                                entersReaderIfAvailable: false,
                                 barCollapsingEnabled: true
                             )
                         )

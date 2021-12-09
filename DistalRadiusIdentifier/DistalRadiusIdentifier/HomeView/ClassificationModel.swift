@@ -11,8 +11,11 @@ import UIKit
 struct Classification: Identifiable {
     var id = NSUUID().uuidString
     var results: [ResultsItem]
+    var predictedCompany: String
+    var predictionConfidence: Float
     var image: CGImage
     var date: Date
+    
     
 }
 
@@ -47,7 +50,9 @@ class ClassificationModel: ObservableObject {
         do {
             try await Task.sleep(nanoseconds: 2000000000) // wait 2 seconds
             let results = simulateResults()
-            classification = Classification(results: results, image: image, date: Date())
+            classification = Classification(results: results, predictedCompany: results[0].company,
+                                            predictionConfidence: results[0].percentage, image: image, date: Date())
+            //Classification(results: results, image: image, date: Date())
             classifications.append(classification!)
             //                throw "Test Error"
         }
@@ -61,11 +66,11 @@ class ClassificationModel: ObservableObject {
     }
     
     func getClassificationImageURL(company: String) -> URL {
-        return URL(string: "https://media.wired.com/photos/5b899992404e112d2df1e94e/master/pass/trash2-01.jpg")!
+        return URL(string: "http://172.20.10.7:33507/companyExamples/\(company)")!
     }
     
     func getCompanyTechnigueGuideURL(company: String) -> URL {
-        return URL(string: "https://www.google.com/search?q=\(company)")!
+        return URL(string: "http://www.google.com/search?q=\(company)")!
     }
     
     
