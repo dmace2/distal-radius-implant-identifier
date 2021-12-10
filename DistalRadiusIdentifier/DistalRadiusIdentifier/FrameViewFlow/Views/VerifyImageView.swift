@@ -52,6 +52,7 @@ struct VerifyImageView: View {
                             .frame(width: self.alignmentGuideWidth)
                         
                         RoundedButton(color: .accentColor, labelText: "Submit Photo for Classification", buttonFunc: {
+                            classificationModel.error = nil
                             classificationModel.isLoading.toggle()
                             switchViews.toggle()
                         })
@@ -72,24 +73,6 @@ struct VerifyImageView: View {
                     }
                 }
             }
-//            if classificationModel.isLoading {
-//                ZStack(alignment: .center) {
-//                    VStack {
-//                        Color.white.frame(width: 200, height: 200).cornerRadius(16)
-//                    }
-//                    VStack {
-//                        ProgressView("Loading...")
-//                            .tint(.accentColor)
-//                            .foregroundColor(.accentColor)
-//                    }
-//
-//                }
-//            }
-            
-            if let error = classificationModel.error {
-                ErrorView(error: error.localizedDescription)
-            }
-            
         }
     }
 }
