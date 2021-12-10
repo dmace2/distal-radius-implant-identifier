@@ -99,17 +99,18 @@ struct ResultsView: View {
 
             .sheet(isPresented: $isPresented) {
                 NavigationView{
-                    CompanyDetailView(companyName: classification?.results[rowTapped].company ?? "Company")
-                        .navigationBarTitle("Company Details")
-                        .navigationBarTitleDisplayMode(.inline)
+                    CompanyDetailView(detailModel: CompanyDetailViewModel(companyName: classification?.results[rowTapped].company ?? "Company"))
+                        //.environmentObject(CompanyDetailViewModel(companyName: classification?.results[rowTapped].company ?? "Company"))
                 }
             }
 
             if let error = classificationModel.error {
-                ErrorView(error: error.localizedDescription, f: {
-                    NavigationUtil.popToRootView()
-                })
-                    .unredacted()
+                withAnimation {
+                    ErrorView(error: error.localizedDescription, f: {
+                        NavigationUtil.popToRootView()
+                    })
+                        .unredacted()
+                }
             }
         }
 

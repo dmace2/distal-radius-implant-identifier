@@ -10,64 +10,65 @@ import BetterSafariView
 
 struct CompanyDetailView: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var classificationModel: ClassificationModel
-    
+    @State var detailModel: CompanyDetailViewModel
     @State var presentingSafariView = false
-    var companyName: String
+    @State var isError: Bool = false
+    @State var rowTapped = 0
     
     var body: some View {
-        GeometryReader{ geo in
-            VStack {
-                HStack {
-                    Spacer()
-                    VStack {
-                        Text(companyName)
-                            .font(.largeTitle).foregroundColor(Color("AccentLight"))
-                            .bold()
-                        
-                        AsyncImage(url: classificationModel.getClassificationImageURL(company: companyName)) { image in
-                            image.resizable()
-                                .aspectRatio(1, contentMode: .fit)
-                                .frame(width: geo.size.width / 2)
-                        } placeholder: {
-                            ProgressView()
+        ZStack {
+            GeometryReader { geo in
+                VStack {
+                    CompanyDetailHeaderView(company: detailModel.companyName,
+                                            url: detailModel.getClassificationImageURL(), width: geo.size.width / 2)
+                    .padding()
+                    
+                    List {
+                        ForEach(Array(detailModel.examples.enumerated()), id: \.1.name) { idx,row in
+                            Section {
+                                DisclosureGroup {
+                                    ForEach(row.tools, id: \.toolName) { tool in
+                                        Text(tool.toolName)
+                                    }
+                                    
+                                } label: {
+                                    Text("Required Tools").bold()
+                                }
+                                Text("View Technique Guide")
+                                    .foregroundColor(.blue)
+                                    .onTapGesture {
+                                    self.rowTapped = idx
+                                    self.presentingSafariView.toggle()
+                                }
+                                .sheet(isPresented: $presentingSafariView) {
+                                    SafariView(
+                                        url: URL(string:detailModel.examples[rowTapped].url)!,
+                                        configuration: SafariView.Configuration(
+                                            entersReaderIfAvailable: false,
+                                            barCollapsingEnabled: true
+                                        )
+                                    )
+                                        .preferredControlAccentColor(.accentColor)
+                                        .dismissButtonStyle(.done)
+                                }
+                                
+                            } header: {
+                                Text(row.name)
+                            }
+                            
                         }
                     }
-                    Spacer()
+                    .listStyle(.sidebar)
                 }
-                .padding(.bottom)
-                
-                List {
-                    Section {
-                        Text("Tool 1")
-                        Text("Tool 2")
-                        Text("Tool 3")
-                        
-                    } header: {
-                        Text("Required Tools")
-                    }
-                }
-                .listStyle(.sidebar)
-                
-                Spacer()
-                
-                RoundedButton(labelText: "View Technique Guide", buttonFunc: {
-                    self.presentingSafariView.toggle()
-                })
-                    .padding()
-                    .sheet(isPresented: $presentingSafariView) {
-                        SafariView(
-                            url: classificationModel.getCompanyTechnigueGuideURL(company: companyName),
-                            configuration: SafariView.Configuration(
-                                entersReaderIfAvailable: false,
-                                barCollapsingEnabled: true
-                            )
-                        )
-                            .preferredControlAccentColor(.accentColor)
-                            .dismissButtonStyle(.done)
-                    }
             }
         }
+        .onAppear {
+            Task {
+                await detailModel.getImplantExamples()
+            }
+        }
+        .navigationBarTitle("Company Details")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button("Done") {

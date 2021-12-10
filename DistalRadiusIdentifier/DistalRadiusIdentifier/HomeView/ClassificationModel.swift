@@ -16,24 +16,9 @@ class ClassificationModel: ObservableObject {
     
     @Published var classifications: [Classification] = []
     
-    var urlHostName = "http://128.61.11.110:33507"
-    
-    
-//    func simulateResults() -> [ResultsItem] {
-//        var results: [ResultsItem] = []
-//        let companies = ["Synthes", "Acumed", "Trimed"].shuffled()
-//        
-//        var sum: Float = 100
-//        for i in 0..<companies.count {
-//            let rand = Float.random(in: 0...sum)
-//            results.append(ResultsItem(company: companies[i], percentage: rand))
-//            sum -= rand
-//        }
-//        
-//        return results.sorted(by: { $0.percentage > $1.percentage})
-//    }
+    var urlHostName = "http://128.61.6.241:33507"
 
-    func createRequestBody(imageData: Data, boundary: String, attachmentKey: String, fileName: String) -> Data{
+    private func createPredictionRequestBody(imageData: Data, boundary: String, attachmentKey: String, fileName: String) -> Data{
         let lineBreak = "\r\n"
         var requestBody = Data()
 
@@ -50,7 +35,6 @@ class ClassificationModel: ObservableObject {
         error = nil
         var classification: Classification?
         
-        // your image from Image picker, as of now I am picking image from the bundle
         let image = UIImage(cgImage: img)
         let imageData = image.pngData()
 
@@ -61,11 +45,12 @@ class ClassificationModel: ObservableObject {
         let bodyBoundary = "\(UUID().uuidString)"
         urlRequest.addValue("multipart/form-data; boundary=\(bodyBoundary)", forHTTPHeaderField: "Content-Type")
 
-//        //attachmentKey is the api parameter name for your image do ask the API developer for this
-//       // file name is the name which you want to give to the file
-        let requestData = createRequestBody(imageData: imageData!, boundary: bodyBoundary, attachmentKey: "file", fileName: "myTestImage.jpg")
+        //attachmentKey is the api parameter name for your image DO NOT CHANGE
+        // file name is the name which you want to give to the file
+        let requestData = createPredictionRequestBody(imageData: imageData!, boundary: bodyBoundary, attachmentKey: "file", fileName: "predictionImage.png")
         urlRequest.addValue("\(requestData.count)", forHTTPHeaderField: "content-length")
         urlRequest.httpBody = requestData
+        urlRequest.timeoutInterval = 5
         do {
             let (data, _) = try await URLSession.shared.upload(for: urlRequest, from: requestData)
             let decodedResults = try JSONDecoder().decode(CodableClassification.self, from: data)
@@ -87,22 +72,7 @@ class ClassificationModel: ObservableObject {
         }
         
         return classification
-    
-        
-        
-        }
-
-        func getBase64Image(image: CGImage, complete: @escaping (String?) -> ()) {
-            DispatchQueue.main.async {
-                let img = UIImage(cgImage: image)
-                let imageData = img.pngData()
-                let base64Image = imageData?.base64EncodedString(options: .lineLength64Characters)
-                complete(base64Image)
-            }
-        }
-    
-    
-    
+    }
     
     func getClassificationImageURL(company: String) -> URL {
         return URL(string: "\(urlHostName)/companyExamples/\(company)")!

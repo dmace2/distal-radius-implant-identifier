@@ -10,8 +10,6 @@ class ResultsItem(BaseModel):
     company: str
     percentage: float
 
-
-
 class Classification(BaseModel):
     """
     Classifications model
@@ -21,6 +19,22 @@ class Classification(BaseModel):
     predictedCompany: str
     predictionConfidence: float
     classifications: List[ResultsItem]
+
+
+
+class Tool(BaseModel):
+    """
+    Tool model
+    """
+    toolName: str
+
+class ExampleImplant(BaseModel):
+    name: str
+    url: str
+    tools: List[Tool]
+
+
+
 
 
 def simulateResults():
