@@ -8,7 +8,7 @@ import uuid
 # This is the individual result
 class ResultsItem(BaseModel):
     company: str
-    percentage: str
+    percentage: float
 
 
 

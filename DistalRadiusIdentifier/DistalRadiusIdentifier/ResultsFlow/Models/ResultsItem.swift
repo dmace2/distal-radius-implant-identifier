@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ResultsItem: Codable {
+struct ResultsItem: Codable, Hashable {
 //    let id: String
     let company: String
     let percentage: Float

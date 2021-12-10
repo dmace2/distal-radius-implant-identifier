@@ -37,10 +37,6 @@ async def predict(file: UploadFile = File(...)):
 
         predictions = models.simulateResults()
         return predictions
-
-
-
-
         
         # predictions = image_classifier.predict(image)
         # sorted_predictions = predictions.sort(key=lambda x: x[1], reverse=True)

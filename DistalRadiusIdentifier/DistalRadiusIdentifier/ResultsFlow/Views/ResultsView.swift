@@ -107,7 +107,7 @@ struct ResultsView: View {
                     classification = await classificationModel.classifyImplant(image: cameraModel.capturedImage!)
                    
                 }
-                self.userImage = Image(classification!.image, scale: 1.0, label: Text("User Img"))
+                self.userImage = Image(classification!.image!, scale: 1.0, label: Text("User Img"))
             }
         }
     }
