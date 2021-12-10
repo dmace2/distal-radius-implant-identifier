@@ -18,31 +18,24 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            List(classificationModel.classifications) { row in
-                NavigationLink(destination: ResultsView(classification: row)) {
-                    Text(row.id)
+            List {
+                ForEach(classificationModel.classifications){ row in
+                    NavigationLink(destination: ResultsView(classification: row)) {
+                        ClassificationResultsRowView(row)
+                    }
                 }
-                .padding()
-                
+                .onDelete(perform: removeRows)
             }
             
             Spacer()
-            if UIDevice.current.userInterfaceIdiom == .phone {
+            
                 NavigationLink(destination: TakePhotoView().navigationTitle("Take Implant Photo"), isActive: $isActive) {
-                    RoundedButton(color: Color("TechBlue"), labelText: "Classify Implant", buttonFunc: {
+                    RoundedButton(color: .accentColor, labelText: "Classify Implant", buttonFunc: {
                         self.isActive.toggle()
                     })
                         .padding()
                 }
-                .isDetailLink(false)
-            } else {
-                NavigationLink(destination: TakePhotoView().navigationTitle("Take Implant Photo"), isActive: $isActive) {
-                    RoundedButton(color: Color("TechBlue"), labelText: "Classify Implant", buttonFunc: {
-                        self.isActive.toggle()
-                    })
-                        .padding()
-                }
-            }
+                .isDetailLink(UIDevice.current.userInterfaceIdiom != .phone)
         }
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
@@ -50,6 +43,12 @@ struct HomeView: View {
             }
         }
     }
+    
+    func removeRows(at offsets: IndexSet) {
+        classificationModel.classifications.remove(atOffsets: offsets)
+    }
+    
+    
 }
 
 //struct HomeView_Previews: PreviewProvider {

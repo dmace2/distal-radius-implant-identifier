@@ -19,7 +19,7 @@ struct TutorialTitleAndSubheader: View {
         Text(titleText)
             .multilineTextAlignment(.center)
             .font(.largeTitle.weight(.bold))
-            .foregroundColor(Color("TechBlue"))
+            .foregroundColor(Color("AccentLight"))
         
         if let subtitleText = subtitleText { // if subtitle text is not nil (aka passed in
             Text(subtitleText)

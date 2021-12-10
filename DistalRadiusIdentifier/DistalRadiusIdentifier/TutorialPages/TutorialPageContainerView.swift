@@ -13,7 +13,7 @@ struct TutorialPageContainerView: View {
     @State private var tabSelection = 1 // State variable is variable whose state is monitored by others
     
     init() {
-        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color("TechBlue"))
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(.accentColor)
     }
     
     var body: some View {

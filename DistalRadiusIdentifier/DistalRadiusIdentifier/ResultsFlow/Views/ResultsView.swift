@@ -6,100 +6,110 @@
 //
 
 import SwiftUI
+import Combine
+//import SBPAsyncImage
+
 
 struct ResultsView: View {
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var cameraModel: CameraFrameViewModel
     @EnvironmentObject var classificationModel: ClassificationModel
     
     @State var classification: Classification?
+    @State var rowTapped: Int = 0
     
-    
-    @State var userImage: Image = Image("SampleXRay")
-    @State var userImageTapped = false
-    @State var exampleImage: Image = Image("SampleXRay")
-    @State var exampleImageTapped = false
-    
-    
+    @State var userImage: Image? = Image("SampleXRay")
+    @State var isPresented = false
     
     var body: some View {
-        GeometryReader { geo in
-            VStack {
-                if let classification = classification {
-                    VStack() {
-                        HStack {
-                            Spacer()
-                        Text(classification.results[0].company)
-                            .font(.system(size: 50).weight(.bold))
-                            .foregroundColor(Color("TechBlue"))
-                            Spacer()
-                        }
-
-                        HStack {
-                            Spacer()
-                            Text(String(format: "%.2f", classification.results[0].percentage) + "%")
-                            .foregroundColor(Color(UIColor.secondaryLabel))
-                            .font(.system(size: 40))
-                            Spacer()
-                        }
-
-                    }
-                    
-                    Spacer(minLength: 20)
-
-                    List {
-                        Section(header: Text("Images")) {
-                            HStack(alignment: .center) {
-                                ResultsImageView(image: userImage, caption: "Your Image").onTapGesture {
-                                    self.userImageTapped.toggle()
-                                }
-                                .fullScreenCover(isPresented: $userImageTapped) {
-                                    FullScreenImageView(image: userImage)
-                                }
-
-                                ResultsImageView(image: exampleImage, caption: "\(classification.results[0].company) Image").onTapGesture {
-                                    self.exampleImageTapped.toggle()
-                                }
-                                .fullScreenCover(isPresented: $exampleImageTapped) {
-                                    FullScreenImageView(image: exampleImage)
-                                }
-                            }
-                            
-                        }
-                        Section(header: Text("Full Breakdown")) {
-                            ForEach(classification.results) { row in
-                                ResultsItemView(row)
-                            }
-
-                        }
-                    }
-                    .listStyle(.sidebar)
-
+        VStack {
+            VStack() {
+                HStack {
+                    Spacer()
+                    Text(classification?.results[0].company ?? "Result")
+                        .font(.system(size: 50).weight(.bold))
+                        .foregroundColor(Color("AccentLight"))
+                    Spacer()
                 }
-                
-                
-                
-                
-                if UIDevice.current.userInterfaceIdiom == .phone {
-                    RoundedButton(color: Color("TechBlue"), labelText: "Done", buttonFunc: {
-                        NavigationUtil.popToRootView()
-                    })
-                        .padding()
+
+                HStack {
+                    Spacer()
+                    Text(String(format: "%.2f", classification?.results[0].percentage ?? "00.00") + "%")
+                        .foregroundColor(Color(UIColor.secondaryLabel))
+                        .font(.system(size: 40))
+                    Spacer()
+                }
+
+            }
+
+
+            Spacer(minLength: 20)
+
+            List {
+                Section(header: Text("Images")) {
+                    HStack(alignment: .center) {
+                        ExpandingImageView(image: userImage, caption: "Your Image")
+                            .redacted(reason: classificationModel.isLoading ? .placeholder : [])
+
+                        ExpandingImageView(image: nil, url: classificationModel.getClassificationImageURL(company: classification?.results[0].company ?? ""),
+                                         caption: (classification?.results[0].company ?? "Example") + " Image")
+                            .redacted(reason: classificationModel.isLoading ? .placeholder : [])
+                    }
+                }
+
+                Section(header: Text("Full Breakdown")) {
+                    ForEach(Array(classification?.results.enumerated() ?? classificationModel.simulateResults().enumerated()), id: \.1.company) { (idx, row) in
+                        ResultsRowView(row, color: Color("AccentLight"))
+                            .padding(5)
+                            .onTapGesture {
+                                if !classificationModel.isLoading {
+                                    self.rowTapped = idx
+                                    self.isPresented.toggle()
+                                }
+                            }
+                    }
+
                 }
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    InfoButtonView()
-                }
+            .listStyle(.sidebar)
+//
+            if UIDevice.current.userInterfaceIdiom == .phone  {
+                RoundedButton(color: .accentColor, labelText: "Done", buttonFunc: {
+                    NavigationUtil.popToRootView()
+                })
+                    .disabled(classificationModel.isLoading)
+                    .padding()
             }
         }
-        .onAppear {
-            if classification == nil {classification = classificationModel.classifications.last}
-            self.userImage = Image(classification!.image, scale: 1.0, label: Text("User Img"))
-            self.exampleImage = Image("Example\(classification!.results[0].company)Image")
+        
+        .redacted(reason: classificationModel.isLoading ? .placeholder : [])
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                InfoButtonView()
+            }
         }
         .navigationTitle("Results")
         .navigationBarTitleDisplayMode(.inline)
+
+        .sheet(isPresented: $isPresented) {
+            NavigationView{
+                CompanyDetailView(companyName: classification?.results[rowTapped].company ?? "Company")
+                    .navigationBarTitle("Company Details")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+        }
+//
         
+        .onAppear {
+//            isLoading = classificationModel.isLoading
+            Task {
+                if classification == nil {
+                    classification = await classificationModel.classifyImplant(image: cameraModel.capturedImage!)
+                   
+                }
+                self.userImage = Image(classification!.image!, scale: 1.0, label: Text("User Img"))
+            }
+        }
     }
 }
 //

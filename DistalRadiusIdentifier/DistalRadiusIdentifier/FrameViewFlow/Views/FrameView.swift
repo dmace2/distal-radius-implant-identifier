@@ -37,7 +37,7 @@ struct FrameView: View {
                                 .frame(width: geo.size.width / 50, height: model.imageDimension, alignment: .top)
                             Image("ViewFinder")
                                 .resizable()
-                                .foregroundColor(.blue)
+                                .foregroundColor(.accentColor)
                                 .scaledToFill()
                                 .frame(
                                     width: model.imageDimension,

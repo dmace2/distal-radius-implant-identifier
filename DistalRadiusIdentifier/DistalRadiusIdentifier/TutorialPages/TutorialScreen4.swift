@@ -19,12 +19,12 @@ struct TutorialScreen4: View {
                     .frame(width: geo.size.width / 3)
                 
                 
-                Text("90.01%")
+                Text("Synthes")
                     .multilineTextAlignment(.center)
                     .font(.system(size: 70).weight(.bold))
-                    .foregroundColor(Color("TechBlue"))
+                    .foregroundColor(.accentColor)
                 
-                Text("Synthes")
+                Text("90.01%")
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color(UIColor.secondaryLabel))
                     .font(.system(size: 40))
@@ -34,11 +34,11 @@ struct TutorialScreen4: View {
                 List(1..<15){ row in
                     HStack {
                         if row == 1 {
-                            ResultsItemView(ResultsItem(id: String.random(), company: "Synthes", percentage: 90.41))
+                            ResultsRowView(ResultsItem(company: "Synthes", percentage: 90.41), color: Color("AccentLight"))
                         } else if row == 2 {
-                            ResultsItemView(ResultsItem(id: String.random(), company: "Acumed", percentage: 8.59))
+                            ResultsRowView(ResultsItem(company: "Acumed", percentage: 8.59), color: Color("AccentLight"))
                         } else {
-                            ResultsItemView(ResultsItem(id: String.random(), company: "Company", percentage: 0.99))
+                            ResultsRowView(ResultsItem(company: "Company", percentage: 0.99), color: Color("AccentLight"))
                         }
                     }
                 }
