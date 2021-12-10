@@ -8,23 +8,33 @@
 import SwiftUI
 
 struct ErrorView: View {
-  var error: String?
-
-  var body: some View {
-    VStack {
-      Text(error ?? "")
-        .bold()
-        .multilineTextAlignment(.center)
-        .frame(maxWidth: .infinity)
-        .padding(8)
-        .foregroundColor(.white)
-        .background(Color.red.edgesIgnoringSafeArea(.top))
-        .opacity(error == nil ? 0.0 : 1.0)
-        .animation(.easeInOut, value: 0.25)
-
-      Spacer()
+    var error: String?
+    var f: () -> Void = {}
+    
+    var body: some View {
+        ZStack {
+            Color.black.opacity(0.7).ignoresSafeArea()
+            VStack {
+                Text(error ?? "")
+                    .bold()
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity)
+                    .padding(8)
+                    .foregroundColor(.white)
+                    .background(Color.red.edgesIgnoringSafeArea(.top))
+                    .opacity(error == nil ? 0.0 : 1.0)
+                    .animation(.easeInOut, value: 0.25)
+                
+                Spacer()
+                
+                if UIDevice.current.userInterfaceIdiom == .phone  {
+                    RoundedButton(color: .accentColor, labelText: "Dismiss", buttonFunc: f)
+                        .padding()
+                }
+                
+            }
+        }
     }
-  }
 }
 
 struct ErrorView_Previews: PreviewProvider {

@@ -6,47 +6,32 @@
 //
 
 import Foundation
-import UIKit
+import SwiftUI
 
-struct Classification: Identifiable {
-    var id = NSUUID().uuidString
-    var results: [ResultsItem]
-    var predictedCompany: String
-    var predictionConfidence: Float
-    var image: CGImage?
-    var date: Date
-}
-
-struct CodableClassification: Identifiable, Codable {
-    var id = NSUUID().uuidString
-    var classifications: [ResultsItem]
-    var predictedCompany: String
-    var predictionConfidence: Float
-    var date: String
-}
 
 @MainActor
 class ClassificationModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var error: Error?
+    
     @Published var classifications: [Classification] = []
     
     var urlHostName = "http://128.61.11.110:33507"
     
     
-    func simulateResults() -> [ResultsItem] {
-        var results: [ResultsItem] = []
-        let companies = ["Synthes", "Acumed", "Trimed"].shuffled()
-        
-        var sum: Float = 100
-        for i in 0..<companies.count {
-            let rand = Float.random(in: 0...sum)
-            results.append(ResultsItem(company: companies[i], percentage: rand))
-            sum -= rand
-        }
-        
-        return results.sorted(by: { $0.percentage > $1.percentage})
-    }
+//    func simulateResults() -> [ResultsItem] {
+//        var results: [ResultsItem] = []
+//        let companies = ["Synthes", "Acumed", "Trimed"].shuffled()
+//        
+//        var sum: Float = 100
+//        for i in 0..<companies.count {
+//            let rand = Float.random(in: 0...sum)
+//            results.append(ResultsItem(company: companies[i], percentage: rand))
+//            sum -= rand
+//        }
+//        
+//        return results.sorted(by: { $0.percentage > $1.percentage})
+//    }
 
     func createRequestBody(imageData: Data, boundary: String, attachmentKey: String, fileName: String) -> Data{
         let lineBreak = "\r\n"
@@ -62,11 +47,8 @@ class ClassificationModel: ObservableObject {
 
     func classifyImplant(image img: CGImage) async -> Classification? {
         isLoading = true
+        error = nil
         var classification: Classification?
-
-        
-        
-        
         
         // your image from Image picker, as of now I am picking image from the bundle
         let image = UIImage(cgImage: img)
@@ -97,12 +79,13 @@ class ClassificationModel: ObservableObject {
                                             predictionConfidence: decodedResults.predictionConfidence, image: img,
                                             date: dateFormatter.date(from: decodedResults.date)!)
             classifications.append(classification!)
+            isLoading = false
 
         } catch {
+            self.error = error
             print("Error: \(error.localizedDescription)")
         }
-    
-        isLoading = false
+        
         return classification
     
         
