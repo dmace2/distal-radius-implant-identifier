@@ -12,19 +12,6 @@ struct RequiredTool: Codable, Hashable {
     
 }
 
-struct TechniqueGuide: Codable, Hashable {
-    var name: String
-    var url: String
-}
-
-struct Example<Value:Hashable, Child:Hashable>: Hashable, Identifiable {
-    var id: String = UUID().uuidString
-    
-    let value: Value
-    var children: [Child]? = nil
-}
-
-
 
 struct ExampleImplant: Codable {
     var name: String
