@@ -25,21 +25,13 @@ struct CodableClassification: Identifiable, Codable {
     var date: String
 }
 
-
-
-
-struct ImageResponse: Decodable
-{
-    let status: Int?
-    let message: String?
-}
-
 @MainActor
 class ClassificationModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var error: Error?
     @Published var classifications: [Classification] = []
-//    @Published var image: CGImage?
+    
+    var urlHostName = "http://128.61.11.110:33507"
     
     
     func simulateResults() -> [ResultsItem] {
@@ -55,30 +47,6 @@ class ClassificationModel: ObservableObject {
         
         return results.sorted(by: { $0.percentage > $1.percentage})
     }
-    
-    
-//    func classifyImplant(image: CGImage) async -> Classification? {
-//        error = nil
-//        isLoading = true
-//        var classification: Classification?
-//
-//        do {
-//            try await Task.sleep(nanoseconds: 2000000000) // wait 2 seconds
-//            let results = simulateResults()
-//            classification = Classification(results: results, predictedCompany: results[0].company,
-//                                            predictionConfidence: results[0].percentage, image: image, date: Date())
-//            //Classification(results: results, image: image, date: Date())
-//            classifications.append(classification!)
-//            //                throw "Test Error"
-//        }
-//        catch {
-//            self.error = error
-//            print("Error: \(error.localizedDescription)")
-//        }
-//
-//        isLoading = false
-//        return classification
-//    }
 
     func createRequestBody(imageData: Data, boundary: String, attachmentKey: String, fileName: String) -> Data{
         let lineBreak = "\r\n"
@@ -104,7 +72,7 @@ class ClassificationModel: ObservableObject {
         let image = UIImage(cgImage: img)
         let imageData = image.pngData()
 
-        let url =  "http://128.61.11.110:33507/predict"
+        let url =  "\(urlHostName)/predict"
         var urlRequest = URLRequest(url: URL(string: url)!)
 
         urlRequest.httpMethod = "post"
@@ -154,7 +122,7 @@ class ClassificationModel: ObservableObject {
     
     
     func getClassificationImageURL(company: String) -> URL {
-        return URL(string: "http://172.20.10.7:33507/companyExamples/\(company)")!
+        return URL(string: "\(urlHostName)/companyExamples/\(company)")!
     }
     
     func getCompanyTechnigueGuideURL(company: String) -> URL {
