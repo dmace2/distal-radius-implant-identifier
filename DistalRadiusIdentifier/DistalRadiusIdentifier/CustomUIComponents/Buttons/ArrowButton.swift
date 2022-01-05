@@ -18,31 +18,27 @@ struct ArrowButton: View {
     
     
     var body: some View {
-        if ProcessInfo.processInfo.isMacCatalystApp {
-            // if the app is mac, do general macOS button
-            Button(labelText, action: buttonFunc).padding()
-        } else {
-            Button(action: buttonFunc, label: {
-                ZStack { // stack things on top of each other depth-wise
-                    HStack { // width-wise stack
+        Button(action: buttonFunc, label: {
+            ZStack { // stack things on top of each other depth-wise
+                HStack { // width-wise stack
+                    Spacer()
+                    Text(labelText)
+                    Spacer()
+                }
+                if arrow { //add the arrow to zstack if we want it
+                    HStack {
                         Spacer()
-                        Text(labelText)
-                        Spacer()
-                    }
-                    if arrow { //add the arrow to zstack if we want it
-                        HStack {
-                            Spacer()
-                            Image(systemName: "arrow.right")
-                        }
+                        Image(systemName: "arrow.right")
                     }
                 }
-                .padding()
-            })
-            .foregroundColor(Color(UIColor.systemBackground)) // set text as white/black based on background color
-            .background(Color("AccentLight")) // button is blue
-            .cornerRadius(20) // round corners
+            }
+            .padding()
+        })
+        .foregroundColor(Color(UIColor.systemBackground)) // set text as white/black based on background color
+        .background(Color("AccentLight")) // button is blue
+        .cornerRadius(20) // round corners
+        
             
-        }
     }
 }
 
