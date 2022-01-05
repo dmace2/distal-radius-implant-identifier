@@ -16,7 +16,6 @@ class CompanyDetailViewModel: ObservableObject {
     
     var companyName: String
     @Published var examples: [ExampleImplant] = []
-    
     @Published var error: Error?
     
     

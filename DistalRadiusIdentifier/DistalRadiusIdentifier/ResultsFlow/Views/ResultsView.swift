@@ -21,6 +21,8 @@ struct ResultsView: View {
     @State var userImage: Image? = Image("SampleXRay")
     @State var isPresented = false
     
+    @State var showingError = false
+    
     var body: some View {
         ZStack {
                
@@ -105,23 +107,42 @@ struct ResultsView: View {
             }
 
             if let error = classificationModel.error {
-                withAnimation {
-                    ErrorView(error: error.localizedDescription, f: {
-                        NavigationUtil.popToRootView()
-                    })
-                        .unredacted()
-                }
+//                withAnimation {
+                    if #available(iOS 15.0, *) {
+                        ErrorView(error: "Classification Failed")
+                            .alert("Error: \(error.localizedDescription)", isPresented: $showingError, actions: {
+                                Button("Cancel", role: .cancel) { NavigationUtil.popToRootView() }
+                                Button("Retry") { getClassificationResults() }
+                            }, message: {
+                                Text("Try again or cancel this attempt?")
+                            })
+                        
+                            .unredacted()
+                    } else {
+                        // Fallback on earlier versions
+                        ErrorView(error: "Classification Failed")
+                            .alert(isPresented: $showingError, content: {
+                                Alert(
+                                    title: Text("Error: \(error.localizedDescription)"),
+                                    message: Text("Try again or cancel this attempt?"),
+                                    primaryButton: .cancel(Text("Cancel"), action: {
+                                        NavigationUtil.popToRootView()
+                                    }),
+                                    secondaryButton: .default(Text("Retry"), action: {
+                                        getClassificationResults()
+                                    })
+
+                                )
+                            })
+                            .unredacted()
+                    }
+//                }
             }
         }
-
+        
         .onAppear {
             if classification == nil {
-                Task {
-                    classification = await classificationModel.classifyImplant(image: cameraModel.capturedImage!)
-                    if classificationModel.error == nil {
-                        self.userImage = Image(classification!.image!, scale: 1.0, label: Text("User Img"))
-                    }
-                }
+                getClassificationResults()
             }
             else {
                 classificationModel.error = nil
@@ -129,6 +150,20 @@ struct ResultsView: View {
             }
         }
     }
+    
+    func getClassificationResults() {
+        Task {
+            classification = await classificationModel.classifyImplant(image: cameraModel.capturedImage!)
+            
+            if classificationModel.error == nil {
+                self.userImage = Image(classification!.image!, scale: 1.0, label: Text("User Img"))
+            } else {
+                self.showingError = true
+            }
+        }
+        
+    }
+    
 }
 //
 //struct ResultsView_Previews: PreviewProvider {
