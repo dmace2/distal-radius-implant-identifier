@@ -10,7 +10,7 @@ import UIKit
 
 class APIService {
     
-    let urlHostName = "http://192.168.1.163:33507"
+    let urlHostName = "https://distalradius.herokuapp.com"
     private let session = URLSession.shared
     private let decoder = JSONDecoder()
     
