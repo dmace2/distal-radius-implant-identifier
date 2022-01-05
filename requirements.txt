@@ -11,3 +11,4 @@ sniffio
 starlette
 typing_extensions
 uvicorn
+pillow
