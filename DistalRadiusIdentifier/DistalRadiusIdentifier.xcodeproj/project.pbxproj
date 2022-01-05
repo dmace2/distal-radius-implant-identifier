@@ -14,7 +14,7 @@
 		256134F92742D96200C4C9B8 /* FrameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134F82742D96200C4C9B8 /* FrameManager.swift */; };
 		256134FB2742D9A200C4C9B8 /* CameraFrameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256134FA2742D9A200C4C9B8 /* CameraFrameViewModel.swift */; };
 		F00502082757E196000B4F1C /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00502072757E196000B4F1C /* ResultsView.swift */; };
-		F005020A2757E20D000B4F1C /* ResultsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00502092757E20D000B4F1C /* ResultsItem.swift */; };
+		F005020A2757E20D000B4F1C /* ClassificationResultsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00502092757E20D000B4F1C /* ClassificationResultsModels.swift */; };
 		F005020C2757E25D000B4F1C /* ResultsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005020B2757E25D000B4F1C /* ResultsRowView.swift */; };
 		F005020E2757EAC6000B4F1C /* RootNavigationPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005020D2757EAC6000B4F1C /* RootNavigationPop.swift */; };
 		F01E92C927333E720074D5DF /* DistalRadiusIdentifierApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E92C827333E720074D5DF /* DistalRadiusIdentifierApp.swift */; };
@@ -32,6 +32,7 @@
 		F0508B072733545300EEEFE4 /* TutorialScreen5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0508B062733545300EEEFE4 /* TutorialScreen5.swift */; };
 		F051C268275815C400859E77 /* ClassificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F051C267275815C400859E77 /* ClassificationModel.swift */; };
 		F0570A762749A10A00BB984D /* InfoButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0570A752749A10A00BB984D /* InfoButtonView.swift */; };
+		F0595B7C2786360400AE1561 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0595B7B2786360400AE1561 /* APIService.swift */; };
 		F05A67F82757F489008C6E4B /* ResultsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A67F72757F489008C6E4B /* ResultsImageView.swift */; };
 		F05A67FA2758002A008C6E4B /* FullScreenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A67F92758002A008C6E4B /* FullScreenImageView.swift */; };
 		F05A67FC2758031B008C6E4B /* RandomString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A67FB2758031B008C6E4B /* RandomString.swift */; };
@@ -47,12 +48,11 @@
 		F0A68231275FE05E00D9AF02 /* ClassificationResultsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A68230275FE05E00D9AF02 /* ClassificationResultsRowView.swift */; };
 		F0A68233275FE2A800D9AF02 /* DateFormatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A68232275FE2A800D9AF02 /* DateFormatExtension.swift */; };
 		F0A889AD275863E2007464F1 /* CompanyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A889AC275863E2007464F1 /* CompanyDetailView.swift */; };
-		F0A889C1275874D1007464F1 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = F0A889C0275874D1007464F1 /* BetterSafariView */; };
 		F0BE89BA27344B0100E553F7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BE89B927344B0100E553F7 /* Launch Screen.storyboard */; };
 		F0D3E702275AA52500CFC781 /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D3E701275AA52500CFC781 /* URLSessionExtension.swift */; };
 		F0D3E704275AA5DC00CFC781 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D3E703275AA5DC00CFC781 /* ErrorView.swift */; };
 		F0D3E706275AA6DE00CFC781 /* StringErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D3E705275AA6DE00CFC781 /* StringErrorExtension.swift */; };
-		F0D3E708275AAA4100CFC781 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D3E707275AAA4100CFC781 /* LoadingView.swift */; };
+		F0D66CEF277AC73000D22DD9 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = F0D66CEE277AC73000D22DD9 /* BetterSafariView */; };
 		F0E5BD0C2733500B009DFD26 /* TutorialTitleAndSubheader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,7 +66,7 @@
 		F00417CA2733420C00C5630A /* DistalRadiusIdentifier.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DistalRadiusIdentifier.entitlements; sourceTree = "<group>"; };
 		F00417CB2733422400C5630A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F00502072757E196000B4F1C /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
-		F00502092757E20D000B4F1C /* ResultsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsItem.swift; sourceTree = "<group>"; };
+		F00502092757E20D000B4F1C /* ClassificationResultsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationResultsModels.swift; sourceTree = "<group>"; };
 		F005020B2757E25D000B4F1C /* ResultsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsRowView.swift; sourceTree = "<group>"; };
 		F005020D2757EAC6000B4F1C /* RootNavigationPop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationPop.swift; sourceTree = "<group>"; };
 		F01E92C527333E720074D5DF /* DistalRadiusIdentifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DistalRadiusIdentifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +85,7 @@
 		F0508B062733545300EEEFE4 /* TutorialScreen5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScreen5.swift; sourceTree = "<group>"; };
 		F051C267275815C400859E77 /* ClassificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationModel.swift; sourceTree = "<group>"; };
 		F0570A752749A10A00BB984D /* InfoButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButtonView.swift; sourceTree = "<group>"; };
+		F0595B7B2786360400AE1561 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		F05A67F72757F489008C6E4B /* ResultsImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsImageView.swift; sourceTree = "<group>"; };
 		F05A67F92758002A008C6E4B /* FullScreenImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageView.swift; sourceTree = "<group>"; };
 		F05A67FB2758031B008C6E4B /* RandomString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomString.swift; sourceTree = "<group>"; };
@@ -104,7 +105,6 @@
 		F0D3E701275AA52500CFC781 /* URLSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
 		F0D3E703275AA5DC00CFC781 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		F0D3E705275AA6DE00CFC781 /* StringErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringErrorExtension.swift; sourceTree = "<group>"; };
-		F0D3E707275AAA4100CFC781 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTitleAndSubheader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,7 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0A889C1275874D1007464F1 /* BetterSafariView in Frameworks */,
+				F0D66CEF277AC73000D22DD9 /* BetterSafariView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,7 +174,7 @@
 		F00768E42758463200CFB8B3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F00502092757E20D000B4F1C /* ResultsItem.swift */,
+				F00502092757E20D000B4F1C /* ClassificationResultsModels.swift */,
 				F03E15AE2763D77100183637 /* RequiredTool.swift */,
 			);
 			path = Models;
@@ -222,6 +222,7 @@
 		F01E92C727333E720074D5DF /* DistalRadiusIdentifier */ = {
 			isa = PBXGroup;
 			children = (
+				F0595B7B2786360400AE1561 /* APIService.swift */,
 				F01E92EE27333FEE0074D5DF /* CustomUIComponents */,
 				F00768E62758468400CFB8B3 /* Extensions */,
 				F00502062757E188000B4F1C /* ResultsFlow */,
@@ -269,7 +270,6 @@
 				F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */,
 				F07D0FBC27431F5500554B20 /* AlignmentGuideView.swift */,
 				F0D3E703275AA5DC00CFC781 /* ErrorView.swift */,
-				F0D3E707275AAA4100CFC781 /* LoadingView.swift */,
 				F01F2272275FC28B009D8F81 /* AsyncImageBackport.swift */,
 				F08C263327600B0000B1B010 /* ZoomableContent.swift */,
 			);
@@ -328,7 +328,7 @@
 			);
 			name = DistalRadiusIdentifier;
 			packageProductDependencies = (
-				F0A889C0275874D1007464F1 /* BetterSafariView */,
+				F0D66CEE277AC73000D22DD9 /* BetterSafariView */,
 			);
 			productName = DistalRadiusIdentifier;
 			productReference = F01E92C527333E720074D5DF /* DistalRadiusIdentifier.app */;
@@ -359,7 +359,7 @@
 			);
 			mainGroup = F01E92BC27333E720074D5DF;
 			packageReferences = (
-				F0A889BF275874D1007464F1 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
+				F0D66CED277AC73000D22DD9 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
 			);
 			productRefGroup = F01E92C627333E720074D5DF /* Products */;
 			projectDirPath = "";
@@ -402,12 +402,12 @@
 				F00502082757E196000B4F1C /* ResultsView.swift in Sources */,
 				F08C263427600B0000B1B010 /* ZoomableContent.swift in Sources */,
 				F0D3E706275AA6DE00CFC781 /* StringErrorExtension.swift in Sources */,
-				F005020A2757E20D000B4F1C /* ResultsItem.swift in Sources */,
+				F005020A2757E20D000B4F1C /* ClassificationResultsModels.swift in Sources */,
+				F0595B7C2786360400AE1561 /* APIService.swift in Sources */,
 				F0508B072733545300EEEFE4 /* TutorialScreen5.swift in Sources */,
 				F01E92F027333FF90074D5DF /* ArrowButton.swift in Sources */,
 				F07349FA2733522D00C090EA /* TutorialScreen1.swift in Sources */,
 				F0427C1E27335A58008268F4 /* TutorialPageContainerView.swift in Sources */,
-				F0D3E708275AAA4100CFC781 /* LoadingView.swift in Sources */,
 				F03E15AD2763D4AC00183637 /* CompanyDetailViewModel.swift in Sources */,
 				F05A67FC2758031B008C6E4B /* RandomString.swift in Sources */,
 				F0A68233275FE2A800D9AF02 /* DateFormatExtension.swift in Sources */,
@@ -661,20 +661,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F0A889BF275874D1007464F1 /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
+		F0D66CED277AC73000D22DD9 /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/stleamist/BetterSafariView";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F0A889C0275874D1007464F1 /* BetterSafariView */ = {
+		F0D66CEE277AC73000D22DD9 /* BetterSafariView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F0A889BF275874D1007464F1 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
+			package = F0D66CED277AC73000D22DD9 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
 			productName = BetterSafariView;
 		};
 /* End XCSwiftPackageProductDependency section */

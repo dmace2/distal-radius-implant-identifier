@@ -55,7 +55,7 @@ struct ResultsView: View {
                             ExpandingImageView(image: userImage, caption: "Your Image")
                                 .redacted(reason: classificationModel.isLoading ? .placeholder : [])
 
-                            ExpandingImageView(image: nil, url: classificationModel.getClassificationImageURL(company: classification?.results[0].company ?? ""),
+                            ExpandingImageView(image: nil, url: classificationModel.getClassificationImageURL(for: classification?.results[0].company ?? ""),
                                                caption: (classification?.results[0].company ?? "Example") + " Image")
                                 .redacted(reason: classificationModel.isLoading ? .placeholder : [])
                         }
