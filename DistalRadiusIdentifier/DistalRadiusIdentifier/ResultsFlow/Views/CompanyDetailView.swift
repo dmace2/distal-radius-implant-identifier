@@ -12,8 +12,9 @@ struct CompanyDetailView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var detailModel: CompanyDetailViewModel
     @State var presentingSafariView = false
-    @State var isError: Bool = false
     @State var rowTapped = 0
+    
+    @State var showingError = false
     
     var body: some View {
         ZStack {
@@ -61,11 +62,44 @@ struct CompanyDetailView: View {
                     .listStyle(.sidebar)
                 }
             }
+            
+            if let error = detailModel.error {
+//                withAnimation {
+                    if #available(iOS 15.0, *) {
+                        ErrorView(error: "Failed to Collect Company Data")
+                            .alert("Error: \(error.localizedDescription)", isPresented: $showingError, actions: {
+                                Button("Cancel", role: .cancel) { presentationMode.wrappedValue.dismiss() }
+                                Button("Retry") { getCompanyData() }
+                            }, message: {
+                                Text("Try again or cancel this attempt?")
+                            })
+                        
+                            .unredacted()
+                    } else {
+                        // Fallback on earlier versions
+                        ErrorView(error: "Failed to Collect Company Data")
+                            .alert(isPresented: $showingError, content: {
+                                Alert(
+                                    title: Text("Error: \(error.localizedDescription)"),
+                                    message: Text("Try again or cancel this attempt?"),
+                                    primaryButton: .cancel(Text("Cancel"), action: {
+                                        presentationMode.wrappedValue.dismiss()
+                                    }),
+                                    secondaryButton: .default(Text("Retry"), action: {
+                                        getCompanyData()
+                                    })
+
+                                )
+                            })
+                            .unredacted()
+                    }
+//                }
+            }
+            
+            
         }
         .onAppear {
-            Task {
-                await detailModel.getImplantExamples()
-            }
+            getCompanyData()
         }
         .navigationBarTitle("Company Details")
         .navigationBarTitleDisplayMode(.inline)
@@ -74,6 +108,15 @@ struct CompanyDetailView: View {
                 Button("Done") {
                     presentationMode.wrappedValue.dismiss()
                 }
+            }
+        }
+    }
+    
+    func getCompanyData() {
+        Task {
+            await detailModel.getImplantExamples()
+            if detailModel.error != nil {
+                self.showingError = true
             }
         }
     }

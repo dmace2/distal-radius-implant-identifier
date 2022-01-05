@@ -30,6 +30,8 @@ class CompanyDetailViewModel: ObservableObject {
     }
     
     func getImplantExamples() async {
+        self.error = nil
+        
         let (examples, error) = await APISession.getImplantExamples(from: companyName)
         
         guard error == nil else {
