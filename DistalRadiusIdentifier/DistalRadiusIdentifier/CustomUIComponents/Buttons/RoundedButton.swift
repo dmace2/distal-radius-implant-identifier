@@ -19,22 +19,17 @@ struct RoundedButton: View {
     
     
     var body: some View {
-        if ProcessInfo.processInfo.isMacCatalystApp {
-            // if the app is mac, do general macOS button
-            Button(labelText, action: buttonFunc).padding()
-        } else {
-            Button(action: buttonFunc, label: {
-                HStack { // width-wise stack
-                    Spacer()
-                    Text(labelText)
-                    Spacer()
-                }
-                .padding()
-            })
-                .foregroundColor(Color(UIColor.systemBackground)) // set text as white/black based on background color
-                .background(color) // button is the color passed in
-                .cornerRadius(20) // round corners
-            
-        }
+        
+        Button(action: buttonFunc, label: {
+            HStack { // width-wise stack
+                Spacer()
+                Text(labelText)
+                Spacer()
+            }
+            .padding()
+        })
+            .foregroundColor(Color(UIColor.systemBackground)) // set text as white/black based on background color
+            .background(color) // button is the color passed in
+            .cornerRadius(20) // round corners
     }
 }
