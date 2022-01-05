@@ -11,8 +11,7 @@ import sys
 import io
 import os
 
-from models import *
-import models
+from .models import *
 
 app = FastAPI()
 
@@ -35,7 +34,7 @@ async def predict(file: UploadFile = File(...)):
         width, height = image.size
         print(f"Got {width}x{height} image, prediction to come...")
 
-        predictions = models.simulateResults()
+        predictions = simulateResults()
         return predictions
         
         # predictions = image_classifier.predict(image)
