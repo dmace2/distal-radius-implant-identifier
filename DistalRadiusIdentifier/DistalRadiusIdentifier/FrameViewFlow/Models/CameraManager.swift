@@ -48,9 +48,8 @@ class CameraManager: ObservableObject {
         } else if let device = AVCaptureDevice.default(.builtInWideAngleCamera,
                                                        for: .video, position: .back) {
             return device
-        } else {
-            fatalError("Missing expected back camera device.")
         }
+        return nil
     }
     
     private func checkPermissions() {

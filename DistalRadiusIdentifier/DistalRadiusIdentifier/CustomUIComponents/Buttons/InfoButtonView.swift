@@ -15,10 +15,8 @@ struct InfoButtonView: View {
     
     var body: some View {
         ZStack {
-            NavigationLink(destination:
-                            TutorialPageContainerView()
-                            .navigationBarTitleDisplayMode(.inline)
-                           ,
+            NavigationLink(destination:TutorialPageContainerView()
+                                .navigationBarTitleDisplayMode(.inline),
                            isActive: $showTutorial) {EmptyView()}
             NavigationLink(destination: Text("FAQ"), isActive: $showFAQ) {EmptyView()}
             Menu {

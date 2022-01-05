@@ -9,7 +9,9 @@ import Foundation
 
 struct RequiredTool: Codable, Hashable {
     var toolName: String
-    
+    /*
+     Expand this later when we get more information
+     */
 }
 
 

@@ -1,0 +1,14 @@
+anyio
+asgiref
+click
+fastapi
+h11
+idna
+pydantic
+python-multipart==0.0.5
+six
+sniffio
+starlette
+typing_extensions
+uvicorn
+pillow
