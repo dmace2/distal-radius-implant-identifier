@@ -1,13 +1,13 @@
-anyio @ file:///Users/runner/miniforge3/conda-bld/anyio_1637703512932/work/dist
-asgiref @ file:///home/conda/feedstock_root/build_artifacts/asgiref_1625395912402/work
-click @ file:///Users/runner/miniforge3/conda-bld/click_1635822911388/work
-fastapi @ file:///home/conda/feedstock_root/build_artifacts/fastapi_1633640170926/work
-h11 @ file:///home/conda/feedstock_root/build_artifacts/h11_1609518832927/work
-idna @ file:///home/conda/feedstock_root/build_artifacts/idna_1609836280497/work
-pydantic @ file:///Users/runner/miniforge3/conda-bld/pydantic_1636021227116/work
+anyio
+asgiref
+click
+fastapi
+h11
+idna
+pydantic
 python-multipart==0.0.5
-six @ file:///home/conda/feedstock_root/build_artifacts/six_1620240208055/work
-sniffio @ file:///Users/runner/miniforge3/conda-bld/sniffio_1635844793235/work
-starlette @ file:///home/conda/feedstock_root/build_artifacts/starlette-recipe_1626701188566/work
-typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/typing_extensions_1638334978229/work
-uvicorn @ file:///Users/runner/miniforge3/conda-bld/uvicorn_1638979337420/work
+six
+sniffio
+starlette
+typing_extensions
+uvicorn
