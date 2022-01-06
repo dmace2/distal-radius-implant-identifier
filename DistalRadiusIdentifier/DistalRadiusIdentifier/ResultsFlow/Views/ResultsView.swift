@@ -147,6 +147,7 @@ struct ResultsView: View {
             else {
                 classificationModel.error = nil
                 classificationModel.isLoading = false
+                userImage = Image(uiImage: classification!.image!)
             }
         }
     }
