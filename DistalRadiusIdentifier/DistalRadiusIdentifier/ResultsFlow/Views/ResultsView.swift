@@ -156,7 +156,7 @@ struct ResultsView: View {
             classification = await classificationModel.classifyImplant(image: cameraModel.capturedImage!)
             
             if classificationModel.error == nil {
-                self.userImage = Image(classification!.image!, scale: 1.0, label: Text("User Img"))
+                self.userImage = Image(uiImage: classification!.image!)
             } else {
                 self.showingError = true
             }

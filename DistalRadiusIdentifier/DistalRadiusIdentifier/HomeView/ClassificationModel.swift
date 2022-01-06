@@ -20,7 +20,7 @@ class ClassificationModel: ObservableObject {
     
     
     
-    func classifyImplant(image img: CGImage) async -> Classification? {
+    func classifyImplant(image img: UIImage) async -> Classification? {
         isLoading = true
         error = nil
         
