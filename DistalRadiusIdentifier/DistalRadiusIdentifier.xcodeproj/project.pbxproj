@@ -114,14 +114,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		256134EF2742D6A500C4C9B8 /* FrameViewFlow */ = {
-			isa = PBXGroup;
-			children = (
-				F00502052757DA43000B4F1C /* Models */,
-			);
-			path = FrameViewFlow;
-			sourceTree = "<group>";
-		};
 		F00502052757DA43000B4F1C /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,7 +200,6 @@
 				F01E92EE27333FEE0074D5DF /* CustomUIComponents */,
 				F00768E62758468400CFB8B3 /* Extensions */,
 				F00502062757E188000B4F1C /* ResultsFlow */,
-				256134EF2742D6A500C4C9B8 /* FrameViewFlow */,
 				F0427C1A27335A12008268F4 /* OnboardingViewRouter */,
 				F0427C17273359FF008268F4 /* HomeView */,
 				F01E92E127333F610074D5DF /* TutorialPages */,
@@ -296,6 +287,7 @@
 		F0EC891C278742C900D712C7 /* CaptureFlow */ = {
 			isa = PBXGroup;
 			children = (
+				F00502052757DA43000B4F1C /* Models */,
 				F0EC891F278742EF00D712C7 /* SystemImagePicker.swift */,
 				F0EC89252787453A00D712C7 /* CaptureView.swift */,
 			);

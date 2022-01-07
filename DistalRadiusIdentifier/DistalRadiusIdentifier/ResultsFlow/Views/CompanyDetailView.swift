@@ -62,38 +62,22 @@ struct CompanyDetailView: View {
                     .listStyle(.sidebar)
                 }
             }
-            
             if let error = detailModel.error {
-//                withAnimation {
-                    if #available(iOS 15.0, *) {
-                        ErrorView(error: "Failed to Collect Company Data")
-                            .alert("Error: \(error.localizedDescription)", isPresented: $showingError, actions: {
-                                Button("Cancel", role: .cancel) { presentationMode.wrappedValue.dismiss() }
-                                Button("Retry") { getCompanyData() }
-                            }, message: {
-                                Text("Try again or cancel this attempt?")
-                            })
+                ErrorView(error: "Failed to Collect Company Data")
+                                .unredacted()
+                                .alert(isPresented: $showingError, content: {
+                    Alert(
+                        title: Text("Error: \(error.localizedDescription)"),
+                        message: Text("Try again or cancel this attempt?"),
+                        primaryButton: .cancel(Text("Cancel"), action: {
+                            NavigationUtil.popToRootView()
+                        }),
+                        secondaryButton: .default(Text("Retry"), action: {
+                            getCompanyData()
+                        })
                         
-                            .unredacted()
-                    } else {
-                        // Fallback on earlier versions
-                        ErrorView(error: "Failed to Collect Company Data")
-                            .alert(isPresented: $showingError, content: {
-                                Alert(
-                                    title: Text("Error: \(error.localizedDescription)"),
-                                    message: Text("Try again or cancel this attempt?"),
-                                    primaryButton: .cancel(Text("Cancel"), action: {
-                                        presentationMode.wrappedValue.dismiss()
-                                    }),
-                                    secondaryButton: .default(Text("Retry"), action: {
-                                        getCompanyData()
-                                    })
-
-                                )
-                            })
-                            .unredacted()
-                    }
-//                }
+                    )
+                })
             }
             
             

@@ -42,7 +42,7 @@ class ClassificationModel: ObservableObject {
     }
     
     func getCompanyTechnigueGuideURL(company: String) -> URL {
-        return URL(string: "http://www.google.com/search?q=\(company)")!
+        return URL(string: "https://www.google.com/search?q=\(company)")!
     }
     
     

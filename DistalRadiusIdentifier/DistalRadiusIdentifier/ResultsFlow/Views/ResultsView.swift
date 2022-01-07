@@ -25,10 +25,10 @@ struct ResultsView: View {
     
     var body: some View {
         ZStack {
-               
+            
             VStack {
-
-
+                
+                
                 VStack() {
                     HStack {
                         Spacer()
@@ -37,7 +37,7 @@ struct ResultsView: View {
                             .foregroundColor(Color("AccentLight"))
                         Spacer()
                     }
-
+                    
                     HStack {
                         Spacer()
                         Text(String(format: "%.2f", classification?.results[0].percentage ?? "00.00") + "%")
@@ -45,24 +45,24 @@ struct ResultsView: View {
                             .font(.system(size: 40))
                         Spacer()
                     }
-
+                    
                 }
-
-
+                
+                
                 Spacer(minLength: 20)
-
+                
                 List {
                     Section(header: Text("Images")) {
                         HStack(alignment: .center) {
                             ExpandingImageView(image: userImage, caption: "Your Image")
                                 .redacted(reason: classificationModel.isLoading ? .placeholder : [])
-
+                            
                             ExpandingImageView(image: nil, url: classificationModel.getClassificationImageURL(for: classification?.results[0].company ?? ""),
                                                caption: (classification?.results[0].company ?? "Example") + " Image")
                                 .redacted(reason: classificationModel.isLoading ? .placeholder : [])
                         }
                     }
-
+                    
                     Section(header: Text("Full Breakdown")) {
                         ForEach(Array(classification?.results.enumerated() ?? [].enumerated()), id: \.1.company) { (idx, row) in
                             ResultsRowView(row, color: Color("AccentLight"))
@@ -74,7 +74,7 @@ struct ResultsView: View {
                                     }
                                 }
                         }
-
+                        
                     }
                 }
                 .listStyle(.sidebar)
@@ -84,12 +84,12 @@ struct ResultsView: View {
                         NavigationUtil.popToRootView()
                     })
                         .disabled(classificationModel.isLoading)
-                        //.unredacted()
+                    //.unredacted()
                         .padding()
                 }
-
+                
             }
-
+            
             .redacted(reason: classificationModel.isLoading ? .placeholder : [])
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -98,45 +98,30 @@ struct ResultsView: View {
             }
             .navigationTitle("Results")
             .navigationBarTitleDisplayMode(.inline)
-
+            
             .sheet(isPresented: $isPresented) {
                 NavigationView{
                     CompanyDetailView(detailModel: CompanyDetailViewModel(companyName: classification?.results[rowTapped].company ?? "Company"))
-                        //.environmentObject(CompanyDetailViewModel(companyName: classification?.results[rowTapped].company ?? "Company"))
+                    //.environmentObject(CompanyDetailViewModel(companyName: classification?.results[rowTapped].company ?? "Company"))
                 }
             }
-
+            
             if let error = classificationModel.error {
-//                withAnimation {
-                    if #available(iOS 15.0, *) {
-                        ErrorView(error: "Classification Failed")
-                            .alert("Error: \(error.localizedDescription)", isPresented: $showingError, actions: {
-                                Button("Cancel", role: .cancel) { NavigationUtil.popToRootView() }
-                                Button("Retry") { getClassificationResults() }
-                            }, message: {
-                                Text("Try again or cancel this attempt?")
-                            })
+                ErrorView(error: "Classification Failed")
+                                .unredacted()
+                                .alert(isPresented: $showingError, content: {
+                    Alert(
+                        title: Text("Error: \(error.localizedDescription)"),
+                        message: Text("Try again or cancel this attempt?"),
+                        primaryButton: .cancel(Text("Cancel"), action: {
+                            NavigationUtil.popToRootView()
+                        }),
+                        secondaryButton: .default(Text("Retry"), action: {
+                            getClassificationResults()
+                        })
                         
-                            .unredacted()
-                    } else {
-                        // Fallback on earlier versions
-                        ErrorView(error: "Classification Failed")
-                            .alert(isPresented: $showingError, content: {
-                                Alert(
-                                    title: Text("Error: \(error.localizedDescription)"),
-                                    message: Text("Try again or cancel this attempt?"),
-                                    primaryButton: .cancel(Text("Cancel"), action: {
-                                        NavigationUtil.popToRootView()
-                                    }),
-                                    secondaryButton: .default(Text("Retry"), action: {
-                                        getClassificationResults()
-                                    })
-
-                                )
-                            })
-                            .unredacted()
-                    }
-//                }
+                    )
+                })
             }
         }
         
@@ -164,6 +149,9 @@ struct ResultsView: View {
         }
         
     }
+    
+    
+    
     
 }
 //

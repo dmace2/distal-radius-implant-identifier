@@ -9,8 +9,11 @@ import SwiftUI
 import CoreData
 
 struct CaptureView: View {
-    @State var image: UIImage?
+    @Environment(\.presentationMode) var presentationMode
+    
+    @State var image: UIImage? = UIImage(named: "Logo")
     @State var presentPicker = false
+    @State var showingError = false
     
     @EnvironmentObject var cameraModel: CameraFrameViewModel
     @EnvironmentObject var classificationModel: ClassificationModel
@@ -72,6 +75,26 @@ struct CaptureView: View {
                         .clipped()
                         .allowsHitTesting(false)
                     
+                    if let error = cameraModel.error {
+                        ErrorView(error: "Unable to Access Cameras")
+                                        .unredacted()
+                                        .alert(isPresented: $showingError, content: {
+                            Alert(
+                                title: Text("Error: \(error.localizedDescription)"),
+                                message: Text("Please enable camera access in settings in order to classify implants"),
+                                primaryButton: .cancel(Text("Cancel"), action: {
+                                    presentationMode.wrappedValue.dismiss()
+                                }),
+                                secondaryButton: .default(Text("Open Settings"), action: {
+                                    self.presentationMode.wrappedValue.dismiss()
+                                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                                    presentationMode.wrappedValue.dismiss()
+                                })
+                                
+                            )
+                        })
+                    }
+                    
                 }
                 .fullScreenCover(isPresented: $presentPicker) {
                     ZStack {
@@ -79,7 +102,9 @@ struct CaptureView: View {
                         SystemImagePicker(image: $image)
                     }
                 }
+                
                 Button("Retake Photo") { presentPicker.toggle() }
+                .padding()
                 
                 Spacer()
                 
@@ -96,7 +121,16 @@ struct CaptureView: View {
                     .disabled(image == nil)
             }
             .onAppear {
-                self.presentPicker.toggle()
+                cameraModel.error = nil
+                Task {
+                    cameraModel.determineCameraPermissionStatus()
+                    print(cameraModel.error)
+                    if cameraModel.error == nil {
+                        self.presentPicker.toggle()
+                    } else {
+                        self.showingError = true
+                    }
+                }
             }
             
             .toolbar {
