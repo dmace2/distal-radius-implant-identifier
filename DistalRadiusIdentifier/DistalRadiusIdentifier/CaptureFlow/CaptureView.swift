@@ -11,7 +11,7 @@ import CoreData
 struct CaptureView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @State var image: UIImage? = UIImage(named: "Logo")
+    @State var image: UIImage?
     @State var presentPicker = false
     @State var showingError = false
     
@@ -103,8 +103,14 @@ struct CaptureView: View {
                     }
                 }
                 
-                Button("Retake Photo") { presentPicker.toggle() }
-                .padding()
+                if cameraModel.error == nil && image == nil {
+                    Button("Take Photo") { presentPicker.toggle() }
+                        .padding()
+                } else if cameraModel.error == nil {
+                    Button("Retake Photo") { presentPicker.toggle() }
+                        .padding()
+                }
+                
                 
                 Spacer()
                 
@@ -124,10 +130,7 @@ struct CaptureView: View {
                 cameraModel.error = nil
                 Task {
                     cameraModel.determineCameraPermissionStatus()
-                    print(cameraModel.error)
-                    if cameraModel.error == nil {
-                        self.presentPicker.toggle()
-                    } else {
+                    if cameraModel.error != nil {
                         self.showingError = true
                     }
                 }
