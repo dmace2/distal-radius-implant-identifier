@@ -29,6 +29,7 @@ struct CompanyDetailView: View {
                             Section {
                                 DisclosureGroup {
                                     ForEach(row.tools, id: \.toolName) { tool in
+                                        //add toolview here
                                         Text(tool.toolName)
                                     }
                                     

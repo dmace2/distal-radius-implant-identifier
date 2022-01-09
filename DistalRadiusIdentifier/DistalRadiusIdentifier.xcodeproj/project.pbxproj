@@ -28,6 +28,8 @@
 		F0427C2227335B57008268F4 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0427C2127335B57008268F4 /* ViewRouter.swift */; };
 		F0508B072733545300EEEFE4 /* TutorialScreen5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0508B062733545300EEEFE4 /* TutorialScreen5.swift */; };
 		F051C268275815C400859E77 /* ClassificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F051C267275815C400859E77 /* ClassificationModel.swift */; };
+		F0548DCE278B884400985761 /* ImageCropperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0548DCD278B884400985761 /* ImageCropperView.swift */; };
+		F0548DD0278B92D100985761 /* NavigationBarTintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0548DCF278B92D100985761 /* NavigationBarTintExtension.swift */; };
 		F0570A762749A10A00BB984D /* InfoButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0570A752749A10A00BB984D /* InfoButtonView.swift */; };
 		F0595B7C2786360400AE1561 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0595B7B2786360400AE1561 /* APIService.swift */; };
 		F05A67F82757F489008C6E4B /* ResultsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A67F72757F489008C6E4B /* ResultsImageView.swift */; };
@@ -78,6 +80,8 @@
 		F0427C2127335B57008268F4 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		F0508B062733545300EEEFE4 /* TutorialScreen5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScreen5.swift; sourceTree = "<group>"; };
 		F051C267275815C400859E77 /* ClassificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationModel.swift; sourceTree = "<group>"; };
+		F0548DCD278B884400985761 /* ImageCropperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropperView.swift; sourceTree = "<group>"; };
+		F0548DCF278B92D100985761 /* NavigationBarTintExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarTintExtension.swift; sourceTree = "<group>"; };
 		F0570A752749A10A00BB984D /* InfoButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButtonView.swift; sourceTree = "<group>"; };
 		F0595B7B2786360400AE1561 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		F05A67F72757F489008C6E4B /* ResultsImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsImageView.swift; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 				F0D3E701275AA52500CFC781 /* URLSessionExtension.swift */,
 				F0D3E705275AA6DE00CFC781 /* StringErrorExtension.swift */,
 				F0A68232275FE2A800D9AF02 /* DateFormatExtension.swift */,
+				F0548DCF278B92D100985761 /* NavigationBarTintExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 				F00502052757DA43000B4F1C /* Models */,
 				F0EC891F278742EF00D712C7 /* SystemImagePicker.swift */,
 				F0EC89252787453A00D712C7 /* CaptureView.swift */,
+				F0548DCD278B884400985761 /* ImageCropperView.swift */,
 			);
 			path = CaptureFlow;
 			sourceTree = "<group>";
@@ -395,9 +401,11 @@
 				F05A67FC2758031B008C6E4B /* RandomString.swift in Sources */,
 				F0A68233275FE2A800D9AF02 /* DateFormatExtension.swift in Sources */,
 				F0E5BD0C2733500B009DFD26 /* TutorialTitleAndSubheader.swift in Sources */,
+				F0548DD0278B92D100985761 /* NavigationBarTintExtension.swift in Sources */,
 				F0427C2227335B57008268F4 /* ViewRouter.swift in Sources */,
 				F03E15AF2763D77100183637 /* RequiredTool.swift in Sources */,
 				F051C268275815C400859E77 /* ClassificationModel.swift in Sources */,
+				F0548DCE278B884400985761 /* ImageCropperView.swift in Sources */,
 				F0EC89262787453A00D712C7 /* CaptureView.swift in Sources */,
 				F0D3E704275AA5DC00CFC781 /* ErrorView.swift in Sources */,
 				F0A889AD275863E2007464F1 /* CompanyDetailView.swift in Sources */,
