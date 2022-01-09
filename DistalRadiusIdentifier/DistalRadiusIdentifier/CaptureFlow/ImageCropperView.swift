@@ -21,7 +21,18 @@ struct ImageCroppingView: View {
     @State var croppingMagnification:CGFloat = 1
     
     var image:UIImage
+    var previousCrop: UIImage?
+    
     @Binding var croppedImage:UIImage?
+    
+    init(shown: Binding<Bool>, image: UIImage, croppedImage: Binding<UIImage?>) {
+        self.image = image
+        
+        self._croppedImage = croppedImage
+        self.previousCrop = croppedImage.wrappedValue
+        self._shown = shown
+        
+    }
     
     var body: some View {
         ZStack{
@@ -33,7 +44,7 @@ struct ImageCroppingView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button {
-                            croppedImage = nil
+                            croppedImage = previousCrop
                             shown.toggle()
                         } label: {
                             Text("Cancel").foregroundColor(.red)
