@@ -53,13 +53,11 @@ struct ImageCroppingView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             let cgImage: CGImage = image.cgImage!
-                            print("image: \(cgImage.width) x \(cgImage.height)")
                             let scaler = CGFloat(cgImage.width)/imageWidth
                             let dim:CGFloat = getDimension(w: CGFloat(cgImage.width), h: CGFloat(cgImage.height))
                             
                             let xOffset = (((imageWidth/2) - (getDimension(w: imageWidth, h: imageHeight*0.99) * croppingMagnification/2)) + croppingOffset.width) * scaler
                             let yOffset = (((imageHeight/2) - (getDimension(w: imageWidth, h: imageHeight*0.99) * croppingMagnification/2)) + croppingOffset.height) * scaler
-                            print("xOffset = \(xOffset)")
                             let scaledDim = dim * croppingMagnification
                             
                             
@@ -155,8 +153,6 @@ struct ViewFinderView:View{
                                 width: finalOffset.width + drag.translation.width,
                                 height: finalOffset.height + drag.translation.height
                             )
-                            
-                            print(workingOffset.width + (getDimension(w: imageWidth, h: imageHeight*0.99)/2))
                             
                             //First check if we are within the right and left bounds when translating in the horizontal dimension
                             if workingOffset.width + (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.99)/2) <= imageWidth/2 &&
@@ -269,9 +265,6 @@ struct ViewFinderView:View{
                             
                             self.activeOffset.width = finalOffset.width + offsetSize/2
                             self.activeOffset.height = finalOffset.height + offsetSize/2
-                            print("current yOffset = \(workingOffset.height)")
-                            print("half image height = \(halfImageHeight)")
-                            print("proposed half-square size = \(proposed_halfSquareSize)")
                         }
                         .onEnded{drag in
                             
@@ -299,7 +292,6 @@ struct ViewFinderView:View{
     
     //This function determines the intended magnification you were going for. It does so by measuring the distance you dragged in both dimensions and comparing it against the longest edge of the image. The larger ratio is determined to be the magnification that you intended.
     func getMagnification(_ dragTranslation:CGSize) -> CGFloat {
-        print(dragTranslation.width)
         if (getDimension(w: imageWidth, h: imageHeight*0.99) - dragTranslation.width)/getDimension(w: imageWidth, h: imageHeight*0.99) < (getDimension(w: imageWidth, h: imageHeight*0.99) - dragTranslation.height)/getDimension(w: imageWidth, h: imageHeight*0.99) {
             return (getDimension(w: imageWidth, h: imageHeight*0.99) - dragTranslation.width)/getDimension(w: imageWidth, h: imageHeight*0.99)
         } else {
