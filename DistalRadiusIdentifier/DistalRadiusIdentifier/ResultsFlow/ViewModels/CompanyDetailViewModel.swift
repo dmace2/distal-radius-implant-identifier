@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-
+@MainActor
 class CompanyDetailViewModel: ObservableObject {
     
     private let APISession = APIService.shared
@@ -39,6 +39,7 @@ class CompanyDetailViewModel: ObservableObject {
             return
         }
         
+        self.objectWillChange.send()
         self.examples = examples!
     }
 }

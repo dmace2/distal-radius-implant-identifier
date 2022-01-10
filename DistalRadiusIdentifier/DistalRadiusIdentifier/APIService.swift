@@ -81,12 +81,14 @@ class APIService {
         let url = URL(string:"\(urlHostName)/implantExamples/\(company)")!
         
         do {
+            session.configuration.timeoutIntervalForRequest = 5
             let (data, _) = try await self.session.data(from: url)
             let decodedData = try self.decoder.decode([ExampleImplant].self, from: data)
             examples = decodedData
             
         } catch {
             requestError = error
+            print("ERROR: \(error)")
         }
         
         return (examples, requestError)

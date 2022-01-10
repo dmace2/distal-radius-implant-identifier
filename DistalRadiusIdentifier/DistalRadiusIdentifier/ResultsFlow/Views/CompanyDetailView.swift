@@ -10,7 +10,7 @@ import BetterSafariView
 
 struct CompanyDetailView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State var detailModel: CompanyDetailViewModel
+    @StateObject var detailModel: CompanyDetailViewModel
     @State var presentingSafariView = false
     @State var rowTapped = 0
     
@@ -61,6 +61,11 @@ struct CompanyDetailView: View {
                         }
                     }
                     .listStyle(.sidebar)
+                    .onAppear {
+                        getCompanyData()
+                        print("EXAMPLES")
+                        print(detailModel.examples)
+                    }
                 }
             }
             if let error = detailModel.error {
@@ -83,9 +88,7 @@ struct CompanyDetailView: View {
             
             
         }
-        .onAppear {
-            getCompanyData()
-        }
+        
         .navigationBarTitle("Company Details")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
