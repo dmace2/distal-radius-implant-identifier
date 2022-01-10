@@ -108,7 +108,7 @@ struct CaptureView: View {
                 .fullScreenCover(isPresented: $presentPicker) {
                     ZStack {
                         Color.black.ignoresSafeArea()
-                        SystemImagePicker(image: $image)
+                        SystemImagePicker(image: $image, croppedImage: $croppedImage)
                     }
                 }
                 .padding(.bottom, geo.size.height / 50)

@@ -16,6 +16,7 @@ public struct SystemImagePicker: UIViewControllerRepresentable {
     
     @Environment(\.presentationMode) var presentationMode
     @Binding var image: UIImage?
+    @Binding var croppedImage: UIImage?
     
     
     var sourceType: UIImagePickerController.SourceType = .camera
@@ -31,6 +32,7 @@ public struct SystemImagePicker: UIViewControllerRepresentable {
         public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let uiImage = info[.editedImage] as? UIImage {
                 parent.image = uiImage
+                parent.croppedImage = nil
             }
             
             parent.presentationMode.wrappedValue.dismiss()

@@ -64,7 +64,11 @@ struct ImageCropAndRotationView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            let rotatedImage = image.rotated(by: Measurement(value: rotationAngle, unit: .degrees))!
+                            print(image.size)
+                            let rotatedImage = image.imageRotatedByDegrees(degrees: rotationAngle, flip: false)
+                            //image.rotated(by: Measurement(value: rotationAngle, unit: .degrees))!
+                            print(rotatedImage.size)
+                            
                             let cgImage: CGImage = rotatedImage.cgImage!
                             let scaler = CGFloat(cgImage.width)/imageWidth
                             let dim:CGFloat = getDimension(w: CGFloat(cgImage.width), h: CGFloat(cgImage.height))
@@ -72,6 +76,8 @@ struct ImageCropAndRotationView: View {
                             let xOffset = (((imageWidth/2) - (getDimension(w: imageWidth, h: imageHeight*0.999) * croppingMagnification/2)) + croppingOffset.width) * scaler
                             let yOffset = (((imageHeight/2) - (getDimension(w: imageWidth, h: imageHeight*0.999) * croppingMagnification/2)) + croppingOffset.height) * scaler
                             let scaledDim = dim * croppingMagnification
+
+                            print(xOffset, yOffset, scaledDim)
 
 
                             if let cImage = cgImage.cropping(to: CGRect(x: xOffset, y: yOffset, width: scaledDim, height: scaledDim)) {
