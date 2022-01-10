@@ -9,33 +9,6 @@
           "revision": "9c051d20dbb50fa61d014d87b4ab6c5504408a73",
           "version": null
         }
-      },
-      {
-        "package": "CoreGeometry",
-        "repositoryURL": "https://gitlab.com/Pyroh/CoreGeometry.git",
-        "state": {
-          "branch": null,
-          "revision": "c8604b90dc60084e9d08f289573e537585b84129",
-          "version": "4.0.0"
-        }
-      },
-      {
-        "package": "SlidingRuler",
-        "repositoryURL": "https://github.com/Pyroh/SlidingRuler",
-        "state": {
-          "branch": null,
-          "revision": "707b15e0ade64b488e7146a487cc5ee9570af9fa",
-          "version": "0.2.0"
-        }
-      },
-      {
-        "package": "SmoothOperators",
-        "repositoryURL": "https://github.com/Pyroh/SmoothOperators.git",
-        "state": {
-          "branch": null,
-          "revision": "7fc92b9f8e65b79bc6d1295ad1e62973d60beb54",
-          "version": "0.14.0"
-        }
       }
     ]
   },

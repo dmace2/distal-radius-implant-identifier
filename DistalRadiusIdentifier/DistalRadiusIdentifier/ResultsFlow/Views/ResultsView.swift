@@ -108,20 +108,20 @@ struct ResultsView: View {
             
             if let error = classificationModel.error {
                 ErrorView(error: "Classification Failed")
-                                .unredacted()
-                                .alert(isPresented: $showingError, content: {
-                    Alert(
-                        title: Text("Error: \(error.localizedDescription)"),
-                        message: Text("Try again or cancel this attempt?"),
-                        primaryButton: .cancel(Text("Cancel"), action: {
-                            NavigationUtil.popToRootView()
-                        }),
-                        secondaryButton: .default(Text("Retry"), action: {
-                            getClassificationResults()
-                        })
-                        
-                    )
-                })
+                    .unredacted()
+                    .alert(isPresented: $showingError, content: {
+                        Alert(
+                            title: Text("Error: \(error.localizedDescription)"),
+                            message: Text("Try again or cancel this attempt?"),
+                            primaryButton: .cancel(Text("Cancel"), action: {
+                                NavigationUtil.popToRootView()
+                            }),
+                            secondaryButton: .default(Text("Retry"), action: {
+                                getClassificationResults()
+                            })
+                            
+                        )
+                    })
             }
         }
         
