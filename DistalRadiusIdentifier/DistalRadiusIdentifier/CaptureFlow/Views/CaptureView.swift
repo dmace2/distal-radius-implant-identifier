@@ -105,13 +105,13 @@ struct CaptureView: View {
                     }
                     
                 }
-                .sheet(isPresented: $presentPicker) {
+                .fullScreenCover(isPresented: $presentPicker) {
                     ZStack {
                         Color.black.ignoresSafeArea()
                         SystemImagePicker(image: $image)
                     }
                 }
-                .padding(.bottom, geo.size.height / 100)
+                .padding(.bottom, geo.size.height / 50)
                 
                 HStack {
                     if cameraModel.error == nil && image == nil {
@@ -123,7 +123,6 @@ struct CaptureView: View {
                             .cornerRadius(10)
                     } else if cameraModel.error == nil {
                         Button("Retake Photo") { presentPicker.toggle() }
-//                            .padding()
                         .frame(width: geo.size.width / 4)
                         .padding(geo.size.height / 100)
                         .foregroundColor(Color(UIColor.systemBackground)) // set text as white/black based on background color
@@ -132,19 +131,16 @@ struct CaptureView: View {
                     }
                     
                     if #available(iOS 15.0, *), image != nil {
-                        Button("Crop Photo") {
-                            showingCropper.toggle()
-                        }
-                        .frame(width: geo.size.width / 4)
-                        .padding(geo.size.height / 100)
-                        .foregroundColor(Color(UIColor.systemBackground)) // set text as white/black based on background color
-                        .background(Color.accentColor)
-                        .cornerRadius(10)
-                        .sheet(isPresented: $showingCropper) {
-                            NavigationView {
-                                ImageCroppingView(shown: $showingCropper, image: (image ?? UIImage(named: "ExampleXRay")!), croppedImage: $croppedImage)
-                            }
-                        }
+                        NavigationLink(destination: ImageCropAndRotationView(image: (image ?? UIImage(named: "ExampleXRay")!), croppedImage: $croppedImage)
+                                        .navigationBarBackButtonHidden(true)
+                                       , label: {
+                            Text("Edit Photo")
+                            .frame(width: geo.size.width / 4)
+                            .padding(geo.size.height / 100)
+                            .foregroundColor(Color(UIColor.systemBackground)) // set text as white/black based on background color
+                            .background(Color.accentColor)
+                            .cornerRadius(10)
+                        })
                     }
                     
                 }
@@ -155,7 +151,7 @@ struct CaptureView: View {
                     .frame(width: self.alignmentGuideWidth)
                 
                 RoundedButton(color: .accentColor, labelText: "Submit Photo for Classification", buttonFunc: {
-                    if let image = croppedImage {
+                    if croppedImage != nil {
                         cameraModel.capturedImage = croppedImage
                     } else {
                         cameraModel.capturedImage = image

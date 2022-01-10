@@ -6,16 +6,19 @@
 //
 
 import SwiftUI
+import SlidingRuler
 
 var UniversalSafeOffsets = UIApplication.shared.windows.first?.safeAreaInsets
 
 @available(iOS 15.0, *)
-struct ImageCroppingView: View {
+struct ImageCropAndRotationView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
+    
+    
     //These are the initial dimension of the actual image
     @State var imageWidth:CGFloat = 0
     @State var imageHeight:CGFloat = 0
-    
-    @Binding var shown:Bool
     
     @State var croppingOffset = CGSize(width: 0, height: 0)
     @State var croppingMagnification:CGFloat = 1
@@ -25,12 +28,20 @@ struct ImageCroppingView: View {
     
     @Binding var croppedImage:UIImage?
     
-    init(shown: Binding<Bool>, image: UIImage, croppedImage: Binding<UIImage?>) {
+    @State var rotationAngle: Double = 0
+    
+    private var formatter: NumberFormatter {
+        let f = NumberFormatter()
+        f.generatesDecimalNumbers = false
+        return f
+    }
+    
+    
+    init(image: UIImage, croppedImage: Binding<UIImage?>) {
         self.image = image
         
         self._croppedImage = croppedImage
         self.previousCrop = croppedImage.wrappedValue
-        self._shown = shown
         
     }
     
@@ -38,32 +49,33 @@ struct ImageCroppingView: View {
         ZStack{
             //Black background
             Color.black
-                .navigationTitle("Crop Image")
+                .navigationTitle("Edit Image")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarTitleTextColor(.white)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button {
                             croppedImage = previousCrop
-                            shown.toggle()
+                            presentationMode.wrappedValue.dismiss()
                         } label: {
                             Text("Cancel").foregroundColor(.red)
                         }
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            let cgImage: CGImage = image.cgImage!
+                            let rotatedImage = image.rotated(by: Measurement(value: rotationAngle, unit: .degrees))!
+                            let cgImage: CGImage = rotatedImage.cgImage!
                             let scaler = CGFloat(cgImage.width)/imageWidth
                             let dim:CGFloat = getDimension(w: CGFloat(cgImage.width), h: CGFloat(cgImage.height))
-                            
-                            let xOffset = (((imageWidth/2) - (getDimension(w: imageWidth, h: imageHeight*0.99) * croppingMagnification/2)) + croppingOffset.width) * scaler
-                            let yOffset = (((imageHeight/2) - (getDimension(w: imageWidth, h: imageHeight*0.99) * croppingMagnification/2)) + croppingOffset.height) * scaler
+
+                            let xOffset = (((imageWidth/2) - (getDimension(w: imageWidth, h: imageHeight*0.999) * croppingMagnification/2)) + croppingOffset.width) * scaler
+                            let yOffset = (((imageHeight/2) - (getDimension(w: imageWidth, h: imageHeight*0.999) * croppingMagnification/2)) + croppingOffset.height) * scaler
                             let scaledDim = dim * croppingMagnification
-                            
-                            
-                            if let cImage = cgImage.cropping(to: CGRect(x: xOffset, y: yOffset, width: scaledDim, height: scaledDim)){
+
+
+                            if let cImage = cgImage.cropping(to: CGRect(x: xOffset, y: yOffset, width: scaledDim, height: scaledDim)) {
                                 croppedImage = UIImage(cgImage: cImage)
-                                shown = false
+                                presentationMode.wrappedValue.dismiss()
                             }
                         } label: {
                             Text("Done").foregroundColor(Color("Gold"))
@@ -75,15 +87,18 @@ struct ImageCroppingView: View {
                     .frame(height: UniversalSafeOffsets?.top ?? 0)
                 Spacer()
                 ZStack{
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFit()
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFit()
+                            .rotationEffect(.degrees(rotationAngle))
+
+                    
                         .overlay(GeometryReader{geo -> AnyView in
                             DispatchQueue.main.async{
-                                self.imageWidth = geo.size.width
-                                self.imageHeight = geo.size.height
+                                self.imageWidth = geo.size.width * 0.999
+                                self.imageHeight = geo.size.height * 0.999
                             }
-                            return AnyView(EmptyView())
+                            return AnyView(EmptyView().foregroundColor(.clear))
                         })
                     
                     ViewFinderView(imageWidth: self.$imageWidth, imageHeight: self.$imageHeight, finalOffset: $croppingOffset, finalMagnification: $croppingMagnification)
@@ -92,8 +107,11 @@ struct ImageCroppingView: View {
                 }
                 .padding()
                 Spacer()
+                
+                SlidingRuler(value: $rotationAngle, in: -30...30, step: 10, snap: .fraction, tick: .fraction, formatter: formatter)
+                    .padding(.bottom)
             }
-        }.edgesIgnoringSafeArea(.vertical)
+        }//.edgesIgnoringSafeArea(.vertical)
     }
 }
 
@@ -112,7 +130,7 @@ struct ViewFinderView:View{
     
     @State var dotSize:CGFloat = 13
     var dotColor = Color.init(white: 1).opacity(0.9)
-    var surroundingColor = Color.black.opacity(0.45)
+    var surroundingColor = Color.black.opacity(0)
     
     var body: some View {
         ZStack{
@@ -121,28 +139,28 @@ struct ViewFinderView:View{
                 Rectangle()
                 //                .foregroundColor(Color.red.opacity(0.3))
                     .foregroundColor(surroundingColor)
-                    .frame(width: ((imageWidth-getDimension(w: imageWidth, h: imageHeight*0.99))/2) + activeOffset.width + (getDimension(w: imageWidth, h: imageHeight*0.99) * (1 - activeMagnification) / 2), height: imageHeight)
+                    .frame(width: ((imageWidth-getDimension(w: imageWidth, h: imageHeight*0.999))/2) + activeOffset.width + (getDimension(w: imageWidth, h: imageHeight*0.999) * (1 - activeMagnification) / 2), height: imageHeight)
                     .offset(x: getSurroundingViewOffsets(horizontal: true, left_or_up: true), y: 0)
                 Rectangle()
                 //                .foregroundColor(Color.blue.opacity(0.3))
                     .foregroundColor(surroundingColor)
                 
-                    .frame(width: ((imageWidth-getDimension(w: imageWidth, h: imageHeight*0.99))/2) - activeOffset.width + (getDimension(w: imageWidth, h: imageHeight*0.99) * (1 - activeMagnification) / 2), height: imageHeight)
+                    .frame(width: ((imageWidth-getDimension(w: imageWidth, h: imageHeight*0.999))/2) - activeOffset.width + (getDimension(w: imageWidth, h: imageHeight*0.999) * (1 - activeMagnification) / 2), height: imageHeight)
                     .offset(x: getSurroundingViewOffsets(horizontal: true, left_or_up: false), y: 0)
                 Rectangle()
                 //                .foregroundColor(Color.yellow.opacity(0.3))
                     .foregroundColor(surroundingColor)
-                    .frame(width: getDimension(w: imageWidth, h: imageHeight*0.99) * activeMagnification, height: ((imageHeight-getDimension(w: imageWidth, h: imageHeight*0.99))/2) + activeOffset.height + (getDimension(w: imageWidth, h: imageHeight*0.99) * (1 - activeMagnification) / 2))
+                    .frame(width: getDimension(w: imageWidth, h: imageHeight*0.999) * activeMagnification, height: ((imageHeight-getDimension(w: imageWidth, h: imageHeight*0.999))/2) + activeOffset.height + (getDimension(w: imageWidth, h: imageHeight*0.999) * (1 - activeMagnification) / 2))
                     .offset(x: activeOffset.width, y: getSurroundingViewOffsets(horizontal: false, left_or_up: true))
                 Rectangle()
                 //                .foregroundColor(Color.green.opacity(0.3))
                     .foregroundColor(surroundingColor)
-                    .frame(width: getDimension(w: imageWidth, h: imageHeight*0.99) * activeMagnification, height: ((imageHeight-getDimension(w: imageWidth, h: imageHeight*0.99))/2) - activeOffset.height + (getDimension(w: imageWidth, h: imageHeight*0.99) * (1 - activeMagnification) / 2))
+                    .frame(width: getDimension(w: imageWidth, h: imageHeight*0.999) * activeMagnification, height: ((imageHeight-getDimension(w: imageWidth, h: imageHeight*0.999))/2) - activeOffset.height + (getDimension(w: imageWidth, h: imageHeight*0.999) * (1 - activeMagnification) / 2))
                     .offset(x: activeOffset.width, y: getSurroundingViewOffsets(horizontal: false, left_or_up: false))
             }
             //This view creates a very translucent rectangle that overlies the picture we'll be uploading
             Rectangle()
-                .frame(width: getDimension(w: imageWidth, h: imageHeight*0.99)*activeMagnification, height: getDimension(w: imageWidth, h: imageHeight*0.99)*activeMagnification)
+                .frame(width: getDimension(w: imageWidth, h: imageHeight*0.999)*activeMagnification, height: getDimension(w: imageWidth, h: imageHeight*0.999)*activeMagnification)
                 .foregroundColor(Color.white.opacity(0.05))
                 .offset(x: activeOffset.width, y: activeOffset.height)
                 .gesture(
@@ -155,30 +173,30 @@ struct ViewFinderView:View{
                             )
                             
                             //First check if we are within the right and left bounds when translating in the horizontal dimension
-                            if workingOffset.width + (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.99)/2) <= imageWidth/2 &&
-                                (workingOffset.width - (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.99)/2)) >= -imageWidth/2 {
+                            if workingOffset.width + (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.999)/2) <= imageWidth/2 &&
+                                (workingOffset.width - (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.999)/2)) >= -imageWidth/2 {
                                 //If we are, then set the activeOffset.width equal to the workingOffset.width
                                 self.activeOffset.width = workingOffset.width
-                            } else if workingOffset.width + (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.99)/2) > imageWidth/2 {
+                            } else if workingOffset.width + (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.999)/2) > imageWidth/2 {
                                 //If we are at the right-most bound then align the right-most edges accordingly
-                                self.activeOffset.width = (imageWidth/2) - (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.99)/2)
+                                self.activeOffset.width = (imageWidth/2) - (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.999)/2)
                             } else {
                                 //If we are at the left-most bound then align the left-most edges accordingly
-                                self.activeOffset.width = -(imageWidth/2) + (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.99)/2)
+                                self.activeOffset.width = -(imageWidth/2) + (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.999)/2)
                             }
                             
                             //Next check if we are within the upper and lower bounds when translating in the vertical dimension
-                            if workingOffset.height + (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.99)/2) <= imageHeight/2 &&
-                                ((workingOffset.height) - (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.99)/2)) >= -imageHeight/2 {
+                            if workingOffset.height + (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.999)/2) <= imageHeight/2 &&
+                                ((workingOffset.height) - (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.999)/2)) >= -imageHeight/2 {
                                 //If we are, then set the activeOffset.height equal to the workingOffset.height
                                 self.activeOffset.height = workingOffset.height
                             }
-                            else if workingOffset.height + (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.99)/2) > imageWidth/2 {
+                            else if workingOffset.height + (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.999)/2) > imageWidth/2 {
                                 //If we are at the bottom-most bound then align the bottom-most edges accordingly
-                                self.activeOffset.height = (imageHeight/2) - (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.99)/2)
+                                self.activeOffset.height = (imageHeight/2) - (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.999)/2)
                             } else {
                                 //If we are at the top-most bound then align the top-most edges accordingly
-                                self.activeOffset.height = -((imageHeight/2) - (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.99)/2))
+                                self.activeOffset.height = -((imageHeight/2) - (finalMagnification * getDimension(w: imageWidth, h: imageHeight*0.999)/2))
                             }
                             
                         }
@@ -192,21 +210,21 @@ struct ViewFinderView:View{
             //This view creates the outer square
             Rectangle()
                 .stroke(lineWidth: 1)
-                .frame(width: getDimension(w: imageWidth, h: imageHeight*0.99)*activeMagnification, height: getDimension(w: imageWidth, h: imageHeight*0.99)*activeMagnification)
+                .frame(width: getDimension(w: imageWidth, h: imageHeight*0.999)*activeMagnification, height: getDimension(w: imageWidth, h: imageHeight*0.999)*activeMagnification)
                 .foregroundColor(.white)
                 .offset(x: activeOffset.width, y: activeOffset.height)
             
             //This view creates a thin rectangle in the center that is 1/3 the outer square's width
             Rectangle()
                 .stroke(lineWidth: 1)
-                .frame(width: getDimension(w: imageWidth, h: imageHeight*0.99)*activeMagnification/3, height: getDimension(w: imageWidth, h: imageHeight*0.99)*activeMagnification)
+                .frame(width: getDimension(w: imageWidth, h: imageHeight*0.999)*activeMagnification/3, height: getDimension(w: imageWidth, h: imageHeight*0.999)*activeMagnification)
                 .foregroundColor(Color.white.opacity(0.6))
                 .offset(x: activeOffset.width, y: activeOffset.height)
             
             //This view creates a thin rectangle in the center that is 1/3 the outer square's height
             Rectangle()
                 .stroke(lineWidth: 1)
-                .frame(width: getDimension(w: imageWidth, h: imageHeight*0.99)*activeMagnification, height: getDimension(w: imageWidth, h: imageHeight*0.99)*activeMagnification/3)
+                .frame(width: getDimension(w: imageWidth, h: imageHeight*0.999)*activeMagnification, height: getDimension(w: imageWidth, h: imageHeight*0.999)*activeMagnification/3)
                 .foregroundColor(Color.white.opacity(0.6))
                 .offset(x: activeOffset.width, y: activeOffset.height)
             
@@ -217,7 +235,7 @@ struct ViewFinderView:View{
                 .background(Circle().frame(width: 20, height: 20).foregroundColor(dotColor))
                 .frame(width: dotSize, height: dotSize)
                 .foregroundColor(.black)
-                .offset(x: activeOffset.width - (activeMagnification*getDimension(w: imageWidth, h: imageHeight*0.99)/2), y: activeOffset.height - (activeMagnification*getDimension(w: imageWidth, h: imageHeight*0.99)/2))
+                .offset(x: activeOffset.width - (activeMagnification*getDimension(w: imageWidth, h: imageHeight*0.999)/2), y: activeOffset.height - (activeMagnification*getDimension(w: imageWidth, h: imageHeight*0.999)/2))
                 .padding(25)
                 .gesture(
                     DragGesture()
@@ -231,7 +249,7 @@ struct ViewFinderView:View{
                             //**********************************
                             //This set of logic is used for calculations that prevent scaling to cause offset to go outside the actual image
                             //First we check the size of the offsets
-                            let workingOffsetSize = (getDimension(w: imageWidth, h: imageHeight*0.99) * finalMagnification)-(getDimension(w: imageWidth, h: imageHeight*0.99) * activeMagnification)
+                            let workingOffsetSize = (getDimension(w: imageWidth, h: imageHeight*0.999) * finalMagnification)-(getDimension(w: imageWidth, h: imageHeight*0.999) * activeMagnification)
                             
                             //Then we check the offset of the image barring the current "onChanged" we are currently experiencing by adding the proposed "workingOffsetSize" to the displayed "finalOffset"
                             let workingOffset = CGSize(width: finalOffset.width + workingOffsetSize/2, height: finalOffset.height + workingOffsetSize/2)
@@ -241,7 +259,7 @@ struct ViewFinderView:View{
                             let halfImageWidth = self.imageWidth/2
                             
                             //This variable is equal to half of the view finding square, factoring in the magnification
-                            let proposed_halfSquareSize = (getDimension(w: imageWidth, h: imageHeight*0.99)*activeMagnification)/2
+                            let proposed_halfSquareSize = (getDimension(w: imageWidth, h: imageHeight*0.999)*activeMagnification)/2
                             //**********************************
                             
                             //Here we are setting up the upper and lower limits of the magnificatiomn
@@ -261,7 +279,7 @@ struct ViewFinderView:View{
                             
                             
                             //As you magnify, you technically need to modify offset as well, because magnification changes are not symmetric, meaning that you are modifying the magnfiication only be shifting the upper and left edges inwards, thus changing the center of the croppedingview, so the offset needs to move accordingly
-                            let offsetSize = (getDimension(w: imageWidth, h: imageHeight*0.99) * finalMagnification)-(getDimension(w: imageWidth, h: imageHeight*0.99) * activeMagnification)
+                            let offsetSize = (getDimension(w: imageWidth, h: imageHeight*0.999) * finalMagnification)-(getDimension(w: imageWidth, h: imageHeight*0.999) * activeMagnification)
                             
                             self.activeOffset.width = finalOffset.width + offsetSize/2
                             self.activeOffset.height = finalOffset.height + offsetSize/2
@@ -287,15 +305,15 @@ struct ViewFinderView:View{
         let negVal:CGFloat = left_or_up ? -1 : 1
         let compensator = horizontal ? activeOffset.width : activeOffset.height
         
-        return (((negVal * initialOffset) - (negVal * (initialOffset - getDimension(w: imageWidth, h: imageHeight*0.99))/2))/2) + (compensator/2) + (-negVal * (getDimension(w: imageWidth, h: imageHeight*0.99) * (1 - activeMagnification) / 4))
+        return (((negVal * initialOffset) - (negVal * (initialOffset - getDimension(w: imageWidth, h: imageHeight*0.999))/2))/2) + (compensator/2) + (-negVal * (getDimension(w: imageWidth, h: imageHeight*0.999) * (1 - activeMagnification) / 4))
     }
     
     //This function determines the intended magnification you were going for. It does so by measuring the distance you dragged in both dimensions and comparing it against the longest edge of the image. The larger ratio is determined to be the magnification that you intended.
     func getMagnification(_ dragTranslation:CGSize) -> CGFloat {
-        if (getDimension(w: imageWidth, h: imageHeight*0.99) - dragTranslation.width)/getDimension(w: imageWidth, h: imageHeight*0.99) < (getDimension(w: imageWidth, h: imageHeight*0.99) - dragTranslation.height)/getDimension(w: imageWidth, h: imageHeight*0.99) {
-            return (getDimension(w: imageWidth, h: imageHeight*0.99) - dragTranslation.width)/getDimension(w: imageWidth, h: imageHeight*0.99)
+        if (getDimension(w: imageWidth, h: imageHeight*0.999) - dragTranslation.width)/getDimension(w: imageWidth, h: imageHeight*0.999) < (getDimension(w: imageWidth, h: imageHeight*0.999) - dragTranslation.height)/getDimension(w: imageWidth, h: imageHeight*0.999) {
+            return (getDimension(w: imageWidth, h: imageHeight*0.999) - dragTranslation.width)/getDimension(w: imageWidth, h: imageHeight*0.999)
         } else {
-            return (getDimension(w: imageWidth, h: imageHeight*0.99) - dragTranslation.height)/getDimension(w: imageWidth, h: imageHeight*0.99)
+            return (getDimension(w: imageWidth, h: imageHeight*0.999) - dragTranslation.height)/getDimension(w: imageWidth, h: imageHeight*0.999)
         }
     }
     
