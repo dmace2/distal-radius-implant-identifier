@@ -38,7 +38,7 @@ struct TutorialScreen4: View {
                         } else if row == 2 {
                             ResultsRowView(CompanyPercentage(company: "Acumed", percentage: 8.59), color: Color("AccentLight"))
                         } else {
-                            ResultsRowView(CompanyPercentage(company: "Company", percentage: 0.99), color: Color("AccentLight"))
+                            ResultsRowView(CompanyPercentage(company: "Company", percentage: 0.999), color: Color("AccentLight"))
                         }
                     }
                 }
