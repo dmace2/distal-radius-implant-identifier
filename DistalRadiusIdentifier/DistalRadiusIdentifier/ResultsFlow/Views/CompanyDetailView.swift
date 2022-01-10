@@ -22,7 +22,7 @@ struct CompanyDetailView: View {
                 VStack {
                     CompanyDetailHeaderView(company: detailModel.companyName,
                                             url: detailModel.getClassificationImageURL(), width: geo.size.width / 2)
-                    .padding()
+                        .padding()
                     
                     List {
                         ForEach(Array(detailModel.examples.enumerated()), id: \.1.name) { idx,row in
@@ -39,20 +39,20 @@ struct CompanyDetailView: View {
                                 Text("View Technique Guide")
                                     .foregroundColor(.blue)
                                     .onTapGesture {
-                                    self.rowTapped = idx
-                                    self.presentingSafariView.toggle()
-                                }
-                                .sheet(isPresented: $presentingSafariView) {
-                                    SafariView(
-                                        url: URL(string:detailModel.examples[rowTapped].url)!,
-                                        configuration: SafariView.Configuration(
-                                            entersReaderIfAvailable: false,
-                                            barCollapsingEnabled: true
+                                        self.rowTapped = idx
+                                        self.presentingSafariView.toggle()
+                                    }
+                                    .sheet(isPresented: $presentingSafariView) {
+                                        SafariView(
+                                            url: URL(string:detailModel.examples[rowTapped].url)!,
+                                            configuration: SafariView.Configuration(
+                                                entersReaderIfAvailable: false,
+                                                barCollapsingEnabled: true
+                                            )
                                         )
-                                    )
-                                        .preferredControlAccentColor(.accentColor)
-                                        .dismissButtonStyle(.done)
-                                }
+                                            .preferredControlAccentColor(.accentColor)
+                                            .dismissButtonStyle(.done)
+                                    }
                                 
                             } header: {
                                 Text(row.name)
@@ -65,20 +65,20 @@ struct CompanyDetailView: View {
             }
             if let error = detailModel.error {
                 ErrorView(error: "Failed to Collect Company Data")
-                                .unredacted()
-                                .alert(isPresented: $showingError, content: {
-                    Alert(
-                        title: Text("Error: \(error.localizedDescription)"),
-                        message: Text("Try again or cancel this attempt?"),
-                        primaryButton: .cancel(Text("Cancel"), action: {
-                            NavigationUtil.popToRootView()
-                        }),
-                        secondaryButton: .default(Text("Retry"), action: {
-                            getCompanyData()
-                        })
-                        
-                    )
-                })
+                    .unredacted()
+                    .alert(isPresented: $showingError, content: {
+                        Alert(
+                            title: Text("Error: \(error.localizedDescription)"),
+                            message: Text("Try again or cancel this attempt?"),
+                            primaryButton: .cancel(Text("Cancel"), action: {
+                                NavigationUtil.popToRootView()
+                            }),
+                            secondaryButton: .default(Text("Retry"), action: {
+                                getCompanyData()
+                            })
+                            
+                        )
+                    })
             }
             
             
