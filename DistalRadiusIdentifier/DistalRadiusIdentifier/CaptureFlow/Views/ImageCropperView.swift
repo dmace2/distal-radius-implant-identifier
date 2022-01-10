@@ -37,6 +37,7 @@ struct ImageCropAndRotationView: View {
     }
     
     
+    
     init(image: UIImage, croppedImage: Binding<UIImage?>) {
         self.image = image
         
