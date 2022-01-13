@@ -115,7 +115,7 @@ struct ImageCropAndRotationView: View {
                 .padding()
                 Spacer()
                 
-                SlidingRuler(value: $rotationAngle, in: -30...30, step: 10, snap: .fraction, tick: .fraction, formatter: formatter)
+                SlidingRuler(value: $rotationAngle, in: -45...45, step: 10, snap: .fraction, tick: .fraction, formatter: formatter)
                     .padding(.bottom)
                     .preferredColorScheme(.dark)
             }
