@@ -65,7 +65,8 @@ async def getCompanyExampleImageInformation(company: str):
 @app.get("/companyExamples/{company}/{exampleNum}")
 async def getCompanyExampleImage(company: str, exampleNum: int):
     company = company.lower()
-    return FileResponse("./static/images/{}/Example{}.png".format(company, exampleNum))
+    dirname = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__))))
+    return FileResponse(f"{dirname}/static/images/{}/Example{}.png".format(company, exampleNum))
 
 
 
