@@ -12,7 +12,7 @@ import io
 import os
 
 # from .models import *
-from models import *
+from .models import *
 
 app = FastAPI()
 
