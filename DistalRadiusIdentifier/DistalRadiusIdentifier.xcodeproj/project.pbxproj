@@ -14,6 +14,7 @@
 		F005020A2757E20D000B4F1C /* ClassificationResultsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00502092757E20D000B4F1C /* ClassificationResultsModels.swift */; };
 		F005020C2757E25D000B4F1C /* ResultsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005020B2757E25D000B4F1C /* ResultsRowView.swift */; };
 		F005020E2757EAC6000B4F1C /* RootNavigationPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005020D2757EAC6000B4F1C /* RootNavigationPop.swift */; };
+		F0076B2927973BB1008D16E9 /* ExampleImagesPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0076B2827973BB1008D16E9 /* ExampleImagesPageView.swift */; };
 		F01E92C927333E720074D5DF /* DistalRadiusIdentifierApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E92C827333E720074D5DF /* DistalRadiusIdentifierApp.swift */; };
 		F01E92CD27333E720074D5DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F01E92CC27333E720074D5DF /* Assets.xcassets */; };
 		F01E92D027333E720074D5DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F01E92CF27333E720074D5DF /* Preview Assets.xcassets */; };
@@ -66,6 +67,7 @@
 		F00502092757E20D000B4F1C /* ClassificationResultsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationResultsModels.swift; sourceTree = "<group>"; };
 		F005020B2757E25D000B4F1C /* ResultsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsRowView.swift; sourceTree = "<group>"; };
 		F005020D2757EAC6000B4F1C /* RootNavigationPop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationPop.swift; sourceTree = "<group>"; };
+		F0076B2827973BB1008D16E9 /* ExampleImagesPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleImagesPageView.swift; sourceTree = "<group>"; };
 		F01E92C527333E720074D5DF /* DistalRadiusIdentifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DistalRadiusIdentifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F01E92C827333E720074D5DF /* DistalRadiusIdentifierApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistalRadiusIdentifierApp.swift; sourceTree = "<group>"; };
 		F01E92CC27333E720074D5DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				F005020B2757E25D000B4F1C /* ResultsRowView.swift */,
 				F0A889AC275863E2007464F1 /* CompanyDetailView.swift */,
 				F03E15B02763D8FD00183637 /* CompanyDetailHeaderView.swift */,
+				F0076B2827973BB1008D16E9 /* ExampleImagesPageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				F0734A00273352B300C090EA /* TutorialScreen2.swift in Sources */,
 				F05E74E62733532F00727492 /* TutorialScreen3.swift in Sources */,
 				F05E74E82733536A00727492 /* TutorialScreen4.swift in Sources */,
+				F0076B2927973BB1008D16E9 /* ExampleImagesPageView.swift in Sources */,
 				F0D3E702275AA52500CFC781 /* URLSessionExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -564,7 +568,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DistalRadiusIdentifier/Preview Content\"";
-				DEVELOPMENT_TEAM = QSP78KQ946;
+				DEVELOPMENT_TEAM = G466A7N8C9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DistalRadiusIdentifier/Info.plist;
@@ -585,7 +589,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.GT.DistalRadiusCHANGE;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GT.DistalRadius;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -606,7 +610,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DistalRadiusIdentifier/Preview Content\"";
-				DEVELOPMENT_TEAM = QSP78KQ946;
+				DEVELOPMENT_TEAM = G466A7N8C9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DistalRadiusIdentifier/Info.plist;
@@ -627,7 +631,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.GT.DistalRadiusCHANGE;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GT.DistalRadius;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

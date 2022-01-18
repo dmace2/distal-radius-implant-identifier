@@ -20,8 +20,8 @@ struct CompanyDetailView: View {
         ZStack {
             GeometryReader { geo in
                 VStack {
-                    CompanyDetailHeaderView(company: detailModel.companyName,
-                                            url: detailModel.getClassificationImageURL(), width: geo.size.width / 2)
+                    CompanyDetailHeaderView(company: detailModel.companyName, width: geo.size.width / 2)
+                        .environmentObject(detailModel)
                         .padding()
                     
                     List {
