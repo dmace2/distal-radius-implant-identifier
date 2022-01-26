@@ -95,6 +95,32 @@ class APIService {
         
     }
     
+    func getExampleImageURLs(from company: String) async -> ([URL], Error?) {
+        var images: [URL] = []
+        var requestError: Error?
+        
+        
+        let url = URL(string:"\(urlHostName)/companyExamples/\(company)")!
+        
+        do {
+            session.configuration.timeoutIntervalForRequest = 5
+            let (data, _) = try await self.session.data(from: url)
+            let decodedData = try self.decoder.decode(Int.self, from: data)
+            print(decodedData)
+            for i in 1...decodedData {
+                images.append(URL(string:"\(urlHostName)/companyExamples/\(company)/\(i)")!)
+            }
+            print(images)
+            
+        } catch {
+            requestError = error
+            print("ERROR: \(error)")
+        }
+        
+        return (images, requestError)
+        
+    }
+    
     
     
     

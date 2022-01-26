@@ -42,4 +42,18 @@ class CompanyDetailViewModel: ObservableObject {
         self.objectWillChange.send()
         self.examples = examples!
     }
+    
+    func getImplantExampleImages()async -> [URL]? {
+        self.error = nil
+        
+        let (examples, error) = await APISession.getExampleImageURLs(from: companyName)
+        
+        guard error == nil else {
+            self.error = error
+            return nil
+        }
+        
+        self.objectWillChange.send()
+        return examples
+    }
 }

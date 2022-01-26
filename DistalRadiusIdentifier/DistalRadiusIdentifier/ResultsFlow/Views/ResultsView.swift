@@ -54,13 +54,18 @@ struct ResultsView: View {
                 List {
                     Section(header: Text("Images")) {
                         HStack(alignment: .center) {
-                            ExpandingImageView(image: userImage, caption: "Your Image")
-                                .redacted(reason: classificationModel.isLoading ? .placeholder : [])
-                            
-                            ExpandingImageView(image: nil, url: classificationModel.getClassificationImageURL(for: classification?.results[0].company ?? ""),
-                                               caption: (classification?.results[0].company ?? "Example") + " Image")
-                                .redacted(reason: classificationModel.isLoading ? .placeholder : [])
+                            ExpandingImageView(caption: "Your Image", image: userImage)
+                            if let company = classification?.predictedCompany {
+                                ExampleImagesPageView()
+                                    .environmentObject(CompanyDetailViewModel(companyName: company))
+                            } else {
+                                ZStack {
+                                    Color.clear
+                                    ProgressView()
+                                }
+                            }
                         }
+//                        ExampleImagesPageView()
                     }
                     
                     Section(header: Text("Full Breakdown")) {

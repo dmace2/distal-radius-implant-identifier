@@ -31,13 +31,13 @@ struct FullScreenImageView: View {
                 Color.black.ignoresSafeArea()
                 if let image = image {
     
-                    image.resizable().aspectRatio(1, contentMode: .fit)
+                    image.resizable().scaledToFit()
                         .pinchToZoom()
                 }
                     
                 if let url = url {
                     AsyncImage(url: url) { image in
-                        image.resizable().aspectRatio(1, contentMode: .fit)
+                        image.resizable().scaledToFit()
                     } placeholder: {
                         ProgressView()
                     }

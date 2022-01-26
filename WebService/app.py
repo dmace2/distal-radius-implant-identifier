@@ -11,6 +11,7 @@ import sys
 import io
 import os
 
+# from .models import *
 from .models import *
 
 app = FastAPI()
@@ -57,9 +58,17 @@ async def predict(file: UploadFile = File(...)):
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/companyExamples/{company}")
-async def getCompanyExampleImage(company: str):
+async def getCompanyExampleImageInformation(company: str):
+    # TODO: get the image information for the given company, not just 2
+    return 2
+
+@app.get("/companyExamples/{company}/{exampleNum}")
+async def getCompanyExampleImage(company: str, exampleNum: int):
     company = company.lower()
-    return FileResponse("Example.png")
+    dirname = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__))))
+    return FileResponse(f"{dirname}/static/images/{company}/Example{exampleNum}.png")
+
+
 
 @app.get("/implantExamples/{company}")
 async def getImplantExamples(company: str):

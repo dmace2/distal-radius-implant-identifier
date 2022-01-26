@@ -65,7 +65,7 @@ struct ImageCropAndRotationView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             print(image.size)
-                            let rotatedImage = image.imageRotatedByDegrees(degrees: rotationAngle, flip: false)
+                            let rotatedImage = image.rotated(by: rotationAngle, flip: false)
                             //image.rotated(by: Measurement(value: rotationAngle, unit: .degrees))!
                             print(rotatedImage.size)
                             

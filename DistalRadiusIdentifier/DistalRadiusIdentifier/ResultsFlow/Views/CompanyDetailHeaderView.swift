@@ -9,8 +9,9 @@ import SwiftUI
 
 struct CompanyDetailHeaderView: View {
     var company: String
-    var url: URL
     var width: CGFloat
+    
+    @EnvironmentObject var model: CompanyDetailViewModel
     
     var body: some View {
             VStack {
@@ -21,13 +22,7 @@ struct CompanyDetailHeaderView: View {
                             .font(.largeTitle).foregroundColor(Color("AccentLight"))
                             .bold()
                         
-                        AsyncImage(url: url) { image in
-                            image.resizable()
-                                .scaledToFit()
-                                .frame(width: width)
-                        } placeholder: {
-                            ProgressView()
-                        }
+                        ExampleImagesPageView(showTitle: false).environmentObject(model)
                     }
                     Spacer()
                 }

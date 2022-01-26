@@ -10,16 +10,36 @@ import SwiftUI
 struct ExpandingImageView: View {
     var image: Image?
     var url: URL?
-    var caption: String
+    var caption: String?
     @State var tapped = false
+    
+    
+    init(caption: String?, url: URL?) {
+        self.caption = caption
+        self.url = url
+    }
+    
+    init(caption: String?, image: Image?) {
+        self.caption = caption
+        self.image = image
+    }
+    
+    init(url: URL?) {
+        self.url = url
+    }
+    
     
     
     var body: some View {
         VStack(alignment:.center) {
-            Text(caption).font(.footnote)
+            if let caption = caption {
+                Text(caption).font(.footnote)
+                Spacer()
+            }
+            
             if let image = image {
                 image.resizable()
-                    .aspectRatio(1, contentMode: .fit)
+                    .scaledToFit()
                     .onTapGesture {
                         tapped.toggle()
                     }
@@ -32,7 +52,7 @@ struct ExpandingImageView: View {
                 AsyncImage(url: url) { image in
                     image
                         .resizable()
-                        .aspectRatio(1, contentMode: .fit)
+                        .scaledToFit()
                         .onTapGesture {
                             tapped.toggle()
                         }
@@ -52,8 +72,8 @@ struct ExpandingImageView: View {
     }
 }
 
-struct ResultsImageView_Previews: PreviewProvider {
-    static var previews: some View {
-        ExpandingImageView(image: Image("SampleXRay"), caption: "Test")
-    }
-}
+//struct ResultsImageView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ExpandingImageView(image: Image("SampleXRay"), caption: "Test")
+//    }
+//}
