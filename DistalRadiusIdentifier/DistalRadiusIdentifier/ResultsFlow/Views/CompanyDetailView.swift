@@ -10,7 +10,7 @@ import BetterSafariView
 
 struct CompanyDetailView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State var detailModel: CompanyDetailViewModel
+    @StateObject var detailModel: CompanyDetailViewModel
     @State var presentingSafariView = false
     @State var rowTapped = 0
     
@@ -22,13 +22,14 @@ struct CompanyDetailView: View {
                 VStack {
                     CompanyDetailHeaderView(company: detailModel.companyName,
                                             url: detailModel.getClassificationImageURL(), width: geo.size.width / 2)
-                    .padding()
+                        .padding()
                     
                     List {
                         ForEach(Array(detailModel.examples.enumerated()), id: \.1.name) { idx,row in
                             Section {
                                 DisclosureGroup {
                                     ForEach(row.tools, id: \.toolName) { tool in
+                                        //add toolview here
                                         Text(tool.toolName)
                                     }
                                     
@@ -38,20 +39,20 @@ struct CompanyDetailView: View {
                                 Text("View Technique Guide")
                                     .foregroundColor(.blue)
                                     .onTapGesture {
-                                    self.rowTapped = idx
-                                    self.presentingSafariView.toggle()
-                                }
-                                .sheet(isPresented: $presentingSafariView) {
-                                    SafariView(
-                                        url: URL(string:detailModel.examples[rowTapped].url)!,
-                                        configuration: SafariView.Configuration(
-                                            entersReaderIfAvailable: false,
-                                            barCollapsingEnabled: true
+                                        self.rowTapped = idx
+                                        self.presentingSafariView.toggle()
+                                    }
+                                    .sheet(isPresented: $presentingSafariView) {
+                                        SafariView(
+                                            url: URL(string:detailModel.examples[rowTapped].url)!,
+                                            configuration: SafariView.Configuration(
+                                                entersReaderIfAvailable: false,
+                                                barCollapsingEnabled: true
+                                            )
                                         )
-                                    )
-                                        .preferredControlAccentColor(.accentColor)
-                                        .dismissButtonStyle(.done)
-                                }
+                                            .preferredControlAccentColor(.accentColor)
+                                            .dismissButtonStyle(.done)
+                                    }
                                 
                             } header: {
                                 Text(row.name)
@@ -60,47 +61,34 @@ struct CompanyDetailView: View {
                         }
                     }
                     .listStyle(.sidebar)
+                    .onAppear {
+                        getCompanyData()
+                        print("EXAMPLES")
+                        print(detailModel.examples)
+                    }
                 }
             }
-            
             if let error = detailModel.error {
-//                withAnimation {
-                    if #available(iOS 15.0, *) {
-                        ErrorView(error: "Failed to Collect Company Data")
-                            .alert("Error: \(error.localizedDescription)", isPresented: $showingError, actions: {
-                                Button("Cancel", role: .cancel) { presentationMode.wrappedValue.dismiss() }
-                                Button("Retry") { getCompanyData() }
-                            }, message: {
-                                Text("Try again or cancel this attempt?")
+                ErrorView(error: "Failed to Collect Company Data")
+                    .unredacted()
+                    .alert(isPresented: $showingError, content: {
+                        Alert(
+                            title: Text("Error: \(error.localizedDescription)"),
+                            message: Text("Try again or cancel this attempt?"),
+                            primaryButton: .cancel(Text("Cancel"), action: {
+                                NavigationUtil.popToRootView()
+                            }),
+                            secondaryButton: .default(Text("Retry"), action: {
+                                getCompanyData()
                             })
-                        
-                            .unredacted()
-                    } else {
-                        // Fallback on earlier versions
-                        ErrorView(error: "Failed to Collect Company Data")
-                            .alert(isPresented: $showingError, content: {
-                                Alert(
-                                    title: Text("Error: \(error.localizedDescription)"),
-                                    message: Text("Try again or cancel this attempt?"),
-                                    primaryButton: .cancel(Text("Cancel"), action: {
-                                        presentationMode.wrappedValue.dismiss()
-                                    }),
-                                    secondaryButton: .default(Text("Retry"), action: {
-                                        getCompanyData()
-                                    })
-
-                                )
-                            })
-                            .unredacted()
-                    }
-//                }
+                            
+                        )
+                    })
             }
             
             
         }
-        .onAppear {
-            getCompanyData()
-        }
+        
         .navigationBarTitle("Company Details")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {

@@ -19,12 +19,13 @@ struct ClassificationResultsRowView: View {
         let dateFormatter = DateFormatter()
 
         // Set Date/Time Style
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .short
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
+//        dateFormatter.timeStyle = .short
 
         // Convert Date to String
         dateString = dateFormatter.string(from: row.date) // September 9, 2020 at 12:24 PM
-        image = Image(classification.image!, scale: 1.0, label: Text(""))
+        image = Image(uiImage: classification.image!)
         
     }
     

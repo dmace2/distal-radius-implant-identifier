@@ -18,7 +18,7 @@ struct Classification: Identifiable {
     var results: [CompanyPercentage]
     var predictedCompany: String
     var predictionConfidence: Float
-    var image: CGImage?
+    var image: UIImage?
     var date: Date
 }
 

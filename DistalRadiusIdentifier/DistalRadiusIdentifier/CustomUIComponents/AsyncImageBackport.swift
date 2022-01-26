@@ -224,7 +224,7 @@ private struct ContentCompatBody<Content: View>: View {
 
 struct BackportAsyncImage_Previews: PreviewProvider {
     static var url: URL? {
-        URL(string: "http://httpbin.org/image/png")
+        URL(string: "https://httpbin.org/image/png")
     }
 
     static var previews: some View {

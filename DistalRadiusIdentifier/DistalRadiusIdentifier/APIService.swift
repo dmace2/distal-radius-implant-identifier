@@ -33,11 +33,11 @@ class APIService {
         return requestBody
     }
     
-    func getImplantClassificationResults(from cgimage: CGImage) async -> (Classification?, Error?) {
+    func getImplantClassificationResults(from uiimage: UIImage) async -> (Classification?, Error?) {
         var classification: Classification?
         var classificationError: Error?
         
-        let uiimage = UIImage(cgImage: cgimage)
+//        let uiimage = UIImage(cgImage: cgimage)
         let imageData = uiimage.pngData()
         
         let url =  URL(string: "\(urlHostName)/predict")
@@ -63,7 +63,7 @@ class APIService {
             
             
             classification = Classification(results: decodedResults.classifications, predictedCompany: decodedResults.predictedCompany,
-                                            predictionConfidence: decodedResults.predictionConfidence, image: cgimage,
+                                            predictionConfidence: decodedResults.predictionConfidence, image: uiimage,
                                             date: dateFormatter.date(from: decodedResults.date)!)
             
         } catch {
@@ -81,12 +81,14 @@ class APIService {
         let url = URL(string:"\(urlHostName)/implantExamples/\(company)")!
         
         do {
+            session.configuration.timeoutIntervalForRequest = 5
             let (data, _) = try await self.session.data(from: url)
             let decodedData = try self.decoder.decode([ExampleImplant].self, from: data)
             examples = decodedData
             
         } catch {
             requestError = error
+            print("ERROR: \(error)")
         }
         
         return (examples, requestError)
