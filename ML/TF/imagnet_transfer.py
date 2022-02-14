@@ -20,6 +20,11 @@ class ImageNetModel:
     Class containing imagnet model
     """
     def __init__(self, load_model = False):
+        """Initializer for ImageNetModel class
+
+        Args:
+            load_model (bool, optional): whether to load a previous model checkpoint. Defaults to False.
+        """
         self.dirname = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 
         # Read config file
@@ -64,6 +69,11 @@ class ImageNetModel:
     
         
     def build_model(self):
+        """Build the model from scratch
+
+        Returns:
+            tf.keras.Model: the model to be trained on
+        """
         print("Building Model") 
         feature_extractor_layer = hub.KerasLayer(
             self.transfer_model_url,
@@ -83,7 +93,6 @@ class ImageNetModel:
         
     def train_model(self):
         """Train the model from scratch. ONLY USE IF YOU WISH TO REWRITE THE MODEL FROM SCRATCH.
-
         """
         # load in test and train datasets
         train_ds, test_ds = self.build_datasets() #sec_train_ds since I combine test and train ds into one train ds
