@@ -35,6 +35,8 @@ class utils:
             batch_size=batch_size
         )
         
+        class_names = np.array(train_ds.class_names)
+        
         # Normalize the images
         normalization_layer = tf.keras.layers.Rescaling(1./255)
         train_ds = train_ds.map(lambda x, y: (normalization_layer(x), y)) # Where x—images, y—labels.
@@ -45,11 +47,13 @@ class utils:
         train_ds = train_ds.cache().prefetch(buffer_size=AUTOTUNE)
         val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE)
         
-        return train_ds, val_ds
+        return train_ds, val_ds, class_names
         
-    def preprocess_prediction_image(self, image, image_dim):
+    def preprocess_prediction_image(image, image_dim):
+        print(image.shape)
         # Resize the image to the desired size
         image = tf.image.resize(image, (image_dim, image_dim))
+        print(image.shape)
         
         # Normalize the image
         normalization_layer = tf.keras.layers.Rescaling(1./255)

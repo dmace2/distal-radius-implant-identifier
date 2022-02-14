@@ -45,28 +45,57 @@ class ImageNetModel:
         self.model = None
         if load_model:
             try:
-                model_dir = os.path.join(self.dirname, 'saved_model')
                 self.labels = [line.rstrip() for line in open(os.path.join(self.dirname, 'saved_model', "classes.txt"))]
-                self.model = tf.keras.models.load_model(model_dir, compile=False)
+                
+                model_dir = os.path.join(self.dirname, 'saved_model')
+                self.model = self.load_full_model(model_dir) # can also use load_model_from_weights if loading from ckpt
+                
                 self.new_model = False
                 print("Loaded Previous Model")
-                print(f"Labels: {self.labels}")
             except Exception as e:
                 pass
-        
-        # handles exception if no model is made above
-        if self.model == None:
-            print("No Previous Model Valid")
-            self.labels = [ f.name for f in os.scandir(os.path.join(self.dirname, '..', "images_processed_rgb")) if f.is_dir() ]
-            self.model = self.build_model()
-            self.new_model=True
-            print(f"Labels: {self.labels}")
     
     
     def build_datasets(self):
-        train, test = utils.generate_datasets(os.path.join(self.dirname, '..', "images_processed_rgb"), self.image_dim, self.batch_size)
+        """Build the datasets for training and validation
+
+        Returns:
+            (tf.data.Dataset, tf.data.Dataset): train and validation datasets
+        """
+        train, test, classes = utils.generate_datasets(os.path.join(self.dirname, '..', "images_processed_rgb"), self.image_dim, self.batch_size)
+        self.labels = classes
         return train, test  # train_ds, val_ds
     
+    
+    def load_model_from_weights(self, model_dir):
+        """Load model from checkpoint
+
+        Args:
+            model_dir (string): location of the saved model (not including the checkpoints folder)
+
+        Returns:
+            tf.keras.Model: loaded model from weights
+        """
+        # Create a new model instance
+        model = self.build_model()
+
+        # Restore the weights
+        ckpt_dir = os.path.join(model_dir, "checkpoints")
+        latest = tf.train.latest_checkpoint(ckpt_dir)
+        model.load_weights(latest) 
+        return model   
+    
+    def load_full_model(self, model_dir):
+        """Load model from .pb file
+        
+        Args:
+            model_dir (string): location of the saved model
+            
+        Returns:
+            tf.keras.Model: loaded model from .pb file
+        """
+        new_model = tf.keras.models.load_model(model_dir)
+        return new_model
         
     def build_model(self):
         """Build the model from scratch
@@ -90,8 +119,29 @@ class ImageNetModel:
         model.summary()
         
         return model
+    
+    def predict(self, image):
+        """Predict the class of an image
+
+        Args:
+            image ([None,None,3]): image to be classified
+
+        Returns:
+            string: predicted class
+            dictionary: dictionary of probabilities for each class
+        """
+        assert self.model is not None, "Model has not been loaded"
         
-    def train_model(self):
+        image = utils.preprocess_prediction_image(image, self.image_dim)
+        image = np.expand_dims(image, axis=0)
+        prediction = self.model.predict(image)[0]
+        print(prediction.shape)
+        
+        return self.labels[np.argmax(prediction)], {self.labels[i]: prediction[i] for i in range(len(prediction))}
+        
+        
+        
+    def train_model(self, save_ckpt = False):
         """Train the model from scratch. ONLY USE IF YOU WISH TO REWRITE THE MODEL FROM SCRATCH.
         """
         # load in test and train datasets
@@ -117,11 +167,24 @@ class ImageNetModel:
                          loss=loss,
                          metrics=['accuracy']
         )
-
-        # checkpoint for saving model
-        newmodel_dir = os.path.join( os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))), 'model')
-        c = tf.keras.callbacks.ModelCheckpoint(newmodel_dir, monitor='loss', verbose=1, save_best_only=True, save_freq='epoch')
         
+        # create callbacks
+        newmodel_dir = os.path.join(os.getcwd(), 'model')
+        if save_ckpt: # checkpoint for saving model (Weights Only)
+            checkpoint_path = os.path.join(newmodel_dir, "checkpoints", "cp-{epoch:04d}.ckpt")
+            c = tf.keras.callbacks.ModelCheckpoint(checkpoint_path, 
+                monitor='loss', 
+                verbose=1, 
+                save_weights_only=True,
+                save_best_only=True, 
+                save_freq='epoch')
+        
+        else: # checkpoint for saving model (Full Model)
+            c = tf.keras.callbacks.ModelCheckpoint(newmodel_dir, 
+                monitor='loss', 
+                verbose=1, 
+                save_best_only=True, 
+                save_freq='epoch')
         
         # save the labels to a file
         with open (os.path.join(newmodel_dir, "classes.txt"), 'w') as f:
@@ -132,18 +195,14 @@ class ImageNetModel:
         history = self.model.fit(x=train_ds, epochs=self.epochs, validation_data=test_ds, callbacks=[c])
         
         
-        
-        
 if __name__ == "__main__":
-    model = ImageNetModel(load_model = True)
+    model = ImageNetModel(load_model=True)
     
-    model.train_model()
-    # model.predict_image("../images_processed/apple/apple_1.jpg")
-    # model.predict_image("../images_processed/apple/apple_2.jpg")
-    # model.predict_image("../images_processed/apple/apple_3.jpg")
-    # model.predict_image("../images_processed/apple/apple_4.jpg")
-    # model.predict_image("../images_processed/apple/apple_5.jpg")
-    # model.predict_image("
+    # model.train_model()
+    
+    image = np.asarray(Image.open("../sample3.png"))[...,:3]
+    results = model.predict(image)
+    print(results)
         
         
 
