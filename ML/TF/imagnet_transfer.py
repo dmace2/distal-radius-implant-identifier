@@ -185,6 +185,9 @@ class ImageNetModel:
                 verbose=1, 
                 save_best_only=True, 
                 save_freq='epoch')
+            
+        log_dir = os.path.join(self.dirname, "logs","fit",datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
+        tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
         
         # save the labels to a file
         with open (os.path.join(newmodel_dir, "classes.txt"), 'w') as f:
@@ -192,17 +195,17 @@ class ImageNetModel:
                 f.write("%s\n" % item)
 
         # train the model
-        history = self.model.fit(x=train_ds, epochs=self.epochs, validation_data=test_ds, callbacks=[c])
+        history = self.model.fit(x=train_ds, epochs=self.epochs, validation_data=test_ds, callbacks=[c, tensorboard_callback])
         
         
 if __name__ == "__main__":
     model = ImageNetModel(load_model=True)
     
-    # model.train_model()
+    model.train_model()
     
-    image = np.asarray(Image.open("../sample3.png"))[...,:3]
-    results = model.predict(image)
-    print(results)
+    # image = np.asarray(Image.open("../sample3.png"))[...,:3]
+    # results = model.predict(image)
+    # print(results)
         
         
 
