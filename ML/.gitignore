@@ -1,3 +1,5 @@
 .DS_Store
 .ipynb_checkpoints/
-
+/images
+/images_processed
+/images_processed_rgb
