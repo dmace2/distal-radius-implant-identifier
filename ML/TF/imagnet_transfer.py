@@ -153,20 +153,14 @@ class ImageNetModel:
         self.model.summary()
 
         # generate loss and metrics
-        loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False)
-
-        # generate train and warmup steps from data size for optimizer
-        steps_per_epoch = tf.data.experimental.cardinality(train_ds).numpy()
-        num_train_steps = steps_per_epoch * self.epochs
-        num_warmup_steps = int(self.warmup_prop*num_train_steps)
+        loss = tf.keras.losses.CategoricalCrossentropy(from_logits=False)
 
         # create optim
         optimizer = tf.keras.optimizers.Adam(learning_rate=self.lr, beta_1=0.9, beta_2=0.999, epsilon=1e-07, amsgrad=False)
         
         self.model.compile(optimizer=optimizer,
                          loss=loss,
-                         metrics=['accuracy']
-        )
+                         metrics=['accuracy', tf.keras.metrics.Precision(), tf.keras.metrics.Recall()])
         
         # create callbacks
         newmodel_dir = os.path.join(os.getcwd(), 'model')
@@ -198,8 +192,10 @@ class ImageNetModel:
         history = self.model.fit(x=train_ds, epochs=self.epochs, validation_data=test_ds, callbacks=[c, tensorboard_callback])
         
         
+        
+        
 if __name__ == "__main__":
-    model = ImageNetModel(load_model=True)
+    model = ImageNetModel(load_model=False)
     
     model.train_model()
     
