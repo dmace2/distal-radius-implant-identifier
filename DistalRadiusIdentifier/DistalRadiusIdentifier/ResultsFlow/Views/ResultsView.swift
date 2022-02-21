@@ -32,7 +32,7 @@ struct ResultsView: View {
                 VStack() {
                     HStack {
                         Spacer()
-                        Text(classification?.results[0].company ?? "Result")
+                        Text(classification?.predictedCompany ?? "Result")
                             .font(.system(size: 50).weight(.bold))
                             .foregroundColor(Color("AccentLight"))
                         Spacer()
@@ -40,7 +40,7 @@ struct ResultsView: View {
                     
                     HStack {
                         Spacer()
-                        Text(String(format: "%.2f", classification?.results[0].percentage ?? "00.00") + "%")
+                        Text(String(format: "%.2f", classification?.predictionConfidence ?? "00.00") + "%")
                             .foregroundColor(Color(UIColor.secondaryLabel))
                             .font(.system(size: 40))
                         Spacer()

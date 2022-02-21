@@ -20,11 +20,11 @@ class ClassificationModel: ObservableObject {
     
     
     
-    func classifyImplant(image img: UIImage) async -> Classification? {
+    func classifyImplant(image img: UIImage) -> Classification? {
         isLoading = true
         error = nil
         
-        let (classification, requestError) = await APISession.getImplantClassificationResults(from: img)
+        let (classification, requestError) = ClassifierService.shared.predict(image: img)
         
         guard requestError == nil else {
             self.error = requestError

@@ -39,10 +39,10 @@ class utils:
         
         class_names = np.array(train_ds.class_names)
         
-        # Normalize the images
-        normalization_layer = tf.keras.layers.Rescaling(1./255)
-        train_ds = train_ds.map(lambda x, y: (normalization_layer(x), y)) # Where x—images, y—labels.
-        val_ds = val_ds.map(lambda x, y: (normalization_layer(x), y)) # Where x—images, y—labels.
+        # # Normalize the images
+        # normalization_layer = tf.keras.layers.Rescaling(1./255)
+        # train_ds = train_ds.map(lambda x, y: (normalization_layer(x), y)) # Where x—images, y—labels.
+        # val_ds = val_ds.map(lambda x, y: (normalization_layer(x), y)) # Where x—images, y—labels.
         
         # Batch the datasets
         AUTOTUNE = tf.data.AUTOTUNE
@@ -56,7 +56,6 @@ class utils:
         # Resize the image to the desired size
         image = tf.image.resize(image, (image_dim, image_dim))
         print(image.shape)
-        
         # Normalize the image
         normalization_layer = tf.keras.layers.Rescaling(1./255)
         normalized_image = normalization_layer(image) 

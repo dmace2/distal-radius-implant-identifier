@@ -33,46 +33,6 @@ class APIService {
         return requestBody
     }
     
-    func getImplantClassificationResults(from uiimage: UIImage) async -> (Classification?, Error?) {
-        var classification: Classification?
-        var classificationError: Error?
-        
-//        let uiimage = UIImage(cgImage: cgimage)
-        let imageData = uiimage.pngData()
-        
-        let url =  URL(string: "\(urlHostName)/predict")
-        var urlRequest = URLRequest(url: url!)
-        
-        urlRequest.httpMethod = "post"
-        let bodyBoundary = "\(UUID().uuidString)"
-        urlRequest.addValue("multipart/form-data; boundary=\(bodyBoundary)", forHTTPHeaderField: "Content-Type")
-        
-        //attachmentKey is the api parameter name for your image DO NOT CHANGE
-        // file name is the name which you want to give to the file
-        let requestData = createPredictionRequestBody(imageData: imageData!, boundary: bodyBoundary, attachmentKey: "file", fileName: "predictionImage.png")
-        urlRequest.addValue("\(requestData.count)", forHTTPHeaderField: "content-length")
-        urlRequest.httpBody = requestData
-        urlRequest.timeoutInterval = 5
-        do {
-            let (data, _) = try await self.session.upload(for: urlRequest, from: requestData)
-            let decodedResults = try self.decoder.decode(CodableClassification.self, from: data)
-            print(decodedResults)
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy'-'MM'-'dd'"
-            
-            
-            classification = Classification(results: decodedResults.classifications, predictedCompany: decodedResults.predictedCompany,
-                                            predictionConfidence: decodedResults.predictionConfidence, image: uiimage,
-                                            date: dateFormatter.date(from: decodedResults.date)!)
-            
-        } catch {
-            classificationError = error
-        }
-        
-        return (classification, classificationError)
-    }
-    
     func getImplantExamples(from company: String) async -> ([ExampleImplant]?, Error?) {
         var examples: [ExampleImplant]?
         var requestError: Error?

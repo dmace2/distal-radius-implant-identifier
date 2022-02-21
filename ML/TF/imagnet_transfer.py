@@ -37,8 +37,6 @@ class ImageNetModel:
         self.batch_size = int(config.get(profile_name, "batch_size"))
         self.lr = float(config.get(profile_name, "lr"))
         self.epochs = int(config.get(profile_name, "epochs"))
-        # Warmup is a period of time where the learning rate is small and gradually increases--usually helps training.
-        self.warmup_prop = float(config.get(profile_name, "warmup_proportion"))
         self.image_dim = int(config.get(profile_name, "image_dim"))
         
         # Generate/Load the model
@@ -112,6 +110,7 @@ class ImageNetModel:
         num_classes = len(self.labels)
 
         model = tf.keras.Sequential([
+            tf.keras.layers.Rescaling(1./255,input_shape=(self.image_dim, self.image_dim,3),),
             feature_extractor_layer,
             tf.keras.layers.Dense(num_classes, activation='softmax')
         ])
@@ -204,4 +203,3 @@ if __name__ == "__main__":
     # print(results)
         
         
-

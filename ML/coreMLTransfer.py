@@ -11,7 +11,14 @@ class_labels = [line.rstrip() for line in open(os.path.join(os.getcwd(), 'TF', '
 
 # create classifier config to attach class names
 classifier_config = ct.ClassifierConfig(class_labels)
-mlmodel = ct.convert(tf_keras_model, classifier_config=classifier_config)
+mlmodel = ct.convert(tf_keras_model, classifier_config=classifier_config, inputs=[ct.ImageType()])
 
-output_path = os.path.join(os.getcwd(), 'TF', 'classifier.mlmodel')
+# get spec to rename top layer
+spec = mlmodel.get_spec()
+                        
+# Edit the spec
+ct.utils.rename_feature(spec, 'keras_layer_input', 'image')
+mlmodel = ct.models.MLModel(spec)
+
+output_path = os.path.join(os.getcwd(), 'ImplantClassifier.mlpackage')
 mlmodel.save(output_path)

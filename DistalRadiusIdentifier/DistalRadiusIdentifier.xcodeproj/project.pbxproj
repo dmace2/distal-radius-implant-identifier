@@ -52,9 +52,12 @@
 		F0D3E704275AA5DC00CFC781 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D3E703275AA5DC00CFC781 /* ErrorView.swift */; };
 		F0D3E706275AA6DE00CFC781 /* StringErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D3E705275AA6DE00CFC781 /* StringErrorExtension.swift */; };
 		F0D66CEF277AC73000D22DD9 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = F0D66CEE277AC73000D22DD9 /* BetterSafariView */; };
+		F0D9B13B27C4322400282F0F /* ImplantClassifier.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = F0D9B13A27C4322400282F0F /* ImplantClassifier.mlpackage */; };
+		F0D9B13E27C4350300282F0F /* PixelBufferExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D9B13D27C4350300282F0F /* PixelBufferExtension.swift */; };
 		F0E5BD0C2733500B009DFD26 /* TutorialTitleAndSubheader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */; };
 		F0EC8920278742EF00D712C7 /* SystemImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EC891F278742EF00D712C7 /* SystemImagePicker.swift */; };
 		F0EC89262787453A00D712C7 /* CaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EC89252787453A00D712C7 /* CaptureView.swift */; };
+		F0EF031027C42BF200F1D90A /* ImplantClassifierService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EF030F27C42BF200F1D90A /* ImplantClassifierService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,9 +107,12 @@
 		F0D3E701275AA52500CFC781 /* URLSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
 		F0D3E703275AA5DC00CFC781 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		F0D3E705275AA6DE00CFC781 /* StringErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringErrorExtension.swift; sourceTree = "<group>"; };
+		F0D9B13A27C4322400282F0F /* ImplantClassifier.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = ImplantClassifier.mlpackage; sourceTree = "<group>"; };
+		F0D9B13D27C4350300282F0F /* PixelBufferExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelBufferExtension.swift; sourceTree = "<group>"; };
 		F0E5BD0B2733500B009DFD26 /* TutorialTitleAndSubheader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTitleAndSubheader.swift; sourceTree = "<group>"; };
 		F0EC891F278742EF00D712C7 /* SystemImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemImagePicker.swift; sourceTree = "<group>"; };
 		F0EC89252787453A00D712C7 /* CaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureView.swift; sourceTree = "<group>"; };
+		F0EF030F27C42BF200F1D90A /* ImplantClassifierService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplantClassifierService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +181,7 @@
 		F00768E62758468400CFB8B3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				256134F62742D8ED00C4C9B8 /* ImageExtension.swift */,
+				F0D9B13C27C434F300282F0F /* ImageExtensions */,
 				F005020D2757EAC6000B4F1C /* RootNavigationPop.swift */,
 				F05A67FB2758031B008C6E4B /* RandomString.swift */,
 				F0D3E701275AA52500CFC781 /* URLSessionExtension.swift */,
@@ -206,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				F0595B7B2786360400AE1561 /* APIService.swift */,
+				F0EF030E27C42BD900F1D90A /* ModelUtils */,
 				F0EC891C278742C900D712C7 /* CaptureFlow */,
 				F01E92EE27333FEE0074D5DF /* CustomUIComponents */,
 				F00768E62758468400CFB8B3 /* Extensions */,
@@ -304,6 +311,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		F0D9B13C27C434F300282F0F /* ImageExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				256134F62742D8ED00C4C9B8 /* ImageExtension.swift */,
+				F0D9B13D27C4350300282F0F /* PixelBufferExtension.swift */,
+			);
+			path = ImageExtensions;
+			sourceTree = "<group>";
+		};
 		F0EC891C278742C900D712C7 /* CaptureFlow */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,6 +327,15 @@
 				F0B9DD49278BB00500E75311 /* Views */,
 			);
 			path = CaptureFlow;
+			sourceTree = "<group>";
+		};
+		F0EF030E27C42BD900F1D90A /* ModelUtils */ = {
+			isa = PBXGroup;
+			children = (
+				F0D9B13A27C4322400282F0F /* ImplantClassifier.mlpackage */,
+				F0EF030F27C42BF200F1D90A /* ImplantClassifierService.swift */,
+			);
+			path = ModelUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,6 +419,7 @@
 			files = (
 				F0427C1927335A07008268F4 /* HomeView.swift in Sources */,
 				F01F2273275FC28B009D8F81 /* AsyncImageBackport.swift in Sources */,
+				F0EF031027C42BF200F1D90A /* ImplantClassifierService.swift in Sources */,
 				F005020E2757EAC6000B4F1C /* RootNavigationPop.swift in Sources */,
 				F07D0FBB27431EA600554B20 /* RoundedButton.swift in Sources */,
 				F07D0FBD27431F5500554B20 /* AlignmentGuideView.swift in Sources */,
@@ -407,6 +433,7 @@
 				F08C263427600B0000B1B010 /* ZoomableContent.swift in Sources */,
 				F0D3E706275AA6DE00CFC781 /* StringErrorExtension.swift in Sources */,
 				F005020A2757E20D000B4F1C /* ClassificationResultsModels.swift in Sources */,
+				F0D9B13E27C4350300282F0F /* PixelBufferExtension.swift in Sources */,
 				F0595B7C2786360400AE1561 /* APIService.swift in Sources */,
 				F0508B072733545300EEEFE4 /* TutorialScreen5.swift in Sources */,
 				F01E92F027333FF90074D5DF /* ArrowButton.swift in Sources */,
@@ -432,6 +459,7 @@
 				256134FB2742D9A200C4C9B8 /* CameraFrameViewModel.swift in Sources */,
 				F0734A00273352B300C090EA /* TutorialScreen2.swift in Sources */,
 				F05E74E62733532F00727492 /* TutorialScreen3.swift in Sources */,
+				F0D9B13B27C4322400282F0F /* ImplantClassifier.mlpackage in Sources */,
 				F05E74E82733536A00727492 /* TutorialScreen4.swift in Sources */,
 				F0076B2927973BB1008D16E9 /* ExampleImagesPageView.swift in Sources */,
 				F0D3E702275AA52500CFC781 /* URLSessionExtension.swift in Sources */,
