@@ -21,7 +21,7 @@ class APIService {
     }
     
     private func removeSpaces(from company: String) -> String {
-        return company.replacingOccurrences(of: " ", with: "")
+        return company.replacingOccurrences(of: " ", with: "_")
     }
     
     func getImplantExamples(from company: String) async -> ([ExampleImplant]?, Error?) {
