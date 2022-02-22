@@ -60,7 +60,7 @@ class ImageNetModel:
         Returns:
             (tf.data.Dataset, tf.data.Dataset): train and validation datasets
         """
-        train, test, classes = utils.generate_datasets(os.path.join(self.dirname, '..', "images_processed_rgb"), self.image_dim, self.batch_size)
+        train, test, classes = utils.generate_datasets(os.path.join(self.dirname, '..', "images_processed"), self.image_dim, self.batch_size)
         self.labels = classes
         return train, test  # train_ds, val_ds
     
@@ -112,6 +112,7 @@ class ImageNetModel:
         model = tf.keras.Sequential([
             tf.keras.layers.Rescaling(1./255,input_shape=(self.image_dim, self.image_dim,3),),
             feature_extractor_layer,
+            tf.keras.layers.Dropout(0.2),
             tf.keras.layers.Dense(num_classes, activation='softmax')
         ])
 
