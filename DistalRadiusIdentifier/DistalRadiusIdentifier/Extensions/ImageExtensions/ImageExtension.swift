@@ -39,9 +39,6 @@ import UIKit
 extension UIImage {
 
     public func rotated(by degrees: CGFloat, flip: Bool) -> UIImage {
-        let radiansToDegrees: (CGFloat) -> CGFloat = {
-            return $0 * (180.0 / CGFloat.pi)
-        }
         let degreesToRadians: (CGFloat) -> CGFloat = {
             return $0 / 180.0 * CGFloat.pi
         }
@@ -50,7 +47,6 @@ extension UIImage {
         let rotatedViewBox = UIView(frame: CGRect(origin: .zero, size: size))
         let t = CGAffineTransform(rotationAngle: degreesToRadians(degrees));
         rotatedViewBox.transform = t
-        let rotatedSize = rotatedViewBox.frame.size
 
         // Create the bitmap context
         UIGraphicsBeginImageContext(self.size)
