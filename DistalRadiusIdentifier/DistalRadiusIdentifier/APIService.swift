@@ -20,17 +20,8 @@ class APIService {
         
     }
     
-    
-    private func createPredictionRequestBody(imageData: Data, boundary: String, attachmentKey: String, fileName: String) -> Data{
-        let lineBreak = "\r\n"
-        var requestBody = Data()
-        
-        requestBody.append("\(lineBreak)--\(boundary + lineBreak)" .data(using: .utf8)!)
-        requestBody.append("Content-Disposition: form-data; name=\"\(attachmentKey)\"; filename=\"\(fileName)\"\(lineBreak)" .data(using: .utf8)!)
-        requestBody.append("Content-Type: image/png \(lineBreak + lineBreak)" .data(using: .utf8)!) // you can change the type accordingly if you want to
-        requestBody.append(imageData)
-        requestBody.append("\(lineBreak)--\(boundary)--\(lineBreak)" .data(using: .utf8)!)
-        return requestBody
+    private func removeSpaces(from company: String) -> String {
+        return company.replacingOccurrences(of: " ", with: "")
     }
     
     func getImplantExamples(from company: String) async -> ([ExampleImplant]?, Error?) {
@@ -38,7 +29,7 @@ class APIService {
         var requestError: Error?
         
         
-        let url = URL(string:"\(urlHostName)/implantExamples/\(company)")!
+        let url = URL(string:"\(urlHostName)/implantExamples/\(removeSpaces(from: company))")!
         
         do {
             session.configuration.timeoutIntervalForRequest = 5
@@ -60,7 +51,7 @@ class APIService {
         var requestError: Error?
         
         
-        let url = URL(string:"\(urlHostName)/companyExamples/\(company)")!
+        let url = URL(string:"\(urlHostName)/companyExamples/\(removeSpaces(from: company))")!
         
         do {
             session.configuration.timeoutIntervalForRequest = 5
@@ -68,7 +59,7 @@ class APIService {
             let decodedData = try self.decoder.decode(Int.self, from: data)
             print(decodedData)
             for i in 1...decodedData {
-                images.append(URL(string:"\(urlHostName)/companyExamples/\(company)/\(i)")!)
+                images.append(URL(string:"\(urlHostName)/companyExamples/\(removeSpaces(from: company))/\(i)")!)
             }
             print(images)
             
