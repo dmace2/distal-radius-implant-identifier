@@ -17,7 +17,8 @@ mlmodel = ct.convert(tf_keras_model, classifier_config=classifier_config, inputs
 spec = mlmodel.get_spec()
                         
 # Edit the spec
-ct.utils.rename_feature(spec, 'keras_layer_input', 'image')
+ct.utils.rename_feature(spec, 'rescaling_input', 'image')
+ct.utils.rename_feature(spec, 'Identity', 'breakdown')
 mlmodel = ct.models.MLModel(spec)
 
 output_path = os.path.join(os.getcwd(), 'ImplantClassifier.mlpackage')
