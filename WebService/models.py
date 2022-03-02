@@ -27,11 +27,13 @@ class Tool(BaseModel):
     Tool model
     """
     toolName: str
+    toolURL: Optional[str]
 
-class ExampleImplant(BaseModel):
-    name: str
-    url: str
-    tools: List[Tool]
+class CompanyImplant(BaseModel):
+    implantName: str
+    implantURL: Optional[str]
+    techniqueGuide: Optional[str]
+    tools: Optional[List[Tool]]
 
 
 

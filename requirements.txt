@@ -12,3 +12,4 @@ starlette
 typing_extensions
 uvicorn
 pillow
+psycopg2
