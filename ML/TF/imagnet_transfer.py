@@ -37,8 +37,6 @@ class ImageNetModel:
         self.batch_size = int(config.get(profile_name, "batch_size"))
         self.lr = float(config.get(profile_name, "lr"))
         self.epochs = int(config.get(profile_name, "epochs"))
-        # Warmup is a period of time where the learning rate is small and gradually increases--usually helps training.
-        self.warmup_prop = float(config.get(profile_name, "warmup_proportion"))
         self.image_dim = int(config.get(profile_name, "image_dim"))
         
         # Generate/Load the model
@@ -62,7 +60,7 @@ class ImageNetModel:
         Returns:
             (tf.data.Dataset, tf.data.Dataset): train and validation datasets
         """
-        train, test, classes = utils.generate_datasets(os.path.join(self.dirname, '..', "images_processed_rgb"), self.image_dim, self.batch_size)
+        train, test, classes = utils.generate_datasets(os.path.join(self.dirname, '..', "images"), self.image_dim, self.batch_size)
         self.labels = classes
         return train, test  # train_ds, val_ds
     
@@ -104,15 +102,17 @@ class ImageNetModel:
             tf.keras.Model: the model to be trained on
         """
         print("Building Model") 
-        feature_extractor_layer = hub.KerasLayer(
-            self.transfer_model_url,
-            input_shape=(self.image_dim, self.image_dim,3),
-            trainable=False)
+        feature_extractor_layer = tf.keras.applications.MobileNetV2(input_shape=(self.image_dim, self.image_dim,3),
+                                               include_top=False,
+                                               weights='imagenet')
+        feature_extractor_layer.trainable = False
         
         num_classes = len(self.labels)
-
+        
         model = tf.keras.Sequential([
+            tf.keras.layers.Rescaling(1./255,input_shape=(self.image_dim, self.image_dim,3),),
             feature_extractor_layer,
+            tf.keras.layers.GlobalAveragePooling2D(),
             tf.keras.layers.Dense(num_classes, activation='softmax')
         ])
 
@@ -150,7 +150,6 @@ class ImageNetModel:
 
         # build the model
         self.model = self.build_model() #force new model build when resetting it
-        self.model.summary()
 
         # generate loss and metrics
         loss = tf.keras.losses.CategoricalCrossentropy(from_logits=False)
@@ -204,4 +203,3 @@ if __name__ == "__main__":
     # print(results)
         
         
-
