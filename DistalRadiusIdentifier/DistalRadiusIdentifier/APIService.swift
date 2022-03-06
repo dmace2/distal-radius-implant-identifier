@@ -11,6 +11,7 @@ import UIKit
 class APIService {
     
     let urlHostName = "https://distalradius.herokuapp.com"
+    // let urlHostName = "http://128.61.15.54:8000"
     private let session = URLSession.shared
     private let decoder = JSONDecoder()
     
@@ -95,22 +96,45 @@ class APIService {
         
     }
     
-    func getExampleImageURLs(from company: String) async -> ([URL], Error?) {
-        var images: [URL] = []
+//    func getExampleImageURLs(from company: String) async -> ([URL], Error?) {
+//        var images: [URL] = []
+//        var requestError: Error?
+//
+//
+//        let url = URL(string:"\(urlHostName)/companyExamples/\(company)")!
+//
+//        do {
+//            session.configuration.timeoutIntervalForRequest = 5
+//            let (data, _) = try await self.session.data(from: url)
+//            let decodedData = try self.decoder.decode(Int.self, from: data)
+//            print(decodedData)
+//            for i in 1...decodedData {
+//                images.append(URL(string:"\(urlHostName)/companyExamples/\(company)/\(i)")!)
+//            }
+//            print(images)
+//
+//        } catch {
+//            requestError = error
+//            print("ERROR: \(error)")
+//        }
+//
+//        return (images, requestError)
+//
+//    }
+    
+    func getExampleImageURLs(from company: String) async -> ([ImplantImage], Error?) {
+        var images: [ImplantImage] = []
         var requestError: Error?
         
         
-        let url = URL(string:"\(urlHostName)/companyExamples/\(company)")!
+        let url = URL(string:"\(urlHostName)/implantExamples/images/\(company)")!
         
         do {
             session.configuration.timeoutIntervalForRequest = 5
             let (data, _) = try await self.session.data(from: url)
-            let decodedData = try self.decoder.decode(Int.self, from: data)
+            let decodedData = try self.decoder.decode([ImplantImage].self, from: data)
             print(decodedData)
-            for i in 1...decodedData {
-                images.append(URL(string:"\(urlHostName)/companyExamples/\(company)/\(i)")!)
-            }
-            print(images)
+            images = decodedData
             
         } catch {
             requestError = error

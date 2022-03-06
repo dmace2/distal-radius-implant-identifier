@@ -38,7 +38,7 @@ struct ResultsRowView: View {
             Text(item.company)
             Spacer()
             Text(percentString).fontWeight(.bold).foregroundColor(color)
-            Image(systemName: "chevron.right").foregroundColor(.secondary)
+//            Image(systemName: "chevron.right").foregroundColor(.secondary)
         }
     }
 }

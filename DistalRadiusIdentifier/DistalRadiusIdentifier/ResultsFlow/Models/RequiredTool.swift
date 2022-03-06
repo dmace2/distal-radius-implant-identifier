@@ -9,18 +9,18 @@ import Foundation
 
 struct RequiredTool: Codable, Hashable {
     var toolName: String
-    /*
-     Expand this later when we get more information
-     */
+    var toolURL: String?
 }
 
-
 struct ExampleImplant: Codable {
-    var name: String
-    var url: String
+    var implantName: String
+    var implantURL: String?
+    var techniqueGuide: String?
     var tools: [RequiredTool]
-    
-    
-    
-    
+
+}
+
+struct ImplantImage: Codable {
+    var implantName: String
+    var imageURL: String
 }

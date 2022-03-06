@@ -30,7 +30,6 @@ struct FullScreenImageView: View {
             ZStack {
                 Color.black.ignoresSafeArea()
                 if let image = image {
-    
                     image.resizable().scaledToFit()
                         .pinchToZoom()
                 }

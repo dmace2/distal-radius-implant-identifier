@@ -38,7 +38,8 @@ struct ClassificationResultsRowView: View {
             VStack(alignment:.leading) {
                 image
                     .resizable()
-                    .aspectRatio(1, contentMode: .fit)
+                    .scaledToFit()
+//                    .aspectRatio(1, contentMode: .fit)
                     .frame(width: 150, height: 150, alignment: .center)
                     .onTapGesture {
                         tapped.toggle()

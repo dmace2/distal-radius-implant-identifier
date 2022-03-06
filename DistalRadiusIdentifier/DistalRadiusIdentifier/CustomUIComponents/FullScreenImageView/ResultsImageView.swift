@@ -63,6 +63,7 @@ struct ExpandingImageView: View {
                     ZStack {
                         Color.clear.ignoresSafeArea()
                         ProgressView()
+
                                 //.aspectRatio(1, contentMode: .fit)
                     }
                 }

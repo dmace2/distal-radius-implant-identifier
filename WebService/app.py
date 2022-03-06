@@ -1,20 +1,22 @@
+from doctest import Example
 from fastapi import FastAPI, File, UploadFile, HTTPException
-from pydantic import BaseModel
-from fastapi.responses import JSONResponse
 from typing import Optional, List
-import datetime
-
 from fastapi.responses import RedirectResponse, FileResponse
 import uvicorn
 from PIL import Image
-import sys
-import io
-import os
+import sys, io, os
 
-# from .models import *
+
 from .models import *
+from .utils import DBService
 
 app = FastAPI()
+db = DBService()
+print("Getting Implants")
+print(db.get_implants("Acumed"))
+sys.stdout.flush()
+
+
 
 
 @app.get("/")
@@ -66,33 +68,24 @@ async def getCompanyExampleImageInformation(company: str):
 async def getCompanyExampleImage(company: str, exampleNum: int):
     company = company.lower()
     dirname = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__))))
-    return FileResponse(f"{dirname}/static/images/{company}/Example{exampleNum}.png")
+    return FileResponse(f"{dirname}/static/{company}/Example{exampleNum}.png")
 
 
 
 @app.get("/implantExamples/{company}")
 async def getImplantExamples(company: str):
-    # company = company.lower()
-    return [
-        ExampleImplant(
-            name=f"{company} Implant Type 1",
-            url=f"http://synthes.vo.llnwd.net/o16/Mobile/Synthes%20North%20America/Product%20Support%20Materials/Technique%20Guides/SUSA/SUTG2.4DRPltJ4569F.pdf",
-            tools=[
-            Tool(toolName=f"{company} Tool 1"),
-            Tool(toolName=f"{company} Tool 2"),
-            Tool(toolName=f"{company} Tool 3")]
-        ),
-        ExampleImplant(
-            name=f"{company} Implant Type 2",
-            url=f"http://synthes.vo.llnwd.net/o16/LLNWMB8/INT%20Mobile/Synthes%20International/Product%20Support%20Material/legacy_Synthes_PDF/DSEM-TRM-0815-0464-1_LR.pdf",
-            tools=[
-            Tool(toolName=f"{company} Tool 1"),
-            Tool(toolName=f"{company} Tool 2"),
-            Tool(toolName=f"{company} Tool 3")]
-        )
-        
-    ]
+    
+    # get implants from db
+    implants = db.get_implants(company)
+    
+    # format for json and return
+    return [CompanyImplant(**implant) for implant in implants]
 
+@app.get("/implantExamples/images/{company}")
+async def getImplantImageExamples(company: str):
+    images = db.get_implant_images(company)
+    
+    return [ImplantImage(**image) for image in images]
 
 
 if __name__ == "__main__":
