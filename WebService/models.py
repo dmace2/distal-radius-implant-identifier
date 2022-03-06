@@ -35,6 +35,12 @@ class CompanyImplant(BaseModel):
     techniqueGuide: Optional[str]
     tools: Optional[List[Tool]]
 
+class ImplantImage(BaseModel):
+    """
+    Implant Image model
+    """
+    implantName: str
+    imageURL: str
 
 
 

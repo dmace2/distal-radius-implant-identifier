@@ -51,6 +51,31 @@ class DBService:
         
         # just return the implants themselves 
         return list(implantDict.values())
+    
+    def get_implant_images(self, company):
+        cur = self.con.cursor(cursor_factory=RealDictCursor)
+        
+        # get list of tools
+        cur.execute(f"""
+            select implants."implantName", implants."imageURL" as "implantURL"
+            from implants
+            where implants.company='{company}'""")
+        implants = cur.fetchall()
+        
+        print(implants)
+        
+        
+        # format implants into dict
+        images = []
+        for row in implants:
+            if row['implantURL'] is not None:
+                images.append({
+                    "implantName" : row['implantName'],
+                    "imageURL" : row['implantURL']
+                })
+        
+        # just return the implants themselves 
+        return images
         
         
 if __name__ == "__main__":

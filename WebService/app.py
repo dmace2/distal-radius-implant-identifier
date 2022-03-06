@@ -81,6 +81,12 @@ async def getImplantExamples(company: str):
     # format for json and return
     return [CompanyImplant(**implant) for implant in implants]
 
+@app.get("/implantExamples/images/{company}")
+async def getImplantImageExamples(company: str):
+    images = db.get_implant_images(company)
+    
+    return [ImplantImage(**image) for image in images]
+
 
 if __name__ == "__main__":
     uvicorn.run(app,host='0.0.0.0', port=os.getenv('port', default=33507))
