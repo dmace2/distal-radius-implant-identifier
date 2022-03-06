@@ -9,10 +9,11 @@ import SwiftUI
 
 struct ExampleImagesPageView: View {
     @EnvironmentObject var model: CompanyDetailViewModel
-    @State var images: [URL] = []
+    @State var images: [ImplantImage] = []
     
     var showTitle: Bool = true
     
+    var detailedTitles: Bool = false
     
     
     var body: some View {
@@ -24,15 +25,24 @@ struct ExampleImagesPageView: View {
             
             if images.count > 0 {
                 TabView {
-                    ForEach(images) { url in
-                        ExpandingImageView(url: url)
+                    ForEach(images, id: \.implantName) { example in
+                        VStack {
+                            if detailedTitles {
+                                Text(example.implantName).bold()
+                            }
+                            ExpandingImageView(url: URL(string:example.imageURL)!)
+                        }
+                        .padding(.horizontal)
                     }
                 }
                 .tabViewStyle(.page)
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
-            } else {
+            }
+            else {
                 ZStack {
-                    Color.clear
+                    if !detailedTitles {
+                        Color.clear
+                    }
                     ProgressView()
                 }
             }

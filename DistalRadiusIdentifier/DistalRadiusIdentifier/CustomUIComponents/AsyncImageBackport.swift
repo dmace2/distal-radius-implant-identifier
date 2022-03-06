@@ -252,7 +252,8 @@ struct BackportAsyncImage_Previews: PreviewProvider {
                     if let image = phase.image {
                         image
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
+                            .scaledToFit()
+//                            .aspectRatio(contentMode: .fit)
                     } else if phase.error != nil {
                         Color.red
                     } else {

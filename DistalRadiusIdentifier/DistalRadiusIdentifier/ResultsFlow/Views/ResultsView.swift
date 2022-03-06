@@ -20,7 +20,6 @@ struct ResultsView: View {
     
     @State var userImage: Image? = Image("SampleXRay")
     @State var isPresented = false
-    
     @State var showingError = false
     
     var body: some View {
@@ -56,8 +55,7 @@ struct ResultsView: View {
                         HStack(alignment: .center) {
                             ExpandingImageView(caption: "Your Image", image: userImage)
                             if let company = classification?.predictedCompany {
-                                ExampleImagesPageView()
-                                    .environmentObject(CompanyDetailViewModel(companyName: company))
+                                ExampleImagesPageView().environmentObject(CompanyDetailViewModel(companyName: company))
                             } else {
                                 ZStack {
                                     Color.clear
@@ -65,20 +63,29 @@ struct ResultsView: View {
                                 }
                             }
                         }
-//                        ExampleImagesPageView()
                     }
                     
                     Section(header: Text("Full Breakdown")) {
                         ForEach(Array(classification?.results.enumerated() ?? [].enumerated()), id: \.1.company) { (idx, row) in
-                            ResultsRowView(row, color: Color("AccentLight"))
-                                .padding(5)
-                                .onTapGesture {
-                                    if !classificationModel.isLoading {
-                                        self.rowTapped = idx
-                                        self.isPresented.toggle()
-                                    }
-                                }
+                            NavigationLink(destination: CompanyDetailView(detailModel: CompanyDetailViewModel(companyName: row.company))) {
+                                ResultsRowView(row, color: Color("AccentLight"))
+                                    .padding(5)
+                            }
+//                            ResultsRowView(row, color: Color("AccentLight"))
+//                                .padding(5)
+//                                .onTapGesture {
+//                                    if !classificationModel.isLoading {
+//                                        self.rowTapped = idx
+//                                        self.isPresented.toggle()
+//                                    }
+//                                }
                         }
+//                        .sheet(isPresented: $isPresented) {
+//                            NavigationView{
+//                                CompanyDetailView(detailModel: CompanyDetailViewModel(companyName: classification?.results[rowTapped].company ?? "Company"))
+//                                //.environmentObject(CompanyDetailViewModel(companyName: classification?.results[rowTapped].company ?? "Company"))
+//                            }
+//                        }
                         
                     }
                 }
@@ -102,14 +109,8 @@ struct ResultsView: View {
                 }
             }
             .navigationTitle("Results")
-            .navigationBarTitleDisplayMode(.inline)
+//            .navigationBarTitleDisplayMode(.inline)
             
-            .sheet(isPresented: $isPresented) {
-                NavigationView{
-                    CompanyDetailView(detailModel: CompanyDetailViewModel(companyName: classification?.results[rowTapped].company ?? "Company"))
-                    //.environmentObject(CompanyDetailViewModel(companyName: classification?.results[rowTapped].company ?? "Company"))
-                }
-            }
             
             if let error = classificationModel.error {
                 ErrorView(error: "Classification Failed")

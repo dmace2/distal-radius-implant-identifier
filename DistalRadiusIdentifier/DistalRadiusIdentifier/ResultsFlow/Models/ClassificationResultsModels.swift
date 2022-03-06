@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct CompanyPercentage: Codable, Hashable {
-    let company: String
+    var company: String
     let percentage: Float
 }
 
