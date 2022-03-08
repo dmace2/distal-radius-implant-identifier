@@ -17,14 +17,14 @@ class ClassificationModel: ObservableObject {
     @Published var classifications: [Classification] = []
     
     private let APISession = APIService.shared
-    
+    private let MLSession = ClassifierService.shared
     
     
     func classifyImplant(image img: UIImage) -> Classification? {
         isLoading = true
         error = nil
         
-        let (classification, requestError) = ClassifierService.shared.predict(image: img)
+        let (classification, requestError) = MLSession.predict(image: img)
         
         guard requestError == nil else {
             self.error = requestError
@@ -36,17 +36,5 @@ class ClassificationModel: ObservableObject {
         
         return classification
     }
-    
-    func getClassificationImageURL(for company: String) -> URL {
-        return URL(string: "\(APISession.urlHostName)/companyExamples/\(company)")!
-    }
-    
-    func getCompanyTechnigueGuideURL(company: String) -> URL {
-        return URL(string: "https://www.google.com/search?q=\(company)")!
-    }
-    
-    
-    
-    
     
 }

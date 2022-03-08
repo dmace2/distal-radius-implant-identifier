@@ -12,9 +12,8 @@ import SwiftUI
 class CompanyDetailViewModel: ObservableObject {
     
     private let APISession = APIService.shared
-    
-    
     var companyName: String
+    
     @Published var examples: [ExampleImplant] = []
     @Published var error: Error?
     
@@ -24,10 +23,6 @@ class CompanyDetailViewModel: ObservableObject {
         self.companyName = companyName
     }
 
-    
-    func getClassificationImageURL() -> URL {
-        return URL(string: "\(APISession.urlHostName)/companyExamples/\(companyName)")!
-    }
     
     func getImplantExamples() async {
         self.error = nil

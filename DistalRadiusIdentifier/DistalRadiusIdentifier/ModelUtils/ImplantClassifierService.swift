@@ -23,7 +23,7 @@ class ClassifierService {
             return try ImplantClassifier(configuration: config)
         } catch {
             print(error)
-            fatalError("Couldn't create SleepCalculator")
+            fatalError("Couldn't create ImplantClassifier")
         }
     }()
     
@@ -36,9 +36,9 @@ class ClassifierService {
             let breakdown = prediction.breakdown
             print("PREDICTION: \(predictedClass)")
             
-            var reshapedBreakdown: [CompanyPercentage] = []
+            var reshapedBreakdown: [IndividualCompanyResultsItem] = []
             for (company, percentage) in breakdown {
-                reshapedBreakdown.append(CompanyPercentage(company: company, percentage: Float(percentage*100)))
+                reshapedBreakdown.append(IndividualCompanyResultsItem(company: company, percentage: Float(percentage*100)))
             }
             
             reshapedBreakdown = reshapedBreakdown.sorted {(first, second) -> Bool in return first.percentage > second.percentage}

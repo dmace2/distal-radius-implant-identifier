@@ -144,16 +144,13 @@ struct ResultsView: View {
     }
     
     func getClassificationResults() {
-        Task {
-            classification = await classificationModel.classifyImplant(image: cameraModel.capturedImage!)
-            
-            if classificationModel.error == nil {
-                self.userImage = Image(uiImage: classification!.image!)
-            } else {
-                self.showingError = true
-            }
-        }
+        classification = classificationModel.classifyImplant(image: cameraModel.capturedImage!)
         
+        if classificationModel.error == nil {
+            self.userImage = Image(uiImage: classification!.image!)
+        } else {
+            self.showingError = true
+        }
     }
     
     

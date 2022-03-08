@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct ResultsRowView: View {
-    var item: CompanyPercentage
+    var item: IndividualCompanyResultsItem
     var percentString: String
     var color: Color = .accentColor
     
     
-    init(_ item: CompanyPercentage) {
+    init(_ item: IndividualCompanyResultsItem) {
         self.item = item
         
         if item.percentage < 1 {
@@ -23,7 +23,7 @@ struct ResultsRowView: View {
         }
     }
     
-    init(_ item: CompanyPercentage, color: Color) {
+    init(_ item: IndividualCompanyResultsItem, color: Color) {
         self.init(item)
         self.color = color
     }
@@ -45,6 +45,6 @@ struct ResultsRowView: View {
 
 struct ResultsItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultsRowView(CompanyPercentage(company: "Synthes", percentage: 95.91))
+        ResultsRowView(IndividualCompanyResultsItem(company: "Synthes", percentage: 95.91))
     }
 }

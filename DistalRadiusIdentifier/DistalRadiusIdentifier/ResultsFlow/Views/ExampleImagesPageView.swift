@@ -11,14 +11,13 @@ struct ExampleImagesPageView: View {
     @EnvironmentObject var model: CompanyDetailViewModel
     @State var images: [ImplantImage] = []
     
-    var showTitle: Bool = true
-    
-    var detailedTitles: Bool = false
+    var collectionTitle: Bool = true
+    var individualTitles: Bool = false
     
     
     var body: some View {
         VStack {
-            if showTitle {
+            if collectionTitle {
                 Text("\(model.companyName) Examples").font(.footnote)
                 Spacer()
             }
@@ -27,7 +26,7 @@ struct ExampleImagesPageView: View {
                 TabView {
                     ForEach(images, id: \.implantName) { example in
                         VStack {
-                            if detailedTitles {
+                            if individualTitles {
                                 Text(example.implantName).bold()
                             }
                             ExpandingImageView(url: URL(string:example.imageURL)!)
@@ -40,7 +39,7 @@ struct ExampleImagesPageView: View {
             }
             else {
                 ZStack {
-                    if !detailedTitles {
+                    if !individualTitles {
                         Color.clear
                     }
                     ProgressView()

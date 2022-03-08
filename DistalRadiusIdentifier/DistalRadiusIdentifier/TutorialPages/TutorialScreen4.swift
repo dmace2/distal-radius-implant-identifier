@@ -34,11 +34,11 @@ struct TutorialScreen4: View {
                 List(1..<15){ row in
                     HStack {
                         if row == 1 {
-                            ResultsRowView(CompanyPercentage(company: "Synthes", percentage: 90.41), color: Color("AccentLight"))
+                            ResultsRowView(IndividualCompanyResultsItem(company: "Synthes", percentage: 90.41), color: Color("AccentLight"))
                         } else if row == 2 {
-                            ResultsRowView(CompanyPercentage(company: "Acumed", percentage: 8.59), color: Color("AccentLight"))
+                            ResultsRowView(IndividualCompanyResultsItem(company: "Acumed", percentage: 8.59), color: Color("AccentLight"))
                         } else {
-                            ResultsRowView(CompanyPercentage(company: "Company", percentage: 0.999), color: Color("AccentLight"))
+                            ResultsRowView(IndividualCompanyResultsItem(company: "Company", percentage: 0.999), color: Color("AccentLight"))
                         }
                     }
                 }

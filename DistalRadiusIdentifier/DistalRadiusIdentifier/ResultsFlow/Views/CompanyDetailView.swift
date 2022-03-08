@@ -24,7 +24,7 @@ struct CompanyDetailView: View {
                 }
                 .padding(.horizontal)
                 
-                ExampleImagesPageView(showTitle: false, detailedTitles: true)
+                ExampleImagesPageView(collectionTitle: false, individualTitles: true)
                     .environmentObject(detailModel)
 //                    .padding(.horizontal)
                 

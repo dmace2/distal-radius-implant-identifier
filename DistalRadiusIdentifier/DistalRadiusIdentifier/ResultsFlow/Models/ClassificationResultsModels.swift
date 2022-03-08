@@ -8,14 +8,14 @@
 import Foundation
 import UIKit
 
-struct CompanyPercentage: Codable, Hashable {
+struct IndividualCompanyResultsItem: Codable, Hashable {
     var company: String
-    let percentage: Float
+    var percentage: Float
 }
 
 struct Classification: Identifiable {
     var id = NSUUID().uuidString
-    var results: [CompanyPercentage]
+    var results: [IndividualCompanyResultsItem]
     var predictedCompany: String
     var predictionConfidence: Float
     var image: UIImage?
@@ -24,8 +24,27 @@ struct Classification: Identifiable {
 
 struct CodableClassification: Identifiable, Codable {
     var id = NSUUID().uuidString
-    var classifications: [CompanyPercentage]
+    var classifications: [IndividualCompanyResultsItem]
     var predictedCompany: String
     var predictionConfidence: Float
     var date: String
 }
+
+struct RequiredTool: Codable, Hashable {
+    var toolName: String
+    var toolURL: String?
+}
+
+struct ExampleImplant: Codable {
+    var implantName: String
+    var implantURL: String?
+    var techniqueGuide: String?
+    var tools: [RequiredTool]
+
+}
+
+struct ImplantImage: Codable {
+    var implantName: String
+    var imageURL: String
+}
+

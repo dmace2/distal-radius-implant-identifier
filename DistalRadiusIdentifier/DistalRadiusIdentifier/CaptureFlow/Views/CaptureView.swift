@@ -12,7 +12,6 @@ struct CaptureView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @State var image: UIImage?
-    
     @State var croppedImage: UIImage?
     @State var showingCropper = false
     

@@ -39,7 +39,6 @@ class CameraFrameViewModel: ObservableObject {
     @Published var capturedImage: UIImage?
     
     var imageDimension: CGFloat
-    
     var userInterfaceIdiom: UIUserInterfaceIdiom
 
     init() {
