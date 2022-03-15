@@ -109,7 +109,7 @@ struct ResultsView: View {
                 }
             }
             .navigationTitle("Results")
-//            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.inline)
             
             
             if let error = classificationModel.error {
