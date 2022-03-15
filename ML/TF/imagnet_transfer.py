@@ -105,14 +105,17 @@ class ImageNetModel:
         feature_extractor_layer = tf.keras.applications.MobileNetV2(input_shape=(self.image_dim, self.image_dim,3),
                                                include_top=False,
                                                weights='imagenet')
+        
         feature_extractor_layer.trainable = False
         
         num_classes = len(self.labels)
         
         model = tf.keras.Sequential([
-            tf.keras.layers.Rescaling(1./255,input_shape=(self.image_dim, self.image_dim,3),),
+            tf.keras.layers.Rescaling(1./127.5, offset=-1, input_shape=(self.image_dim, self.image_dim,3),),
             feature_extractor_layer,
             tf.keras.layers.GlobalAveragePooling2D(),
+            tf.keras.layers.Dense(128, activation='relu'),
+            tf.keras.layers.Dropout(0.2),
             tf.keras.layers.Dense(num_classes, activation='softmax')
         ])
 
@@ -166,7 +169,7 @@ class ImageNetModel:
         if save_ckpt: # checkpoint for saving model (Weights Only)
             checkpoint_path = os.path.join(newmodel_dir, "checkpoints", "cp-{epoch:04d}.ckpt")
             c = tf.keras.callbacks.ModelCheckpoint(checkpoint_path, 
-                monitor='loss', 
+                monitor='val_loss', 
                 verbose=1, 
                 save_weights_only=True,
                 save_best_only=True, 
@@ -174,7 +177,7 @@ class ImageNetModel:
         
         else: # checkpoint for saving model (Full Model)
             c = tf.keras.callbacks.ModelCheckpoint(newmodel_dir, 
-                monitor='loss', 
+                monitor='val_loss', 
                 verbose=1, 
                 save_best_only=True, 
                 save_freq='epoch')

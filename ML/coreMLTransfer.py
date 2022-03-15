@@ -4,10 +4,10 @@ import os
 
 
 # load the model from a SavedModel and then convert
-tf_keras_model = tf.keras.models.load_model('TF/saved_model')
+tf_keras_model = tf.keras.models.load_model('TF/model')
 
 # read in class names
-class_labels = [line.rstrip() for line in open(os.path.join(os.getcwd(), 'TF', 'saved_model', "classes.txt"))]
+class_labels = [line.rstrip() for line in open(os.path.join(os.getcwd(), 'TF', 'model', "classes.txt"))]
 
 # create classifier config to attach class names
 classifier_config = ct.ClassifierConfig(class_labels)
@@ -18,7 +18,7 @@ spec = mlmodel.get_spec()
                         
 # Edit the spec
 ct.utils.rename_feature(spec, 'rescaling_input', 'image')
-ct.utils.rename_feature(spec, 'Identity', 'breakdown')
+ct.utils.rename_feature(spec, 'Identity', 'classLabelProbs')
 mlmodel = ct.models.MLModel(spec)
 
 output_path = os.path.join(os.getcwd(), 'ImplantClassifier.mlpackage')

@@ -1,12 +1,12 @@
 {
     "fileFormatVersion": "1.0.0",
     "itemInfoEntries": {
-        "99D70715-4E7F-4CDA-93D4-FD3B5B0C12B2": {
+        "AE1EBF08-B10D-42AC-9E08-08BBA128928C": {
             "author": "com.apple.CoreML",
             "description": "CoreML Model Specification",
-            "name": "ImplantClassifier.mlmodel",
-            "path": "com.apple.CoreML/ImplantClassifier.mlmodel"
+            "name": "model.mlmodel",
+            "path": "com.apple.CoreML/model.mlmodel"
         }
     },
-    "rootModelIdentifier": "99D70715-4E7F-4CDA-93D4-FD3B5B0C12B2"
+    "rootModelIdentifier": "AE1EBF08-B10D-42AC-9E08-08BBA128928C"
 }

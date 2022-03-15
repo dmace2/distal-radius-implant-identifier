@@ -29,7 +29,7 @@ class DBService:
         # get list of tools
         cur.execute(f"""
             select implant, implants."imageURL" as "implantURL", tools."toolName", tools."imageURL" as "toolURL", implants."techniqueGuide"
-            from implants left outer join tools on (implants."implantName" = tools."implant" and implants."company" = tools."company")
+            from implants left outer join tools on (implants."implantName" = tools."implant")
             where implants.company='{company}'""")
         implants = cur.fetchall()
         

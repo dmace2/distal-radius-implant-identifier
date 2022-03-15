@@ -91,7 +91,7 @@ class utils:
         image = tf.image.resize(image, (image_dim, image_dim))
         print(image.shape)
         # Normalize the image
-        normalization_layer = tf.keras.layers.Rescaling(1./255)
+        normalization_layer = tf.keras.layers.Rescaling(1./127.5, offset=-1)
         normalized_image = normalization_layer(image) 
         
         return normalized_image
