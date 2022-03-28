@@ -25,8 +25,8 @@ class APIService {
         return company.replacingOccurrences(of: " ", with: "_")
     }
     
-    func getImplantExamples(from company: String) async -> ([ExampleImplant]?, Error?) {
-        var examples: [ExampleImplant]?
+    func getImplantExamples(from company: String) async -> (CompanyImplants?, Error?) {
+        var examples: CompanyImplants?
         var requestError: Error?
         
         
@@ -35,7 +35,7 @@ class APIService {
         do {
             session.configuration.timeoutIntervalForRequest = 5
             let (data, _) = try await self.session.data(from: url)
-            let decodedData = try self.decoder.decode([ExampleImplant].self, from: data)
+            let decodedData = try self.decoder.decode(CompanyImplants.self, from: data)
             examples = decodedData
             
         } catch {

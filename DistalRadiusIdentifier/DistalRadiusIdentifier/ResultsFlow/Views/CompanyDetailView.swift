@@ -12,6 +12,7 @@ struct CompanyDetailView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var detailModel: CompanyDetailViewModel
     @State var presentingSafariView = false
+    @State var safariViewURL: String?
     //    @State var rowTapped = 0
     
     @State var showingError = false
@@ -24,47 +25,79 @@ struct CompanyDetailView: View {
                 }
                 .padding(.horizontal)
                 
-                ExampleImagesPageView(collectionTitle: false, individualTitles: true)
-                    .environmentObject(detailModel)
-//                    .padding(.horizontal)
                 
                 List {
-                    ForEach(Array(detailModel.examples.enumerated()), id: \.1.implantName) { idx,row in
-                        Section {
-                            DisclosureGroup {
-                                ForEach(row.tools, id: \.toolName) { tool in
-                                    //add toolview here
-                                    Text(tool.toolName)
-                                }
-                                
-                            } label: {
-                                Text("Required Tools").bold()
-                            }
-                            Text("View Technique Guide")
-                                .foregroundColor(row.techniqueGuide == nil ? .gray : .blue)
-                                .onTapGesture {
-                                    //                                        self.rowTapped = idx
-                                    if row.techniqueGuide != nil {
+                    Section {
+                        ExampleImagesPageView(collectionTitle: false, individualTitles: true)
+                            .frame(minHeight: 200)
+                            .environmentObject(detailModel)
+                            
+                        
+                    }
+                    
+                    
+                    Section {
+                        if detailModel.examples?.companywide_guides.count != 0 {
+                            ForEach(Array(detailModel.examples?.companywide_guides.enumerated() ?? [].enumerated()), id: \.1.urlString) { idx,row in
+                                Text("View \(detailModel.convertGuideType(row.type)) Guide")
+                                    .foregroundColor(.blue)
+                                    .onTapGesture {
+                                        self.safariViewURL = row.urlString
                                         self.presentingSafariView.toggle()
                                     }
+                                    
+                            }
+                        } else {
+                            Text("No Guides to Display")
+                                .font(.callout)
+                                .foregroundColor(.gray)
+                        }
+                        
+                    } header: {
+                        Text("Company-Wide Guide Documents")
+                    }
+                    
+                    
+                    ForEach(Array(detailModel.examples?.implants.enumerated() ?? [].enumerated()), id: \.1.implantName) { idx,row in
+                        Section {
+                            if row.guides.count > 0 {
+                                DisclosureGroup {
+                                    ForEach(row.guides, id: \.urlString) { guide in
+                                        Text("View \(detailModel.convertGuideType(guide.type)) Guide")
+                                            .foregroundColor(.blue)
+                                            .onTapGesture {
+                                                self.safariViewURL = guide.urlString
+                                                self.presentingSafariView.toggle()
+                                            }
+                                    }
+
+                                } label: {
+                                    Text("Implant Guides").bold()
                                 }
-                                .disabled(row.techniqueGuide == nil)
-                                .sheet(isPresented: $presentingSafariView) {
-                                    SafariView(
-                                        url: URL(string:row.techniqueGuide!)!,
-                                        configuration: SafariView.Configuration(
-                                            entersReaderIfAvailable: false,
-                                            barCollapsingEnabled: true
-                                        )
-                                    )
-                                    .preferredControlAccentColor(.accentColor)
-                                    .dismissButtonStyle(.done)
-                                }
-                            
+                                
+                            } else {
+                                Text("No Guides to Display")
+                                    .font(.callout)
+                                    .foregroundColor(.gray)
+                            }
+
                         } header: {
                             Text(row.implantName)
                         }
                         
+                    }
+                }
+                .sheet(isPresented: $presentingSafariView) {
+                    if self.safariViewURL != nil {
+                        SafariView(
+                            url: URL(string:self.safariViewURL!)!,
+                            configuration: SafariView.Configuration(
+                                entersReaderIfAvailable: false,
+                                barCollapsingEnabled: true
+                            )
+                        )
+                        .preferredControlAccentColor(.accentColor)
+                        .dismissButtonStyle(.done)
                     }
                 }
                 .onAppear {

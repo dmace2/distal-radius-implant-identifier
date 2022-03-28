@@ -14,13 +14,17 @@ class CompanyDetailViewModel: ObservableObject {
     private let APISession = APIService.shared
     var companyName: String
     
-    @Published var examples: [ExampleImplant] = []
+    @Published var examples: CompanyImplants? = CompanyImplants(companywide_guides: [], implants: [])
     @Published var error: Error?
     
     
     
     init(companyName: String) {
         self.companyName = companyName
+    }
+    
+    func convertGuideType(_ type: String) -> String {
+        return type.replacingOccurrences(of: "_", with: " ").capitalized
     }
 
     
@@ -35,11 +39,12 @@ class CompanyDetailViewModel: ObservableObject {
         }
         
         self.objectWillChange.send()
-        self.examples = examples!
+        self.examples = examples
     }
     
     func getImplantExampleImages() async -> [ImplantImage]? {
         self.error = nil
+        
         
         let (examples, error) = await APISession.getExampleImageURLs(from: companyName)
         

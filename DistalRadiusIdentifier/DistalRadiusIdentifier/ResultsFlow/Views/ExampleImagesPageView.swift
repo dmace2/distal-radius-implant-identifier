@@ -42,7 +42,13 @@ struct ExampleImagesPageView: View {
                     if !individualTitles {
                         Color.clear
                     }
-                    ProgressView()
+                    HStack {
+                        Spacer()
+                        Text("No Images to Display")
+                            .font(.callout)
+                            .foregroundColor(.gray)
+                        Spacer()
+                    }
                 }
             }
         }

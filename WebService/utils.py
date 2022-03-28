@@ -30,7 +30,7 @@ class DBService:
         cur.execute(f"""
             select implant, implants."imageURL" as "implantURL", tools."toolName", tools."imageURL" as "toolURL", implants."techniqueGuide"
             from implants left outer join tools on (implants."implantName" = tools."implant")
-            where implants.company='{company}'""")
+            where implants."company"='{company}'""")
         implants = cur.fetchall()
         
         # format implants into dict
