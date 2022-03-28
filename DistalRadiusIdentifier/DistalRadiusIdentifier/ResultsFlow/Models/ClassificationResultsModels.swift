@@ -30,21 +30,26 @@ struct CodableClassification: Identifiable, Codable {
     var date: String
 }
 
-struct RequiredTool: Codable, Hashable {
-    var toolName: String
-    var toolURL: String?
-}
-
-struct ExampleImplant: Codable {
-    var implantName: String
-    var implantURL: String?
-    var techniqueGuide: String?
-    var tools: [RequiredTool]
-
-}
 
 struct ImplantImage: Codable {
     var implantName: String
     var imageURL: String
 }
 
+struct ExampleImplant: Codable {
+    var implantName: String
+    var implantURL: String?
+    var guides: [Guide]
+
+}
+
+struct Guide: Codable {
+    var type: String
+    var urlString: String
+}
+
+
+struct CompanyImplants: Codable {
+    var companywide_guides: [Guide]
+    var implants: [ExampleImplant]
+}
