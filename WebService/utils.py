@@ -80,7 +80,7 @@ class DBService:
             if row["companySpecific"] == True:
                 outside_guides.append({
                     "type": row['guideType'],
-                    "URL": row['URL']
+                    "urlString": row['URL']
                 })
             else:
                 implantDict[row['implant']]['guides'].append({
