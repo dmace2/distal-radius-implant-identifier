@@ -100,7 +100,7 @@ class DBService:
         cur.execute(f"""
             select implants."implantName", implants."imageURL" as "implantURL"
             from implants
-            where implants.company='{company}'""")
+            where implants."assocCompany"='{company}'""")
         implants = cur.fetchall()
 
         print(implants)
