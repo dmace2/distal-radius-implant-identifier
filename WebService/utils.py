@@ -85,7 +85,7 @@ class DBService:
             else:
                 implantDict[row['implant']]['guides'].append({
                     "type": row['guideType'],
-                    "URL": row['URL']
+                    "urlString": row['URL']
                 })
                     
 
