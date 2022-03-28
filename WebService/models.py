@@ -46,7 +46,7 @@ class ImplantImage(BaseModel):
 # MARK: - New Models
 class Guide(BaseModel):
     type: str
-    URL: str
+    urlString: str
 
 class Implant(BaseModel):
     """
