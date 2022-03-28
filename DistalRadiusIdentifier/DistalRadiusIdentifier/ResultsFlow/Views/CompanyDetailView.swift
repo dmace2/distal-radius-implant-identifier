@@ -31,8 +31,8 @@ struct CompanyDetailView: View {
                         ExampleImagesPageView(collectionTitle: false, individualTitles: true)
                             .frame(minHeight: 200)
                             .environmentObject(detailModel)
-                            
-                        
+                    } header: {
+                        Text("Implant Example Images")
                     }
                     
                     
@@ -61,18 +61,14 @@ struct CompanyDetailView: View {
                     ForEach(Array(detailModel.examples?.implants.enumerated() ?? [].enumerated()), id: \.1.implantName) { idx,row in
                         Section {
                             if row.guides.count > 0 {
-                                DisclosureGroup {
-                                    ForEach(row.guides, id: \.urlString) { guide in
-                                        Text("View \(detailModel.convertGuideType(guide.type)) Guide")
-                                            .foregroundColor(.blue)
-                                            .onTapGesture {
-                                                self.safariViewURL = guide.urlString
-                                                self.presentingSafariView.toggle()
-                                            }
-                                    }
+                                ForEach(row.guides, id: \.urlString) { guide in
+                                    Text("View \(detailModel.convertGuideType(guide.type)) Guide")
+                                        .foregroundColor(.blue)
+                                        .onTapGesture {
+                                            self.safariViewURL = guide.urlString
+                                            self.presentingSafariView.toggle()
+                                        }
 
-                                } label: {
-                                    Text("Implant Guides").bold()
                                 }
                                 
                             } else {
