@@ -24,15 +24,23 @@ async def root():
     return RedirectResponse(url='/docs')
 
 
-@app.get("/implantExamples/{company}", response_model=List[CompanyImplant])
+@app.get("/implantExamples/{company}", response_model=Company)
 async def getImplantExamples(company: str):
     try:
         # get implants from db
-        implants = db.get_implants(company)
+        implants, guides = db.get_implants(company)
+        print("___________________________")
+        print(implants)
     except AssertionError:
         raise HTTPException(status_code=400, detail="Invalid company name")
 
     # format for json and return
+    return Company(
+        companywide_guides=[Guide(**g) for g in guides],
+        implants=[Implant(**i) for i in implants]
+    )
+    
+    
     return [CompanyImplant(**implant) for implant in implants]
 
 
@@ -47,4 +55,4 @@ async def getImplantImageExamples(company: str):
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host='0.0.0.0', port=os.getenv('port', default=33507))
+    uvicorn.run(app, host='0.0.0.0', port=os.getenv('port', default=33507), reload=True)

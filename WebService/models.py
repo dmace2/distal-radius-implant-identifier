@@ -21,7 +21,7 @@ class Classification(BaseModel):
     classifications: List[ResultsItem]
 
 
-
+# MARK: - OLD Models for the API
 class Tool(BaseModel):
     """
     Tool model
@@ -43,32 +43,22 @@ class ImplantImage(BaseModel):
     imageURL: str
 
 
+# MARK: - New Models
+class Guide(BaseModel):
+    type: str
+    URL: str
 
-
-def simulateResults():
-    from random import random, shuffle
-    companies = list(["Acumed", "Synthes", "Trimed"])
-    print(companies)
-    shuffle(companies)
-    sum = 100
-
-    results = []
-    for company in companies:
-        percentage = random() * sum
-        results.append(ResultsItem(company=company, percentage=percentage))
-        sum -= percentage
-    print(results)
-
-    results.sort(key=lambda x: x.percentage, reverse=True)
-
-    return Classification(
-        id=str(uuid.uuid4()),
-        date=datetime.date.today(),
-        predictedCompany=results[0].company,
-        predictionConfidence=results[0].percentage,
-        classifications=results
-    )
-
-
-
-
+class Implant(BaseModel):
+    """
+    Implant model
+    """
+    implantName: str
+    implantURL: Optional[str]
+    guides: Optional[List[Guide]]
+    
+class Company(BaseModel):
+    """
+    Company Model
+    """
+    companywide_guides: Optional[List[Guide]]
+    implants: List[Implant]
