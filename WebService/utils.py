@@ -2,10 +2,11 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 import urllib.parse as urlparse
 import os
+from fastapi import HTTPException
 
 
 class DBService:
-    
+
     def __init__(self):
         url = urlparse.urlparse(os.environ['DATABASE_URL'])
         dbname = url.path[1:]
@@ -22,22 +23,21 @@ class DBService:
             port=port
         )
 
-        print(self.con)
-        
+        print('db connection:', self.con)
+
     def validateSQLParam(self, param):
-        assert all([command not in param.lower() for command in ["select", "delete", "update", "drop", "join"]])
-        
-    
+        if not all([command not in param.lower() for command in ["select", "delete", "update", "drop", "join"]]):
+            raise HTTPException(status_code=400, detail="Invalid company name")
+
     def fixCompanyName(self, company):
         return " ".join(company.split("_"))
-
 
     def get_implants(self, company):
         self.validateSQLParam(company)
         full_company = self.fixCompanyName(company)
         cur = self.con.cursor(cursor_factory=RealDictCursor)
         print("Testing")
-        
+
         # get list of guides
         get_guides = f"""
             select * from "companyGuides"
@@ -48,9 +48,9 @@ class DBService:
         guides = cur.fetchall()
         print("GUIDES")
         print(guides)
-        
+
         print("___________________________")
-        
+
         # get list of implants
         get_implants = f"""
             select * from "companyImplants"
@@ -59,7 +59,7 @@ class DBService:
         cur.execute(get_implants)
         implants = cur.fetchall()
         print(implants)
-        
+
         print("___________________________")
 
         # format implants into dict
@@ -73,7 +73,7 @@ class DBService:
                     "implantURL": row['imageURL'],
                     "guides": []
                 }
-        
+
         # format guides into implant dict
         outside_guides = []
         for row in guides:
@@ -87,7 +87,6 @@ class DBService:
                     "type": row['guideType'],
                     "urlString": row['URL']
                 })
-                    
 
         # # just return the implants themselves
         return (list(implantDict.values()), outside_guides)
