@@ -14,8 +14,6 @@ var UniversalSafeOffsets = UIApplication.shared.windows.first?.safeAreaInsets
 struct ImageCropAndRotationView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    
-    
     //These are the initial dimension of the actual image
     @State var imageWidth:CGFloat = 0
     @State var imageHeight:CGFloat = 0
@@ -24,10 +22,9 @@ struct ImageCropAndRotationView: View {
     @State var croppingMagnification:CGFloat = 1
     
     var image:UIImage
-    var previousCrop: UIImage?
+    var previousCrop: UIImage? //store the last crop if any
     
     @Binding var croppedImage:UIImage?
-    
     @State var rotationAngle: Double = 0
     
     private var formatter: NumberFormatter {
@@ -35,8 +32,6 @@ struct ImageCropAndRotationView: View {
         f.generatesDecimalNumbers = false
         return f
     }
-    
-    
     
     init(image: UIImage, croppedImage: Binding<UIImage?>) {
         self.image = image
@@ -47,79 +42,73 @@ struct ImageCropAndRotationView: View {
     }
     
     var body: some View {
-        ZStack{
-            //Black background
-            Color.black
-                .navigationTitle("Edit Image")
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarTitleTextColor(.white)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button {
-                            croppedImage = previousCrop
-                            presentationMode.wrappedValue.dismiss()
-                        } label: {
-                            Text("Cancel").foregroundColor(.red)
-                        }
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            print(image.size)
-                            let rotatedImage = image.rotated(by: rotationAngle, flip: false)
-                            //image.rotated(by: Measurement(value: rotationAngle, unit: .degrees))!
-                            print(rotatedImage.size)
-                            
-                            let cgImage: CGImage = rotatedImage.cgImage!
-                            let scaler = CGFloat(cgImage.width)/imageWidth
-                            let dim:CGFloat = getDimension(w: CGFloat(cgImage.width), h: CGFloat(cgImage.height))
+        VStack{
+            Spacer()
+                .frame(height: UniversalSafeOffsets?.top ?? 0)
+            Spacer()
+            ZStack{
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .rotationEffect(.degrees(rotationAngle))
 
-                            let xOffset = (((imageWidth/2) - (getDimension(w: imageWidth, h: imageHeight*0.999) * croppingMagnification/2)) + croppingOffset.width) * scaler
-                            let yOffset = (((imageHeight/2) - (getDimension(w: imageWidth, h: imageHeight*0.999) * croppingMagnification/2)) + croppingOffset.height) * scaler
-                            let scaledDim = dim * croppingMagnification
-
-                            print(xOffset, yOffset, scaledDim)
-
-
-                            if let cImage = cgImage.cropping(to: CGRect(x: xOffset, y: yOffset, width: scaledDim, height: scaledDim)) {
-                                croppedImage = UIImage(cgImage: cImage)
-                                presentationMode.wrappedValue.dismiss()
-                            }
-                        } label: {
-                            Text("Done").foregroundColor(Color("Gold"))
-                        }
-                    }
-                }
-            VStack{
-                Spacer()
-                    .frame(height: UniversalSafeOffsets?.top ?? 0)
-                Spacer()
-                ZStack{
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFit()
-                            .rotationEffect(.degrees(rotationAngle))
-
-                    
-                        .overlay(GeometryReader{geo -> AnyView in
-                            DispatchQueue.main.async{
-                                self.imageWidth = geo.size.width * 0.999
-                                self.imageHeight = geo.size.height * 0.999
-                            }
-                            return AnyView(EmptyView().foregroundColor(.clear))
-                        })
-                    
-                    ViewFinderView(imageWidth: self.$imageWidth, imageHeight: self.$imageHeight, finalOffset: $croppingOffset, finalMagnification: $croppingMagnification)
-                    
-                    
-                }
-                .padding()
-                Spacer()
                 
-                SlidingRuler(value: $rotationAngle, in: -45...45, step: 10, snap: .fraction, tick: .fraction, formatter: formatter)
-                    .padding(.bottom)
-                    .preferredColorScheme(.dark)
+                    .overlay(GeometryReader{geo -> AnyView in
+                        DispatchQueue.main.async{
+                            self.imageWidth = geo.size.width * 0.999
+                            self.imageHeight = geo.size.height * 0.999
+                        }
+                        return AnyView(EmptyView().foregroundColor(.clear))
+                    })
+                
+                ViewFinderView(imageWidth: self.$imageWidth, imageHeight: self.$imageHeight, finalOffset: $croppingOffset, finalMagnification: $croppingMagnification)
+                
+                
             }
-        }//.edgesIgnoringSafeArea(.vertical)
+            .padding()
+            Spacer()
+            
+            SlidingRuler(value: $rotationAngle, in: -45...45, step: 10, snap: .fraction, tick: .fraction, formatter: formatter)
+                .padding(.bottom)
+//                    .preferredColorScheme(.dark)
+        }
+        .navigationTitle("Edit Image")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    croppedImage = previousCrop
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Text("Cancel").foregroundColor(.red)
+                }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    print(image.size)
+                    let rotatedImage = image.rotated(by: rotationAngle, flip: false)
+                    print(rotatedImage.size)
+                    
+                    let cgImage: CGImage = rotatedImage.cgImage!
+                    let scaler = CGFloat(cgImage.width)/imageWidth
+                    let dim:CGFloat = getDimension(w: CGFloat(cgImage.width), h: CGFloat(cgImage.height))
+
+                    let xOffset = (((imageWidth/2) - (getDimension(w: imageWidth, h: imageHeight*0.999) * croppingMagnification/2)) + croppingOffset.width) * scaler
+                    let yOffset = (((imageHeight/2) - (getDimension(w: imageWidth, h: imageHeight*0.999) * croppingMagnification/2)) + croppingOffset.height) * scaler
+                    let scaledDim = dim * croppingMagnification
+
+                    print(xOffset, yOffset, scaledDim)
+
+
+                    if let cImage = cgImage.cropping(to: CGRect(x: xOffset, y: yOffset, width: scaledDim, height: scaledDim)) {
+                        croppedImage = UIImage(cgImage: cImage)
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                } label: {
+                    Text("Done").foregroundColor(Color("Gold"))
+                }
+            }
+        }
     }
 }
 
@@ -145,23 +134,19 @@ struct ViewFinderView:View{
             //These are the views for the surrounding rectangles
             Group{
                 Rectangle()
-                //                .foregroundColor(Color.red.opacity(0.3))
                     .foregroundColor(surroundingColor)
                     .frame(width: ((imageWidth-getDimension(w: imageWidth, h: imageHeight*0.999))/2) + activeOffset.width + (getDimension(w: imageWidth, h: imageHeight*0.999) * (1 - activeMagnification) / 2), height: imageHeight)
                     .offset(x: getSurroundingViewOffsets(horizontal: true, left_or_up: true), y: 0)
                 Rectangle()
-                //                .foregroundColor(Color.blue.opacity(0.3))
                     .foregroundColor(surroundingColor)
                 
                     .frame(width: ((imageWidth-getDimension(w: imageWidth, h: imageHeight*0.999))/2) - activeOffset.width + (getDimension(w: imageWidth, h: imageHeight*0.999) * (1 - activeMagnification) / 2), height: imageHeight)
                     .offset(x: getSurroundingViewOffsets(horizontal: true, left_or_up: false), y: 0)
                 Rectangle()
-                //                .foregroundColor(Color.yellow.opacity(0.3))
                     .foregroundColor(surroundingColor)
                     .frame(width: getDimension(w: imageWidth, h: imageHeight*0.999) * activeMagnification, height: ((imageHeight-getDimension(w: imageWidth, h: imageHeight*0.999))/2) + activeOffset.height + (getDimension(w: imageWidth, h: imageHeight*0.999) * (1 - activeMagnification) / 2))
                     .offset(x: activeOffset.width, y: getSurroundingViewOffsets(horizontal: false, left_or_up: true))
                 Rectangle()
-                //                .foregroundColor(Color.green.opacity(0.3))
                     .foregroundColor(surroundingColor)
                     .frame(width: getDimension(w: imageWidth, h: imageHeight*0.999) * activeMagnification, height: ((imageHeight-getDimension(w: imageWidth, h: imageHeight*0.999))/2) - activeOffset.height + (getDimension(w: imageWidth, h: imageHeight*0.999) * (1 - activeMagnification) / 2))
                     .offset(x: activeOffset.width, y: getSurroundingViewOffsets(horizontal: false, left_or_up: false))

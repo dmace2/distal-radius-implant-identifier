@@ -60,8 +60,6 @@ class CameraFrameViewModel: ObservableObject {
     }
     
     func determineCameraPermissionStatus() {
-        
-        
         switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .authorized: // The user has previously granted access to the camera.
                 return

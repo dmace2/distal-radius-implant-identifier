@@ -11,14 +11,13 @@ import UIKit
 class APIService {
     
     let urlHostName = "https://distalradius.herokuapp.com"
-    // let urlHostName = "http://128.61.15.54:8000"
     private let session = URLSession.shared
     private let decoder = JSONDecoder()
     
     static let shared = APIService()
     
     private init() {
-        
+        session.configuration.timeoutIntervalForRequest = 5
     }
     
     private func removeSpaces(from company: String) -> String {
@@ -29,11 +28,9 @@ class APIService {
         var examples: CompanyImplants?
         var requestError: Error?
         
-        
         let url = URL(string:"\(urlHostName)/implantExamples/\(removeSpaces(from: company))")!
         
         do {
-            session.configuration.timeoutIntervalForRequest = 5
             let (data, _) = try await self.session.data(from: url)
             let decodedData = try self.decoder.decode(CompanyImplants.self, from: data)
             examples = decodedData
@@ -51,14 +48,11 @@ class APIService {
         var images: [ImplantImage] = []
         var requestError: Error?
         
-        
         let url = URL(string:"\(urlHostName)/implantExamples/images/\(removeSpaces(from: company))")!
         
         do {
-            session.configuration.timeoutIntervalForRequest = 5
             let (data, _) = try await self.session.data(from: url)
             let decodedData = try self.decoder.decode([ImplantImage].self, from: data)
-            print(decodedData)
             images = decodedData
             
         } catch {

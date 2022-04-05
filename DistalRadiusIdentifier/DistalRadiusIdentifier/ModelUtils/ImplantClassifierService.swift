@@ -28,20 +28,17 @@ class ClassifierService {
     }()
     
     func predict(image: UIImage) -> (Classification?, Error?) {
-        print(image.size)
-        
         do {
             let prediction = try ClassifierService.shared.classifier.prediction(image: image.cgImage!.pixelBuffer(width: 224, height: 224, orientation: .up)!)
             let predictedClass = prediction.classLabel
             let breakdown = prediction.breakdown
-            print("PREDICTION: \(predictedClass)")
             
             var reshapedBreakdown: [IndividualCompanyResultsItem] = []
             for (company, percentage) in breakdown {
                 reshapedBreakdown.append(IndividualCompanyResultsItem(company: company, percentage: Float(percentage*100)))
             }
             
-            reshapedBreakdown = reshapedBreakdown.sorted {(first, second) -> Bool in return first.percentage > second.percentage}
+            reshapedBreakdown = reshapedBreakdown.sorted {$0.percentage > $1.percentage}
             
             return (Classification(id: NSUUID().uuidString, results: reshapedBreakdown, predictedCompany: predictedClass,
                                    predictionConfidence: Float(breakdown[predictedClass]! * 100), image: image, date: Date()), nil)
@@ -60,9 +57,5 @@ class ClassifierService {
             results.append(result!)
         }
         return (results, nil)
-        
-        
-        
-        
     }
 }

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ErrorView: View {
     var error: String?
-//    var f: () -> Void = {}
     
     var body: some View {
         ZStack {
@@ -26,12 +25,6 @@ struct ErrorView: View {
                     .animation(.easeInOut, value: 0.25)
                 
                 Spacer()
-                
-//                if UIDevice.current.userInterfaceIdiom == .phone  {
-//                    RoundedButton(color: .accentColor, labelText: "Dismiss", buttonFunc: f)
-//                        .padding()
-//                }
-                
             }
         }
     }

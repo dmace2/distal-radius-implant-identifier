@@ -63,8 +63,6 @@ struct ExpandingImageView: View {
                     ZStack {
                         Color.clear.ignoresSafeArea()
                         ProgressView()
-
-                                //.aspectRatio(1, contentMode: .fit)
                     }
                 }
             }
@@ -72,9 +70,3 @@ struct ExpandingImageView: View {
         }
     }
 }
-
-//struct ResultsImageView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ExpandingImageView(image: Image("SampleXRay"), caption: "Test")
-//    }
-//}

@@ -50,9 +50,3 @@ struct FullScreenImageView: View {
         }
     }
 }
-
-//struct FullScreenImage_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FullScreenImage()
-//    }
-//}
