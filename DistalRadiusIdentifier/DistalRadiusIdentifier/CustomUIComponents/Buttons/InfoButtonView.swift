@@ -18,7 +18,7 @@ struct InfoButtonView: View {
             NavigationLink(destination:TutorialPageContainerView()
                                 .navigationBarTitleDisplayMode(.inline),
                            isActive: $showTutorial) {EmptyView()}
-            NavigationLink(destination: Text("FAQ"), isActive: $showFAQ) {EmptyView()}
+            NavigationLink(destination: FAQView(), isActive: $showFAQ) {EmptyView()}
             Menu {
                 Button(action: {
                     self.showTutorial.toggle()
