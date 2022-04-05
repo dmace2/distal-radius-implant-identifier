@@ -72,7 +72,7 @@ struct CompanyDetailView: View {
                                 }
                                 
                             } else {
-                                Text("No Guides to Display")
+                                Text("No Additional Documents to Display")
                                     .font(.callout)
                                     .foregroundColor(.gray)
                             }
