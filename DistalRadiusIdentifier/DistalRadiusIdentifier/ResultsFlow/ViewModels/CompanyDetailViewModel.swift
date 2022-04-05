@@ -18,7 +18,6 @@ class CompanyDetailViewModel: ObservableObject {
     @Published var error: Error?
     
     
-    
     init(companyName: String) {
         self.companyName = companyName
     }
@@ -42,9 +41,8 @@ class CompanyDetailViewModel: ObservableObject {
         self.examples = examples
     }
     
-    func getImplantExampleImages() async -> [ImplantImage]? {
+    func getImplantExampleImages() async -> [ExampleImage]? {
         self.error = nil
-        
         
         let (examples, error) = await APISession.getExampleImageURLs(from: companyName)
         

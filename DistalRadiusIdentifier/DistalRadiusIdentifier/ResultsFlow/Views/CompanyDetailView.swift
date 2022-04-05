@@ -13,7 +13,6 @@ struct CompanyDetailView: View {
     @StateObject var detailModel: CompanyDetailViewModel
     @State var presentingSafariView = false
     @State var safariViewURL: String?
-    //    @State var rowTapped = 0
     
     @State var showingError = false
     
@@ -98,8 +97,6 @@ struct CompanyDetailView: View {
                 }
                 .onAppear {
                     getCompanyData()
-                    print("EXAMPLES")
-                    print(detailModel.examples)
                 }
             }
             
@@ -119,8 +116,6 @@ struct CompanyDetailView: View {
                         
                     )
                 })
-            
-            
         }
     }
     

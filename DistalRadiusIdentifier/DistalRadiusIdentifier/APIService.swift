@@ -44,15 +44,15 @@ class APIService {
         
     }
     
-    func getExampleImageURLs(from company: String) async -> ([ImplantImage], Error?) {
-        var images: [ImplantImage] = []
+    func getExampleImageURLs(from company: String) async -> ([ExampleImage], Error?) {
+        var images: [ExampleImage] = []
         var requestError: Error?
         
         let url = URL(string:"\(urlHostName)/implantExamples/images/\(removeSpaces(from: company))")!
         
         do {
             let (data, _) = try await self.session.data(from: url)
-            let decodedData = try self.decoder.decode([ImplantImage].self, from: data)
+            let decodedData = try self.decoder.decode([ExampleImage].self, from: data)
             images = decodedData
             
         } catch {

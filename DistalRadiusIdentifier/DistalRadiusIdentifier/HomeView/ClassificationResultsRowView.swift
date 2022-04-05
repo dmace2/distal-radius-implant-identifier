@@ -21,7 +21,6 @@ struct ClassificationResultsRowView: View {
         // Set Date/Time Style
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .none
-//        dateFormatter.timeStyle = .short
 
         // Convert Date to String
         dateString = dateFormatter.string(from: row.date) // September 9, 2020 at 12:24 PM
@@ -29,17 +28,12 @@ struct ClassificationResultsRowView: View {
         
     }
     
-    
-    
-    
-    
     var body: some View {
         HStack {
             VStack(alignment:.leading) {
                 image
                     .resizable()
                     .scaledToFit()
-//                    .aspectRatio(1, contentMode: .fit)
                     .frame(width: 150, height: 150, alignment: .center)
                     .onTapGesture {
                         tapped.toggle()
