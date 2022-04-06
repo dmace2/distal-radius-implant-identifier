@@ -1,4 +1,5 @@
 /model
+/saved_model
 .DS_Store
 /__pycache__
 /logs
