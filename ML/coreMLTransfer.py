@@ -4,7 +4,7 @@ import os
 
 
 # load the model from a SavedModel and then convert
-tf_keras_model = tf.keras.models.load_model('TF/model')
+tf_keras_model = tf.keras.models.load_model(os.path.join(os.getcwd(), 'TF', 'model'))
 
 # read in class names
 class_labels = [line.rstrip() for line in open(os.path.join(os.getcwd(), 'TF', 'model', "classes.txt"))]

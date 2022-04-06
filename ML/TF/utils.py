@@ -49,9 +49,6 @@ class utils:
                 os.mkdir(class_root)
             for f in sampled_files[c]:
                 shutil.copy(f, os.path.join(sampled_root, c))
-            
-            
-        
         
     
     def generate_datasets(data_root, image_dim, batch_size):

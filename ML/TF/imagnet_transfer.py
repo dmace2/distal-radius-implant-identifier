@@ -33,7 +33,6 @@ class ImageNetModel:
         config = configparser.RawConfigParser()
         config.read(configfile)
 
-        self.transfer_model_url = config.get(profile_name, 'transfer_model_url')
         self.batch_size = int(config.get(profile_name, "batch_size"))
         self.lr = float(config.get(profile_name, "lr"))
         self.epochs = int(config.get(profile_name, "epochs"))
@@ -186,6 +185,8 @@ class ImageNetModel:
         tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
         
         # save the labels to a file
+        if not os.path.isdir(newmodel_dir):
+            os.mkdir(newmodel_dir)
         with open (os.path.join(newmodel_dir, "classes.txt"), 'w') as f:
             for item in self.labels:
                 f.write("%s\n" % item)
