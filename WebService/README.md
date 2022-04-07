@@ -5,7 +5,7 @@ This is a FastAPI web server that will oversee client interaction with the ML mo
 Install dependencies:
 
 ```
-python -m pip install -r requirements.txt
+python -m pip install -r ../requirements.txt
 ```
 
 Start the server:
