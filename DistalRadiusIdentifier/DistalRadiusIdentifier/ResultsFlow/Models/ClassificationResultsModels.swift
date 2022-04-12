@@ -31,7 +31,7 @@ struct CodableClassification: Identifiable, Codable {
 }
 
 
-struct ImplantImage: Codable {
+struct ExampleImage: Codable {
     var implantName: String
     var imageURL: String
 }

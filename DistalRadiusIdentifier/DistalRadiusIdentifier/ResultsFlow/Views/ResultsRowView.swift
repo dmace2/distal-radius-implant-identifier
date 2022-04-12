@@ -28,9 +28,6 @@ struct ResultsRowView: View {
         self.color = color
     }
     
-    
-    
-    
     @ViewBuilder
     var body: some View {
         
@@ -38,7 +35,6 @@ struct ResultsRowView: View {
             Text(item.company)
             Spacer()
             Text(percentString).fontWeight(.bold).foregroundColor(color)
-//            Image(systemName: "chevron.right").foregroundColor(.secondary)
         }
     }
 }

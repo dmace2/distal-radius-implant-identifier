@@ -27,7 +27,6 @@ struct CaptureView: View {
     
     
     init() {
-        
         switch UIDevice.current.userInterfaceIdiom {
         case .phone:
             // It's an iPhone
@@ -44,20 +43,19 @@ struct CaptureView: View {
         
     }
     
-    
     var body: some View {
         GeometryReader { geo in
             VStack {
                 ZStack(alignment: .center) {
-                    if let image = croppedImage {
+                    if let image = croppedImage { //already cropped image
                         Image(uiImage: image).resizable().scaledToFill()
                             .frame(width: cameraModel.imageDimension, height: cameraModel.imageDimension)
                         .clipped()
-                    } else if let image = image {
+                    } else if let image = image { //already taken image
                         Image(uiImage: image).resizable().scaledToFill()
                             .frame(width: cameraModel.imageDimension, height: cameraModel.imageDimension)
                         .clipped()
-                    } else {
+                    } else { //no image taken yet
                         Image("ExampleXRay")
                             .resizable().scaledToFill()
                             .frame(width: cameraModel.imageDimension, height: cameraModel.imageDimension)
@@ -68,11 +66,11 @@ struct CaptureView: View {
                             .foregroundColor(.red).opacity(0.3)
                             .rotationEffect(Angle.init(degrees: 45))
                     }
-                    Rectangle()
+                    Rectangle() //center line
                         .fill(Color(.displayP3, red: 1, green: 0, blue: 0, opacity: 0.5))
                         .frame(width: geo.size.width / 50, height: cameraModel.imageDimension, alignment: .top)
                         .allowsHitTesting(false)
-                    Image("ViewFinder")
+                    Image("ViewFinder") //bounds
                         .resizable()
                         .foregroundColor(.accentColor)
                         .scaledToFill()
@@ -104,46 +102,45 @@ struct CaptureView: View {
                     }
                     
                 }
-                .fullScreenCover(isPresented: $presentPicker) {
-                    ZStack {
-                        Color.black.ignoresSafeArea()
-                        SystemImagePicker(image: $image, croppedImage: $croppedImage)
-                    }
-                }
-                .padding(.bottom, geo.size.height / 50)
-                
-                HStack {
-                    if cameraModel.error == nil && image == nil {
-                        Button("Take Photo") { presentPicker.toggle() }
-                            .frame(width: geo.size.width / 4)
-                            .padding(geo.size.height / 100)
-                            .foregroundColor(Color(UIColor.systemBackground)) // set text as white/black based on background color
-                            .background(Color.accentColor)
-                            .cornerRadius(10)
-                    } else if cameraModel.error == nil {
-                        Button("Retake Photo") { presentPicker.toggle() }
+                if cameraModel.error == nil {
+                    HStack {
+                        Button {
+                            presentPicker.toggle()
+                        } label: {
+                            if image == nil {
+                                Text("Take Photo")
+                            } else {
+                                Text("Retake Photo")
+                            }
+                        }
                         .frame(width: geo.size.width / 4)
                         .padding(geo.size.height / 100)
                         .foregroundColor(Color(UIColor.systemBackground)) // set text as white/black based on background color
                         .background(Color.accentColor)
                         .cornerRadius(10)
+                        
+                        if #available(iOS 15.0, *), image != nil {
+                            NavigationLink(destination: ImageCropAndRotationView(image: (image ?? UIImage(named: "ExampleXRay")!), croppedImage: $croppedImage)
+                                            .navigationBarBackButtonHidden(true)
+                                           , label: {
+                                Text("Edit Photo")
+                                .frame(width: geo.size.width / 4)
+                                .padding(geo.size.height / 100)
+                                .foregroundColor(Color(UIColor.systemBackground)) // set text as white/black based on background color
+                                .background(Color.accentColor)
+                                .cornerRadius(10)
+                            })
+                        }
                     }
-                    
-                    if #available(iOS 15.0, *), image != nil {
-                        NavigationLink(destination: ImageCropAndRotationView(image: (image ?? UIImage(named: "ExampleXRay")!), croppedImage: $croppedImage)
-                                        .navigationBarBackButtonHidden(true)
-                                       , label: {
-                            Text("Edit Photo")
-                            .frame(width: geo.size.width / 4)
-                            .padding(geo.size.height / 100)
-                            .foregroundColor(Color(UIColor.systemBackground)) // set text as white/black based on background color
-                            .background(Color.accentColor)
-                            .cornerRadius(10)
-                        })
+                    .fullScreenCover(isPresented: $presentPicker) { //display the picker when clicking button
+                        ZStack {
+                            Color.black.ignoresSafeArea()
+                            SystemImagePicker(image: $image, croppedImage: $croppedImage)
+                        }
                     }
-                    
+                    .padding(.bottom, geo.size.height / 50)
                 }
-                
+                    
                 Spacer()
                 
                 AlignmentGuideView(title1: "Does the image fit within the box?", title2: "Is the implant horizontally centered?")

@@ -7,8 +7,6 @@
 
 import SwiftUI
 import Combine
-//import SBPAsyncImage
-
 
 struct ResultsView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -71,22 +69,7 @@ struct ResultsView: View {
                                 ResultsRowView(row, color: Color("AccentLight"))
                                     .padding(5)
                             }
-//                            ResultsRowView(row, color: Color("AccentLight"))
-//                                .padding(5)
-//                                .onTapGesture {
-//                                    if !classificationModel.isLoading {
-//                                        self.rowTapped = idx
-//                                        self.isPresented.toggle()
-//                                    }
-//                                }
                         }
-//                        .sheet(isPresented: $isPresented) {
-//                            NavigationView{
-//                                CompanyDetailView(detailModel: CompanyDetailViewModel(companyName: classification?.results[rowTapped].company ?? "Company"))
-//                                //.environmentObject(CompanyDetailViewModel(companyName: classification?.results[rowTapped].company ?? "Company"))
-//                            }
-//                        }
-                        
                     }
                 }
                 .listStyle(.sidebar)
@@ -96,12 +79,9 @@ struct ResultsView: View {
                         NavigationUtil.popToRootView()
                     })
                         .disabled(classificationModel.isLoading)
-                    //.unredacted()
                         .padding()
                 }
-                
             }
-            
             .redacted(reason: classificationModel.isLoading ? .placeholder : [])
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -110,7 +90,6 @@ struct ResultsView: View {
             }
             .navigationTitle("Results")
             .navigationBarTitleDisplayMode(.inline)
-            
             
             if let error = classificationModel.error {
                 ErrorView(error: "Classification Failed")

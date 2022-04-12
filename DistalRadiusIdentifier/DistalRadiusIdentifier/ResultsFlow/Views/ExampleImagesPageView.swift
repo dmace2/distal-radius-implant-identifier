@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExampleImagesPageView: View {
     @EnvironmentObject var model: CompanyDetailViewModel
-    @State var images: [ImplantImage] = []
+    @State var images: [ExampleImage] = []
     
     var collectionTitle: Bool = true
     var individualTitles: Bool = false
@@ -59,10 +59,3 @@ struct ExampleImagesPageView: View {
         }
     }
 }
-
-//struct ExampleImagesPageView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ExampleImagesPageView()
-////            .environmentObject(CompanyDetailViewModel(companyName: "Synthes"))
-//    }
-//}
