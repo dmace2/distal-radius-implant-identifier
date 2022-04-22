@@ -59,6 +59,8 @@ Download and install Xcode from Apple's App Store.
 
 <img src="./readme_utils/install_step6.png" width="100px"/>
 
+#Troubleshooting
+1. In case the python scripts don't work, make sure you're in the correct conda environment (in case you are, try recreating it after removing it) 
 
 ## Retraining the model
 
