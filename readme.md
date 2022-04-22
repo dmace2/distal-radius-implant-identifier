@@ -23,9 +23,7 @@ Our product will be targeted directly at distal radius implants, allowing the mo
 - There is a bug in the SwiftUI runtime regarding lists and nested views in iPad devices. When selecting a row in a list on a different screen than the list, the list will not update. This causes the user to be routed back to the camera capture page, which is not ideal. This can be remedied by selecting on your results item from the sidebar, which will correctly route you to the results page.
 - While images are being fetched, the words "no images" are displayed rather than a progress bar.
 - On smaller devices, buttons become taller rather than resizing the text. This is due to the fact that the text is larger than the button size on iPhone 11, iPhone 12/13 Mini, and iPhone SE.
-
-
-
+- Heroku has currently disabled auto-deploy through GitHub citing security concerns. This will be remedied in the future but a workaround exists using the steps described [here](https://devcenter.heroku.com/articles/git).
 
 ## Installation Guide
 **NOTE:** This installation guide assumes the application is not uploaded to the App Store and you are building from source code  
@@ -58,9 +56,6 @@ Download and install Xcode from Apple's App Store.
 6. On the iPhone, go to Settings -> General -> VPN & Device Management -> Apple ID option selected in Xcode under team -> Trust.   
 
 <img src="./readme_utils/install_step6.png" width="100px"/>
-
-#Troubleshooting
-1. In case the python scripts don't work, make sure you're in the correct conda environment (in case you are, try recreating it after removing it) 
 
 ## Retraining the model
 
@@ -165,5 +160,4 @@ conda install [package_name]
 ```
 pip install [package_name]
 ```
-
-4. If 
+4. If your application cannot be built from Xcode, ensure you have the latest Xcode version installed, have set your account to sign the application, and have changed the Bundle identifier to be unique.
