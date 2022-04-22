@@ -9,11 +9,10 @@ Our product will be targeted directly at distal radius implants, allowing the mo
 
 ## Release Notes (v1.0)
 #### Software Features
-- Identify the manufacturer and model of the implant
-- The application has an immersive tutorial that clearly explains to the user how to use the phone.
-- To use the application, it is necessary to use the phone's camera. We have embedded the use of the camera into the app 
-- asks for permission, doesn't save photos to phone
-- 
+- This application recognizes the model and manufacturer of distal-radius implants.
+- The application has an immersive tutorial that walks the user through the application step-by-step. The first launch opens automatically to the tutorial. The tutorial can be accessed again through the info button, and also allows for the user to swipe back and forth between steps, in case the user needs to refresh their memory of a specific feature.
+- The home page has an Info button in the top-right corner, when clicked, the user can go to the FAQ page or walk through the tutorial again.
+- To use the application, it is necessary to use the phone's camera. We have embedded the use of the camera into the app. The app asks for permission to access the camera on the first launch. The application doesn't save images to the phones photo library. The photos are only saved within the runtime of the application. If the application is force closed, the photos are lost.
 
 #### Bug Fixes
 - Users are correctly asked for camera permissions when the app is first opened. This now displays an alert redirecting users to the settings page to allow camera access for those who have disabled it.
@@ -30,6 +29,11 @@ Our product will be targeted directly at distal radius implants, allowing the mo
 
 ## Installation Guide
 **NOTE:** This installation guide assumes the application is not uploaded to the App Store and you are building from source code  
+
+#### Prerequisites
+Download and install Xcode from Apple's App Store.
+
+#### Installation
 
 1. Open the .xcodeproj file within the DistalRadiusIdentifier directory.
 
