@@ -150,3 +150,18 @@ Once that is done, make sure only the following folders should be the only chang
 ‘DistalRadiusIdentifier/DistalRadiusIdentifier/ModelUtils’  
 
 To deploy these changes to the app store, anyone with a developer account could push a new build of the app to the app store. If these changes are required on just a single device, the Xcode file could be run on an iPhone (explained in the Installation Guide instruction manual).
+
+
+## Troubleshooting Common Installation Issues
+
+1. If the app is not able to load on the device, try restarting the device.
+2. If training the model errors with ModuleNotFoundError, try activating your conda environment again and rerunning the script.
+3. If creating the conda environment fails, try installing each package individually using one of these two commands:
+```
+conda install [package_name]
+```
+```
+pip install [package_name]
+```
+
+4. If 
